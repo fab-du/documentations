@@ -1,0 +1,15 @@
+@startuml
+
+admin -> locale : adds menber in group 
+locale -> remote : downloads the encrypted KGV of the group
+admin <- locale : requests after passphrase
+admin --> locale : passphrase
+locale -> locale : decrypts admin secret key with passphrase
+locale -> locale : decrypts KGV with admin  public key 
+locale -> remote : downloads the new menber public key
+locale <-- remote : public key
+locale -> remote : encrypts KGV with this public key 
+locale -> remote : uploads the encrypted KGV 
+locale <-- remote : ok 
+
+@enduml

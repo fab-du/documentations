@@ -1,0 +1,10 @@
+@startuml
+
+user -> locale : change passphrase
+user -> locale : send the alt and new passphrase
+locale -> locale : decrypts user secret key with alt passphrase
+locale -> locale : encrpyts user secret key with the new  passphrase
+locale -> remote : uploads new encrypted secret key
+locale  <-- remote : ok 
+
+@enduml

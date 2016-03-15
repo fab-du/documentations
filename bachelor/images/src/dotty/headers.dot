@@ -1,0 +1,85 @@
+
+digraph g {
+    node [shape = record, height=2]
+
+    node_header[label=< 
+    <table border="3" cellspacing="0" cellborder="1" cellpadding="4">
+
+        <tr>
+         <td>Headername</td>
+         <td>Wert</td> 
+         <td>gesetzt bei</td> 
+         <td>Laufzeit</td> 
+         <td>Anmerkungen </td> 
+        </tr>
+
+        <tr>
+         <td>Content-Security-Policy</td>
+         <td>script-src 'self'</td> 
+         <td>LocalServer</td> 
+         <td>Erste Request an LocalServer</td> 
+        </tr>
+
+        <tr>
+         <td>Authorization</td>
+         <td>SRP</td> 
+         <td>LocalServer</td> 
+         <td>Erste Loginrequest</td> 
+        </tr>
+
+        <tr>
+         <td>WWW-Authenticate</td>
+         <td>SRP</td> 
+         <td>LocalServer</td> 
+         <td>Erste Loginrequest</td> 
+        </tr>
+
+        <tr>
+         <td>realm</td>
+         <td>realm</td> 
+         <td>LocalServer</td> 
+         <td>Erste Loginrequest</td> 
+        </tr>
+
+        <tr>
+         <td>hash-algorithm</td>
+         <td>SHA256</td> 
+         <td>LocalServer</td> 
+         <td>Erste Loginrequest</td> 
+        </tr>
+
+        <tr>
+         <td>X-XSRF-TOKEN</td>
+         <td>X_XSRF_TOKEN</td> 
+         <td>LocalServer</td> 
+         <td>Erste Request an LocalServer</td> 
+        </tr>
+
+        <tr>
+         <td>AUTH-TOKEN</td>
+         <td>auth_token</td> 
+         <td>RemoteServer</td> 
+         <td>Nach erfolgreiche Authentifizierung</td> 
+        </tr>
+
+        <tr>
+         <td>EXPIRES-IN</td>
+         <td>expires_in</td> 
+         <td>RemoteServer</td> 
+         <td>Nach erfolgreiche Authentifizierung</td> 
+        </tr>
+
+        <tr>
+         <td>client-public-key</td>
+         <td>client_public_key</td> 
+         <td>LocalServer</td> 
+         <td>Erste Loginrequest</td> 
+        </tr>
+
+    </table>>]
+
+
+}
+
+
+

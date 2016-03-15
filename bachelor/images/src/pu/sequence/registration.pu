@@ -1,0 +1,10 @@
+@startuml
+
+Admin -> remote : add new user and put his info in 
+remote -> user : send a email with  the init password and link to change it
+remote <- user : open the page under the link
+remote  --> user : page to change the init password
+remote <- user : send email, init password and new password
+remote --> user : success / failed
+
+@enduml

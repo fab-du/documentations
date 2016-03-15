@@ -1,0 +1,32 @@
+
+
+@startuml 
+skinparam packageStyle rect
+
+
+actor Bob
+
+rectangle LocalServer {
+left to right direction 
+
+usecase UC_req as "Request"
+usecase UC_simple_req as "Request without \n cryptographie Operations"
+usecase UC_crypto_req as "Request envolving \n cryptographie Operations"
+usecase UC_cryptographie as "Processing Cryptographie Operations"
+
+    UC_req <|-- UC_simple_req 
+    UC_req <|-- UC_crypto_req
+    UC_crypto_req --> UC_cryptographie 
+    Bob --> UC_req
+}
+
+left to right direction
+rectangle RemoteServer{
+
+}
+
+left to right direction
+UC_simple_req --> RemoteServer
+UC_cryptographie --> RemoteServer
+
+@enduml 

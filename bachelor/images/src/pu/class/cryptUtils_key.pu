@@ -1,0 +1,28 @@
+@startuml
+
+class IKey{
+}
+
+class AbstractKey{
+} 
+
+class AbstractKeyPair{
+} 
+
+class AbstractKeySym{
+} 
+
+class AbstractKeyPBEPair{
+} 
+
+class AbstractKeyPBESym{
+} 
+
+AbstractKeyPair --o IKey
+AbstractKeySym --o IKey
+AbstractKeyPBESym --o IKey
+AbstractKeyPBEPair --o IKey
+
+
+
+@enduml

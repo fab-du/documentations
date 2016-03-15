@@ -1,0 +1,13 @@
+@startuml
+
+user -> locale : uploads file (file)
+locale -> locale : generate a symkey for this file
+locale -> locale : encrypts the  file with the symkey
+locale -> locale : encrypts the symkey with the user public key
+locale -> remote : uploads the encrypted file and symkey
+locale <-- remote :ok 
+locale -> locale : encrypted the file with the Authority public key 
+locale -> remote : uploads the  encrypted file to remote server
+locale  <-- remote :ok 
+
+@enduml

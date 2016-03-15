@@ -1,0 +1,18 @@
+@startuml
+
+user -> locale: shared the file in groug 
+locale -> remote : downloads the Symkey of the file
+locale<-- remote : symkey
+user <- locale : requests after passphrase
+user --> locale : passphrase
+locale -> locale: decrypts symkey with user the secret key
+locale -> remote : downloads the KGV of the group
+locale<-- remote : KGV
+locale -> locale: decrypts KGV with the user public key
+locale -> locale : checks if KGV is correct 
+locale -> locale : encrypts the symkey of the file with the KGV
+locale -> remote  : uploads the encrypted symkey
+remote -> remote : put in database  in
+locale <-- remote : ok
+
+@enduml

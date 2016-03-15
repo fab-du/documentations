@@ -1,0 +1,42 @@
+@startuml
+autonumber
+
+actor User
+participant Browser
+participant LocalServer
+participant RemoteServer
+participant DB
+
+User -> Browser : GET /session/login
+
+Browser <- LocalServer : GET /session/login.html
+
+User -> LocalServer : { email, password } 
+
+
+
+
+activate LocalServer
+LocalServer -> RemoteServer : POST /session/challenge {email} 
+
+
+
+activate RemoteServer
+activate DB
+RemoteServer -> DB : findByEmail(email)
+
+RemoteServer <- RemoteServer : server.step1(email, salt, verifier)
+
+RemoteServer -> LocalServer : { salt : B}
+
+LocalServer -> LocalServer : \nclient.step1( email, password );\n client.step2(salt, B)
+LocalServer -> RemoteServer : POST /session/authenticate { email, A, M1 }
+
+RemoteServer -> RemoteServer : server.step2(A, M1) 
+
+RemoteServer -> LocalServer : send UNAUTHENTICATED 301\nelse send  AUTHENTICATED 200
+
+LocalServer -> LocalServer : redirect /api
+LocalServer -> Browser : redirect /api/dashboard.html
+
+@enduml

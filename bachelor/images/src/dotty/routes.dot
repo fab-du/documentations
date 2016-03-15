@@ -1,0 +1,80 @@
+digraph G {
+
+ root [label="/"];
+ api [label="api"]; 
+
+ root -> session [label="OG"];
+ root -> api [label="RG"];
+
+
+subgraph{
+ node[style=filled, color=lightgrey];
+ session [label="session"];
+ login [label="/login"];
+ challenge [label="/challenge"];
+ authenticate [label="/authenticate"];
+ register [label="/register"];
+ logout [label="/logout"];
+
+ session -> login [label="G"];
+            login -> challenge [label="CP"];
+            login -> authenticate [label="CP"];
+
+ session -> register [label="CP"];
+ session -> logout [label="CP"];
+}
+
+
+ subgraph users {
+    node [style=filled,color=lightblue];
+    users [label="/users"];
+    userid [label="/:userId"]
+    newuser [value="{email, firstname, ...}"]
+
+    api -> users [label="G"]
+           users -> newuser [label="CP"];
+           users -> userid [label="G"];
+                    userid -> validate [label="CP"];
+                    userid -> addFriend [label="CP"];
+                    userid -> revoke [label="CP"];
+                    userid -> addToGroup [label="CRP"];
+
+ }
+
+ subgraph friends {
+    friendId [label="/:friendId"]
+    api -> friends -> friendId;
+                      friendId -> users;
+           friends -> newuserfriend [label="newusername"]
+ }         
+
+    compound=true;
+ subgraph groups {
+    node [style=filled,color=indigo];
+    groupid [label="/:groupid"]
+    newgroup [value="{groupname}"]
+
+    api -> groups -> newgroup;
+           groups -> groupid;
+                     groupid -> users;
+                     groupid -> documents;
+ }
+
+ subgraph documents {
+    addDocument [label="/addDocument"]
+    documentId [label="/:documentId"]
+    changeOwner [label="/changeOwner"]
+    shareDocument [label="/shareDocument"]
+    api -> documents;
+           documents -> addDocument
+           documents -> documentId;
+                        documentId -> changeOwner;
+                        documentId -> shareDocument;
+ }
+
+}
+
+
+
+
+

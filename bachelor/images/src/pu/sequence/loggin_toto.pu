@@ -1,0 +1,23 @@
+@startuml
+
+user -> locale : login (credentials)
+user -> locale : send credentials
+locale -> remote : getNonce()
+locale <-- remote : Nonce 
+locale -> remote : send (hash( hash( passwort ) + nonce ) , username )
+remote -> remote : verify ( credentials )
+locale <-- remote : token
+locale -> remote : loads the encrypted image
+locale <-- remote : encrypted image
+locale -> locale : checks if the image is correct
+locale -> remote :uploads the user keypair and his signature
+locale <-- remote :  keypair and signatur
+locale -> locale : check if the keypair is correct
+locale -> remote : downloads all public key of trusted and his signatures( from trusted)
+locale <-- remote : public keys signautres
+locale -> locale : check if the signature are correct
+locale -> locale : saves all public key locale(in variables) (this will be used  while the session)
+locale -> remote : downloads the authority public key
+locale <-- remote : authority public key
+
+@enduml

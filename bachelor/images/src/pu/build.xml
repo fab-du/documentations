@@ -1,0 +1,11 @@
+<project name="PlantUml" default="main" basedir=".">
+<taskdef name="plantuml" classname="net.sourceforge.plantuml.ant.PlantUmlTask" classpath="/home/batie/bin_external/plantuml.jar" />
+<target name="main"> 
+<plantuml  output="${basedir}/output" config="config.cfg" >
+    <fileset dir="./" includes="**/**">
+        <filename name="**/*.pu"/>
+    </fileset>
+</plantuml>
+</target>
+</project> 
+

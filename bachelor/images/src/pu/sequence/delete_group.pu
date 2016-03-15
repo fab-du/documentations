@@ -1,0 +1,10 @@
+@startuml
+
+user -> locale : delete group (group_id)
+locale  -> remote : delete all menbers and shared files
+locale <-- remote : ok
+locale -> remote : requests to delete this  group
+locale <-- remote : ok
+user <-- locale : ok
+
+@enduml

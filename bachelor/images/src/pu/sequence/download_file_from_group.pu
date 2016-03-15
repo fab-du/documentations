@@ -1,0 +1,18 @@
+@startuml
+
+user -> locale : downloads shared file in group
+locale -> remote : downloads encrypted KGV
+locale <-- remote : encrypted KGV
+user <- locale : requests after the passphrase
+user --> locale : passphrase
+locale -> locale : decrypts the user secret key with the passphrase
+locale -> locale : decrypts the  KGV with the secret key
+locale -> remote : downloads encrypted symkey of this file
+locale <-- remote : encrypted symkey of this file
+locale -> locale : decrypts the symkey of this file with the KGV
+locale -> remote : downloads encrypted file
+locale <-- remote : encrypted file
+locale -> locale : decrypts the file with the symkey
+user <-- locale : decrypted file
+
+@enduml
