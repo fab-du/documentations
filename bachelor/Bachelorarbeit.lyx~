@@ -943,12 +943,12 @@ name "sec:Problemstellung-und-Motivation"
 \begin_layout Standard
 Der Austausch von vertraulichen Informationen mittels schriftlicher Aufzeichnung
 en ist grundsätzlich problematisch.
- Wie sollten Informationen zwischen Parteien ausgetauscht werden, ohne dass
+ Wie können Informationen zwischen Parteien ausgetauscht werden, ohne dass
  Unberechtigte diese mitlesen können.
  Die Lösung des Problems besteht darin, die Nachricht verschlüsselt zu übertrage
 n.
  Das heißt die ursprüngliche Nachricht wird so verändert, dass es Unberechtigten
- deutlich erschwert wird, den Inhalt einer abgefangenen Nachricht zu erfassen.
+ deutlich erschwert, den Inhalt einer abgefangenen Nachricht zu erfassen.
  Bereits in der Antike wurden vertrauliche Informationen verschlüsselt übermitte
 lt.
  Schon damals bestanden die folgende Problematike, die noch heute trotz
@@ -957,16 +957,17 @@ lt.
 
 \begin_layout Enumerate
 Wer kann Nachrichten ver- bzw.
- entschlüsseln und wie? ( Authentifizierung )
+ entschlüsseln und wie? (Authentifizierung) 
 \end_layout
 
 \begin_layout Enumerate
-Wie werden die Schlüssel zwischen Sender und Empfänger ausgetauscht? ( Kanalprob
-lematik ) 
+Wie werden die Schlüssel zwischen Sender und Empfänger ausgetauscht? (Kanalprobl
+ematik) 
 \end_layout
 
 \begin_layout Enumerate
-Wurde den Nachricht nicht kompromitiert ? ( Messageauthentication ) 
+Wie wird sichergestellt dass der Nachricht den Empfänger so erreicht, wie
+ sie geschickt wurde? (Integrität) 
 \end_layout
 
 \begin_layout Standard
@@ -976,30 +977,29 @@ Die Notwendigkeit eines sicheren Dokumentenaustauschs hat sich in den letzten
 \end_layout
 
 \begin_layout Standard
-Dokumentsautausch gibt es schon längst innerhalb geschlossene Netzwerk (
- Intranet ).
- Wobei manche Sicherheitaspekte wie Dateiverschlüsselung oder auch Messageauthen
-tication absichtlich weggelassen werden, da man davon ausgeht dass alle
- Benutzer der Intranet sich innerhalb des Unternehmen befinden und sind
- defakto vertrauenwürdig.
- Dadurch dass die Intranet nicht von draussen zugreiffbar ( Internet ),
- wird auch kein Massnahme was Integrität von Dokumenten angeht.
+Dokumentsautausch gibt es schon längst innerhalb geschlossene Netzwerk (Intranet
+).
+ Wobei manche Sicherheitaspekte wie Datenverschlüsselung oder auch Datenintegrit
+ät absichtlich weggelassen werden, da man davon ausgeht dass alle Benutzer
+ der Intranet sich innerhalb des Unternehmen befinden und sind defakto vertrauen
+würdig.
  
 \end_layout
 
 \begin_layout Standard
-Intranet wird defakto auf Grund seiner Eigenschaft von aussere Gefahr geschützt.
- Problematisch wird aber jedoch wenn den Dokumentsaustausch über eine offene
- unsichere Netzwerk ( Internet ) geschehen sollte.
+Intranet wird defakto aufgrund seiner Eigenschaft von aussere Gefahr geschützt.
+ Problematisch wird aber wenn den Datenaustausch über eine offene unsichere
+ Netzwerk (Internet) geschehen soll.
  Warum soll jetzt diese Notwendigkeit für Unternehmen bestehen ? Man denkt
- etwach nach eine externe Mitarbeiter, der sich nicht immer innerhalb des
- Unternehmen befindet und möchte trotzdem der Stand seiner Arbeit teilen,
- oder auch ein Projekt die von zwei oder mehrere Unternehmen durchgeführt
- werden muss, die Unternehmen können kein gegenseitige Zugriff auf Ihre
+ etwa nach eine externe Mitarbeiter, der sich nicht immer innerhalb des
+ Unternehmens befindet und möchte trotzdem der Stand seiner Arbeit teilen,
+ oder auch ein Projekt das von zwei oder mehrere Unternehmen durchgeführt
+ werden muss, die Unternehmen können keinen gegenseitige Zugriff auf Ihre
  Intranet gewährleistet.
  Die geschickte Lösung an der Stelle ist Internet, aber spätestens durch
- die NSA-Affäre deutlich geworden, dass eine Datenübertragung via Internet
- nicht für vertrauliche Informationen ohne weitere Maßnahmen geeignet ist.
+ die NSA-Affäre ist es deutlich geworden, dass eine Datenübertragung via
+ Internet von vertraulichen Informationen ohne weitere Maßnahmen nicht geeignet
+ ist.
  
 \end_layout
 
@@ -1016,12 +1016,9 @@ reference "sec:Problemstellung-und-Motivation"
 \end_inset
 
  stellt man fest das im Unternehmen verbreitet Lösung für Dokumentaustausch
- ist durch Intranet, diese Lösung schutzt gegen aussere Gefahre, ist aber
- ungeeignet für die Fälle von zwei unterschiedliche Unternehmen auf die
- gleiche Resource zugreiffen wollen, oder generell für eine von ausserhalb
- der Intranet zugriff.
- eine naive Lösung durch Internet ohne weitere Sicherheit Massnahme wäre
- für Unternehmen gefährlich.
+ ist durch Intranet, diese Lösung schutzt gegen aussere Gefahre, eine naive
+ Lösung durch Internet ohne weitere Sicherheit Massnahme wäre für Unternehmen
+ gefährlich.
  Das Ziel dieser Arbeit ist, eine sichere Dokumentsaustausch System über
  das Internet zu realisieren.
  
@@ -1149,6 +1146,13 @@ Infrakstrukturproblemetik.
 
 \begin_layout Section
 Web-upload
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Web-upload"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1215,14 +1219,29 @@ Cloud-Service
 
 \begin_layout Standard
 Cloud-Service hat sich in der letzen 5 Jahre wesentlich verbreitet.
- Und war auf einer guten Weg bis zum NSA-Affäre sich als defakto Standard
- einzuset- zen.
+ Und war auf einer guten Weg bis zum NSA-Affäre sich als Standard einzusetzen.
  Heute auch trotz die Spionnageskandale, wird Cloud-Service bei viele Endbenutze
 r sehr beliebt.
- Das Risiko ihre geheime Dokumente gestohlen zu haben, was Endbenutzer eingehen,
- können sie sich Unternehmen nicht leis- ten.
- der Einsatz von Cloud-Service bei Unternehmen ist ein absolut No-go.
- Es besteht hier die gleiche Problematik wie bei FTP Server.
+ Gerade bei der Bereitstellung von sensiblen Dokumenten über die Cloud ist
+ es unumgänglich, auf Sicherheit und Schutz vor fremdem Eingriff zu achten.
+ Doch oft möchte man, einige Dateien mit einem Geschäftpartner oder Kollegen
+ austauschen und actet wenig auf Sicherheit.
+ Beliebte Cloud-Lösungen aus dem Privatbereich wie Dropbox werden hierbei
+ gerne verwendet.
+ Die Richtlinien solcher Cloud-Speicher entsprechen nicht dem deutschen
+ Datenschutzrecht.
+ Einer der eventuelle gravierende Problem ist es dass die Daten unverschlüsselt
+ abgespeichert werden, Anders ausgedruckt, ein Dritter benötigt nür den
+ Benutzer Credential um das Dokument unverschlüsselt runterzuladen.
+ Möchte man sein Dokument verschlüsselt hochladen, muss man sich selber
+ darum kümmert, dadurch entstehen die gleiche Problematiken wie beim Webupload
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Web-upload"
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -1571,7 +1590,7 @@ Public Key Signature
 \end_layout
 
 \begin_layout Enumerate
-Private Key ( verschlüsselt mit Secret-Key ) 
+Private Key (verschlüsselt mit Secret-Key) 
 \end_layout
 
 \begin_layout Enumerate
@@ -3324,10 +3343,6 @@ Fehlerbehandlung
 
 \begin_layout Subsection*
 Caching
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
