@@ -1031,7 +1031,12 @@ reference "sec:Problemstellung-und-Motivation"
 Das Ziel dieser Arbeit ist, einen internetbasierenden sicheren Datenaustausch
  System zu entwickeln.
  der zum ersten die Komplexität (Schlüsselverwaltung, Schlüsselübermittlung)
- vollständig auf den Software delegiert, 
+ vollständig auf den Software delegiert.
+ Weitere es muss kein zusatzliche Softwareinstallation nötig sein, da der
+ software läuft über einen Webbrowser.
+ Im unterschied zu etablierten Lösungen wie Dropbox, werden alle Daten vorab
+ lokale verschlüsselt bevor das Hochladen gescheht.
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -1080,7 +1085,46 @@ Hier handelt es sich um kryptographische Schlüssel oder anders ausgedruckt
 \end_layout
 
 \begin_layout Subsection*
-Schlüsselpaare 
+Assymmetrische Kryptographie
+\end_layout
+
+\begin_layout Standard
+Assymmetrische Kryptographie ist ein kryptographisches Verfahren, bei dem
+ die kommunizierenden Parteien keinen gemeinsamen geheimen Schlüssel zu
+ kennen brauchen.
+ Ein Benutzer erzeugt hier Schlüsselpaar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Assymetrische-Schlüssel"
+
+\end_inset
+
+ das aus einem geheimen Teil (privater Schlüssel) und einem nicht geheimen
+ Teil (öffentlicher Schlüssel) besteht.
+ Der öffentliche Schlüssel ermöglicht jedem, Daten für den Inhaber des privaten
+ Schlüssels zu verschlüsseln, dessen digitale Signature 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Digitale-Signature"
+
+\end_inset
+
+ zu prüfen oder ihn zu authentifizieren.
+ Der private Schlüssel ermöglicht es seinem Inhaber, mit dem öffentlichen
+ Schlüssel verschlüsselte Daten zu entschlüsseln, digitale signaturen zu
+ erzeugen oder sich zu authentisieren.
+ Es wird für die Fertigung dieser Arbeit RSA-Algorithmus eingesetzt.
+\end_layout
+
+\begin_layout Subsection*
+Assymetrische Schlüssel (Schlüsselpaar) 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Assymetrische-Schlüssel"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1094,15 +1138,44 @@ Anhand der RSA Algorithmus werden Sclüsselpaare benötigt.
 \end_layout
 
 \begin_layout Subsection*
-Symmetrische Schlüssel 
+Symmetrische Kryptographie
 \end_layout
 
 \begin_layout Standard
-Es handelt sich um eine geheime Schlüssel, die Anhand der AES Algo- rithmus
- ( Symmetrische Verschlüsselungsverfahren ) eingesetzt wird, um Chiffrierung
+Symmetrische Kryptographie ist ein Kryptosystem, beim welchem im Gegensatz
+ zu einem asymmetrischen Kryptosytem beide Teilnehmer denselben Schlüssel
+ ( Symmetrische Schlüssel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Symmetrische-Schlüssel"
+
+\end_inset
+
+ ) verwenden.
+ Bei manchen symmetrischen Verfahren (z.B.
+ IDEA) sind die beiden Schlüssel nicht identisch, aber können leicht auseinander
+ berechnet werden.
+ Anhand dieser Arbeit wird die exklusiv den AES-Algorithmus benutzt, wobei
+ die Chiffrierschlüssel und Dechiffrierschlüssel gleich sind.
+\end_layout
+
+\begin_layout Subsection*
+Symmetrische Schlüssel 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Symmetrische-Schlüssel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es handelt sich um eine geheime Schlüssel, die Anhand der AES-Algorithmus
+ (Symmetrische Verschlüsselungsverfahren) eingesetzt wird, um Chiffrierung
  und Dechiffrierung durchzuführen.
- Da die syymetrische Schlüssel sowohl zur Chiffrierung als auch zur Dechiffrieru
-ng eingesetzt wird, ist die Schlüssel eine kritische Information.
+ Da die symetrische Schlüssel sowohl zur Chiffrierung als auch zur Dechiffrierun
+g eingesetzt wird, ist die symmetrische Schlüssel eine kritische Information.
  
 \end_layout
 
@@ -1111,11 +1184,67 @@ Passwort und Passphrase
 \end_layout
 
 \begin_layout Standard
-Unter Passwort versteht man der nur beim Benutzer bekannte Zeichen- kette,
- den ihn ermöglich sich in den System anzumelden.
- Passphrase ist auch nur von der Benutzer bekannt, und darf nicht in irgendeine
- Form persistent gehalten.
+Duden 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "duden:passwort"
+
+\end_inset
+
+ definiert das Passwort bzw.
+ Passphrase wiefolgt : 
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes gld
+\end_inset
+
+nur Eingeweihten bekannte, aus Buchstaben, Ziffern oder Sonderzeichen bestehende
+ Zeichenfolge, die den Gebrauch einer Sache, den Zugang zu ihr ermöglicht
+ und sie gegen den Missbrauch durch Außenstehende schützen soll.
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Wort 
+\begin_inset Quotes gld
+\end_inset
+
+Passwort
+\begin_inset Quotes grd
+\end_inset
+
+ wird in der Dokumentation benutzt im Zusammenhang mit Benutzeranmeldeinformatio
+nen, und wird in einer modifizierten Form im RemoteServer gespeichert.
+ Während Passphrase nie persistent gehalten wird.
  Den Passphrase wird benutzt um Benutzer geheimschlüssel zu verschlüsseln.
+\end_layout
+
+\begin_layout Subsection*
+Digitale Signature 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Digitale-Signature"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine digitale Signatur, auch digitales Signaturverfahren, ist ein asymetrisches
+ Kryptosystem, bei dem ein Sender mit Hilfe eines geheimen Signaturschlüssels
+ (dem private Schlüssel) zu einer digitalen Nachricht einen Wert berechnet,
+ der ebenfalls digitale Signatur benannt wird.
+ Dieser Wert ermöglicht es jedem, mit Hilfe des öffentlichen Verifikationsschlüs
+sels (den öffentlichen Schlüssel) die nichtabstreitbare Urheberschaft und
+ Integrität der Nachricht zu prüfen.
+ Um eine mit einem Signaturschlüssel erstellte Signatur einer Person zuordnen
+ zu können, muss der zugehörige Verifikationsschlüssel dieser Person zweifelsfre
+i zugeordnet sein.
 \end_layout
 
 \begin_layout Section
@@ -1123,11 +1252,39 @@ Email
 \end_layout
 
 \begin_layout Standard
-eine im ersten Blick triviale Lösung was Austausch von kristischen Dokumenten
- angeht besteht darin diese Dokument zu verschlüsseln und die resultierende
+Autausch von elektronischen Daten per Email ist weit verbreitet.
+ Email-Dienste werden von eigenen Unternehmen oder auch von Internet-Dienstleist
+ung angeboten.
+ Die versendung von Emails durch Internet ist zunächst unverschlüsselt.
+ Somit sind die Inhalte relativ einfach auch für Dritte lesbar.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die Indentitäten der Kommunikationspartner werden i.a mit den Email-Adressen
+ gleichgesetzt.
+ Eine weitergehende Prüfung findet nicht statt.
+ Was Indentitätbetrug ist leicht zu erstellen, Damit man die Indentität
+ (Email-Adresse) von einer der Kommunikationpartner fekt.
+ Obwohl dieser Funktionalität um diese Risiko zu schlagen in der meistens
+ Email-Client vorgesehen ist (Gmail), geschet die Email-Adressürberprüfung
+ nicht automatisch.
+ Diese Aufgabe ist an Benutzer überlassen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Ein Austausch über Firmengrenzen hinweg ist problemlos möglich.
+ Problematisch ist aber Austausch von kritischen Informationen.
+ 
+\end_layout
+
+\begin_layout Standard
+eine im ersten Blick triviale Lösung was Austausch von sensiblen elektronischen
+ Daten angeht besteht darin diese Daten zu verschlüsseln und die resultierende
  verschlüsselte Dokument per Email an der Kommunikationspartner zu senden.
- Diese Lösung ist solange ertragbar wenn der Benutzer sich mit Kryptographie
- bzw Kryptographiesoftware auskennt.
+ Diese Lösung ist solange ertragbar wenn die Teilnehmer (Sender und Empfänger)
+ sich mit Kryptographie bzw Kryptographiesoftware auskennen.
  Begrenzungen an diese Technik sind unerheblich und unheimlich viele : 
 \end_layout
 
@@ -1139,10 +1296,7 @@ Diese Lösung setzt voraus dass der Kommunikationspartner sich auch mit der
 \end_layout
 
 \begin_layout Itemize
-mehr problemetik, setzt sich auch voraus dass der Kommunika- tionpartner
- neben der Kryptographie know-how, den passenden Software, den passenden
- kryptographischen Algorithmus und der Verschlüsselungschlüssel.
- 
+Zusätzliche Softwareinstallation 
 \end_layout
 
 \begin_layout Itemize
@@ -1169,7 +1323,7 @@ name "sec:Web-upload"
 Das Speichern von Dokumenten auf einem Internet-Server ist weit verbreitet
  und weltweit von jedem Browser aus möglich.
  Eine Installation zusätzlicher Software, oder gar die Öffnung zusätzlicher
- Ports der Unternehmens-Firewall ist nicht not- wendig.
+ Ports der Unternehmens-Firewall ist nicht notwendig.
  Die Benutzer-Authentifizierung erfolgt i.d.R.
  per Lo- gin/Password.
  Daten können im Internet mittels des https-Protokolls verschlüsselt.
@@ -1200,7 +1354,7 @@ Das Speichern von Dokumenten auf einem Internet-Server ist weit verbreitet
  Dies wird aktuell nur sehr selten durchgeführt, da die Verschlüsselungs-Softwar
 e auch vom Web-Server geladen werden müssen.
  Und es kann nicht garantiert wer- den, dass die geladene Software nicht
- Eindringlingen unbeabsichtigten Zu- griff er- möglicht.
+ Eindringlingen unbeabsichtigten Zugriff ermöglicht.
  In Folge dessen werden Dokumente SSL-verschlüsselt zum Server gesen- det.
  Die dort empfangenen, unverschlüsselten Dokumente wer- den sofort verschlüs-
  selt und als Datei abgelegt.
@@ -1212,15 +1366,52 @@ ei und/oder die Schlüssel mitlesen.
 \end_layout
 
 \begin_layout Section
-FTP-Server 
+File Transfer Protocol (FTP) 
 \end_layout
 
 \begin_layout Standard
-Das Problematik bei FTP Server ist dass eine Dritte von aussen aus auf den
- auf der FTP-Server gespeicherte Datein nicht zugreifen kann.
- Zusätzlich muss der Benutzer der Verantwortung tragen die Datein zu verschlüsse
-ln, und selber die Schlüsseln verwalten.
+Das File Transfer Protocol (Dateiübertragungsprotokoll) ist ein in RFC 959
  
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RFC959"
+
+\end_inset
+
+ spezifiertes zustandsbehaftetes Netzwerkprotokoll zur Übertragung von Dateien.
+ FTP läuft in der Anwendungsschichtmodel.
+ Es wird benutzt um Dateien von Server zu Client herunterzuladen bzw.
+ von Client zum Server hochzuladen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine wesentliche vorteilhafte Eigenschaft von FTP ist, dass die meisten
+ Betriebsystem (Unix basierende zum Beispiel) werden mit FTP-Client-und-Server
+ vorinstalliert.
+ Dadurch ist kein zusätzliche Softwareinstallation nötig.
+ 
+\end_layout
+
+\begin_layout Standard
+RFC-959 : 
+\end_layout
+
+\begin_layout Quote
+The objectives of FTP are 1) to promote sharing of files (computer programs
+ and/or data), 2) to encourage indirect or implicit (via programs) use of
+ remote computers, 3) to shield a user from variations in file storage systems
+ among hosts, and 4) to transfer data reliably and efficiently.
+ FTP, though usable directly by a user at a terminal, is designed mainly
+ for use by programs.
+\end_layout
+
+\begin_layout Standard
+Das Ziel von 
 \end_layout
 
 \begin_layout Section
@@ -1416,22 +1607,85 @@ Konzept
 \end_layout
 
 \begin_layout Section
+Allgemein Architektur
+\end_layout
+
+\begin_layout Standard
+Das System Architektur wurde als eine Server-Client Anwendung entworfen,
+ LocalServer und RemoteServer, wobei der LocalServer eine Überbrückungsrolle
+ zwischen den Frontend (Webbrowser Javascriptapplication) und RemoteServer
+ spielt, LocalServer ist vergleichbar mit ein Proxy.
+ Alle Chiffrierung-bzw-Dechiffrierungoperationen geschehen
+\end_layout
+
+\begin_layout Section
 Authentifizierung
 \end_layout
 
 \begin_layout Standard
 Authenfizierung spielt systemweit eine bedeutende Rolle.
  Dabei passieren alle notwendige Prüfung von [LocalServer], [RemoteServer],
- [RemoteServer] integrität und natürlich Authenfizierung von Benutzer.
+ [RemoteServer] integrität und natürlich Verifizierung von Benutzer.
  Es durfte systemweit keine Einsatzt von Zertifikat/SSL-Verbindung oder
- Aufbau eine zustandbehaft Verbindung kommen, spricht die Kommunika- tionskanal
+ Aufbau eine zustandbehaft Verbindung kommen, spricht die Kommunikationskanal
  ist unsicher.
- Um Benutzercredentials von [LocalServer] auf [RemoteServer] zu übermit-
- teln unter Anhaltung von Spezifikation, wurde (“SRP Secure Remote Pass-
- word Protrocol,” n.d.) Algorithmus wie im RFC2945 spezifiziert benutzt.
- Beim Einsatz von SRP-Secure Remote Password Protocol lasst sich auch einfach
+ Um Benutzercredentials von [LocalServer] auf [RemoteServer] zu übermitteln
+ unter Anhaltung von Spezifikation, wurde SRP 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RFC2945"
+
+\end_inset
+
+ (Secure Remote Password) eingesetzt.
+\begin_inset Newline newline
+\end_inset
+
+Beim Einsatz von SRP-Secure Remote Password Protocol lasst sich auch einfach
  der gegenseitige Aunthenfizierung von [LokalServer] und [Remote- Server]
  realisieren, diese geschehet auch beim Authentifizierungsphase.
+\begin_inset Newline newline
+\end_inset
+
+SRP Protokoll ist ein Authentifizierung protokoll, dabei können manche per-Sitzu
+ng zufällige generierte Werte als Sitzungschlüssel verwendet werden (B).
+ Das bestehende Problem beim Einsatzt von dauerhafte Passwort wird durch
+ SRP minimisiert, indem keine Passwort-korrespondierte ( Hash, verschlüsselte
+ Passwort ....
+ ) gepeichert wird, sondern ein 
+\begin_inset Quotes gld
+\end_inset
+
+Verifier
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Gewinn ein Eingreiffer die auf den Datenbank gepeichert 
+\begin_inset Quotes gld
+\end_inset
+
+Verifier
+\begin_inset Quotes grd
+\end_inset
+
+ , dann kann der nicht daraus die Benutzerpasswort wiederrechnen.
+ Ein gestohlener Verifier ist ebenso nicht ausreichend zür Anmeldung, Weil
+ das Passwort immer noch benötigt wird.
+\begin_inset Newline newline
+\end_inset
+
+Zur erfolgreiche Authentifizierung wird kein sensible Information ausgetausch
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Sniffing-Attack
+\begin_inset Quotes grd
+\end_inset
+
+ ist dann dabei hilflos.
+ 
 \end_layout
 
 \begin_layout Standard

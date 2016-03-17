@@ -1308,8 +1308,7 @@ Schlüsselaustauschsproblematik.
 Infrakstrukturproblemetik.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Verbatim
 Alles was Sicherheitrelevant (Datenchiffrierung, Identitätüberprüfung ...
  )ist beim Einsatz von Email als Datenautausch ist mit grössen Aufwand verbunden.
 \end_layout
@@ -1613,18 +1612,6 @@ Konzept
 \end_layout
 
 \begin_layout Section
-Allgemein Architektur
-\end_layout
-
-\begin_layout Standard
-Das System Architektur wurde als eine Server-Client Anwendung entworfen,
- LocalServer und RemoteServer, wobei der LocalServer eine Überbrückungsrolle
- zwischen den Frontend (Webbrowser Javascriptapplication) und RemoteServer
- spielt, LocalServer ist vergleichbar mit ein Proxy.
- Alle Chiffrierung-bzw-Dechiffrierungoperationen geschehen
-\end_layout
-
-\begin_layout Section
 Authentifizierung
 \end_layout
 
@@ -1667,31 +1654,7 @@ Verifier
 \end_inset
 
 .
- Gewinn ein Eingreiffer die auf den Datenbank gepeichert 
-\begin_inset Quotes gld
-\end_inset
-
-Verifier
-\begin_inset Quotes grd
-\end_inset
-
- , dann kann der nicht daraus die Benutzerpasswort wiederrechnen.
- Ein gestohlener Verifier ist ebenso nicht ausreichend zür Anmeldung, Weil
- das Passwort immer noch benötigt wird.
-\begin_inset Newline newline
-\end_inset
-
-Zur erfolgreiche Authentifizierung wird kein sensible Information ausgetausch
- 
-\begin_inset Quotes gld
-\end_inset
-
-Sniffing-Attack
-\begin_inset Quotes grd
-\end_inset
-
- ist dann dabei hilflos.
- 
+ Gewinn ein Eingreiffer die 
 \end_layout
 
 \begin_layout Standard
