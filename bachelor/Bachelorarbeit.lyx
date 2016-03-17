@@ -1015,17 +1015,23 @@ reference "sec:Problemstellung-und-Motivation"
 
 \end_inset
 
- stellt man fest das im Unternehmen verbreitet Lösung für Dokumentaustausch
- ist durch Intranet, diese Lösung schutzt gegen aussere Gefahre, indem Intranet
- ein geschlossene Netzwerk ist.
+ stellt man fest dass im Unternehmen verbreitet Lösung für Dokumentaustausch
+ gescheht durch Intranet.
+ Diese Lösung schutzt gegen aussere Gefahre, indem Intranet ein geschlossene
+ Netzwerk ist.
  Heutzutage ist aber ein gemeinsame Zugriff auf digitale Informationen nicht
  nur innerhalb sowie auch über Unternehmengrenzen hinweg mit Partnern oder
- externe Mitarbeiter ein wichtiges Intrument geworden.
+ externe Mitarbeiter ein wichtiges Instrument geworden.
  eine naive Lösung durch Internet ohne weitere Sicherheit Massnahme wäre
  für Unternehmen gefährlich.
- Das Ziel dieser Arbeit ist, eine sichere Dokumentsaustausch System über
- das Internet zu realisieren.
  
+\begin_inset Newline newline
+\end_inset
+
+Das Ziel dieser Arbeit ist, einen internetbasierenden sicheren Datenaustausch
+ System zu entwickeln.
+ der zum ersten die Komplexität (Schlüsselverwaltung, Schlüsselübermittlung)
+ vollständig auf den Software delegiert, 
 \end_layout
 
 \begin_layout Chapter
