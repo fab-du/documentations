@@ -1,7 +1,0 @@
-@startuml
-
-user -> locale : revoke signatur (user_id)
-locale -> remote : delete signature 
-locale <-- remote :ok
-
-@enduml

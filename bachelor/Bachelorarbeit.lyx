@@ -1395,23 +1395,19 @@ Eine wesentliche vorteilhafte Eigenschaft von FTP ist, dass die meisten
  vorinstalliert.
  Dadurch ist kein zusätzliche Softwareinstallation nötig.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-RFC-959 : 
-\end_layout
+Es existiert zahlreichende robuste FTP-Clients von Terminal-Client (mit
+ linux vorinstalliert) bis GUI-Client ( Filezilla ), welche die auch als
+ Mozilla-Firefox oder Chrome Addons benutzt werden können.
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Quote
-The objectives of FTP are 1) to promote sharing of files (computer programs
- and/or data), 2) to encourage indirect or implicit (via programs) use of
- remote computers, 3) to shield a user from variations in file storage systems
- among hosts, and 4) to transfer data reliably and efficiently.
- FTP, though usable directly by a user at a terminal, is designed mainly
- for use by programs.
-\end_layout
-
-\begin_layout Standard
-Das Ziel von 
+Mit dem Ziel, bessere Sicherheit zu gewährleisten, wurde SFTP (SSH Transfer
+ Protocol) implementiert.
+ SFTP ist eine alternative zum FTP.
+ SFTP benutzt eine sichere Kanal mit hilfe von SSH für Dateitransfer.
 \end_layout
 
 \begin_layout Section
@@ -2169,6 +2165,62 @@ Query String
  Eine weitere Vorteil ist die Überschaubarkeit der Software.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/dotty/routes.dot
+	scale 44
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Routes/Aktionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Integrität der transportierte kritischen Daten ( JWS )
 \end_layout
@@ -2187,6 +2239,419 @@ Beim sicherheitrelevante Software ist es wichtig die Daten zu verschlüsseln
 
 Als Lösungsatzt wird eine End-to-End Integritätsprüfung eingesetzt mithilfe
  der JWS ( JSON Web Signature ).
+\end_layout
+
+\begin_layout Section
+Szenarien
+\end_layout
+
+\begin_layout Standard
+Hier werden einige Szenarien dargestellt und dazu sequentielle Diagramms,
+ um die Interaktionen zwischen die einzelne Komponente zu verdeutlichen.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Benutzer registrieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/sequence/registration.plantuml
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Benutzer registration sequence diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Benutzer einlogen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/sequence/login.plantuml
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Benutzer einloggen sequence diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Freund hinzufuegen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/sequence/trust_a_new_user.plantuml
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Freund hinzufuegen sequence diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Freund revoke
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/sequence/revoke_signature.plantuml
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Freund revoke sequence diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Datei hochladen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/sequence/upload_file.plantuml
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Datei hochladen sequence diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Datei runterladen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/sequence/download_file_from_group.plantuml
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Datei runterladen sequence diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Neue Gruppe erzeugen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/sequence/new_group.plantuml
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Neue Gruppe erzeugen sequence diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -3147,7 +3612,25 @@ us bzw.
 \end_layout
 
 \begin_layout Itemize
-(6) Wichtige Header gegen XSRF-Attacke (Cross Site Request Forgery) 
+(6)Wichtige Header gegen XSRF-Attacke (Cross Site Request Forgery)
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+XSRF : Manipulation von Parametern, so dass im Browser Skriptcode ausgeführt
+ wird; häufig auch synonym zu HTML-Injection verwendet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "XSS"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
