@@ -1,0 +1,25 @@
+@startuml
+
+left to right direction
+(*) --> "shareDocumentWithUser( Bob )"
+
+-right-> "Bob.isFriendOf( Alice )"
+
+if "" then
+-down->[true] "Group group = new Group()" 
+--> "group.setGV( Alice )" 
+-right-> "group.create()" 
+-right-> "group.addMember( Bob )"
+-right-> "group.addDocument( document )" 
+-right-> "group.update()"
+-->[end] (*)
+else
+-right->[false] "Friend friend = new Friend( Alice, Bob )" 
+-right-> "friend.commit()" 
+-down-> "Group group = new Group()"
+
+@enduml
+
+ 
+
+@enduml

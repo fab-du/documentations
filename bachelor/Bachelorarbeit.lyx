@@ -1441,6 +1441,235 @@ reference "sec:Web-upload"
  
 \end_layout
 
+\begin_layout Section
+PGP 
+\end_layout
+
+\begin_layout Standard
+PGP [Zim95] [ASZ96] [Sta95] ist eine Datenver- und Entschlüsselung Computer-
+ programm, das kryptographische Privatsphäre und Authentifizierung für die
+ Daten- kommunikation zur Verfügung stellt.
+ PGP wird oft zum Signieren und zur Ver-und Entschlüsselung von Texten,
+ E-Mails, Dateien und Verzeichnisse verwendet, um die Sicherheit der E-Mail-Komm
+unikation zu erhöhen.
+ Es wurde von Phil Zimmer- mann im Jahr 1991 entwickelt.
+\begin_inset Newline newline
+\end_inset
+
+Im PGP-System wird für einen Benutzer ein Schlüsselpaar (öffentlicher Schlüssel
+ und privater Schlüssel) erzeugt.
+ Dieses Schlüsselpaar ist mit einer eindeutigen ID verbunden, die normalerweise
+ ein Name oder eine E-mailadresse ist.
+ Die Schlüssel werden in einem Schlüsselbund Datensatz gespeichert.Der Eintrag
+ eines öffentli- chen Schlüssels im Schlüsselbund besteht aus einer ID,
+ dem öffentlichen Schlüssel selbst und einem Zeitstempel, der auf das Erstellung
+sdatum des Schlüsselpaars refe- renziert.
+ Öffentliche Schlüssel werden auf einem öffentlichen Schlüsselring gespei-
+ chert, wohingegen private Schlüssel auf einem privaten Schlüsselring gespeicher
+t werden.
+ Jeder Benutzer muss einen öffentlichen und privaten Schlüsselring spei-
+ chern und verwalten[AR95][JF96].
+ Wenn Benutzer A eine gute Kopie des öffentlichen Schlüssels von Benutzer
+ B be- sitzt, z.B.
+ eine Kopie, deren er von der Integrität und Authentizität (keine Verfäl-
+ schung etc.) überzeugt ist, dann kann A diese Kopie unterschreiben und an
+ Benut- zer C weitergeben.
+ A wirkt somit als eine Mittelsperson von B zu C.
+ Der von A signierte Schlüssel wird als Schlüssel Zertifikat bezeichnet.
+ Jeder Benutzer muss im PGP-System erklären, welchen Personen er oder sie
+ als Mittelsperson vertraut und muss den öffentlichen Schlüssel der Mittelsperso
+n mit seinem eigenen privaten Schlüssel signieren.
+ Außerdem muss der Benutzer die verschiedenen Vertrauens- grade angeben,
+ welche er zu seinen Mittelspersonen hat.
+ Eine Vertrauensbeziehung zu einer Person kann in Graden als unbekannt,
+ nicht vertrauenswürdig, geringfügig vertrauenswürdig oder vollständig eingestuf
+t, also klassifiziert werden.
+ Jeder Benut- zer speichert seine vertrauten Informationen oder Zertifikaten
+ auf seinem in seinem PGP Konto.
+ Abhängig vom Vertrauensgrad zu einer Mittelsperson ist dem entspre- chenden
+ Zertifikat im Schlüsselbund einen Gültigkeitgrad zugewiesen.
+ Er kann den Schlüssel in diesem Zertifikat nur dann verwenden, wenn der
+ Gültigkeitgrad hoch genug ist.
+ Zum Beispiel kann ein skeptischer Anwender zwei vollständige Unter- schriften
+ für einen öffentlichen Schlüssel einfordern, um ihn als gültig anzusehen,
+ wohingegen ein wenig skeptischer Benutzer, nur eine vollständig vertrauenswürdi
+- ge Signatur oder zwei geringfügig vertrauenswürdige Signaturen verlangen
+ könnte.
+ Es ist wichtig zu beachten, dass Schlüsselringe und Vertrauensgrade es
+ ermögli- chen, jedem Benutzer seine eigene Vertrauenspolitik zu gestalten.
+ Diese enge Vor- stellung von Politik ist in PGP angebracht, denn es wurde
+ speziell entworfen, um sichere E-Mails für den Einzelnen bereitzustellen.
+ Die Unterschrift von A auf öffentlichen Schlüssel von B nicht so interpretiert
+ wer- den sollte, dass A der persönliche Integrität von B vertraut.
+ Die richtige Interpretation ist eher, dass A glaubt, dass die Bindung der
+ Identität von B zum Schlüssel richtig ist.
+ Darüber hinaus ist es wichtig zu beachten, dass das Vertrauen nicht tran-
+ sitiv ist.
+ Die Tatsache, dass A dem B vollständig als Mittelsperson vertraut und dass
+ B vollständig C vertraut, bedeutet nicht automatisch, dass A mit dem gleichen
+ Grad C vertraut.
+ Da PGP in der Popularität gewachsen ist, ist ein dezentrales "Web of Trustëntst
+an- den.
+ Jedes Individuum ist verantwortlich für den Erwerb der öffentlichen Schlüssel,
+ die er braucht, und für die Zuordnung des Vertrauensgrads zu den Mittelspersone
+n, von denen er sie bekommt.
+ Ähnlich muss jedes Individuum sein eigenes Schlüssel- paar erstellen und
+ seinen öffentlichen Schlüssel verbreiten.
+ Sein Ansatz lehnt folg- lich die Benutzung der offiziellen Zertifizierungsstell
+en ab, welche die öffentlichen Schlüssel eines Individuums unterschreiben.
+ Damit handelt eine einzelne Person als "Vertrauensserver"für die Benutzer
+ von diesen Schlüsseln.
+ Ein Vorteil von PGP ist, dass jeder Benutzer denjenigen vertrauen (öffentlichen
+ Schlüssel signieren) kann, denen er will.
+ Außerdem bietet PGP die Möglichkeit, Gruppen zu erzeugen und in dieser
+ Gruppe verschlüsselte Nachricht oder Dateien zwischen den Mitgliedern auszutaus
+chen.
+ Der erste Nachteil von PGP ist, dass die Software auf dem lokalen Rech-
+ ner installiert werden muss und dort alle Schlüssel gespeichert werden.
+ Wie soll der Benutzer dann seinen Schlüssel in einem anderen System oder
+ in einer ande- ren IT-Infrastruktur benutzen.
+ Die Schlüssel können zwar exportiert und importiert werden, jedoch führt
+ dies zu einem erhöhten Aufwand.
+ Ferner stellt sich die Frage, wie der Benutzer es einem Vertrauten ermöglicht,
+ seine Schlüssel zu verwenden? Außerdem stößt die lokale Installation der
+ Software auf bestimmte Anforderungen.
+\end_layout
+
+\begin_layout Section
+X.509
+\end_layout
+
+\begin_layout Standard
+Der X.509 [Ada99] [CDH + 05] Authentifizierungsframework versucht, den glei-
+ chen Teil des Trust Management Problems wie PGP zu lösen, nämlich die Not-
+ wendigkeit, eine entsprechend zuverlässige vertrauenswürdige Kopie des
+ öffentli- chen Schlüssels einer Person zu finden, mit der man kommunizieren
+ will.
+ Wie in PGP, sind X.509-Zertifikate unterzeichnete Datensätze, welche die
+ Benutzer ID mit ihrem kryptographischen Schlüssel assoziieren.
+ X.509-Zertifikate enthalten weitere Informationen über PGP-Zertifikate,
+ wie zum Beispiel den Namen des verwendeten Signaturverfahrens, um sie zu
+ erstellen und das Zeitintervall, in dem sie gültig sind.
+\begin_inset Newline newline
+\end_inset
+
+Aber ihr Hauptziel ist einfach die Bindung zwischen Benutzern zu ihren Schlüssel
+n zu schaffen.
+ Jedoch unterscheidet sich X.509 scharf von PGP im Grad der Zentrali- sierung
+ der Informationen.
+ In PGP kann jeder öffentliche Schlüssel signieren und damit als Mittelsperson
+ han- deln.
+ Der X.509 Framework fordert dagegen, dass jeder Benutzer seine Zertifikate
+ von einer offiziellen Zertifizierungsstelle (CA) erhalten muss.
+ Wenn Benutzer A ein Schlüsselpaar (öffentlicher Schlüssel , privater Schlüssel)
+ erstellt, muss er es und die Rest der erforderlichen Informationen von
+ einem oder mehreren CAS zertifi- zieren lassen und die erhaltenen Zertifikate
+ in einem offiziellen Verzeichnisdienst registrieren.
+ Wenn A später mit B sicher kommunizieren will, erhält er ein Zer- tifikat
+ von B aus dem Verzeichnis-Server.
+ Wenn A und B von der gleichen CA zertifiziert wurden, kann nur der Verzeichniss
+erver B’s Zertifikat zu A senden.
+ A kann dann die Gültigkeit dieser Zertifikat mit dem öffentlichen Schlüssel
+ dieser gemeinsamen CA prüfen kann.
+ Wenn A und B nicht unmittelbar durch eine ge- meinsame CA zertifiziert
+ werden, dann die Verzeichnisdienst müssen einen Zertifi- zierungspfad von
+ A nach B erstellen.
+ Um diesen Pfad zu verwenden, muss A den öffentlichen Schlüssel von der
+ erste Zertifizierungstelle in dem Pfad kennen.
+ Somit beruht X.509 Framework auf der Annahme, dass CAs zu einem globalen
+ SZertifi- zierungsstellen Baumörganisiert sind und dass alle Benutzer,
+ die von CAs mit einem gemeinsamen Vorfahren in diesem globalen Baum unterzeichn
+et wurden[DWC03] [HPFS02] [CD03].
+\begin_inset Newline newline
+\end_inset
+
+Das Problem ist, dass der Benutzer nicht eine autonome Identität ei- ner
+ weiteren Person prüfen kann, denn er ist vom öffentlichen Schlüssel seiner
+ CA abhängig.
+ Außerdem vertraut er automatisch alle Personen, denen die Öffentlichen
+ Schlüssel durch die selbe Zertifizierungsstelle signiert wurden oder durch
+ einer an- deren vertrauten Zertifizierungsstelle.
+ Dies stößt gegen einige Anforderungen, die fordern, dass die Benutzer nur
+ gewünschte Personen vertrauen müssen.
+ Darüber hinaus hat die NSA Affären bewiesen, dass Zertifizierungsstelle
+ verfälschte Zertifi- kate erstellen können und somit werden verfälschte
+ Identitäten freigegeben.
+\end_layout
+
+\begin_layout Section
+SPKI / SDSI
+\end_layout
+
+\begin_layout Standard
+SDSI [EFL + 99][RL96] [ST00] wurde von Ronald Nieten und Butler Lampson
+ kon- zipiert.
+ Seine Entwicklung wurde durch die Komplexität der herkömmlichen Public
+ Key Infrastrukturen speziell die Abhängigkeit auf den globalen Namensraum
+ motiviert.
+ SDSI ist eine Public Key-Infrastruktur mit lokalen Namensraum.
+ Dies macht es zu einem dezentralen Sicherheitssystem.
+ SPKI wurde von Carl Ellison entwickelt und Andere.
+ Es ist ein einfaches Autorisierungssystem.
+ Hier wird der öffentliche Schlüssel nicht dazu genutzt, die Identität des
+ Schlüsselbesitzers zu prüfen, sondern direkt seine Berechtigung zu bestimmten
+ Diensten zu definieren.
+ Die Vereinigung der beiden Projekte führt zum SPKI / SDSI, ein System zur
+ Autorisierung und Au- thentifizierung.
+ das SDSI lokalen Namensräume mit SPKI Autorisierung Systems kombiniert.
+ SPKI / SDSI ist eine vollständig verteilte Lösung.
+ Jeder Benutzer wird eine Zertifi- zierungsstelle und ist für die Verwaltung
+ von Zertifikaten selbst zuständig.
+ In SPKI / SDSI werden die Benutzer durch einen öffentlichen Schlüssel identifiz
+iert und der öffentliche Schlüssel ist einem lokalen Benutzernamen Raum
+ zugeordnet.
+ Dieser Verein ist gültig lokal, das heißt, die zugehörigen Namen sind nicht
+ global eindeu- tig.
+ SPKI / SDSI erlaubt die Definition von Gruppen von Benutzern.
+ Hier werden die öffentlichen Schlüssel der Mitglieder einer Gruppe des
+ gleichen Namens zuge- ordnet.
+ In SPKI / SDSI, gibt es zwei Arten von Zertifikaten: Namenszertifikate
+ und Be- rechtigungszertifikate.
+ Das Namenszertifikat bescheinigt, dass ein Name in einem Namenraum eines
+ Emittent gültig ist.
+ Das Berechtigungszertifikat gewährt den Res- sourcenzugriff eines Benutzers.
+ Namenszertifikate bestehen aus vier Bereichen zusammen:Issuer(Emittenten),
+ Iden- tifier( Identifizierter), subject(Subjekt) und validity specification
+ (Gültigkeit Spezi- fikation).
+ Der Issuer ist derjenige, der das Zertifikat unterzeichnet.
+ Der Identifizier- ter ist ein Byte, Zeichenkette, die einen Namen repräsentiert.
+ Das Subject kann ein Name sein, oder ein öffentlicher Schlüssel.
+ Wenn das Subject ein Name ist, ist es in lokalen Namenraum und der damit
+ verbundene öffentliche Schlüssel kann wieder- hergestellt werden.
+ Schließlich Gültigkeit Spezifikation ist eine Gültigkeitsbedin- gung des
+ Zertifikats, es könnte ein Gültigkeitsdatum oder eine Zugriffssteuerungs-
+ liste (ACL) sein.
+ Berechtigungs Zertifikat besteht aus fünf Bereichen: Issuer(Emittenten),
+ subject(Subjekt), Delegation, Tag, und ihrer Gültigkeit Spezifikation.
+ Issuer und subject haben die gleiche Funktion wie oben geschrieben.
+ Jedoch kann das Subject eine Gruppe von Nutzer sein.
+ Das Feld Delegation zeigt an, dass das Zertifikat auch zu anderen Sub-
+ jekten übertragen werden könnte.
+ Tag gibt an, welche Berechtigungen empfangen wurden.
+ Wie im Fall der Namenszertifikate ist Gültigkeit Spezifikation eine Gültig-
+ keitsbedingung des Zertifikats [CEE + 01] [HM99].
+ Hier wird ein kurzes Beispielszenario genannt: Der Dateisystemressource
+ Besitzer erzeugt zwei Berechtigungszertifikate.
+ Ein Zertifikat ist mit der erteilten Zulassung: lesen, schreiben und nicht
+ Delegation (RW: ND) zu D1 gegeben.
+ Ein anderes Zerti- fikat ist an D2 mit Genehmigung : lesen und Delegation
+ (R: D) gegeben.
+ In der glei- chen Figur erzeugt D2 eine neue Zertifikat für D3 mit Leserechten,
+ aber Delegation nicht erlaubt (R: ND).
+ Wenn D3 auf das Dateisystem zugreifen muss, präsentiert er die Delegation
+ Kette (D2 R: D - -> D3 R: ND) zu dem System.
+\begin_inset Newline newline
+\end_inset
+
+Der Besitzer einer Datei will zum Beispiel den Zugriff auf die Dateien an
+ viel Benutzer freigeben, dafür muss er jeweils ein Zertifikat mit den gewünscht
+en Berechtigungen unterschreiben.
+\end_layout
+
 \begin_layout Chapter
 Anforderungen
 \end_layout
@@ -1455,6 +1684,68 @@ Bei der Anförderungsanalyse unterscheidet man zwischen funktionalen und
 
 \begin_layout Section
 funktionale Anforderungen
+\end_layout
+
+\begin_layout Standard
+Funktionale Anforderungen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/usecase/functionaleAnforderungen.plantuml
+	scale 45
+	rotateAngle 360
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Funktionale Anforderungen Überblick
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1542,6 +1833,10 @@ RemoteServer
 Nichtfunktionale Anforderungen
 \end_layout
 
+\begin_layout Standard
+Nicht funktionale Anforderungen sind Anforderungen 
+\end_layout
+
 \begin_layout Subsection
 Allgemeine nichtfunktionale Anforderungen
 \end_layout
@@ -1611,7 +1906,65 @@ Das System Architektur wurde als eine Server-Client Anwendung entworfen,
  LocalServer und RemoteServer, wobei der LocalServer eine Überbrückungsrolle
  zwischen den Frontend (Webbrowser Javascriptapplication) und RemoteServer
  spielt, LocalServer ist vergleichbar mit ein Proxy.
- Alle Chiffrierung-bzw-Dechiffrierungoperationen geschehen
+ Alle Chiffrierung-bzw-Dechiffrierungoperationen geschehen.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/usecase/generalUsecase.plantuml
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Allg.
+ Architektur
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1857,6 +2210,80 @@ Private Key (verschlüsselt mit Secret-Key)
 Hashwert von Private Key
 \end_layout
 
+\begin_layout Standard
+Unterschied zu PGP bzw.
+ OpenPGP wird eine weniger komplexer immerhin informative Daten abgepeichert
+ zur Materialiesierung von Vertrauenbeziehung zwischen zwei Benutzer.
+ Eine Vergleich von die beide Vertrauenbeziehungmaterialisierung zeigt der
+ Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "untershied zu pgp-zertifikat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "untershied zu pgp-zertifikat"
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Unterschied zwischen PGP-Zertifikat und Vertrauenbeziehungsmaterialsierung
+ in Cryptone
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 Benutzer als Friend hinzufügen
 \end_layout
@@ -2030,7 +2457,64 @@ das Teilen eines Dokuments lässt sich in verschiedene Weise durchführen.
  Ab dann gehört das Dokument nicht mehr der Benutzer, dass heisst der kann
  das Dokument nicht mehr zurückziehen, ausgeschlossen der Benutzer ist der
  Gruppeverantwortlich der Gruppe, dann kann der wieder das Dokument zurückziehen.
- 
+ Das Original des von neulich in eine öffentliche Gruppe geteilte Dokuments
+ bleibt aber im Benutzer private Gruppe.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/usecase/user_to_group_document_share.plantuml
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Zwischen Benutzer und Group
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -2042,6 +2526,62 @@ Ein Dokument der sich in eine öffentliche Gruppe befinden kann mit einer
  anderen Gruppe geteilt werden, vorausgesetzt dass der Gruppeverantwortlich
  auch in der zweite Gruppe Mitglied ist.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/usecase/share_with_group.plantuml
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Public Group zu Public Group
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2100,12 +2640,60 @@ rtlich der zu erzeugende Gruppe markiert, in der Fall Benutzer Alice.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100page%"
+special "none"
+height "5pheight%"
+height_special "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/user-user-document-exchange.png
-	scale 60
+	filename images/src/pu/usecase/user_to_user_document_share.plantuml
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100page%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/activity/user_user_document_share.plantuml
+	scale 40
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -2169,7 +2757,7 @@ Query String
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2183,12 +2771,14 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/dotty/routes.dot
-	scale 44
+	scale 90
+	rotateAngle 90
+	rotateOrigin leftBottom
 
 \end_inset
 
@@ -2259,7 +2849,7 @@ Benutzer registrieren
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2315,7 +2905,7 @@ Benutzer einlogen
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2334,6 +2924,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/login.plantuml
+	scale 50
 
 \end_inset
 
@@ -2370,7 +2961,7 @@ Freund hinzufuegen
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2412,10 +3003,6 @@ Freund hinzufuegen sequence diagram
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2429,11 +3016,7 @@ Freund revoke
 \begin_inset Float figure
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2485,7 +3068,7 @@ Datei hochladen
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2504,6 +3087,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/upload_file.plantuml
+	scale 50
 
 \end_inset
 
@@ -2527,10 +3111,6 @@ Datei hochladen sequence diagramm
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2544,7 +3124,7 @@ Datei runterladen
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2563,6 +3143,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/download_file_from_group.plantuml
+	scale 50
 
 \end_inset
 
@@ -2586,10 +3167,6 @@ Datei runterladen sequence diagramm
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2603,7 +3180,7 @@ Neue Gruppe erzeugen
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2622,6 +3199,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/new_group.plantuml
+	scale 50
 
 \end_inset
 
@@ -2642,10 +3220,6 @@ Neue Gruppe erzeugen sequence diagramm
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2951,7 +3525,7 @@ Headers sind mächtige Werkzeuge wenn es zum Internet kommt, und wichtiger
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -3614,7 +4188,7 @@ us bzw.
 \begin_layout Itemize
 (6)Wichtige Header gegen XSRF-Attacke (Cross Site Request Forgery)
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 XSRF : Manipulation von Parametern, so dass im Browser Skriptcode ausgeführt
@@ -3695,7 +4269,7 @@ cookies
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset listings
@@ -3911,101 +4485,81 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset listings
-inline false
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
 app:
 \end_layout
 
 \begin_layout Plain Layout
-
-    name: CryptLocal
+name: CryptLocal
 \end_layout
 
 \begin_layout Plain Layout
-
-    description: CryptoLocal Server
+description: CryptoLocal Server
 \end_layout
 
 \begin_layout Plain Layout
-
 server:
 \end_layout
 
 \begin_layout Plain Layout
-
-    port: 0
+port: 0
 \end_layout
 
 \begin_layout Plain Layout
-
 multipart:
 \end_layout
 
 \begin_layout Plain Layout
-
-    maxFileSize: 128KB
+maxFileSize: 128KB
 \end_layout
 
 \begin_layout Plain Layout
-
-    maxRequestSize: 128KB
+maxRequestSize: 128KB
 \end_layout
 
 \begin_layout Plain Layout
-
 remote:
 \end_layout
 
 \begin_layout Plain Layout
-
-    url: http://localhost:8080
+url: http://localhost:8080
 \end_layout
 
 \begin_layout Plain Layout
-
-    users: /api/users
+users: /api/users
 \end_layout
 
 \begin_layout Plain Layout
-
-    document: /api/documents
+document: /api/documents
 \end_layout
 
 \begin_layout Plain Layout
-
-    groups: /api/groups
+groups: /api/groups
 \end_layout
 
 \begin_layout Plain Layout
-
-    friends: /api/friends
+friends: /api/friends
 \end_layout
 
 \begin_layout Plain Layout
-
 login:
 \end_layout
 
 \begin_layout Plain Layout
-
-    challenge: /session/login/challenge
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
+challenge: /session/login/challenge
 \end_layout
 
 \end_inset
@@ -4084,12 +4638,617 @@ $ java -jar -Dspring.profiles.active=production CryptoRemote-0.0.1-SNAPSHOT.jar
 Controller
 \end_layout
 
+\begin_layout Standard
+Controller sind von 
+\end_layout
+
 \begin_layout Subsection*
-Fehlerbehandlung
+Fehlerbehandlung und Benutzerrückmeldung
+\end_layout
+
+\begin_layout Standard
+Fehlerbehandlung ist der Kern ein Softwaresystem.
+ Implizite Anforderungen beim Entwurf eines Software ist immer eine sinnvolle
+ Rückmeldung an Benutzer ( Aktion erfolgreich bzw.
+ nicht erfolgreich ).
+ Die Gründe für eine nicht erfolgreiche Aktion könnten an viele Stelle sein:
+ 
+\end_layout
+
+\begin_layout Itemize
+Falsche Request
+\end_layout
+
+\begin_layout Itemize
+momentane nicht ansprechbare Resource
+\end_layout
+
+\begin_layout Itemize
+Fehler im Code
+\end_layout
+
+\begin_layout Standard
+Je nach Fehlerart bzw.
+ Meldungsart, ist es wichtig den Benutzer ein gewisse Feedback zu geben
+ und schliesslich den Fehler behandeln können oder dokumentiert für eine
+ nachtragliche Verbesserung des Softwares
+\begin_inset Newline newline
+\end_inset
+
+Anhand dieser Arbeit wurde folgende Http-Status code benutzt :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Status-code
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kurzbeschreibung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+201
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CREATED
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+202
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+301
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Error Authentication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+302
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+400
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Http-Status code 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit Hilfe von Angular Http Interceptor wurde ein Logik implementiert, die
+ die Status-code von Http Response filtert, und jenach status code eine
+ zugehörige Rückmeldung im Browser anzeigt.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Sollte ein Fehler Code auftauchen, dann wird automatische eine Antwort mit
+ Status-Code 500 an Browser geschickt.
+ Diese Sachverhalten ist aber nicht gewünscht, da es Benutzer und/oder ein
+ eventueller Angreifer darüber informiert dass beispielerweise ein NullPointer
+ Exception in Code aufgetaucht wurde.
+ Dies kann der Angreifer benutzen um das System zu hacken.
+ RemoteServer und LocalServer haben ein Filter, der die Anwort an Client
+ filtert und 500 Status code durch 400 Status code ersetzt, weitere wird
+ die verbose Nachricht was die Fehlerquelle beschreibt durch eine weniger
+ informative Message ersetzt.
+ Alle Code Fehler, materialisiert durch 500 Status Code werden dokumentiert,
+ in Log Datenbank und Log-Datei, ein Email mit genau Beschreibung des Fehlers
+ wird zur Admin geschickt jedes mal das solche Fehler auftauchen.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/activity/user_error.plantuml
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Status-Code Filter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
 Caching
+\end_layout
+
+\begin_layout Standard
+Um häufigere Http-Anfrage an RemoteServer zu vermeiden, wurde eine Caching-Strat
+egie im LocalServer und Angular Frontend-Application entworfen.
+ Eine Vorteil von Caching ist es die Overhead zu vermeiden.
+ Und eventuele ein Dritter der die Kommunikation abhört, nicht durch häufige
+ Anfrage mit Infos füttert.
+ 
+\end_layout
+
+\begin_layout Section*
+Datenbank Schema
+\end_layout
+
+\begin_layout Standard
+Das unterstehende Abbildung zeigt die Datenbankschema.
+ Dabei ist zu beachten dass alle als kritischen bzw.
+ sensiblen Informationen mit zwei wichtige Einträge vorgesehen sind und
+ zwar : 
+\begin_inset Quotes gld
+\end_inset
+
+hash
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+signature
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Wie vorher erwarnt, sind diese Einträge wichtig für die Integritätüberprüfung
+ von Daten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Hier komm daten bank schema
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Datenbank schema
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Datenbankschema beschreibung : 
+\end_layout
+
+\begin_layout Description
+Users: Im Schemas Users wird die Benutzerinformationen gespeichert
+\end_layout
+
+\begin_layout Description
+SrpCredentials: In dieser Tabelle werden Benutzerinformations bezuglich
+ SRP-A, aus Sicherheitgründe wurde diese Informationen vom Users Schema
+ entkoppelt.
+ 
+\end_layout
+
+\begin_layout Description
+Friends: Friends ist die Materialsierung von eine Vertrauenbeziehung zwischen
+ zwei Benutzer.
+ stellt die Vertrauensbeziehung zwischen dem Benutzer dar.
+ Sobald ein Benutzer den öffentlichen Schlüssel eines anderen Benutzers
+ signiert, wird eine Zeile in dieser Tabelle eingefügt, wobei die signority_id
+ und user_id die Id der vertrauenden und des Vertrauten sind.
+\end_layout
+
+\begin_layout Description
+Roles: Benutzer Roles, die sind festgelegt, wert für eine Role könnten :
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Admin
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+User
+\begin_inset Quotes grd
+\end_inset
+
+ sein.
+ Es ist zu beachten dass pro Deployment nur ein einziger Benutzer als Admin
+ markiert werden darf.
+ Weitere Benutzer werden alle als 
+\begin_inset Quotes gld
+\end_inset
+
+user
+\begin_inset Quotes grd
+\end_inset
+
+ markiert.
+ 
+\end_layout
+
+\begin_layout Description
+Session: Es handelt sich um die Materialsierung einer aktiven Session
+\end_layout
+
+\begin_layout Description
+UsersGroups: Überbrücke zwischen die Tabelle User und Group 
+\end_layout
+
+\begin_layout Description
+Groups: Hier werden die Informationen relativ zu den Gruppen gespeichert.
+ Hier ist der Attribute SGK ist der gemeinsam Gruppe Schlüssel und ist mit
+ dem öffentlichen Schlüssel des Administrators oder Gründer dieser Gruppe
+ verschlüsselt.
+\end_layout
+
+\begin_layout Description
+Documents: beinhaltet Dokumenteninformationen.
+ 
+\end_layout
+
+\begin_layout Description
+SymKeys: Symmetrischen Schlüssel
+\end_layout
+
+\begin_layout Description
+PairKeys: Assymetrischen Schlüssel.
 \end_layout
 
 \begin_layout Standard

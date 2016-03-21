@@ -1,0 +1,14 @@
+@startuml
+
+note "share document between two user and group" as Note
+
+actor Alice
+
+rectangle publicGroup {
+}
+
+
+Alice -right- Note
+Note -right-> publicGroup
+
+@enduml 

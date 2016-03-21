@@ -1,0 +1,8 @@
+
+files=$(ls -A)
+
+for file in $files
+do
+    tofile=$(echo $file | cut -d'.' -f 1)
+    mv $file $tofile".plantuml"
+done

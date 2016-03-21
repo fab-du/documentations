@@ -1,8 +1,5 @@
-
-
 @startuml 
 skinparam packageStyle rect
-
 
 actor Bob
 
