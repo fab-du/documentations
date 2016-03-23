@@ -119,12 +119,49 @@
 %\renewcommand{\nomname}{Abkürzungsverzeichnis}
 %\renewcommand{\nomlabelwidth}{20mm}
 
+
 %Nomenklatur als Glossar verwenden
 %Nur Noetig wenn auch Glossar verwendet wird.
 \renewcommand{\nomname}{Glossar}
 
 %Farbe für Programmcode festlegen
 %\definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Java,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
 \end_preamble
 \options pointlessnumbers, abstracton, headsepline,
 \use_default_options true
@@ -554,9 +591,7 @@ Hochschule Mannehim
 \begin_inset Text
 
 \begin_layout Plain Layout
-Prof.
- Dr.
- Hans Müller
+
 \end_layout
 
 \end_inset
@@ -576,7 +611,7 @@ Prof.
 \begin_inset Text
 
 \begin_layout Plain Layout
-OTH Regensburg
+
 \end_layout
 
 \end_inset
@@ -1060,16 +1095,18 @@ rheit angeht.
 \end_layout
 
 \begin_layout Subsection*
-kritische Informationen 
+kritische (sensible) Informationen 
 \end_layout
 
 \begin_layout Standard
 Es handelt sich um Informationen bzw.
  Daten die auf keinen Fall nirgendwo in der verschieden Softwarekomponente
- unverschlüsselt abgespeichert wer- den dürfen, oder unverschlüsselt durch
+ unverschlüsselt abgespeichert werden dürfen, oder unverschlüsselt durch
  der Netz geschickt werden dürfen.
  Zu diese Kategorie gehören beispielweise wichtige Benutzersdokumenten,
  oder Benutzerscredentials.
+ Weitere werden solche Informationen immer signiert, bevor sie gespeichert
+ werden.
  
 \end_layout
 
@@ -1116,6 +1153,62 @@ reference "sub:Digitale-Signature"
  Es wird für die Fertigung dieser Arbeit RSA-Algorithmus eingesetzt.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/asym_crypt.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Assymetrische Kryptographie
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 Assymetrische Schlüssel (Schlüsselpaar) 
 \begin_inset CommandInset label
@@ -1133,7 +1226,8 @@ Anhand der RSA Algorithmus werden Sclüsselpaare benötigt.
  Schlüssel.
  Öffentliche Schlüssel wird eingesetzt um Chiffrierung durchzuführen, geheime
  Schlüssel dagegen führt die Dechiffrierung durch.
- geheime Schlüssel auch bekannt private Schlüssel ist eine kritische Information
+ Geheime Schlüssel auch bekannt als private Schlüssel ist eine kritische
+ Information.
  
 \end_layout
 
@@ -1157,6 +1251,58 @@ reference "sub:Symmetrische-Schlüssel"
  berechnet werden.
  Anhand dieser Arbeit wird die exklusiv den AES-Algorithmus benutzt, wobei
  die Chiffrierschlüssel und Dechiffrierschlüssel gleich sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sym_crypt.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Symmetrische Kryptographie
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -1245,6 +1391,206 @@ sels (den öffentlichen Schlüssel) die nichtabstreitbare Urheberschaft und
  Um eine mit einem Signaturschlüssel erstellte Signatur einer Person zuordnen
  zu können, muss der zugehörige Verifikationsschlüssel dieser Person zweifelsfre
 i zugeordnet sein.
+\end_layout
+
+\begin_layout Section*
+Hybride Verschlüsselung 
+\end_layout
+
+\begin_layout Standard
+Hybride Verschlüsselung ist eine Kombination aus assymetrischer Verschlüsselung
+ und symmetrischer Verschlüsselung.
+ Dabei wählt der Sender zufälligen symmetrischen Schlüssel, der Session-Key
+ gennant wird.
+ Mit diesem Session-Key werden die zu schützenden Daten symmetrisch verschlüssel
+t.
+ Anschließend wird der Session-Key asymmetrisch mit dem öffentlichen Schlüssel
+ des Empfängers verschlüsselt.
+ Dieses Vorgehen löst das Schlüsselverteilungsproblem und erhält dabei den
+ Geschwindigkeitsvorteil der symmetrischen Verschlüsselung.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+asymmetrische Verschlüsselung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+symmetrische Verschlüsselung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Effizienz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schnell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+langsam
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Schlüsellaustausch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+problematisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+elegant
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vergleich asymmetrische/symmetrische Verschlüsselugn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie die Obere Abbildung zeigt, Ist Symmetrische Verschlüsselungsverfahren
+ sind auch bei großen Datenmengen sehr schnell, assymetrische dagegen sind
+ sehr langsam , und sind dann nur für kleine Datenmengen ( Wie Schlüssel
+ ) geeignet.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Beim Schlüsselverteilung hat Symmetrische Verschlüsselungsverfahren das
+ Problem, dass sich die Kommunikationspartner vor der Übermittlung der Nachricht
+ auf einen geheimen Schlüssel einigen müssen.
+ Dazu muss ein sicherer Kommunikationskanal benutzt werden, wie zum Beispiel
+ ein Kurier.
+ Asymmetrische Verschlüsselungsverfahren dagegen lösen das Problem sehr
+ elegant, weil zum Verschlüsseln nur der öffentliche Schlüssel gebraucht
+ wird.
+ Zur Übermittlung dieses Schlüssels reicht ein authentifizierter Kanal aus.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Hybride Verschlüsselungsverfahren kombinieren die beiden Verschlüsselungsverfahr
+en so, dass ihre Vorteile erhalten bleiben: 
+\end_layout
+
+\begin_layout Itemize
+Hybride Verschlüsselungsverfahren sind sehr schnell und eignen sich für
+ große Datenmengen, weil die Daten mit dem symmetrischen Verfahren verschlüsselt
+ werden und das asymmetrische Verfahren nur für den Sitzungsschlüssel verwendet
+ wird.
+\end_layout
+
+\begin_layout Itemize
+Es muss vor dem Senden der Nachricht kein geheimer Schlüssel ausgetauscht
+ werden, Kenntnis des öffentlichen Schlüssels des Empfängers reicht um zu
+ verschlüsseln.
+\end_layout
+
+\begin_layout Section*
+Public-Key-Infrastruktur (PKI)
+\end_layout
+
+\begin_layout Standard
+Public Key Infrakstruktur ist ein System, das digitale Zertifikate ausstellen,
+ verteilen und prüfen kann.
+ Die innerhabl einer PKI ausgestellten Zertifikate werden zur Absicherung
+ rechnergestützter Kommunikation verwendet.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Basis für Public-Key-Infrastruktur ist asymmetrisch Kryptosystem und Hybride
+ Verschlüsselung.
+ mit Hilfe asymmetrische Kryptosystem werden die Daten digital signiert
+ und verschlüsselt.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1443,6 +1789,58 @@ reference "sec:Web-upload"
 
 \begin_layout Section
 PGP 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/pgp_screenshot.png
+	scale 56
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+examplarische zertifikat 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1672,6 +2070,13 @@ en Berechtigungen unterschreiben.
 
 \begin_layout Chapter
 Anforderungen
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Anforderungen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1694,7 +2099,7 @@ Funktionale Anforderungen
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -1830,11 +2235,18 @@ RemoteServer
 \end_layout
 
 \begin_layout Section
-Nichtfunktionale Anforderungen
+Nichtfunktionale Anforderungen 
 \end_layout
 
 \begin_layout Standard
-Nicht funktionale Anforderungen sind Anforderungen 
+Nicht funktionale Anforderungen sind wiefolg in ISO/IEC 9126
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ISO/IEC9126"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1914,7 +2326,7 @@ Das System Architektur wurde als eine Server-Client Anwendung entworfen,
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2045,8 +2457,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/authentication.png
-	scale 30
+	filename images/src/pu/sequence/localServer.plantuml
+	scale 40
+	rotateAngle 90
 
 \end_inset
 
@@ -2208,6 +2621,67 @@ Private Key (verschlüsselt mit Secret-Key)
 
 \begin_layout Enumerate
 Hashwert von Private Key
+\end_layout
+
+\begin_layout Standard
+Examplarische Vertrauenbeziehung zwischen Zwei Benutzer:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/signature.png
+	scale 57.5
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vertrauenbeziehung zwischen zwei Benutzer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2465,7 +2939,7 @@ das Teilen eines Dokuments lässt sich in verschiedene Weise durchführen.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2532,7 +3006,7 @@ Ein Dokument der sich in eine öffentliche Gruppe befinden kann mit einer
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2654,7 +3128,7 @@ width "100page%"
 special "none"
 height "5pheight%"
 height_special "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2683,7 +3157,7 @@ width "100page%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2771,12 +3245,12 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/dotty/routes.dot
-	scale 90
+	scale 60
 	rotateAngle 90
 	rotateOrigin leftBottom
 
@@ -2821,14 +3295,380 @@ Beim sicherheitrelevante Software ist es wichtig die Daten zu verschlüsseln
  gewährleistet.
  Diese gilt und ist ausreichend solange die Daten und Schlüssel nicht über
  Internet beispielerweise transportiert werden.
- In dieser muss eine zusätzlicher Integritätmechanismus im Spiel kommen,
- um sicherzustellen dass eine Daten die von A zu B beispielerweise transitiert
- haben, unterwegs nicht manipuliert wurde.
+ Wenn die Daten über eine unsichere Neztwerk übermittelt werden muss eine
+ zusätzlicher Integritätmechanismus im Spiel kommen, um sicherzustellen
+ dass eine Daten die von A zu B beispielerweise transitiert, unterwegs nicht
+ verfälscht wurde.
 \begin_inset Newline newline
 \end_inset
 
 Als Lösungsatzt wird eine End-to-End Integritätsprüfung eingesetzt mithilfe
- der JWS ( JSON Web Signature ).
+ der JWS ( JSON Web Signature ) spezifiziert in RFC 7515
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JWS"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+JWS basiert auf JSON Web Encryption (JWE)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JWE"
+
+\end_inset
+
+ um kryptographische Operationen durchzuführen.
+ JWE implementiert die meistens bekannte standard kryptographie Algorithmus,
+ wie RSA, AES ....
+\begin_inset Newline newline
+\end_inset
+
+JWS benutzt die von JWE implementiert RSA um Daten zu signiert.
+ Bei Einsatzt von JWS muss Acht darauf gegeben dass die JSON-Daten richtig
+ formatiert wurde.
+ 
+\end_layout
+
+\begin_layout Standard
+examplarische Header:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Headername
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+alg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name der kryptograpschische Algorithmus
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hash
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hash Wert
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+typ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mediatyp
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+jwk
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JSON Web Key
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+JWS Header
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+JWS stellen weitere Headers zur Verfügung, aber die werden Anhand diese
+ Arbeit nicht benutzt.
+ Die Header werden gesetzt bei der letze Filter.
+ In diese Signature-Filter, wird die von Controller bereitgestellte Inhalt
+ dessen Hash berechnet und gegebenfalls auch signiert (nicht alle Daten
+ mussen signiert werden).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/usecase/filter_signature.plantuml
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+JWS Filter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+JSON Web Token (JWT) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/jwt.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Json Web Token
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+JWT ist eine JSON-basierte Standard um Authentication-Objekt zu repräsentieren.
+ Eine Anwendungsfall ist beispielerweise OpenID-Authentication.
+ Es erlaubt einem Benutzer, der sich bei seinem sog.
+ AuthenticationProvider einmal mit der Benutzername und Passwort angemeldet
+ hat, sich nur mit Hilfe erhaltene JSON Web Token (JWT) ohne Benutzername
+ und Passwort bei allen das System unterstützenden Websites anzumelden.
+ wobei man sich gegen ein Authenticationserver A authentifizieren kann,
+ den erhaltene Token wird dann später anhand eine Anfrage an ResourceServer
+ benutzt.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Token werden an Stelle von Benutzername-Passwort-Kombinationen verwendet,
+ um auf Ressourcen zuzugreifen.
+ Ein Token ist meist eine Zeichenkette aus Buchstaben und Zahlen; Sonderzeichen
+ können auch verwendet werden.
+ Um es vor Missbrauch zu schützen soll es schwer zu erraten und passend
+ zu einer Sicherheitsabfrage sein.
+ OAuth unterscheidet zwischen Abfrage-Token und Zugangs-Token.
 \end_layout
 
 \begin_layout Section
@@ -2847,6 +3687,7 @@ Benutzer registrieren
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -2903,6 +3744,7 @@ Benutzer einlogen
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -2924,7 +3766,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/login.plantuml
-	scale 50
+	scale 40
 
 \end_inset
 
@@ -2959,6 +3801,7 @@ Freund hinzufuegen
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -2980,6 +3823,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/trust_a_new_user.plantuml
+	scale 50
 
 \end_inset
 
@@ -3008,12 +3852,66 @@ Freund hinzufuegen sequence diagram
 
 \end_layout
 
+\begin_layout Itemize
+Beispielszenario: Alice will Bob als Freund markieren 
+\begin_inset Newline newline
+\end_inset
+
+Alice forder die Benutzerlisteseite auf, clicke auf den 
+\begin_inset Quotes gld
+\end_inset
+
++
+\begin_inset Quotes grd
+\end_inset
+
+ ( Plus )-zeichen, um Bob als Freund hinzuzufügen.
+\end_layout
+
+\begin_layout Itemize
+Alice ist gefordert, Ihre Passphrase einzugeben (Falls Passphrase noch nicht
+ vorhanden ist) 
+\end_layout
+
+\begin_layout Itemize
+Der LocalServer lädt Bobs öffentlichen Schlüssel von RemoteServer herunter.
+\end_layout
+
+\begin_layout Itemize
+LocalServer lädt Alice private Schlüssel vom RemoteServer herunter (Falls
+ noch nicht vorhanden) und entschlüsselt der letze mit Alice Passphrase
+\end_layout
+
+\begin_layout Itemize
+Bobs öffentlichen Schlüssel wird mit Alices privaten Schlüssel signiert.
+ 
+\end_layout
+
+\begin_layout Itemize
+Aus Signature, Alices und Bobs Id wird ein 
+\begin_inset Quotes gld
+\end_inset
+
+Friend
+\begin_inset Quotes grd
+\end_inset
+
+ Objekt erzeugt.
+ Dies entspricht die Vertrauenbeziehung zwischen Alice und Bob.
+ Diese Objekt wird an RemoteServer geschickt und dort gespeichert.
+\end_layout
+
 \begin_layout Subsection*
 Freund revoke
 \end_layout
 
 \begin_layout Standard
+Alice will Bob von seine Vertrauenbeziehungen rausnehmen
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -3035,6 +3933,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/revoke_signature.plantuml
+	scale 60
 
 \end_inset
 
@@ -3060,12 +3959,44 @@ Freund revoke sequence diagramm
 
 \end_layout
 
+\begin_layout Itemize
+Alice fordert die Freundelisteseite auf, clicke auf den 
+\begin_inset Quotes gld
+\end_inset
+
+-
+\begin_inset Quotes grd
+\end_inset
+
+ ( Minus )-zeichen, um Bob als Freund hinzuzufügen.
+\end_layout
+
+\begin_layout Itemize
+Alice ist dann gefordert, die Aktion zu bestätigen
+\end_layout
+
+\begin_layout Itemize
+Bestätigt Alice die Aktion, dann wird die revoke-Request über LocalServer
+ zu RemoteServer weitergeleitet
+\end_layout
+
+\begin_layout Itemize
+Auf der RemoteServer wird die Eintrag was die Freundschaft zwischen Alice
+ und Bob gelöscht
+\end_layout
+
+\begin_layout Itemize
+Alice wird über die erfolgreiche Zerstörung einer Vertrauenbeziehung mit
+ Bob informiert.
+\end_layout
+
 \begin_layout Subsection*
 Datei hochladen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -3116,12 +4047,67 @@ Datei hochladen sequence diagramm
 
 \end_layout
 
+\begin_layout Itemize
+Alice will eine Datei hochladen
+\end_layout
+
+\begin_layout Itemize
+Alice wählt sich eine Gruppe aus wo sie mitglied ist
+\end_layout
+
+\begin_layout Itemize
+Alice clickt auf Datei Upload und wählt sich Datei aus, die sie gerne in
+ die vorherige ausgewählte Gruppe hinzüfügen will
+\end_layout
+
+\begin_layout Itemize
+Alice Clickt auf dem Button 
+\begin_inset Quotes gld
+\end_inset
+
+upload
+\begin_inset Quotes grd
+\end_inset
+
+ ( hochladen )
+\end_layout
+
+\begin_layout Itemize
+Die Anfrage wird an LocalServer weitergeleitet
+\end_layout
+
+\begin_layout Itemize
+Alice Passphrase wird gefördert falls noch nicht im LocalServer vorhanden
+ ist
+\end_layout
+
+\begin_layout Itemize
+Alices Schlüsselpaare wird von RemoteServer runtergeladen sowie von Alice
+ ausgewählte Gruppe Secret Key (SGK)
+\end_layout
+
+\begin_layout Itemize
+Alice Kopie von SGK wird mit Alice private Schlüssel dechiffriert
+\end_layout
+
+\begin_layout Itemize
+mit der dechiffriert SGK wird die Datei verschlüsselt.
+ Dechiffriert SGK wird bald als die Verschlüsselung von Datei erfolgt hat
+ von LocalServer zerstört.
+\end_layout
+
+\begin_layout Itemize
+Schliesslich wird die chiffriert Datei zu RemoteServer übermittelt und ein
+ Eintrag von Typ Dokuments auf der Datenbank gespeichert.
+\end_layout
+
 \begin_layout Subsection*
 Datei runterladen
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -3172,12 +4158,57 @@ Datei runterladen sequence diagramm
 
 \end_layout
 
+\begin_layout Itemize
+Alice befindet sich in einer Gruppe und will ein Datei runterladen.
+ Also Alice muss mitglied von der Gruppe sein
+\end_layout
+
+\begin_layout Itemize
+Alice click auf 
+\begin_inset Quotes gld
+\end_inset
+
+download
+\begin_inset Quotes grd
+\end_inset
+
+ (herunterladen), Die Anfrage wird dann an LocalServer weitergeleitet
+\end_layout
+
+\begin_layout Itemize
+Alice Passphrase wird gefördert falls noch nicht im LocalServer vorhanden
+ ist
+\end_layout
+
+\begin_layout Itemize
+Alices Schlüsselpaare wird von RemoteServer runtergeladen sowie von Alice
+ ausgewählte Gruppe Secret Key (SGK)
+\end_layout
+
+\begin_layout Itemize
+Alice Kopie von SGK wird mit Alice private Schlüssel dechiffriert
+\end_layout
+
+\begin_layout Itemize
+LocalServer lädt von RemoteServer der geförderte Datei runter.
+\end_layout
+
+\begin_layout Itemize
+Datei wird mit dechiffrierte SGK entschlüsselt.
+ 
+\end_layout
+
 \begin_layout Subsection*
 Neue Gruppe erzeugen
 \end_layout
 
 \begin_layout Standard
+Alice will eine neue Gruppe anlegen
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -3228,8 +4259,40 @@ Neue Gruppe erzeugen sequence diagramm
 
 \end_layout
 
+\begin_layout Itemize
+Alice klickt auf eine neue Gruppe an und gibt den Name der neuen Gruppe
+ im ersheinte Pop-up
+\end_layout
+
+\begin_layout Itemize
+LocalServer lädt Alice öffentliche und private Schlüssel runter.
+\end_layout
+
+\begin_layout Itemize
+Alice wird gefordert, Ihre Passphrase einzugeben (Falls noch nicht vorhanden)
+\end_layout
+
+\begin_layout Itemize
+Es wird eine symmetrische Schlüssel (SGK) 
+\end_layout
+
+\begin_layout Itemize
+SGK wird mit Alice öffentliche Schlüssel verschlüsselt.
+ 
+\end_layout
+
+\begin_layout Itemize
+SGK wird mit Alice private Schlüssel signiert.
+ 
+\end_layout
+
+\begin_layout Itemize
+Nach die vorherige Vorgang, werden ein Gruppe Objekt und SymKey Object erzeugt.
+ Die beide Objekte werden von LokalServer zu RemoteServer geschickt.
+\end_layout
+
 \begin_layout Chapter
-Implementierung
+Implementierung und Evalierung
 \end_layout
 
 \begin_layout Standard
@@ -4635,11 +5698,107 @@ $ java -jar -Dspring.profiles.active=production CryptoRemote-0.0.1-SNAPSHOT.jar
 \end_layout
 
 \begin_layout Subsection*
-Controller
+Model View Controller
 \end_layout
 
 \begin_layout Standard
-Controller sind von 
+Model view controller (MVC, englisch für Modell Präsentation Steuerung)
+ ist ein Muster zur Struktierung von Software-Entwicklung in die drei Einheiten
+ Datenmodell, Präsentation und Programmsteuerung.
+ Ziel des Musters ist ein flexibler Programmentwurf, der eine spätere Änderung
+ oder Erweiterung erleichtert und eine Wiederverwendbarkeit.
+ 
+\end_layout
+
+\begin_layout Standard
+Diese Entwurf ist ein Kern-feature von Spring-boot, die verschiedene Erleichteru
+ng bereitstellt für eine einfache Implementierung von Software nach MVC
+ Modell.
+ Diese Erleichterungen sind zum Beispiel Annotations wie 
+\begin_inset Quotes gld
+\end_inset
+
+@RestController
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+@Service
+\begin_inset Quotes grd
+\end_inset
+
+ oder auch 
+\begin_inset Quotes gld
+\end_inset
+
+@Component
+\begin_inset Quotes grd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/MVC.svg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+MVC-Muster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Controller (mit RestController oder Controller Annotation vorgesehen)
+ ist mit Applicationlogic (mit Service Annotation vorgesehen) verkoppelt.
+ Controller-einheit stellt auch die Resources zur Ausserwelt zur Verfügung.
+ 
 \end_layout
 
 \begin_layout Subsection*
@@ -4700,7 +5859,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="9" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4843,7 +6002,7 @@ CREATED
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+DELETED
 \end_layout
 
 \end_inset
@@ -4872,7 +6031,7 @@ CREATED
 \begin_inset Text
 
 \begin_layout Plain Layout
-301
+204 
 \end_layout
 
 \end_inset
@@ -4881,7 +6040,7 @@ CREATED
 \begin_inset Text
 
 \begin_layout Plain Layout
-Error Authentication
+No Content
 \end_layout
 
 \end_inset
@@ -4910,7 +6069,7 @@ Error Authentication
 \begin_inset Text
 
 \begin_layout Plain Layout
-302
+401
 \end_layout
 
 \end_inset
@@ -4919,7 +6078,83 @@ Error Authentication
 \begin_inset Text
 
 \begin_layout Plain Layout
+Error Authentication
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+403
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forbidden 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+405
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Not allow
 \end_layout
 
 \end_inset
@@ -4939,7 +6174,7 @@ Error Authentication
 \begin_inset Text
 
 \begin_layout Plain Layout
-6
+8
 \end_layout
 
 \end_inset
@@ -4957,7 +6192,7 @@ Error Authentication
 \begin_inset Text
 
 \begin_layout Plain Layout
-Error
+ERROR
 \end_layout
 
 \end_inset
@@ -4985,7 +6220,15 @@ Error
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Http-Status code 
+Http-Status code.
+ RFC2616
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HTTPSTATUS"
+
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -5088,6 +6331,75 @@ egie im LocalServer und Angular Frontend-Application entworfen.
  Eine Vorteil von Caching ist es die Overhead zu vermeiden.
  Und eventuele ein Dritter der die Kommunikation abhört, nicht durch häufige
  Anfrage mit Infos füttert.
+ Caching spielt auch eine beteundente Rolle bei Skalierung von Software
+ und führt dass die Software mehr Fehlertorant wird.
+ Caching erbringt mehr Leistung durch eine Verringerung der durchschnittlichen
+ Latenzzeit von einer einer Reihe von Interaktion und erhöht die benutzerwahrgen
+ommene Leistung.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/cacheConfig.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caching configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Weitere wird Caching benutzt um Session Daten wie zum Beispiel chiffriert
+ Passphrase zu speichern.
+ Dadürch wird vermeidet dass Benutzer immer wieder seine Passphrase eingeben
+ muss und eventuelle Keylogger-attacke vermeidet.
  
 \end_layout
 
@@ -5134,14 +6446,20 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "100col%"
+width "55col%"
 special "none"
 height "1in"
 height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-Hier komm daten bank schema
+\begin_inset Graphics
+	filename images/relationships.real.large.png
+	scale 60
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5249,6 +6567,477 @@ SymKeys: Symmetrischen Schlüssel
 
 \begin_layout Description
 PairKeys: Assymetrischen Schlüssel.
+\end_layout
+
+\begin_layout Section
+Evaluierung 
+\end_layout
+
+\begin_layout Standard
+In diesemen Abschnitt wird überprüft, in wieweit die Umsetzung des Lösungskonzep
+tes die geforderten Anforderungen an der Cryptone-System erfüllt.
+ Zusätzlich wird auf Maßnahmen eingegangen, um Korrektheit des Dienstes
+ sicherzustellen.
+ 
+\end_layout
+
+\begin_layout Subsection
+Anforderungserfüllung
+\end_layout
+
+\begin_layout Standard
+Die Anforderungen aus Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Anforderungen"
+
+\end_inset
+
+ wurde in in funktionale und nichtfunktionale Anforderungen unterteilt.
+ Während die funktionalen Anforderungen durch konkrete softwaretechnische
+ Einheit (Klasse, Module) werden konnten, beziehen sich die nichtfunktionalen
+ Anforderungen auf Eigenschaften des Gesamtsystems, die sich mnicht an einzeilne
+n Modulen festmachen lassen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Um die funktionalen Anforderungen mit den Modulen abzugleichen, mussten
+ die einzelnen Anforderungen teilweise in kleinere Schritte unterteilt werden,
+ um Software besser zu gestalten.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die Kernfunktionalität von Software ( Authentication, Registrierung, Dateiaustau
+schoptionen ...) wurde durch eine Unit-Test Programm getestet.
+ [Siehe Anhang für die Ergebnisse], sowie auch nichtfunktionale Anforderungen
+ wie :
+\end_layout
+
+\begin_layout Itemize
+Funktionparameter Integrität prüfung ( Null-Object , nicht genug Argument,
+ falsche Argument, Argumenttyp Prüfung ) 
+\end_layout
+
+\begin_layout Itemize
+Allgemein Laufzeit Fehler ( Zum beispiel Cryptographie-Algorithmus nicht
+ Verfügbar ) 
+\end_layout
+
+\begin_layout Subsubsection
+Nicht funktionale Anforderungen : Portabilität
+\end_layout
+
+\begin_layout Standard
+RemoteServer und LocalServer sollte portable sein.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nach Kompilierung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Betriebsystem
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Laufumgebung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LocalServer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JAR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unabhängig
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JRE
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RemoteServer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WAR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unabhängig
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Servlet Container 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FrontenApp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JS, HTML
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unabhängig
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Webbrowser
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cryptone Compilierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+die obere Tabelle, zeigt die Verschiede Softwareteile des Projekts, Alle
+ Softwareteil können ganz unabhängig von Betriebsystem zur Laufen gebracht
+ werden.Obwohl Die Softwareteilen betriebsystem-webbrowser bzw.
+ laufumgebungsoftware unabhängig sind, müssen sie eventuelle angepasst oder
+ zusätzliche Software wie Browser (Internet Explorer hat eine renomierte
+ Compatibiltät-Problem mit den aktuellten Internet Standard) installiert
+ werden, aber keinerlei wird eine Softwareänderung benötigt.
+ 
+\end_layout
+
+\begin_layout Standard
+Stand des Tests: 
+\end_layout
+
+\begin_layout Itemize
+LocalServer läuft auf eine USB-Stick : diese USB-Stick ist mit Java Runtime
+ Environment (JRE) (64 und 32 Bit) vorgesehen, sowie Windows JRE (64 Bits),
+ und eine skript ( bash für Linux System und bat für Window), schliesslich
+ das LocalServer Software an sich.
+ LocalServer wurde erfolgreich auf Ubuntu 15.10 wily 64 Bits und Windows
+ 7 64 Bits getestet.
+ 
+\end_layout
+
+\begin_layout Itemize
+RemoteServer wurde erfolgreich unter Ubuntu 15.10 wily 64 Bits, mit Apache
+ Tomcat 8.x getestet
+\end_layout
+
+\begin_layout Itemize
+FrontendApp wurde erfolgreich unter Ubuntu 15.10 wily 64 Bits und Windows
+ 7 64 Bits mit Webbrowser Google Chrome und Mozilla Firefox erfolgreich
+ getestet.
+\end_layout
+
+\begin_layout Subsubsection
+Nicht funktionale Anforderungen : Usability
+\end_layout
+
+\begin_layout Standard
+Trotz die Komplexität des Projektes wurde die CryptoSystem-Client User-Freundlic
+h wie möglich entworfen.
+ Die Interaktion gescheht durch eine Webseite.
+ Die mögliche Aktionen (
+\begin_inset Quotes gld
+\end_inset
+
+sign-in
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+sign-up
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+upload
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+download
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+share
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+add-friend
+\begin_inset Quotes grd
+\end_inset
+
+ ), Drag-and-Drop sind üblich und von Benutzer aus andere Webseite bekannt.
+ Fakt ist dass Zielbenutzer von Cryptone-System sind mit diese Aktionen
+ schon gewöhnt.
+ Weitere alle Komplexe Logik passiert im LocalServer und der Endbenutzer
+ kriegt nichts mit von dieser Logik.
+ 
+\begin_inset Newline newline
+\end_inset
+
+LocalServer kümmert sich auch selbst darum eine freie nicht verwendete Port
+ zu belegen und starte auch die Webseite (Loginseite von LocalServer).
+ 
+\begin_inset Newline newline
+\end_inset
+
+Was von Benutzer verlangt ist sein USB-Stick anzuschliessen und auf Start-Skript
+ (BAT für Window und BASH für Linux) zu starten.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Nicht funktionale Anforderungen : Functionality und Maintainability
+\end_layout
+
+\begin_layout Itemize
+Interoperability und Compliance, LocalServer und RemoteServer sind nach
+ REST-Full Standard entwickelt wurde.
+ Überall Daten die produziert werden sind in JSON-Format.
+ LocalServer oder RemoteServer können getausch werden oder in eine andere
+ Programmiersprache programmiert solange die Ersatzsoftware die REST-Spezifikati
+on erfüllt und auf schon definiert Resource mit definierten Methoden zugreifft.
+ 
+\end_layout
+
+\begin_layout Chapter
+Zusammenfassung und Ausblick
+\end_layout
+
+\begin_layout Section
+Zusammenfassung
+\end_layout
+
+\begin_layout Standard
+KryptoOne-System ist ein Internetbasierte Dokumentverwaltung (Dokumentaustausch,
+ Dokumentablagerung ..
+ ) konzipiert mit eine intuitive Benutzer Interaktion durch Webbrowser und
+ mit dem Ziel kryptographische Komplexität zu abstrahieren, das heisst so
+ gut wie keiner Kryptographierelevante Aufgabe an Benutzer zu überlassen,
+ unterschied zu andere Cloud-Service werden die Datei verschlüsselt bevor
+ sie hochgeladen werden.
+ KryptoOne-System verwaltet auch die Benutzer und fügt das Konzept von Vertrauen
+beziehung in Dateiaustausch.
+ Ferner wird die Sicherstärke an Unternehmen, die das Software benutzt überlasse
+n.
+ Das heisst ein Unternehmen ist nicht durch geschränkte Sicherheitgrad von
+ andere Anbieter gezwungen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die bisherige Lösung diese Problems sah ein grosses Aufwand für Endbenutzer
+ vor.
+ Benutzer sollte sich selber darum kümmert Schlüssel zu erzeugen, Schlüssel
+ managieren und Schlüssel an Kommunikationspartner übergeben.
+ Die entscheidente Nachteile dabei waren der Aufwand von die vorher beschriebene
+ Prozess, die Annahme dass die Benutzer sich mit Kryptographie auskennen,
+ Die Schlüsselverteilungproblematik und schliesslich Installation von neuer
+ Software.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Zu Beginn der Arbeit wurden die Probleme der bisherigen eingesetze Lösung
+ genauer beleuchtet und die Motivation für eine Komplexität-transparent
+ Cryptosoftware mit spezifizierte Anforderungen abgeleitet.
+ Anschlißend wurden die Ziele der Arbeit ausgearbeitet.
+\begin_inset Newline newline
+\end_inset
+
+Im theoritischen Teil wurde auf die für Umsetzung des CryptoOne-System benötigte
+n Grundlagen eingegangen.
+ Zuerst wurden die heutigen sichere kryptographische Standard und wichtige
+ Begriffe erläutert.
+ Die Begrenzungen von diese Standard wurde auf Licht gebracht.
+ Im Anschluss daran wurde auf die Zusammenarbeit von diese Standard, um
+ Grenze diese Standard zu überschreiten, mit dem Ziel die Sicherheitgrad
+ der entworfenen Lösung zu erhöhen, wie zum Beispiel Hybrid-Verschlüsselung
+ aus RSA und AES um Perfomance zu erhöhen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Der praktische Teil dieser Arbeit wurde in vier Teile gegliedert: Anforderungana
+lyse, Erstellung eines Lösungskonzeptes, Umsetzung und Bewertung des umgesetzten
+ Lösungskonzeptes.
+ 
+\end_layout
+
+\begin_layout Standard
+Durch die Anforderungssanalyse wurden die konkreten Anforderungen an CryptoOne-S
+ystem herausgearbeitet, dabei wurde sowohl funktionale als auch nichtfunktionale
+ Anforderungen berücksichtigt.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "Application.java"
+lstparams "emph={@Configuration},emphstyle={\\color{red}},caption={ein java listing},label={src1}"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ausblick
 \end_layout
 
 \begin_layout Standard
