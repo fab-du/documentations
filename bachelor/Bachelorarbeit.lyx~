@@ -410,7 +410,8 @@ Bachelorarbeit
 \align left
 
 \size large
-Der Titel deiner Bachelorarbeit mit super tollem langem Text
+Entwurf einer tragbaren kryptographischen Softwarelösung für den sicheren
+ Datenaustausch zwischen Unternehmen
 \end_layout
 
 \begin_layout Standard
@@ -489,7 +490,7 @@ Matrikelnummer: 1015366
 \begin_inset Text
 
 \begin_layout Plain Layout
-Studiengang: technische Informatik
+Studiengang: Technische Informatik
 \end_layout
 
 \end_inset
@@ -571,7 +572,7 @@ Prof.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Hochschule Mannehim
+Hochschule Mannheim
 \end_layout
 
 \end_inset
@@ -642,7 +643,7 @@ Hochschule Mannehim
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mannheim, der 
+Mannheim, den 
 \begin_inset ERT
 status open
 
@@ -710,7 +711,7 @@ Ehrenwörtliche Erklärung
 \end_layout
 
 \begin_layout Standard
-Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig
+Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende Arbeit selbständig
  angefertigt habe.
  Die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind
  als solche kenntlich gemacht.
@@ -743,7 +744,7 @@ Die vorliegende Arbeit wurde bisher keiner anderen Prüfungsbehörde vorgelegt
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mannheim, der 
+Mannheim, den 
 \begin_inset ERT
 status open
 
@@ -830,7 +831,8 @@ Kurzfassung
 
 \begin_layout Standard
 Die vorliegende Arbeit wurde an der Hochschule Mannheim angefertigt.
- Dabei sollte ein Dokumentsaustausch-programm entwickelt.
+ Dabei sollte ein sicheres Datenaustausch-Programm für Unternehmen entwickelt
+ werden.
 \end_layout
 
 \begin_layout Standard
@@ -952,13 +954,14 @@ Gliederung
 \end_layout
 
 \begin_layout Standard
-Diese Arbeit lässt sich in drei große Abschnitte aufteilen: Kapitel 2 behandelt
- die Anförderungen eines sicheren Dokumentaustausch sowie der Authententifizieru
-ngmechanismen die für das Verständnis der weiteren Kapitel wichtig sind.
- Im folgenden Kapitel 3 werden wird beispielhaft die aktuelle Stand der
- Technick vorgestellt und ihre technische Umsetzung aufgeführt.
+Diese Arbeit lässt sich in drei große Abschnitte unterteilen: Kapitel 2
+ behandelt die Anforderungen eines sicheren Dokumentenaustauschs sowie der
+ Authentifizierungmechanismen, die für das Verständnis der weiteren Kapitel
+ wichtig sind.
+ Im folgenden Kapitel 3 wird beispielhaft der aktuelle Stand der Technik
+ vorgestellt und ihre technische Umsetzung aufgeführt.
  In Kapitel 4 wird anhand der Problemstellung ein Konzept für die Dokumentaustau
-schplattform erstellt, welches in den Kapiteln 5 und 6 konkretisiert und
+sch-Plattform erstellt, welches in den Kapiteln 5 und 6 konkretisiert und
  implementiert wird.
  Die letzten beiden Kapitel 7 und 8 fassen die Ergebnisse dieser Arbeit
  zusammen und machen Vorschläge für eine Verbesserung des Systems.
@@ -982,17 +985,17 @@ en ist grundsätzlich problematisch.
  Unberechtigte diese mitlesen können.
  Die Lösung des Problems besteht darin, die Nachricht verschlüsselt zu übertrage
 n.
- Das heißt die ursprüngliche Nachricht wird so verändert, dass es Unberechtigten
- deutlich erschwert, den Inhalt einer abgefangenen Nachricht zu erfassen.
+ Das heißt, die ursprüngliche Nachricht wird so verändert, dass es Unberechtigte
+n deutlich erschwert wird, den Inhalt einer abgefangenen Nachricht zu erfassen.
  Bereits in der Antike wurden vertrauliche Informationen verschlüsselt übermitte
 lt.
- Schon damals bestanden die folgende Problematike, die noch heute trotz
+ Schon damals bestanden die folgenden Schwierigkeiten, die noch heute trotz
  aufwendigerer Verschlüsselung relevant sind :
 \end_layout
 
 \begin_layout Enumerate
 Wer kann Nachrichten ver- bzw.
- entschlüsseln und wie? (Authentifizierung) 
+ entschlüsseln, und wie? (Authentifizierung) 
 \end_layout
 
 \begin_layout Enumerate
@@ -1001,40 +1004,42 @@ ematik)
 \end_layout
 
 \begin_layout Enumerate
-Wie wird sichergestellt dass der Nachricht den Empfänger so erreicht, wie
- sie geschickt wurde? (Integrität) 
+Wie wird sicher gestellt, dass die Nachricht den Empfänger so erreicht,
+ wie sie geschickt wurde? (Integritätsprüfung) 
 \end_layout
 
 \begin_layout Standard
 Die Notwendigkeit eines sicheren Dokumentenaustauschs hat sich in den letzten
- Jahren als immer drängender erwiesen.
+ Jahren als immer dringender erwiesen.
  
 \end_layout
 
 \begin_layout Standard
-Dokumentsautausch gibt es schon längst innerhalb geschlossene Netzwerk (Intranet
-).
+Dokumentensautausch gibt es schon längst innerhalb geschlossener Netzwerke
+ (Intranet).
  Wobei manche Sicherheitaspekte wie Datenverschlüsselung oder auch Datenintegrit
-ät absichtlich weggelassen werden, da man davon ausgeht dass alle Benutzer
- der Intranet sich innerhalb des Unternehmen befinden und sind defakto vertrauen
-würdig.
+ät absichtlich weggelassen werden, da man davon ausgeht, dass alle Benutzer
+ des Intranets sich innerhalb des Unternehmens befinden und folglich vertrauenwü
+rdig sind.
  
 \end_layout
 
 \begin_layout Standard
-Intranet wird defakto aufgrund seiner Eigenschaft von aussere Gefahr geschützt.
- Problematisch wird aber wenn den Datenaustausch über eine offene unsichere
- Netzwerk (Internet) geschehen soll.
- Warum soll jetzt diese Notwendigkeit für Unternehmen bestehen ? Man denkt
- etwa nach eine externe Mitarbeiter, der sich nicht immer innerhalb des
- Unternehmens befindet und möchte trotzdem der Stand seiner Arbeit teilen,
- oder auch ein Projekt das von zwei oder mehrere Unternehmen durchgeführt
- werden muss, die Unternehmen können keinen gegenseitige Zugriff auf Ihre
- Intranet gewährleistet.
- Die geschickte Lösung an der Stelle ist Internet, aber spätestens durch
- die NSA-Affäre ist es deutlich geworden, dass eine Datenübertragung via
- Internet von vertraulichen Informationen ohne weitere Maßnahmen nicht geeignet
- ist.
+Intranet wird aufgrund seiner Eigenschaft vor äußerer Gefahr geschützt.
+ Problematisch wird es aber, wenn der Datenaustausch über ein offenes, unsichere
+s Netzwerk (Internet) geschehen soll.
+ Warum soll nun diese Notwendigkeit für Unternehmen bestehen? Man denke
+ etwa an einen externen Mitarbeiter, der sich nicht immer innerhalb des
+ Unternehmens befindet und trotzdem seine Projektpartner über den Stand
+ seiner Arbeit auf dem Laufenden halten möchte.
+ Oder auch an ein Projekt, das von zwei oder mehreren Unternehmen durchgeführt
+ werden muss.
+ Dabei können die Unternehmen keinen gegenseitigen Zugriff auf Ihr jeweiliges
+ Intranet gewährleisten.
+ Die geschickte Lösung für diesen Fall wäre Internet; aber spätestens durch
+ die NSA-Affäre ist es deutlich geworden, dass eine Datenübertragung von
+ vertraulichen Informationen via Internet ohne weitere Sicherheitsmaßnahmen
+ nicht geeignet ist.
  
 \end_layout
 
@@ -1043,34 +1048,33 @@ Zielsetzung
 \end_layout
 
 \begin_layout Standard
-Anhand der Abschnitt 
+Anhand des Abschnitts 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Problemstellung-und-Motivation"
 
 \end_inset
 
- stellt man fest dass im Unternehmen verbreitet Lösung für Dokumentaustausch
- gescheht durch Intranet.
- Diese Lösung schutzt gegen aussere Gefahre, indem Intranet ein geschlossene
+ stellt man fest, dass in Unternehmen die verbreiteste Lösung für den Dokumenten
+austausch per Intranet erfolgt.
+ Diese Lösung schutzt gegen äußere Gefahren, weil Intranet ein geschlossenes
  Netzwerk ist.
- Heutzutage ist aber ein gemeinsame Zugriff auf digitale Informationen nicht
- nur innerhalb sowie auch über Unternehmengrenzen hinweg mit Partnern oder
- externe Mitarbeiter ein wichtiges Instrument geworden.
- eine naive Lösung durch Internet ohne weitere Sicherheit Massnahme wäre
+ Heutzutage ist aber ein gemeinsamer Zugriff auf digitale Informationen
+ nicht nur innerhalb, sondern auch über Unternehmengrenzen hinweg mit Partnern
+ oder externen Mitarbeitern ein wichtiges Instrument geworden.
+ Eine naive Lösung durch Internet ohne weitere Sicherheitsmaßnahme wäre
  für Unternehmen gefährlich.
  
 \begin_inset Newline newline
 \end_inset
 
-Das Ziel dieser Arbeit ist, einen internetbasierenden sicheren Datenaustausch
- System zu entwickeln.
- der zum ersten die Komplexität (Schlüsselverwaltung, Schlüsselübermittlung)
- vollständig auf den Software delegiert.
- Weitere es muss kein zusatzliche Softwareinstallation nötig sein, da der
- software läuft über einen Webbrowser.
- Im unterschied zu etablierten Lösungen wie Dropbox, werden alle Daten vorab
- lokale verschlüsselt bevor das Hochladen gescheht.
+Das Ziel dieser Arbeit ist, ein Internet-basiertes sicheres Datenaustausch-Syste
+m zu entwickeln, das erstens die Komplexität (Schlüsselverwaltung, Schlüsselüber
+mittlung) vollständig auf die Software delegiert.
+ Zweitens muss gewährleisten sein, dass keine zusätzliche Softwareinstallation
+ nötig wird, da die Software über einen Webbrowser läuft.
+ Im Unterschied zu etablierten Lösungen wie Dropbox werden alle Daten vorab
+ lokal verschlüsselt, bevor das Hochladen geschieht.
  
 \end_layout
 
@@ -1087,26 +1091,26 @@ Schlüsselaustausch
 \end_layout
 
 \begin_layout Standard
-der Schlüsselaustausch ist von grossen Bedeutung was Netz- und Informationssiche
-rheit angeht.
- Auch bei etablierte Sicherheitsoftware ist Schlüsselaustausch problematik.
- Aufgrund seines Sensibilität gehört Schlüssel zu kritische Informationen.
+Der Schlüsselaustausch ist von großer Bedeutung, was die Netz- und Informationss
+icherheit angeht.
+ Auch bei etablierter Sicherheits-Software ist Schlüsselaustausch problematisch.
+ Aufgrund ihrer Sensibilität gehören Chiffrierschlüssel zu kritischen Informatio
+nen.
  
 \end_layout
 
 \begin_layout Subsection*
-kritische (sensible) Informationen 
+Kritische (sensible) Informationen 
 \end_layout
 
 \begin_layout Standard
-Es handelt sich um Informationen bzw.
- Daten die auf keinen Fall nirgendwo in der verschieden Softwarekomponente
- unverschlüsselt abgespeichert werden dürfen, oder unverschlüsselt durch
- der Netz geschickt werden dürfen.
- Zu diese Kategorie gehören beispielweise wichtige Benutzersdokumenten,
- oder Benutzerscredentials.
- Weitere werden solche Informationen immer signiert, bevor sie gespeichert
- werden.
+Es handelt sich hierbei um Informationen bzw.
+ Daten, die auf keinen Fall irgendwo in den verschiedenen Softwarekomponenten
+ unverschlüsselt abgespeichert oder unchiffriert durch das Netz geschickt
+ werden dürfen.
+ Zu dieser Kategorie gehören beispielweise wichtige Benutzersdokumente oder
+ Benutzeranmeldeinformationen.
+ Solche Informationen werden immer signiert, bevor sie gespeichert werden.
  
 \end_layout
 
@@ -1115,31 +1119,35 @@ Schlüssel
 \end_layout
 
 \begin_layout Standard
-Hier handelt es sich um kryptographische Schlüssel oder anders ausgedruckt
- Chiffrierschlussel.
- Diese kann verschiedene Formen haben, und jenach Schlüsselart entweder
- zur kritischen oder nichtkritischen Informationen gehören.
+Hierunter versteht man ein kryptographisches Werkzeug oder anders ausgedrückt
+ ein Mittel zum Chiffrieren bzw.
+ Dechiffrieren.
+ Dieses kann verschiedene Formen haben und je nach Schlüsselart entweder
+ zu den kritischen oder nichtkritischen Informationen gehören.
+ Bei der Behandlung der einzelnen Schlüsselarten wird jeweils kenntlich
+ gemacht, ob sie als kritisch oder nicht kritisch einzuschätzen sind.
+ 
 \end_layout
 
 \begin_layout Subsection*
-Assymmetrische Kryptographie
+Asymmetrische Kryptographie
 \end_layout
 
 \begin_layout Standard
 Assymmetrische Kryptographie ist ein kryptographisches Verfahren, bei dem
  die kommunizierenden Parteien keinen gemeinsamen geheimen Schlüssel zu
  kennen brauchen.
- Ein Benutzer erzeugt hier Schlüsselpaar 
+ Ein Benutzer erzeugt hier ein Schlüsselpaar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Assymetrische-Schlüssel"
 
 \end_inset
 
- das aus einem geheimen Teil (privater Schlüssel) und einem nicht geheimen
+, das aus einem geheimen Teil (privater Schlüssel) und einem nicht geheimen
  Teil (öffentlicher Schlüssel) besteht.
  Der öffentliche Schlüssel ermöglicht jedem, Daten für den Inhaber des privaten
- Schlüssels zu verschlüsseln, dessen digitale Signature 
+ Schlüssels zu chiffrieren, dessen digitale Signature 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Digitale-Signature"
@@ -1147,10 +1155,11 @@ reference "sub:Digitale-Signature"
 \end_inset
 
  zu prüfen oder ihn zu authentifizieren.
- Der private Schlüssel ermöglicht es seinem Inhaber, mit dem öffentlichen
- Schlüssel verschlüsselte Daten zu entschlüsseln, digitale signaturen zu
- erzeugen oder sich zu authentisieren.
- Es wird für die Fertigung dieser Arbeit RSA-Algorithmus eingesetzt.
+ Der private Schlüssel aber ermöglicht es seinem Inhaber, mit dem öffentlichen
+ Schlüssel chiffrierte Daten zu entschlüsseln, digitale Signaturen zu erzeugen
+ oder sich zu authentifizieren.
+ Für die Fertigung dieser Arbeit wird der RSA-Algorithmus als asymmetrisches
+ Chiffrierverfahren eingesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -1221,14 +1230,35 @@ name "sub:Assymetrische-Schlüssel"
 \end_layout
 
 \begin_layout Standard
-Anhand der RSA Algorithmus werden Sclüsselpaare benötigt.
- Schüsselpaare besteht aus zwei Schlüssel : eine geheime und eine öffentliche
- Schlüssel.
- Öffentliche Schlüssel wird eingesetzt um Chiffrierung durchzuführen, geheime
- Schlüssel dagegen führt die Dechiffrierung durch.
- Geheime Schlüssel auch bekannt als private Schlüssel ist eine kritische
- Information.
- 
+Beim RSA-Algorithmus werden Sclüsselpaare benötigt.
+ Schüsselpaare bestehen aus zwei Schlüsseln, einem geheimen und einem öffentlich
+en Schlüssel.
+ Öffentliche Schlüssel werden eingesetzt, um Chiffrierung durchzuführen.
+ Sie zählen nicht zu den kritischen Informationen.
+ Mit geheimen Schlüsseln dagegen führt man die Dechiffrierung durch.
+ Geheime Schlüssel, auch private Schlüssel genannt, gehören zu den kritischen
+ Informationen.
+\end_layout
+
+\begin_layout Subsection*
+Benutzer-Masterkey
+\end_layout
+
+\begin_layout Standard
+Benutzer-Masterkey ist ein assymetrischer Schlüssel der quasi eine 
+\begin_inset Quotes gld
+\end_inset
+
+Generalschlüssel
+\begin_inset Quotes grd
+\end_inset
+
+-Funktion besitzt.
+ Alle asymmetrischen Dokumentschlüssel werden mit dem Masterkey verschlüsselt
+ bzw.
+ entschlüsselt.
+ Der geheime Teil des Masterkeys wird seinerseits noch einmal mit einem
+ Passphrase verschlüsselt, welches nur der Benutzer kennt.
 \end_layout
 
 \begin_layout Subsection*
@@ -1238,19 +1268,20 @@ Symmetrische Kryptographie
 \begin_layout Standard
 Symmetrische Kryptographie ist ein Kryptosystem, beim welchem im Gegensatz
  zu einem asymmetrischen Kryptosytem beide Teilnehmer denselben Schlüssel
- ( Symmetrische Schlüssel 
+ (Symmetrische Schlüssel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Symmetrische-Schlüssel"
 
 \end_inset
 
- ) verwenden.
+) verwenden.
  Bei manchen symmetrischen Verfahren (z.B.
- IDEA) sind die beiden Schlüssel nicht identisch, aber können leicht auseinander
- berechnet werden.
- Anhand dieser Arbeit wird die exklusiv den AES-Algorithmus benutzt, wobei
- die Chiffrierschlüssel und Dechiffrierschlüssel gleich sind.
+ IDEA) sind die beiden Schlüssel nicht identisch, doch kann leicht der einer
+ aus dem anderen abgeleitet werden.
+ Für diese Arbeit wird exklusiv der AES-Algorithmus als symmetrisches kryptograp
+isches Verfahren benutzt, wobei die Chiffrierschlüssel und Dechiffrierschlüssel
+ gleich sind.
 \end_layout
 
 \begin_layout Standard
@@ -1317,11 +1348,11 @@ name "sub:Symmetrische-Schlüssel"
 \end_layout
 
 \begin_layout Standard
-Es handelt sich um eine geheime Schlüssel, die Anhand der AES-Algorithmus
- (Symmetrische Verschlüsselungsverfahren) eingesetzt wird, um Chiffrierung
- und Dechiffrierung durchzuführen.
- Da die symetrische Schlüssel sowohl zur Chiffrierung als auch zur Dechiffrierun
-g eingesetzt wird, ist die symmetrische Schlüssel eine kritische Information.
+Es handelt sich um einen geheimen Schlüssel, der beim AES-Algorithmus (Symmetris
+che Verschlüsselungsverfahren) eingesetzt wird, um Chiffrierung und Dechiffrieru
+ng durchzuführen.
+ Da die symmetrischen Schlüssel sowohl zur Chiffrierung als auch zur Dechiffrier
+ung eingesetzt werden, sind sie als kritische Informationen zu sehen.
  
 \end_layout
 
@@ -1338,7 +1369,7 @@ key "duden:passwort"
 \end_inset
 
  definiert das Passwort bzw.
- Passphrase wiefolgt : 
+ Passphrase wie folgt : 
 \end_layout
 
 \begin_layout Quote
@@ -1355,7 +1386,7 @@ nur Eingeweihten bekannte, aus Buchstaben, Ziffern oder Sonderzeichen bestehende
 \end_layout
 
 \begin_layout Standard
-Das Wort 
+Der Begriff 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1365,8 +1396,8 @@ Passwort
 
  wird in der Dokumentation benutzt im Zusammenhang mit Benutzeranmeldeinformatio
 nen, und wird in einer modifizierten Form im RemoteServer gespeichert.
- Während Passphrase nie persistent gehalten wird.
- Den Passphrase wird benutzt um Benutzer geheimschlüssel zu verschlüsseln.
+ Hingegen wird Passphrase außerhalb des LocalServers nie persistent gehalten.
+ Das Passphrase wird angewandt, um den Benutzer-Masterkey zu verschlüsseln.
 \end_layout
 
 \begin_layout Subsection*
@@ -2629,7 +2660,6 @@ Examplarische Vertrauenbeziehung zwischen Zwei Benutzer:
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -3339,10 +3369,9 @@ examplarische Header:
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -3532,10 +3561,9 @@ JWS stellen weitere Headers zur Verfügung, aber die werden Anhand diese
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3593,10 +3621,9 @@ JSON Web Token (JWT)
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3687,10 +3714,9 @@ Benutzer registrieren
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3744,10 +3770,9 @@ Benutzer einlogen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3801,10 +3826,9 @@ Freund hinzufuegen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3911,10 +3935,9 @@ Alice will Bob von seine Vertrauenbeziehungen rausnehmen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3996,10 +4019,9 @@ Datei hochladen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -4107,10 +4129,9 @@ Datei runterladen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -4208,10 +4229,9 @@ Alice will eine neue Gruppe anlegen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -7029,7 +7049,7 @@ ystem herausgearbeitet, dabei wurde sowohl funktionale als auch nichtfunktionale
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "Application.java"
-lstparams "emph={@Configuration},emphstyle={\\color{mygreen}},caption={ein java listing},label={src1}"
+lstparams "emph={@Configuration},emphstyle={\\color{red}},caption={ein java listing},label={src1}"
 
 \end_inset
 
