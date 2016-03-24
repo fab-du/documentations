@@ -1,0 +1,2402 @@
+
+
+
+      <Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/hs.svg>  
+    
+    
+    
+    +----------------------------------------------------------------------------+
+    
+    +----------------------------------------------------------------------------+
+
+
+
+
+
+
+Bachelorarbeit
+
+Entwurf einer tragbaren kryptographischen Softwarelösung für den 
+sicheren Datenaustausch zwischen Unternehmen
+
+
+
+
+
+
+  eingereicht von:     Siyapdje Fabrice Dufils             
+                       Matrikelnummer: 1015366             
+                       Studiengang: Technische Informatik  
+                       Hochschule Mannheim                 
+                                                           
+  betreut durch:       Prof. Dr. Martin Damm               
+                       Hochschule Mannheim                 
+                                                           
+                                                           
+                                                           
+  Mannheim, den                                            
+
+
+
+
+
+ 
+
+
+
+
+
+Ehrenwörtliche Erklärung
+
+Ich erkläre hiermit ehrenwörtlich, dass ich die vorliegende 
+Arbeit selbständig angefertigt habe. Die aus fremden Quellen 
+direkt oder indirekt übernommenen Gedanken sind als solche 
+kenntlich gemacht. Es wurden keine anderen als die angegebenen 
+Quellen und Hinweise verwendet. 
+
+Die vorliegende Arbeit wurde bisher keiner anderen 
+Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+
+
+
+
+
+
+  Mannheim, den                              
+                    Siyapdje Fabrice Dufils  
+
+
+
+
+
+ 
+
+
+
+
+
+Kurzfassung
+
+Die vorliegende Arbeit wurde an der Hochschule Mannheim 
+angefertigt. Dabei sollte ein sicheres Datenaustausch-Programm 
+für Unternehmen entwickelt werden.
+
+
+
+
+Inhaltsverzeichnis
+
+    Kapitel 1 Einleitung
+        1.1 Gliederung 
+        1.2 Problemstellung und Motivation
+        1.3 Zielsetzung
+    Kapitel 2 Grundlagen und Stand der Techn
+        2.1 Begriffe
+            Schlüsselaustausch 
+            Kritische (sensible) Informationen 
+            Schlüssel 
+            Asymmetrische Kryptographie
+            Assymetrische Schlüssel (Schlüsselpaar) 
+            Benutzer-Masterkey
+            Symmetrische Kryptographie
+            Symmetrische Schlüssel 
+            Passwort und Passphrase 
+            Digitale Signature 
+        Hybride Verschlüsselung 
+        Public-Key-Infrastruktur (PKI)
+        2.2 Email 
+        2.3 Web-upload
+        2.4 File Transfer Protocol (FTP) 
+        2.5 Cloud-Service 
+        2.6 PGP 
+        2.7 X.509
+        2.8 SPKI / SDSI
+    Kapitel 3 Anforderungen
+        3.1 funktionale Anforderungen
+                Administrator role
+                Benutzer role
+                Registrierung und login
+                Server-Client Kommunikation 
+        3.2 Nichtfunktionale Anforderungen 
+            3.2.1 Allgemeine nichtfunktionale Anford
+            3.2.2 Wartbarkeit und Änderbarkeit
+            3.2.3 Portierbarkeit und Plattformunabhä
+            3.2.4 Daten-und Serverintegrität
+    Kapitel 4 Konzept
+        4.1 Allgemein Architektur
+        4.2 Authentifizierung
+        4.3 Kritische Daten Integrität
+        4.4 Schlüsselaustausch
+        4.5 Server Integrität 
+        4.6 Web-Of-Trust ( Friends-Konzept ) 
+            Benutzer als Friend hinzufügen
+            Vertrauenbeziehung zurückziehen
+        4.7 Übermittlung von Passphrase 
+        4.8 Gruppe 
+        4.9 Dokumentaustausch
+            von private Gruppe zu öffentliche Gruppe
+            zwischen zwei öffentliche Gruppe
+            Zwischen zwei Benutzer 
+        4.10 REST (Representational State Transf
+        4.11 Integrität der transportierte kriti
+        4.12 JSON Web Token (JWT) 
+        4.13 Szenarien
+            Benutzer registrieren
+            Benutzer einlogen
+            Freund hinzufuegen
+            Freund revoke
+            Datei hochladen
+            Datei runterladen
+            Neue Gruppe erzeugen
+    Kapitel 5 Implementierung und Evalierung
+        5.1 Überblick auf die Technologie
+        5.2 Allgemein Designentscheidungen
+            5.2.1 JSON-Format
+            5.2.2 UTF-8 und Base64
+            5.2.3 HTTP Headers
+        5.3 Frontend
+                AngularJS und Security
+            5.3.1 Ausstatung von Routes
+        5.4 allgemeine Implementierung Entscheid
+        5.5 LocalServer
+            Konfigurationsdatei
+            Model View Controller
+            Fehlerbehandlung und Benutzerrückmeldung
+            Caching
+        Datenbank Schema
+        5.6 Evaluierung 
+            5.6.1 Anforderungserfüllung
+                Nicht funktionale Anforderungen : Portab
+                Nicht funktionale Anforderungen : Usabil
+                Nicht funktionale Anforderungen : Functi
+    Kapitel 6 Zusammenfassung und Ausblick
+        6.1 Zusammenfassung
+        6.2 Ausblick
+
+
+
+
+
+
+
+
+
+Abbildungsverzeichnis
+
+Abbildung 2.1:Assymetrische Kryptogra...
+Abbildung 2.2:Symmetrische Kryptograp...
+Abbildung 2.3:examplarische zertifikat 
+Abbildung 3.1:Funktionale Anforderung...
+Abbildung 4.1:Allg. Architektur
+Abbildung 4.2:Authenticationsablauf
+Abbildung 4.3:Vertrauenbeziehung zwis...
+Abbildung 4.4:Unterschied zwischen PG...
+Abbildung 4.5:Zwischen Benutzer und G...
+Abbildung 4.6:Public Group zu Public ...
+Abbildung 4.7:Benutzer-Benutzer Dokum...
+Abbildung 4.8:Routes/Aktionen
+Abbildung 4.9:JWS Header
+Abbildung 4.10:JWS Filter
+Abbildung 4.11:Json Web Token
+Abbildung 4.12:Benutzer registration ...
+Abbildung 4.13:Benutzer einloggen seq...
+Abbildung 4.14:Freund hinzufuegen seq...
+Abbildung 4.15:Freund revoke sequence...
+Abbildung 4.16:Datei hochladen sequen...
+Abbildung 4.17:Datei runterladen sequ...
+Abbildung 4.18:Neue Gruppe erzeugen s...
+Abbildung 5.1:Angular: Cookie Konfigu...
+Abbildung 5.2:Routes-Übersicht
+Abbildung 5.3:Konfigurationsdatei 
+Abbildung 5.4:MVC-Muster
+Abbildung 5.5:Http-Status code. RFC26...
+Abbildung 5.6:Status-Code Filter
+Abbildung 5.7:Datenbank schema
+Abbildung 5.8:Cryptone Compilierung
+
+
+
+
+
+Tabellenverzeichnis
+
+Tabelle 2.1:Vergleich asymmetrische/s...
+Tabelle 5.1:Headers 
+Tabelle 5.2:Caching configuration
+
+
+
+
+
+
+
+Einleitung
+
+1.1 Gliederung 
+
+Diese Arbeit lässt sich in drei große Abschnitte unterteilen: 
+Kapitel 2 behandelt die Anforderungen eines sicheren 
+Dokumentenaustauschs sowie der Authentifizierungmechanismen, die 
+für das Verständnis der weiteren Kapitel wichtig sind. Im 
+folgenden Kapitel 3 wird beispielhaft der aktuelle Stand der 
+Technik vorgestellt und ihre technische Umsetzung aufgeführt. In 
+Kapitel 4 wird anhand der Problemstellung ein Konzept für die 
+Dokumentaustausch-Plattform erstellt, welches in den Kapiteln 5 
+und 6 konkretisiert und implementiert wird. Die letzten beiden 
+Kapitel 7 und 8 fassen die Ergebnisse dieser Arbeit zusammen und 
+machen Vorschläge für eine Verbesserung des Systems.
+
+1.2 Problemstellung und Motivation<sec:Problemstellung-und-Motivation>
+
+Der Austausch von vertraulichen Informationen mittels 
+schriftlicher Aufzeichnungen ist grundsätzlich problematisch. Wie 
+können Informationen zwischen Parteien ausgetauscht werden, ohne 
+dass Unberechtigte diese mitlesen können. Die Lösung des Problems 
+besteht darin, die Nachricht verschlüsselt zu übertragen. Das 
+heißt, die ursprüngliche Nachricht wird so verändert, dass es 
+Unberechtigten deutlich erschwert wird, den Inhalt einer 
+abgefangenen Nachricht zu erfassen. Bereits in der Antike wurden 
+vertrauliche Informationen verschlüsselt übermittelt. Schon 
+damals bestanden die folgenden Schwierigkeiten, die noch heute 
+trotz aufwendigerer Verschlüsselung relevant sind :
+
+1. Wer kann Nachrichten ver- bzw. entschlüsseln, und wie? 
+  (Authentifizierung) 
+
+2. Wie werden die Schlüssel zwischen Sender und Empfänger 
+  ausgetauscht? (Kanalproblematik) 
+
+3. Wie wird sicher gestellt, dass die Nachricht den Empfänger so 
+  erreicht, wie sie geschickt wurde? (Integritätsprüfung) 
+
+Die Notwendigkeit eines sicheren Dokumentenaustauschs hat sich in 
+den letzten Jahren als immer dringender erwiesen. 
+
+Dokumentensautausch gibt es schon längst innerhalb geschlossener 
+Netzwerke (Intranet). Wobei manche Sicherheitaspekte wie 
+Datenverschlüsselung oder auch Datenintegrität absichtlich 
+weggelassen werden, da man davon ausgeht, dass alle Benutzer des 
+Intranets sich innerhalb des Unternehmens befinden und folglich 
+vertrauenwürdig sind. 
+
+Intranet wird aufgrund seiner Eigenschaft vor äußerer Gefahr 
+geschützt. Problematisch wird es aber, wenn der Datenaustausch 
+über ein offenes, unsicheres Netzwerk (Internet) geschehen soll. 
+Warum soll nun diese Notwendigkeit für Unternehmen bestehen? Man 
+denke etwa an einen externen Mitarbeiter, der sich nicht immer 
+innerhalb des Unternehmens befindet und trotzdem seine 
+Projektpartner über den Stand seiner Arbeit auf dem Laufenden 
+halten möchte. Oder auch an ein Projekt, das von zwei oder 
+mehreren Unternehmen durchgeführt werden muss. Dabei können die 
+Unternehmen keinen gegenseitigen Zugriff auf Ihr jeweiliges 
+Intranet gewährleisten. Die geschickte Lösung für diesen Fall 
+wäre Internet; aber spätestens durch die NSA-Affäre ist es 
+deutlich geworden, dass eine Datenübertragung von vertraulichen 
+Informationen via Internet ohne weitere Sicherheitsmaßnahmen 
+nicht geeignet ist. 
+
+1.3 Zielsetzung
+
+Anhand des Abschnitts [sec:Problemstellung-und-Motivation] stellt 
+man fest, dass in Unternehmen die verbreiteste Lösung für den 
+Dokumentenaustausch per Intranet erfolgt. Diese Lösung schutzt 
+gegen äußere Gefahren, weil Intranet ein geschlossenes Netzwerk 
+ist. Heutzutage ist aber ein gemeinsamer Zugriff auf digitale 
+Informationen nicht nur innerhalb, sondern auch über 
+Unternehmengrenzen hinweg mit Partnern oder externen Mitarbeitern 
+ein wichtiges Instrument geworden. Eine naive Lösung durch 
+Internet ohne weitere Sicherheitsmaßnahme wäre für Unternehmen 
+gefährlich. 
+Das Ziel dieser Arbeit ist, ein Internet-basiertes sicheres 
+Datenaustausch-System zu entwickeln, das erstens die Komplexität 
+(Schlüsselverwaltung, Schlüsselübermittlung) vollständig auf die 
+Software delegiert. Zweitens muss gewährleisten sein, dass keine 
+zusätzliche Softwareinstallation nötig wird, da die Software über 
+einen Webbrowser läuft. Im Unterschied zu etablierten Lösungen 
+wie Dropbox werden alle Daten vorab lokal verschlüsselt, bevor 
+das Hochladen geschieht. 
+
+Grundlagen und Stand der Technik
+
+2.1 Begriffe
+
+  Schlüsselaustausch 
+
+Der Schlüsselaustausch ist von großer Bedeutung, was die Netz- 
+und Informationssicherheit angeht. Auch bei etablierter 
+Sicherheits-Software ist Schlüsselaustausch problematisch. 
+Aufgrund ihrer Sensibilität gehören Chiffrierschlüssel zu 
+kritischen Informationen. 
+
+  Kritische (sensible) Informationen 
+
+Es handelt sich hierbei um Informationen bzw. Daten, die auf 
+keinen Fall irgendwo in den verschiedenen Softwarekomponenten 
+unverschlüsselt abgespeichert oder unchiffriert durch das Netz 
+geschickt werden dürfen. Zu dieser Kategorie gehören 
+beispielweise wichtige Benutzersdokumente oder 
+Benutzeranmeldeinformationen. Solche Informationen werden immer 
+signiert, bevor sie gespeichert werden. 
+
+  Schlüssel 
+
+Hierunter versteht man ein kryptographisches Werkzeug oder anders 
+ausgedrückt ein Mittel zum Chiffrieren bzw. Dechiffrieren. Dieses 
+kann verschiedene Formen haben und je nach Schlüsselart entweder 
+zu den kritischen oder nichtkritischen Informationen gehören. Bei 
+der Behandlung der einzelnen Schlüsselarten wird jeweils 
+kenntlich gemacht, ob sie als kritisch oder nicht kritisch 
+einzuschätzen sind. 
+
+  Asymmetrische Kryptographie
+
+Assymmetrische Kryptographie ist ein kryptographisches Verfahren, 
+bei dem die kommunizierenden Parteien keinen gemeinsamen geheimen 
+Schlüssel zu kennen brauchen. Ein Benutzer erzeugt hier ein 
+Schlüsselpaar [sub:Assymetrische-Schlüssel], das aus einem 
+geheimen Teil (privater Schlüssel) und einem nicht geheimen Teil 
+(öffentlicher Schlüssel) besteht. Der öffentliche Schlüssel 
+ermöglicht jedem, Daten für den Inhaber des privaten Schlüssels 
+zu chiffrieren, dessen digitale Signature [sub:Digitale-Signature]
+ zu prüfen oder ihn zu authentifizieren. Der private Schlüssel 
+aber ermöglicht es seinem Inhaber, mit dem öffentlichen Schlüssel 
+chiffrierte Daten zu entschlüsseln, digitale Signaturen zu 
+erzeugen oder sich zu authentifizieren. Für die Fertigung dieser 
+Arbeit wird der RSA-Algorithmus als asymmetrisches 
+Chiffrierverfahren eingesetzt.
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/asym_crypt.png>
+]
+
+[Abbildung 2.1:
+Assymetrische Kryptographie
+]
+
+
+]
+
+  Assymetrische Schlüssel (Schlüsselpaar) <sub:Assymetrische-Schlüssel>
+
+Beim RSA-Algorithmus werden Sclüsselpaare benötigt. Schüsselpaare 
+bestehen aus zwei Schlüsseln, einem geheimen und einem 
+öffentlichen Schlüssel. Öffentliche Schlüssel werden eingesetzt, 
+um Chiffrierung durchzuführen. Sie zählen nicht zu den kritischen 
+Informationen. Mit geheimen Schlüsseln dagegen führt man die 
+Dechiffrierung durch. Geheime Schlüssel, auch private Schlüssel 
+genannt, gehören zu den kritischen Informationen.
+
+  Benutzer-Masterkey
+
+Benutzer-Masterkey ist ein assymetrischer Schlüssel der quasi 
+eine „Generalschlüssel“-Funktion besitzt. Alle asymmetrischen 
+Dokumentschlüssel werden mit dem Masterkey verschlüsselt bzw. 
+entschlüsselt. Der geheime Teil des Masterkeys wird seinerseits 
+noch einmal mit einem Passphrase verschlüsselt, welches nur der 
+Benutzer kennt.
+
+  Symmetrische Kryptographie
+
+Symmetrische Kryptographie ist ein Kryptosystem, beim welchem im 
+Gegensatz zu einem asymmetrischen Kryptosytem beide Teilnehmer 
+denselben Schlüssel (Symmetrische Schlüssel [sub:Symmetrische-Schlüssel]
+) verwenden. Bei manchen symmetrischen Verfahren (z.B. IDEA) sind 
+die beiden Schlüssel nicht identisch, doch kann leicht der einer 
+aus dem anderen abgeleitet werden. Für diese Arbeit wird exklusiv 
+der AES-Algorithmus als symmetrisches kryptograpisches Verfahren 
+benutzt, wobei die Chiffrierschlüssel und Dechiffrierschlüssel 
+gleich sind.
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/sym_crypt.png>
+]
+
+[Abbildung 2.2:
+Symmetrische Kryptographie
+]
+]
+
+  Symmetrische Schlüssel <sub:Symmetrische-Schlüssel>
+
+Es handelt sich um einen geheimen Schlüssel, der beim 
+AES-Algorithmus (Symmetrische Verschlüsselungsverfahren) 
+eingesetzt wird, um Chiffrierung und Dechiffrierung 
+durchzuführen. Da die symmetrischen Schlüssel sowohl zur 
+Chiffrierung als auch zur Dechiffrierung eingesetzt werden, sind 
+sie als kritische Informationen zu sehen. 
+
+  Passwort und Passphrase 
+
+Duden [7] definiert das Passwort bzw. Passphrase wie folgt : 
+
+„nur Eingeweihten bekannte, aus Buchstaben, Ziffern oder 
+Sonderzeichen bestehende Zeichenfolge, die den Gebrauch einer 
+Sache, den Zugang zu ihr ermöglicht und sie gegen den Missbrauch 
+durch Außenstehende schützen soll.“
+
+Der Begriff „Passwort“ wird in der Dokumentation benutzt im 
+Zusammenhang mit Benutzeranmeldeinformationen, und wird in einer 
+modifizierten Form im RemoteServer gespeichert. Hingegen wird 
+Passphrase außerhalb des LocalServers nie persistent gehalten. 
+Das Passphrase wird angewandt, um den Benutzer-Masterkey zu 
+verschlüsseln.
+
+  Digitale Signature <sub:Digitale-Signature>
+
+Eine digitale Signatur, auch digitales Signaturverfahren, ist ein 
+asymetrisches Kryptosystem, bei dem ein Sender mit Hilfe eines 
+geheimen Signaturschlüssels (dem private Schlüssel) zu einer 
+digitalen Nachricht einen Wert berechnet, der ebenfalls digitale 
+Signatur benannt wird. Dieser Wert ermöglicht es jedem, mit Hilfe 
+des öffentlichen Verifikationsschlüssels (den öffentlichen 
+Schlüssel) die nichtabstreitbare Urheberschaft und Integrität der 
+Nachricht zu prüfen. Um eine mit einem Signaturschlüssel 
+erstellte Signatur einer Person zuordnen zu können, muss der 
+zugehörige Verifikationsschlüssel dieser Person zweifelsfrei 
+zugeordnet sein.
+
+  Hybride Verschlüsselung 
+
+Hybride Verschlüsselung ist eine Kombination aus assymetrischer 
+Verschlüsselung und symmetrischer Verschlüsselung. Dabei wählt 
+der Sender zufälligen symmetrischen Schlüssel, der Session-Key 
+gennant wird. Mit diesem Session-Key werden die zu schützenden 
+Daten symmetrisch verschlüsselt. Anschließend wird der 
+Session-Key asymmetrisch mit dem öffentlichen Schlüssel des 
+Empfängers verschlüsselt. Dieses Vorgehen löst das 
+Schlüsselverteilungsproblem und erhält dabei den 
+Geschwindigkeitsvorteil der symmetrischen Verschlüsselung.
+
+[Gleitobjekt Tabelle:
+
++---------------------+--------------------------------+------------------------------+
+|                     | asymmetrische Verschlüsselung  | symmetrische Verschlüsselung |
++---------------------+--------------------------------+------------------------------+
++---------------------+--------------------------------+------------------------------+
+|     Effizienz       |            schnell             |           langsam            |
++---------------------+--------------------------------+------------------------------+
+| Schlüsellaustausch  |         problematisch          |           elegant            |
++---------------------+--------------------------------+------------------------------+
+
+
+[Tabelle 2.1:
+Vergleich asymmetrische/symmetrische Verschlüsselugn
+]
+]
+
+Wie die Obere Abbildung zeigt, Ist Symmetrische 
+Verschlüsselungsverfahren sind auch bei großen Datenmengen sehr 
+schnell, assymetrische dagegen sind sehr langsam , und sind dann 
+nur für kleine Datenmengen ( Wie Schlüssel ) geeignet. 
+Beim Schlüsselverteilung hat Symmetrische 
+Verschlüsselungsverfahren das Problem, dass sich die 
+Kommunikationspartner vor der Übermittlung der Nachricht auf 
+einen geheimen Schlüssel einigen müssen. Dazu muss ein sicherer 
+Kommunikationskanal benutzt werden, wie zum Beispiel ein Kurier. 
+Asymmetrische Verschlüsselungsverfahren dagegen lösen das Problem 
+sehr elegant, weil zum Verschlüsseln nur der öffentliche 
+Schlüssel gebraucht wird. Zur Übermittlung dieses Schlüssels 
+reicht ein authentifizierter Kanal aus. 
+Hybride Verschlüsselungsverfahren kombinieren die beiden 
+Verschlüsselungsverfahren so, dass ihre Vorteile erhalten 
+bleiben: 
+
+• Hybride Verschlüsselungsverfahren sind sehr schnell und eignen 
+  sich für große Datenmengen, weil die Daten mit dem 
+  symmetrischen Verfahren verschlüsselt werden und das 
+  asymmetrische Verfahren nur für den Sitzungsschlüssel verwendet 
+  wird.
+
+• Es muss vor dem Senden der Nachricht kein geheimer Schlüssel 
+  ausgetauscht werden, Kenntnis des öffentlichen Schlüssels des 
+  Empfängers reicht um zu verschlüsseln.
+
+  Public-Key-Infrastruktur (PKI)
+
+Public Key Infrakstruktur ist ein System, das digitale 
+Zertifikate ausstellen, verteilen und prüfen kann. Die innerhabl 
+einer PKI ausgestellten Zertifikate werden zur Absicherung 
+rechnergestützter Kommunikation verwendet. 
+Basis für Public-Key-Infrastruktur ist asymmetrisch Kryptosystem 
+und Hybride Verschlüsselung. mit Hilfe asymmetrische Kryptosystem 
+werden die Daten digital signiert und verschlüsselt. 
+
+2.2 Email 
+
+Autausch von elektronischen Daten per Email ist weit verbreitet. 
+Email-Dienste werden von eigenen Unternehmen oder auch von 
+Internet-Dienstleistung angeboten. Die versendung von Emails 
+durch Internet ist zunächst unverschlüsselt. Somit sind die 
+Inhalte relativ einfach auch für Dritte lesbar. 
+Die Indentitäten der Kommunikationspartner werden i.a mit den 
+Email-Adressen gleichgesetzt. Eine weitergehende Prüfung findet 
+nicht statt. Was Indentitätbetrug ist leicht zu erstellen, Damit 
+man die Indentität (Email-Adresse) von einer der 
+Kommunikationpartner fekt. Obwohl dieser Funktionalität um diese 
+Risiko zu schlagen in der meistens Email-Client vorgesehen ist 
+(Gmail), geschet die Email-Adressürberprüfung nicht automatisch. 
+Diese Aufgabe ist an Benutzer überlassen. 
+Ein Austausch über Firmengrenzen hinweg ist problemlos möglich. 
+Problematisch ist aber Austausch von kritischen Informationen. 
+
+eine im ersten Blick triviale Lösung was Austausch von sensiblen 
+elektronischen Daten angeht besteht darin diese Daten zu 
+verschlüsseln und die resultierende verschlüsselte Dokument per 
+Email an der Kommunikationspartner zu senden. Diese Lösung ist 
+solange ertragbar wenn die Teilnehmer (Sender und Empfänger) sich 
+mit Kryptographie bzw Kryptographiesoftware auskennen. 
+Begrenzungen an diese Technik sind unerheblich und unheimlich 
+viele : 
+
+• Diese Lösung setzt voraus dass der Kommunikationspartner sich 
+  auch mit der Kryptographie bzw. Kryptographiesoftware auskennt. 
+
+• Zusätzliche Softwareinstallation 
+
+• Schlüsselaustauschsproblematik. 
+
+• Infrakstrukturproblemetik.
+
+2.3 Web-upload<sec:Web-upload>
+
+Das Speichern von Dokumenten auf einem Internet-Server ist weit 
+verbreitet und weltweit von jedem Browser aus möglich. Eine 
+Installation zusätzlicher Software, oder gar die Öffnung 
+zusätzlicher Ports der Unternehmens-Firewall ist nicht notwendig. 
+Die Benutzer-Authentifizierung erfolgt i.d.R. per Lo- 
+gin/Password. Daten können im Internet mittels des 
+https-Protokolls verschlüsselt. schlüsselt übertragen wer- den. 
+Fälschlicherweise wird angenommen, dass die übertragenen 
+Dokumente dann auch beim Empfänger „sicher“ gespe- ichert sind. 
+Jedoch werden lediglich die Doku- mente auf dem Weg zum Server 
+mit SSL verschlüsselt. Danach liegen sie zunächst unverschlüsselt 
+vor. So werden von einem Server verschlüsselt übertragene Doku- 
+mente vom Browser entschlüsselt und im Klartext auf dem lokalen 
+PC gespeichert. Ebenso werden Dokumente, die vom Browser für die 
+Übertragung verschlüs- selt werden vom Server entschlüsselt und 
+liegen am Server unverschlüsselt vor. Somit besteht dieselbe 
+Problematik und auch derselbe Lösungsansatz wie bei Datei- 
+Servern. In Folge dessen sollten Dokumente, die per Browser auf 
+einen Datei-Server geladen werden, vom Client-PC verschlüsselt 
+wer- den. Die Dokumente müssen also vor dem Upload verschlüsselt 
+worden sein, oder aber der Browser führt die Verschlüsselung 
+durch. Eine Vorab- Verschlüsselung der Dateien hat den Nachteil, 
+dass das Dokumenten- und Schlüssel-Management vom Anwender 
+eigenverantwortlich durchgeführt wer- den muss. Dies ist i.a. den 
+Anwendern zu aufwendig. Folglich sollte die Verschlüsselung durch 
+den Browser quasi automatisch erfolgen. Dies wird aktuell nur 
+sehr selten durchgeführt, da die Verschlüsselungs-Software auch 
+vom Web-Server geladen werden müssen. Und es kann nicht 
+garantiert wer- den, dass die geladene Software nicht 
+Eindringlingen unbeabsichtigten Zugriff ermöglicht. In Folge 
+dessen werden Dokumente SSL-verschlüsselt zum Server gesen- det. 
+Die dort empfangenen, unverschlüsselten Dokumente wer- den sofort 
+verschlüs- selt und als Datei abgelegt. Hier bestehen jedoch fol- 
+gende Probleme: (1) Wie kommen die notwendigen Schlüssel zum 
+Server? (2) Ein Eindringling auf dem Server kann die 
+Klartext-Datei und/oder die Schlüssel mitlesen. Zusammenfassung 
+Ein Ansatz für ein sicheres web-upload ist bisher nicht bekannt.
+
+2.4 File Transfer Protocol (FTP) 
+
+Das File Transfer Protocol (Dateiübertragungsprotokoll) ist ein 
+in RFC 959 [5] spezifiziertes zustandbehaftetes Netzwerkprotokoll 
+zur Übertragung von Dateien. FTP läuft in der 
+Anwendungsschichtmodell. Es wird benutzt um Dateien von Server zu 
+Client herunterzuladen bzw. von Client zum Server hoch zu laden. 
+
+
+Eine wesentliche vorteilhafte Eigenschaft von FTP ist, dass die 
+meisten Betriebssysteme (Unix basierende zum Beispiel) werden mit 
+FTP-Client-und-Server vorinstalliert. Dadurch ist kein 
+zusätzliche Softwareinstallation nötig. 
+Es existieren zahlreiche robuste FTP-Clients von Terminal-Client 
+(mit Linux vorinstalliert) bis GUI-Client ( Filezilla ), welche 
+die auch als Mozilla-Firefox oder Chrome Addons benutzt werden 
+können.
+Mit dem Ziel, bessere Sicherheit zu gewährleisten, wurde SFTP 
+(SSH Transfer Protocol) implementiert. SFTP ist eine alternative 
+zum FTP. SFTP benutzt eine sichere Kanal mit Hilfe von SSH für 
+Dateitransfer.
+
+2.5 Cloud-Service 
+
+Cloud-Service hat sich in den letzten fünf Jahren wesentlich 
+verbreitet. Und war auf einer guten Weg bis zum NSA-Affäre sich 
+als Standard einzusetzen. Heute auch trotz die Spionageskandale, 
+wird Cloud-Service bei viele Endbenutzer sehr beliebt. Gerade bei 
+der Bereitstellung von sensiblen Dokumenten über die Cloud ist es 
+unumgänglich, auf Sicherheit und Schutz vor fremdem Eingriff zu 
+achten. Doch oft möchte man, einige Dateien mit einem 
+Geschäftpartner oder Kollegen austauschen und actet wenig auf 
+Sicherheit. Beliebte Cloud-Lösungen aus dem Privatbereich wie 
+Dropbox werden hierbei gerne verwendet. Die Richtlinien solcher 
+Cloud-Speicher entsprechen nicht dem deutschen Datenschutzrecht. 
+Einer der eventuelle gravierende Problem ist es dass die Daten 
+unverschlüsselt abgespeichert werden, Anders ausgedruckt, ein 
+Dritter benötigt nur die Benutzer-Credentials, um das Dokument 
+unverschlüsselt runter zu laden. Möchte man sein Dokument 
+verschlüsselt hoch laden, muss man sich selber darum kümmert, 
+dadurch entstehen die gleiche Problematiken wie beim Webupload[sec:Web-upload]
+ 
+
+2.6 PGP 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/pgp_screenshot.png>
+]
+
+[Abbildung 2.3:
+examplarische zertifikat 
+]
+]
+
+PGP [Zim95] [ASZ96] [Sta95] ist eine Daten-Ver- und 
+Entschlüsselung Computerprogramm, das kryptographische 
+Privatsphäre und Authentifizierung für die Datenkommunikation zur 
+Verfügung stellt. PGP wird oft zum Signieren und zur Ver-und 
+Entschlüsselung von Texten, E-Mails, Dateien und Verzeichnisse 
+verwendet, um die Sicherheit der E-Mail-Kommunikation zu erhöhen. 
+Es wurde von Phil Zimmermann im Jahr 1991 entwickelt.
+Im PGP-System wird für einen Benutzer ein Schlüsselpaar 
+(öffentlicher Schlüssel und privater Schlüssel) erzeugt. Dieses 
+Schlüsselpaar ist mit einer eindeutigen ID verbunden, die 
+normalerweise ein Name oder eine Email-Adresse ist. Die Schlüssel 
+werden in einem Schlüsselbund Datensatz gespeichert.Der Eintrag 
+eines öffentli- chen Schlüssels im Schlüsselbund besteht aus 
+einer ID, dem öffentlichen Schlüssel selbst und einem 
+Zeitstempel, der auf das Erstellungsdatum des Schlüsselpaars 
+referenziert. Öffentliche Schlüssel werden auf einem öffentlichen 
+Schlüsselring gespeichert, wohingegen private Schlüssel auf einem 
+privaten Schlüsselring gespeichert werden. Jeder Benutzer muss 
+einen öffentlichen und privaten Schlüsselring speichern und 
+verwalten[AR95][JF96]. Wenn Benutzer A eine gute Kopie des 
+öffentlichen Schlüssels von Benutzer B besitzt, z.B. eine Kopie, 
+deren er von der Integrität und Authentizität (keine Verfälschung 
+etc.) überzeugt ist, dann kann A diese Kopie unterschreiben und 
+an Benutzer C weitergeben. A wirkt somit als eine Mittelsperson 
+von B zu C. Der von A signierte Schlüssel wird als Schlüssel 
+Zertifikat bezeichnet. Jeder Benutzer muss im PGP-System 
+erklären, welchen Personen er oder sie als Mittelsperson vertraut 
+und muss den öffentlichen Schlüssel der Mittelsperson mit seinem 
+eigenen privaten Schlüssel signieren. Außerdem muss der Benutzer 
+die verschiedenen Vertrauensgrade angeben, welche er zu seinen 
+Mittelsperson hat. Eine Vertrauensbeziehung zu einer Person kann 
+in Graden als unbekannt, nicht vertrauenswürdig, geringfügig 
+vertrauenswürdig oder vollständig eingestuft, also klassifiziert 
+werden. Jeder Benutzer speichert seine vertrauten Informationen 
+oder Zertifikaten auf seinem in seinem PGP Konto. Abhängig vom 
+Vertrauensgrad zu einer Mittelsperson ist dem entsprechenden 
+Zertifikat im Schlüsselbund einen Gültigkeitsgrad zugewiesen. Er 
+kann den Schlüssel in diesem Zertifikat nur dann verwenden, wenn 
+der Gültigkeitsgrad hoch genug ist. Zum Beispiel kann ein 
+skeptischer Anwender zwei vollständige Unterschriften für einen 
+öffentlichen Schlüssel einfordern, um ihn als gültig anzusehen, 
+wohingegen ein wenig skeptischer Benutzer, nur eine vollständig 
+vertrauenswürdige Signatur oder zwei geringfügig 
+vertrauenswürdige Signaturen verlangen könnte. Es ist wichtig zu 
+beachten, dass Schlüsselringe und Vertrauensgrade es ermöglichen, 
+jedem Benutzer seine eigene Vertrauenspolitik zu gestalten. Diese 
+enge Vorstellung von Politik ist in PGP angebracht, denn es wurde 
+speziell entworfen, um sichere E-Mails für den Einzelnen 
+bereitzustellen. Die Unterschrift von A auf öffentlichen 
+Schlüssel von B nicht so interpretiert werden sollte, dass A der 
+persönliche Integrität von B vertraut. Die richtige 
+Interpretation ist eher, dass A glaubt, dass die Bindung der 
+Identität von B zum Schlüssel richtig ist. Darüber hinaus ist es 
+wichtig zu beachten, dass das Vertrauen nicht transitiv ist. Die 
+Tatsache, dass A dem B vollständig als Mittelsperson vertraut und 
+dass B vollständig C vertraut, bedeutet nicht automatisch, dass A 
+mit dem gleichen Grad C vertraut. Da PGP in der Popularität 
+gewachsen ist, ist ein dezentrales "Web of Trust“ entstanden. 
+Jedes Individuum ist verantwortlich für den Erwerb der 
+öffentlichen Schlüssel, die er braucht, und für die Zuordnung des 
+Vertrauensgrads zu den Mittelpersonen, von denen er sie bekommt. 
+Ähnlich muss jedes Individuum sein eigenes Schlüssel- paar 
+erstellen und seinen öffentlichen Schlüssel verbreiten. Sein 
+Ansatz lehnt folglich die Benutzung der offiziellen 
+Zertifizierungsstellen ab, welche die öffentlichen Schlüssel 
+eines Individuums unterschreiben. Damit handelt eine einzelne 
+Person als "Vertrauensserver"für die Benutzer von diesen 
+Schlüsseln. Ein Vorteil von PGP ist, dass jeder Benutzer 
+denjenigen vertrauen (öffentlichen Schlüssel signieren) kann, 
+denen er will. Außerdem bietet PGP die Möglichkeit, Gruppen zu 
+erzeugen und in dieser Gruppe verschlüsselte Nachricht oder 
+Dateien zwischen den Mitgliedern auszutauschen. Der erste 
+Nachteil von PGP ist, dass die Software auf dem lokalen Rechner 
+installiert werden muss und dort alle Schlüssel gespeichert 
+werden. Wie soll der Benutzer dann seinen Schlüssel in einem 
+anderen System oder in einer anderen IT-Infrastruktur benutzen. 
+Die Schlüssel können zwar exportiert und importiert werden, 
+jedoch führt dies zu einem erhöhten Aufwand. Ferner stellt sich 
+die Frage, wie der Benutzer es einem Vertrauten ermöglicht, seine 
+Schlüssel zu verwenden? Außerdem stößt die lokale Installation 
+der Software auf bestimmte Anforderungen.
+
+2.7 X.509
+
+Der X.509 [Ada99] [CDH + 05] Authentifizierungsframework 
+versucht, den gleichen Teil des Vertrauen-Management Problems wie 
+PGP zu lösen, nämlich die Notwendigkeit, eine entsprechend 
+zuverlässige vertrauenswürdige Kopie des öffentlichen Schlüssels 
+einer Person zu finden, mit der man kommunizieren will. Wie in 
+PGP, sind X.509-Zertifikate unterzeichnete Datensätze, welche die 
+Benutzer ID mit ihrem kryptographischen Schlüssel assoziieren. 
+X.509-Zertifikate enthalten weitere Informationen über 
+PGP-Zertifikate, wie zum Beispiel den Namen des verwendeten 
+Signatur-Verfahrens, um sie zu erstellen und das Zeitintervall, 
+in dem sie gültig sind.
+Aber ihr Hauptziel ist einfach die Bindung zwischen Benutzern zu 
+ihren Schlüsseln zu schaffen. Jedoch unterscheidet sich X.509 
+scharf von PGP im Grad der Zentralisierung der Informationen. In 
+PGP kann jeder öffentliche Schlüssel signieren und damit als 
+Mittelsperson handeln. Der X.509 Framework fordert dagegen, dass 
+jeder Benutzer seine Zertifikate von einer offiziellen 
+Zertifizierungsstelle (CA) erhalten muss. Wenn Benutzer A ein 
+Schlüsselpaar (öffentlicher Schlüssel , privater Schlüssel) 
+erstellt, muss er es und die Rest der erforderlichen 
+Informationen von einem oder mehreren CAS zertifizieren lassen 
+und die erhaltenen Zertifikate in einem offiziellen 
+Verzeichnisdienst registrieren. Wenn A später mit B sicher 
+kommunizieren will, erhält er ein Zertifikat von B aus dem 
+Verzeichnis-Server. Wenn A und B von der gleichen CA zertifiziert 
+wurden, kann nur der Verzeichnisserver B’s Zertifikat zu A 
+senden. A kann dann die Gültigkeit dieser Zertifikat mit dem 
+öffentlichen Schlüssel dieser gemeinsamen CA prüfen kann. Wenn A 
+und B nicht unmittelbar durch eine gemeinsame CA zertifiziert 
+werden, dann die Verzeichnisdienst müssen einen 
+Zertifizierung-Pfad von A nach B erstellen. Um diesen Pfad zu 
+verwenden, muss A den öffentlichen Schlüssel von der erste 
+Zertifizierungsstelle in dem Pfad kennen. Somit beruht X.509 
+Framework auf der Annahme, dass CAs zu einem globalen 
+Zertifizierungsstellen Baum-organisiert sind und dass alle 
+Benutzer, die von CAs mit einem gemeinsamen Vorfahren in diesem 
+globalen Baum unterzeichnet wurden[DWC03] [HPFS02] [CD03].
+Das Problem ist, dass der Benutzer nicht eine autonome Identität 
+einer weiteren Person prüfen kann, denn er ist vom öffentlichen 
+Schlüssel seiner CA abhängig. Außerdem vertraut er automatisch 
+alle Personen, denen die Öffentlichen Schlüssel durch die selbe 
+Zertifizierungsstelle signiert wurden oder durch einer anderen 
+vertrauten Zertifizierungsstelle. Dies stößt gegen einige 
+Anforderungen, die fordern, dass die Benutzer nur gewünschte 
+Personen vertrauen müssen. Darüber hinaus hat die NSA Affären 
+bewiesen, dass Zertifizierungsstelle verfälschte Zertifikate 
+erstellen können und somit werden verfälschte Identitäten 
+freigegeben.
+
+2.8 SPKI / SDSI
+
+SDSI [EFL + 99][RL96] [ST00] wurde von Ronald Nieten und Butler 
+Lampson konzipiert. Seine Entwicklung wurde durch die Komplexität 
+der herkömmlichen Public Key Infrastrukturen speziell die 
+Abhängigkeit auf den globalen Namensraum motiviert. SDSI ist eine 
+Public Key-Infrastruktur mit lokalen Namensraum. Dies macht es zu 
+einem dezentralen Sicherheitssystem. SPKI wurde von Carl Ellison 
+entwickelt und Andere. Es ist ein einfaches 
+Autorisierungs-System. Hier wird der öffentliche Schlüssel nicht 
+dazu genutzt, die Identität des Schlüsselbesitzers zu prüfen, 
+sondern direkt seine Berechtigung zu bestimmten Diensten zu 
+definieren. Die Vereinigung der beiden Projekte führt zum SPKI / 
+SDSI, ein System zur Autorisierung und Authentifizierung. das 
+SDSI lokalen Namensräume mit SPKI Autorisierung Systems 
+kombiniert. SPKI / SDSI ist eine vollständig verteilte Lösung. 
+Jeder Benutzer wird eine Zertifizierungsstelle und ist für die 
+Verwaltung von Zertifikaten selbst zuständig. In SPKI / SDSI 
+werden die Benutzer durch einen öffentlichen Schlüssel 
+identifiziert und der öffentliche Schlüssel ist einem lokalen 
+Benutzernamen Raum zugeordnet. Dieser Verein ist gültig lokal, 
+das heißt, die zugehörigen Namen sind nicht global eindeutig. 
+SPKI / SDSI erlaubt die Definition von Gruppen von Benutzern. 
+Hier werden die öffentlichen Schlüssel der Mitglieder einer 
+Gruppe des gleichen Namens zuge- ordnet. In SPKI / SDSI, gibt es 
+zwei Arten von Zertifikaten: Namenszertifikate und 
+Berechtigungszertifikate. Das Namenszertifikat bescheinigt, dass 
+ein Name in einem Namensraum eines Emittent gültig ist. Das 
+Berechtigungszertifikat gewährt den Res- sourcenzugriff eines 
+Benutzers. Namenszertifikate bestehen aus vier Bereichen 
+zusammen:Issuer(Emittenten), Iden- tifier( Identifizierter), 
+Subject (Subjekt) und validity specification (Gültigkeit Spezi- 
+fikation). Der Issuer ist derjenige, der das Zertifikat 
+unterzeichnet. Der Identifizierter ist ein Byte, Zeichenkette, 
+die einen Namen repräsentiert. Das Subject kann ein Name sein, 
+oder ein öffentlicher Schlüssel. Wenn das Subject ein Name ist, 
+ist es in lokalen Namenraum und der damit verbundene öffentliche 
+Schlüssel kann wieder- hergestellt werden. Schließlich Gültigkeit 
+Spezifikation ist eine Gültigkeitsbedin- gung des Zertifikats, es 
+könnte ein Gültigkeitsdatum oder eine Zugriffssteuerungs- liste 
+(ACL) sein. Berechtigungs Zertifikat besteht aus fünf Bereichen: 
+Issuer(Emittenten), subject(Subjekt), Delegation, Tag, und ihrer 
+Gültigkeit Spezifikation. Issuer und subject haben die gleiche 
+Funktion wie oben geschrieben. Jedoch kann das Subject eine 
+Gruppe von Nutzer sein. Das Feld Delegation zeigt an, dass das 
+Zertifikat auch zu anderen Sub- jekten übertragen werden könnte. 
+Tag gibt an, welche Berechtigungen empfangen wurden. Wie im Fall 
+der Namenszertifikate ist Gültigkeit Spezifikation eine Gültig- 
+keitsbedingung des Zertifikats [CEE + 01] [HM99]. Hier wird ein 
+kurzes Beispielszenario genannt: Der Dateisystemressource 
+Besitzer erzeugt zwei Berechtigungszertifikate. Ein Zertifikat 
+ist mit der erteilten Zulassung: lesen, schreiben und nicht 
+Delegation (RW: ND) zu D1 gegeben. Ein anderes Zerti- fikat ist 
+an D2 mit Genehmigung : lesen und Delegation (R: D) gegeben. In 
+der glei- chen Figur erzeugt D2 eine neue Zertifikat für D3 mit 
+Leserechten, aber Delegation nicht erlaubt (R: ND). Wenn D3 auf 
+das Dateisystem zugreifen muss, präsentiert er die Delegation 
+Kette (D2 R: D - -> D3 R: ND) zu dem System.
+Der Besitzer einer Datei will zum Beispiel den Zugriff auf die 
+Dateien an viel Benutzer freigeben, dafür muss er jeweils ein 
+Zertifikat mit den gewünschten Berechtigungen unterschreiben.
+
+Anforderungen<chap:Anforderungen>
+
+Bei der Anförderungsanalyse unterscheidet man zwischen 
+funktionalen und nichtfunktionalen Anforderungen. Während 
+funktionale Anforderungen den gewünschte Verhalten und die 
+Funktionalität vorgeben, beschreiben nicht- funktionale 
+Anforderungen Rahmenbedingungen wie Performance oder 
+Zuverlässigkeit.
+
+3.1 funktionale Anforderungen
+
+Funktionale Anforderungen
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/usecase/functionaleAnforderungen.plantuml>
+]
+
+[Abbildung 3.1:
+Funktionale Anforderungen Überblick
+]
+
+
+]
+
+  Administrator role
+
+• Der Administrator muss in der Lage sein, neue Benutzer im 
+  System hinzuzu- fügen und zu entfernen. 
+
+• Der Administrator darf nicht in der Lage sein Benutzer 
+  kritische Informationen zu modifizieren oder zu lesen.
+
+  Benutzer role
+
+• Der Benutzer kann eine Vertrauensbeziehung zu anderen Benutzern 
+  erstellen und sie wieder zurückziehen. 
+
+• Der Benutzer kann eine Gruppe erstellen und entfernen.
+
+• Der Benutzer kann vertraute Benutzer  Friend  in einer Gruppe 
+  hinzufügen
+
+• Der Benutzer kann den Zugriff auf seine Dateischlüssel an alle 
+  Mitglieder einer Gruppe freigeben und diese Freigabe auch 
+  wieder zurückziehen.
+
+  Registrierung und login
+
+• Beim Registrierung/Login Phase dürfen kein Password/Passphrase 
+  sowie in irgendeine Art zu Password/Passphrase korrespondierte 
+  Daten ins Netz gehen.
+
+  Server-Client Kommunikation 
+
+Die Verbindung zwischen  LocalServer  und  RemoteServer  sollte 
+zustandlos sein. Außerdem darf keine SSL Verbindung im Einsatz 
+kommen. 
+
+3.2 Nichtfunktionale Anforderungen 
+
+Nicht funktionale Anforderungen sind wiefolg in ISO/IEC 9126[4]
+
+3.2.1 Allgemeine nichtfunktionale Anforderungen
+
+• Kein Einsatz von HTTPS 
+
+• RemoteServer darf keine Chiffrierung/Dechiffrierung durchführen 
+
+• LocalServer soll von ein USB-Stick getart werden, und soll auch 
+  von dort aus im hintergrund laufen. 
+
+• Benutzerinteraktion erfolgt durch ein Browser sodass keine 
+  zusätzliche Software erforderlich ist.
+
+3.2.2 Wartbarkeit und Änderbarkeit
+
+Die resultierende Software dieser Arbeit, soll in Zukunft 
+gewartet, erweitert und geändert werden. Neu Features sind schon 
+festgelegt ( sollen aber in der jetzige Version nicht 
+implementiert werden )
+
+3.2.3 Portierbarkeit und Plattformunabhängigkeit
+
+Defakto ist der LocalServer portierbar, LocalServer läuft auf 
+USB-Stick . Localserver soll auch plattformsunabhängig sein. Was 
+RemoteServer angeht soll auch plattformunabhängig sein. Alle 
+Einstellungen des Remoteserver müssen sich durch externe 
+Konfigurationsdateien durchführen lassen.
+
+3.2.4 Daten-und Serverintegrität
+
+Der Benutzer soll in der Lage sein die Integrität von 
+RemoteServer zu prüfen und der auf der letzer abgespeicherte 
+Daten.
+
+Konzept
+
+4.1 Allgemein Architektur
+
+Das System Architektur wurde als eine Server-Client Anwendung 
+entworfen, LocalServer und RemoteServer, wobei der LocalServer 
+eine Überbrückungsrolle zwischen den Frontend (Webbrowser 
+Javascriptapplication) und RemoteServer spielt, LocalServer ist 
+vergleichbar mit ein Proxy. Alle 
+Chiffrierung-bzw-Dechiffrierungoperationen geschehen. 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/usecase/generalUsecase.plantuml>
+]
+
+[Abbildung 4.1:
+Allg. Architektur
+]
+
+
+]
+
+4.2 Authentifizierung
+
+Authenfizierung spielt systemweit eine bedeutende Rolle. Dabei 
+passieren alle notwendige Prüfung von [LocalServer], 
+[RemoteServer], [RemoteServer] integrität und natürlich 
+Verifizierung von Benutzer. Es durfte systemweit keine Einsatzt 
+von Zertifikat/SSL-Verbindung oder Aufbau eine zustandbehaft 
+Verbindung kommen, spricht die Kommunikationskanal ist unsicher. 
+Um Benutzercredentials von [LocalServer] auf [RemoteServer] zu 
+übermitteln unter Anhaltung von Spezifikation, wurde SRP [6] 
+(Secure Remote Password) eingesetzt.
+Beim Einsatz von SRP-Secure Remote Password Protocol lasst sich 
+auch einfach der gegenseitige Aunthenfizierung von [LokalServer] 
+und [Remote- Server] realisieren, diese geschehet auch beim 
+Authentifizierungsphase.
+SRP Protokoll ist ein Authentifizierung protokoll, dabei können 
+manche per-Sitzung zufällige generierte Werte als 
+Sitzungschlüssel verwendet werden (B). Das bestehende Problem 
+beim Einsatzt von dauerhafte Passwort wird durch SRP minimisiert, 
+indem keine Passwort-korrespondierte ( Hash, verschlüsselte 
+Passwort .... ) gepeichert wird, sondern ein „Verifier“. Gewinn 
+ein Eingreiffer die auf den Datenbank gepeichert „Verifier“ , 
+dann kann der nicht daraus die Benutzerpasswort wiederrechnen. 
+Ein gestohlener Verifier ist ebenso nicht ausreichend zür 
+Anmeldung, Weil das Passwort immer noch benötigt wird.
+Zur erfolgreiche Authentifizierung wird kein sensible Information 
+ausgetausch „Sniffing-Attack“ ist dann dabei hilflos. 
+
+[Gleitobjekt Abbildung:
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/localServer.plantuml>
+
+[Abbildung 4.2:
+Authenticationsablauf
+]
+
+
+]
+
+4.3 Kritische Daten Integrität
+
+4.4 Schlüsselaustausch
+
+Dokumentsschlüssel stehen nicht direct in Verbindung mit Benutzer 
+sondern mit der Gruppe. Wenn eine Gruppe kreiert wird, wird eine 
+Gruppeschlüssel erzeugt. Dieser Schlüssel wird mit öffentliche 
+Schlüssel der Gruppeverantwortlich verschlüsselt. Jeder Benutzer 
+der in der Gruppe eingeladen wird bekommt dann eine Kopie der 
+Gruppeschlüssel. Falls der zuvor eingeladenen Benutzer wieder 
+durch der Gruppeverantwortlich aus der Gruppe gelöscht wird, dann 
+wird auch eine die seiner Kopie der Gruppeschlüssel gelöscht 
+sowie der seine Verbindung zur Gruppe. 
+
+4.5 Server Integrität <sec:local_server_public_key>
+
+Beim eine sicherheitrelevante Anwendung ist es wichtig an jeder 
+Anwendungfälle an der Integrität der Softwareteile zu prüfen, 
+sowie auch von exportierte Daten. Neben der Authentifizierung von 
+Benutzer an sich, muss sich LocalServer an RemoteServer 
+authentifizieren sowie RemoteServer an LocalServer. 
+RemoteServerintegritätsprüfung gescheht beim der Allererste 
+Loginversuch, sowie beim jeder weiteren Request von LocalServer 
+zu RemoteServer.
+Dank SRP6-A Protokoll können LocalServer und RemoteServe sich 
+gegenseitig authentifizieren, und zwar an Dritte Vorgang von der 
+Protokoll. 
+Beim erfolgreichen Loginversuch wird ein Header  
+SERVER_PUBLIC_KEY  , die korrespondierte geheime Schlüssel muss 
+nicht zwanläufig geheim sein. An der LocalServer wird auch ein 
+Schlüsselpaare erzeugt und der Header  CLIENT_PUBLIC_KEY  wird 
+gesetzt. Diese weitere Massnahme verstärkt die Vertrauenbeziehung 
+die beim erste gegenseitige Authentifizierung von LocalServer und 
+RemoteServer etabliert wurde. LocalServer kann in weitere Request 
+von LocalServer dann immer prüfen anhand von mit LocalServer 
+private Schlüssel signierte Payload, die PayLoad authentifizieren 
+( MAC ), und dadurch auch sicherstellen dass der Request 
+tatsächlich von LocalServer kommt. 
+
+4.6 Web-Of-Trust ( Friends-Konzept ) 
+
+Das Konzept des Web of Trust wurde von Phil Zimmerman für sein 
+Programm „Pretty Good Privacy“ ( PGP ) entworfen, das 
+mittlerweile zu OpenPGP [ RFC 4880 ] weiterentwickelt wurde. Das 
+Konzept basiert nicht auf der Existenz einer Vertrauenswürdigen 
+Instanz, von der aus sich das Vertrauen automatisch transitiv 
+ausgebreitet, sondern überlässt die Vertrauensbildung den 
+Benutzern untereinander. Beim Einsatz dieses Konzept wird kein 
+Zertifikat wie in der Spezifikation [ XXX ] benötigt. Anstelle 
+von Zertifikate werden ehe Öffentliche Schlüsseln benutzt. Ein in 
+System System registrierte Benutzer bekommt eine Schlüsselpaare, 
+wobei der private Schlüssel mit seinem Secret-Key verschlüsselt 
+wird, und der öffentliche Schlüssel wird mit der private 
+Schlüssel signiert. Zusammengefasst werden die folgende 
+Informationen in der Datenbank gespeichert :
+
+1. Benutzer Credentials 
+
+2. Public Key 
+
+3. Hashwert von Public Key
+
+4. Public Key Signature
+
+5. Private Key (verschlüsselt mit Secret-Key) 
+
+6. Hashwert von Private Key
+
+Examplarische Vertrauenbeziehung zwischen Zwei Benutzer:
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/signature.png>
+]
+
+[Abbildung 4.3:
+Vertrauenbeziehung zwischen zwei Benutzer
+]
+
+
+]
+
+Unterschied zu PGP bzw. OpenPGP wird eine weniger komplexer 
+immerhin informative Daten abgepeichert zur Materialiesierung von 
+Vertrauenbeziehung zwischen zwei Benutzer. Eine Vergleich von die 
+beide Vertrauenbeziehungmaterialisierung zeigt der Abb. [untershied zu pgp-zertifikat]
+
+<untershied zu pgp-zertifikat>[Gleitobjekt Abbildung:
+
+
+
+[Abbildung 4.4:
+Unterschied zwischen PGP-Zertifikat und 
+Vertrauenbeziehungsmaterialsierung in Cryptone
+]
+
+
+]
+
+  Benutzer als Friend hinzufügen
+
+Sei Alice und Bob zwei Benutzer des Cryptone System. 
+
+Alice möchte Bob als Freund hinzufügen. Eine Friend-Beziehung 
+bzw. Vertrauenbeziehung zwischen Alice und Bob entsteht wenn das 
+Public-Key von Bob von Alice signiert wurde und das Public-Key 
+von Alice von Bob ebenso signiert wurde. 
+
+Die Benutzer die sich in System befinden können sich in eine 
+Freundschaftbeziehung befinden ( Friends ).
+Hat Alice Bob als „Friend“ hinzugefügt, so können weitere Freunde 
+von Alice Bob als Friend annehmen. Dadurch bildet sich eine Kette 
+von  Friends  [WEB-OF-TRUST]. Weitere ist die 
+Freundschaftbeziehung zwischen Benutzer ein Randbedingung damit A 
+beispielerweise B in eine Gruppe hinzufügen kannst, und mit B 
+dann auch Dokument durch von A gegründete Gruppe austauschen 
+kannst.
+Bei der Aufbau eine Vertrauenbeziehung ( Friend ) zwischen A und 
+B , wird der öffentliche Sclüssel B von A signiert. diese 
+Signature bildet materialisch den Vertrauenbeziehung zwischen A 
+und B. Diese Signature spielt nicht nur eine Rolle um der 
+Vertrauenbeziehung zwischen zwei Benutzer zu materialisieren, 
+sondern auch beim Überprüfung von RemoteServer Integrität.
+Log sich ein Benutzer ein und merkt dass seine Signature nicht 
+mehr stimmt, dann wurde der RemoteServer kompromitiert. 
+
+  Vertrauenbeziehung zurückziehen
+
+4.7 Übermittlung von Passphrase 
+
+Passphrase wird übers Handy durch RemoteServer an der LocalServer 
+weitergeleitet. Dank diese Massnahme wird eine Gefahr abgelöst, 
+und zwar das Gefahr dass ein KeyLogger auf der Computer 
+installiert ist. Aus diesem Grund ist es sinnvoll das Passphrase 
+durch eine andere Kanal zu übermittelt. Das ganze sollte keine 
+zusatzliche Softwareinstallation benötigen, spricht die 
+Übermittlung von Passphrase sollte per Browser geschehen, und 
+zwar ein Handybrowser.
+Wie in Abschnitt [sec:local_server_public_key] gesehen, wird beim 
+Start der LocalServer ein Schlüsselpaare erzeugt, der  
+CLIENT_PUBLIC_KEY  wird dann als Header gesetzt, und der geheime 
+Schlüssel bleibt an LocalServer. diese öffentliche frisch 
+generierte Schlüssel ist nicht mit der Benutzerschlüssel zu 
+verwechselt. Die öffentliche Schlüssel der als Header gesetzt 
+wurde und von daher systemweit zugreifbar ist kann an der Handy 
+geschickt wird, und von dort aus wird von der Benutzer eingegeben 
+Passphrase mit der  CLIENT_PUBLIC_KEY  verschlüsselt. die mit der 
+öffentliche Schlüssel verschlüsselte Passphrase gehe dann von 
+Handy zur LocalServer über RemoteServer.
+
+4.8 Gruppe 
+
+Gruppe in Code Dokumentation „Group“ ist eine wichtige Konzept in 
+Cryptoone-System. Gruppe ist das Konzept was Benutzer miteinander 
+verbindet zufolgedessen Dokument und Schlüssel. 
+Zu eine Gruppe gehört eine Schlüsselkey ( Symmetrische Schlüssel 
+) , abgekürzt GK, da diese Schlüssel eine kritische Information 
+ist, taucht der nicht unverschlüsselt in RemoteServer. Beim 
+Erstellen einer Gruppe beim einem Benutzer wird der KG mit der 
+öffentlichen Schlüssel der Benutzer verschlüsselt, zu einer 
+Gruppe gehört genau einer KG. 
+
+Eine Gruppe kann genau einen ( Private Gruppe PG ) , genau zwei ( 
+Eins-zu-Eins-Gruppe EZEG ) oder 1 bis mehrere Mitglieder ( 
+öffentliche Gruppe OG ) haben. 
+Der Gruppeverantwortlich kann jederzeit der Gruppe löschen, und 
+zwar ganz unabhängig von der Art der Gruppe.
+
+4.9 Dokumentaustausch
+
+  von private Gruppe zu öffentliche Gruppe 
+
+das Teilen eines Dokuments lässt sich in verschiedene Weise 
+durchführen. Ein Benutzer kann ein Dokument per Upload in seine 
+private Gruppe hochladen. Das Dokument bleibt in seine private 
+Gruppe solange bis der Benutzer die Entscheidung trifft das 
+Dokument mit eine andere Gruppe zu teilen. Ab dann gehört das 
+Dokument nicht mehr der Benutzer, dass heisst der kann das 
+Dokument nicht mehr zurückziehen, ausgeschlossen der Benutzer ist 
+der Gruppeverantwortlich der Gruppe, dann kann der wieder das 
+Dokument zurückziehen. Das Original des von neulich in eine 
+öffentliche Gruppe geteilte Dokuments bleibt aber im Benutzer 
+private Gruppe.
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/usecase/user_to_group_document_share.plantuml>
+]
+
+[Abbildung 4.5:
+Zwischen Benutzer und Group
+]
+
+
+]
+
+  zwischen zwei öffentliche Gruppe
+
+Ein Dokument der sich in eine öffentliche Gruppe befinden kann 
+mit einer anderen Gruppe geteilt werden, vorausgesetzt dass der 
+Gruppeverantwortlich auch in der zweite Gruppe Mitglied ist. 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/usecase/share_with_group.plantuml>
+]
+
+[Abbildung 4.6:
+Public Group zu Public Group
+]
+
+
+]
+
+Ablauf : 
+
+1. Dokument D in Gruppe A 
+
+2. Prüfen ob Benutzer U GV in Gruppe A 
+
+3. Prüfen ob GV , Gruppemitglieder in Gruppe B 
+
+4. authorizieren das Teil von Dokument D zwischen Gruppe A und B
+
+  Zwischen zwei Benutzer 
+
+Ein Benutzer A kann sich entscheiden ein Dokument D nur mit einer 
+Ihrer Freund B zu teilen. Ist der Benutzer B noch keiner Freund 
+von A, dann wird während dieser Vorgang B als Freund von A 
+vertraut gemacht ( Das heisst während dieser Vorgang der Benutzer 
+B öffentliche Schlüssel wird von Benutzer A signiert ). Eine 
+Gruppe wird dann erzeugt und das zu auszuteilenden Dokuments wird 
+in der neulich erzeugte Gruppe verwiesen. der Benutzer B muss 
+dann die Freundschaftanfrage von A bestätigen schliesslich darf 
+er auf Dokument D zugreiffen. 
+Wie auf der unterstehende Abbildung [fig:Benutzer-Benutzer-Dokumentsaustausch]
+ zu sehen ist, der Benutzer der den Vorgang auslöst wird dann als 
+Gruppeverantwortlich der zu erzeugende Gruppe markiert, in der 
+Fall Benutzer Alice. Alice kann jeder Zeit die Gruppe wieder 
+löschen oder Bob von der Gruppe entfernen. 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/usecase/user_to_user_document_share.plantuml>
+]
+
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/activity/user_user_document_share.plantuml>
+]
+
+[Abbildung 4.7:
+<fig:Benutzer-Benutzer-Dokumentsaustausch>Benutzer-Benutzer 
+Dokumentsaustausch
+]
+]
+
+4.10 REST (Representational State Transfer)
+
+Es darf systemweit HTTPS nicht im Einsatz kommen und/oder Einsatz 
+von zustand behaftete Verbindung ( Session ). Ein sehr geschickte 
+Konzept um diese Anforderung zu erfüllen ist der REST-Konzept. 
+Der REST-Konzept besagt dass eine Anfrage alle Informationen zur 
+vollständige Bearbeitung der Anfrage beinhalten muss. die Anfrage 
+benutzen explizite Http Methode ( GET, POST , PUT, DELETE ), und 
+die auf der Server zur Verfügung gestellte Resource haben eine 
+Dokument ähnliche Organisation. 
+Beim Einsatz von REST wird kein  Query String  benutzt, was als 
+Vorteil hat, eine mögliche Sicherheitlücke zu vermeiden. Eine 
+weitere Vorteil ist die Überschaubarkeit der Software.
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/dotty/routes.dot>
+]
+
+[Abbildung 4.8:
+Routes/Aktionen
+]
+
+
+]
+
+4.11 Integrität der transportierte kritischen Daten ( JWS )
+
+Beim sicherheitrelevante Software ist es wichtig die Daten zu 
+verschlüsseln mit einem konsequent Schlüssellänge, und die 
+Integrität diese Schlüssel gewährleistet. Diese gilt und ist 
+ausreichend solange die Daten und Schlüssel nicht über Internet 
+beispielerweise transportiert werden. Wenn die Daten über eine 
+unsichere Neztwerk übermittelt werden muss eine zusätzlicher 
+Integritätmechanismus im Spiel kommen, um sicherzustellen dass 
+eine Daten die von A zu B beispielerweise transitiert, unterwegs 
+nicht verfälscht wurde.
+Als Lösungsatzt wird eine End-to-End Integritätsprüfung 
+eingesetzt mithilfe der JWS ( JSON Web Signature ) spezifiziert 
+in RFC 7515[3]
+JWS basiert auf JSON Web Encryption (JWE)[2] um kryptographische 
+Operationen durchzuführen. JWE implementiert die meistens 
+bekannte standard kryptographie Algorithmus, wie RSA, AES ....
+JWS benutzt die von JWE implementiert RSA um Daten zu signiert. 
+Bei Einsatzt von JWS muss Acht darauf gegeben dass die JSON-Daten 
+richtig formatiert wurde. 
+
+examplarische Header:
+
+[Gleitobjekt Abbildung:
+
++----+-------------+-----------------------------------------+
+|    | Headername  |              Beschreibung               |
++----+-------------+-----------------------------------------+
++----+-------------+-----------------------------------------+
+| 1  |    alg      | Name der kryptograpschische Algorithmus |
++----+-------------+-----------------------------------------+
+| 2  |    hash     |                hash Wert                |
++----+-------------+-----------------------------------------+
+| 3  |    typ      |                Mediatyp                 |
++----+-------------+-----------------------------------------+
+| 4  |    jwk      |              JSON Web Key               |
++----+-------------+-----------------------------------------+
+
+
+[Abbildung 4.9:
+JWS Header
+]
+]
+
+JWS stellen weitere Headers zur Verfügung, aber die werden Anhand 
+diese Arbeit nicht benutzt. Die Header werden gesetzt bei der 
+letze Filter. In diese Signature-Filter, wird die von Controller 
+bereitgestellte Inhalt dessen Hash berechnet und gegebenfalls 
+auch signiert (nicht alle Daten mussen signiert werden). 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/usecase/filter_signature.plantuml>
+]
+
+[Abbildung 4.10:
+JWS Filter
+]
+
+
+]
+
+4.12 JSON Web Token (JWT) 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/jwt.png>
+]
+
+[Abbildung 4.11:
+Json Web Token
+]
+
+
+]
+
+JWT ist eine JSON-basierte Standard um Authentication-Objekt zu 
+repräsentieren. Eine Anwendungsfall ist beispielerweise 
+OpenID-Authentication. Es erlaubt einem Benutzer, der sich bei 
+seinem sog. AuthenticationProvider einmal mit der Benutzername 
+und Passwort angemeldet hat, sich nur mit Hilfe erhaltene JSON 
+Web Token (JWT) ohne Benutzername und Passwort bei allen das 
+System unterstützenden Websites anzumelden. wobei man sich gegen 
+ein Authenticationserver A authentifizieren kann, den erhaltene 
+Token wird dann später anhand eine Anfrage an ResourceServer 
+benutzt. 
+Token werden an Stelle von Benutzername-Passwort-Kombinationen 
+verwendet, um auf Ressourcen zuzugreifen. Ein Token ist meist 
+eine Zeichenkette aus Buchstaben und Zahlen; Sonderzeichen können 
+auch verwendet werden. Um es vor Missbrauch zu schützen soll es 
+schwer zu erraten und passend zu einer Sicherheitsabfrage sein. 
+OAuth unterscheidet zwischen Abfrage-Token und Zugangs-Token.
+
+4.13 Szenarien
+
+Hier werden einige Szenarien dargestellt und dazu sequentielle 
+Diagramms, um die Interaktionen zwischen die einzelne Komponente 
+zu verdeutlichen. 
+
+  Benutzer registrieren
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/registration.plantuml>
+]
+
+[Abbildung 4.12:
+Benutzer registration sequence diagramm
+]
+]
+
+  Benutzer einlogen
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/login.plantuml>
+]
+
+[Abbildung 4.13:
+Benutzer einloggen sequence diagramm
+]
+]
+
+  Freund hinzufuegen
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/trust_a_new_user.plantuml>
+]
+
+[Abbildung 4.14:
+Freund hinzufuegen sequence diagram
+]
+]
+
+• Beispielszenario: Alice will Bob als Freund markieren 
+Alice forder die Benutzerlisteseite auf, clicke auf den „+“ ( 
+  Plus )-zeichen, um Bob als Freund hinzuzufügen.
+
+• Alice ist gefordert, Ihre Passphrase einzugeben (Falls 
+  Passphrase noch nicht vorhanden ist) 
+
+• Der LocalServer lädt Bobs öffentlichen Schlüssel von 
+  RemoteServer herunter.
+
+• LocalServer lädt Alice private Schlüssel vom RemoteServer 
+  herunter (Falls noch nicht vorhanden) und entschlüsselt der 
+  letze mit Alice Passphrase
+
+• Bobs öffentlichen Schlüssel wird mit Alices privaten Schlüssel 
+  signiert. 
+
+• Aus Signature, Alices und Bobs Id wird ein „Friend“ Objekt 
+  erzeugt. Dies entspricht die Vertrauenbeziehung zwischen Alice 
+  und Bob. Diese Objekt wird an RemoteServer geschickt und dort 
+  gespeichert.
+
+  Freund revoke
+
+Alice will Bob von seine Vertrauenbeziehungen rausnehmen
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/revoke_signature.plantuml>
+][Abbildung 4.15:
+Freund revoke sequence diagramm
+]
+]
+
+• Alice fordert die Freundelisteseite auf, clicke auf den „-“ ( 
+  Minus )-zeichen, um Bob als Freund hinzuzufügen.
+
+• Alice ist dann gefordert, die Aktion zu bestätigen
+
+• Bestätigt Alice die Aktion, dann wird die revoke-Request über 
+  LocalServer zu RemoteServer weitergeleitet
+
+• Auf der RemoteServer wird die Eintrag was die Freundschaft 
+  zwischen Alice und Bob gelöscht
+
+• Alice wird über die erfolgreiche Zerstörung einer 
+  Vertrauenbeziehung mit Bob informiert.
+
+  Datei hochladen
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/upload_file.plantuml>
+]
+
+[Abbildung 4.16:
+Datei hochladen sequence diagramm
+]
+]
+
+• Alice will eine Datei hochladen
+
+• Alice wählt sich eine Gruppe aus wo sie mitglied ist
+
+• Alice clickt auf Datei Upload und wählt sich Datei aus, die sie 
+  gerne in die vorherige ausgewählte Gruppe hinzüfügen will
+
+• Alice Clickt auf dem Button „upload“ ( hochladen )
+
+• Die Anfrage wird an LocalServer weitergeleitet
+
+• Alice Passphrase wird gefördert falls noch nicht im LocalServer 
+  vorhanden ist
+
+• Alices Schlüsselpaare wird von RemoteServer runtergeladen sowie 
+  von Alice ausgewählte Gruppe Secret Key (SGK)
+
+• Alice Kopie von SGK wird mit Alice private Schlüssel 
+  dechiffriert
+
+• mit der dechiffriert SGK wird die Datei verschlüsselt. 
+  Dechiffriert SGK wird bald als die Verschlüsselung von Datei 
+  erfolgt hat von LocalServer zerstört.
+
+• Schliesslich wird die chiffriert Datei zu RemoteServer 
+  übermittelt und ein Eintrag von Typ Dokuments auf der Datenbank 
+  gespeichert.
+
+  Datei runterladen
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/download_file_from_group.plantuml>
+]
+
+[Abbildung 4.17:
+Datei runterladen sequence diagramm
+]
+]
+
+• Alice befindet sich in einer Gruppe und will ein Datei 
+  runterladen. Also Alice muss mitglied von der Gruppe sein
+
+• Alice click auf „download“ (herunterladen), Die Anfrage wird 
+  dann an LocalServer weitergeleitet
+
+• Alice Passphrase wird gefördert falls noch nicht im LocalServer 
+  vorhanden ist
+
+• Alices Schlüsselpaare wird von RemoteServer runtergeladen sowie 
+  von Alice ausgewählte Gruppe Secret Key (SGK)
+
+• Alice Kopie von SGK wird mit Alice private Schlüssel 
+  dechiffriert
+
+• LocalServer lädt von RemoteServer der geförderte Datei runter.
+
+• Datei wird mit dechiffrierte SGK entschlüsselt. 
+
+  Neue Gruppe erzeugen
+
+Alice will eine neue Gruppe anlegen
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/sequence/new_group.plantuml>
+]
+
+[Abbildung 4.18:
+Neue Gruppe erzeugen sequence diagramm
+]
+]
+
+• Alice klickt auf eine neue Gruppe an und gibt den Name der 
+  neuen Gruppe im ersheinte Pop-up
+
+• LocalServer lädt Alice öffentliche und private Schlüssel 
+  runter.
+
+• Alice wird gefordert, Ihre Passphrase einzugeben (Falls noch 
+  nicht vorhanden)
+
+• Es wird eine symmetrische Schlüssel (SGK) 
+
+• SGK wird mit Alice öffentliche Schlüssel verschlüsselt. 
+
+• SGK wird mit Alice private Schlüssel signiert. 
+
+• Nach die vorherige Vorgang, werden ein Gruppe Objekt und SymKey 
+  Object erzeugt. Die beide Objekte werden von LokalServer zu 
+  RemoteServer geschickt.
+
+Implementierung und Evalierung
+
+Bei diese Abschnitt geht es um die konkrete Implementierung von 
+der verschiedenen Softwareteils, nämmlich : 
+
+• LocalServer 
+
+• RemoteServer 
+
+• CryptUtils 
+
+• Frontend 
+
+• Inbetriebnahme-programm
+
+Es wird als erste eine Unterkapitel über die wesentliche 
+Technologien die für die Anfertigung des Projektes benötigt 
+wurde, gefolgt von deren Beschreibung. Insbesondere wird Wert auf 
+die Funktionalität von die Framework gelegt, die eine bedeutende 
+Role in der Implementierung haben, und die Gewährleistung von 
+relevante Sicherheitmechanismen zur Erfüllung die vorgegebene 
+Anförderungen.
+
+5.1 Überblick auf die Technologie
+
+
++---------------+----------------------+---------------------------+------------+
+|               | Programmiersprache   |  Technologie/Framework    | Buildtools |
++---------------+----------------------+---------------------------+------------+
++---------------+----------------------+---------------------------+------------+
+|  CryptUtils   |        JAVA          |        JCE, Guava         |   Maven    |
++---------------+----------------------+---------------------------+------------+
+| RemoteServer  |        JAVA          | Spring, Hibernate, Guava  |   Maven    |
++---------------+----------------------+---------------------------+------------+
+| LocalServer   |        JAVA          |      Spring, Guava        |   Maven    |
++---------------+----------------------+---------------------------+------------+
+|   Frontend    | JavaScript/HTML/CSS  |        AngularJS          |  GruntJS   |
++---------------+----------------------+---------------------------+------------+
+
+
+5.2 Allgemein Designentscheidungen
+
+5.2.1 JSON-Format
+
+Systemweit wird JSON-Format bevorzugt um die Daten zwischen die 
+verschiedene Softwarekomponente zu transpotieren. Explizit 
+ausgedruckt, heisst es dass alle High-end Funktionen bzw. die 
+Funktion die durch eine eine Softwarekomponent zur aussenwelt 
+verfügbar gemacht wurden exportieren Daten in JSON-Format. Diese 
+Entscheidung lasst sich bei der Interoperabilität gründen, sowie 
+auch Kriterien wie Einheitlichkeit von Softwareschnittstellen, 
+was bei der Weiterentwicklung von grossen Bedeutung ist. Durch 
+den Einsatz von JSON als Export-Format wird beispielerweise das 
+Ersetzen von Softwarekomponent einfach. Beim Einsatz von JSON 
+wurde die von Google entwickelte GSON Bibliothek benutzt.
+
+5.2.2 UTF-8 und Base64
+
+5.2.3 HTTP Headers
+
+Headers sind mächtige Werkzeuge wenn es zum Internet kommt, und 
+wichtiger noch im Bereich Security von Webbasierte Anwendungen. 
+Bei der Entwurf von dieser Arbeit, wurde die Entscheidung 
+getroffen soviel wie möglich auf die Standard zu halten, 
+insbesondere bei sicherheitrelevante Bereiche. Die richtige 
+Einstellung/Konfiguration von manche Headers tragen wesentlich 
+bei, um der Sicherheitgrad eine Webanwendung zu erhöhen. Es wird 
+nochmal über Headers die Rede sein, bei alle Softwareteil wo sie 
+gesetzt bzw. geprüft werden ( LocalServer, RemoteServer, Frontend 
+), aber hier ist schon mal wichtig darüber zu erwähnen und eine 
+gesamte Überblick über die Headers die Systemweit eingesetzt 
+werden.
+
+[Gleitobjekt Tabelle:
+
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|       Headername         |       Wert         | gesetzt bei   |               Laufzeit                |    |
++--------------------------+--------------------+---------------+---------------------------------------+----+
++--------------------------+--------------------+---------------+---------------------------------------+----+
+| Content-Security-Policy  | script-src 'self'  | LocalServer   |     Erste Request an LocalServer      | 1  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|      Authorization       |        SRP         | LocalServer   |         Erste Login Request           | 2  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|    WWW-Authenticate      |        SRP         | LocalServer   |         Erste Login Request           | 3  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|          realm           |       realm        | LocalServer   |         Erste Login Request           | 4  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|     hash-algorithm       |      SHA256        | LocalServer   |         Erste Login Request           | 5  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|      X-XSRF-TOKEN        |       ====         | LocalServer   |     Erste Request an LocalServer      | 6  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|       AUTH-TOKEN         |       ====         | RemoteServer  | Nach erfolgreichen Authentifizierung  | 7  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|       EXPIRES-IN         |       ====         | RemoteServer  | Nach erfolgreichen Authentifizierung  | 8  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|    Client-Public-Key     |       ====         | LocalServer   |         Erste Login Request           | 9  |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|    Server-Public-Key     |       ====         | RemoteServer  |         Erste Login Request           | 10 |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|           typ            |        JWT         | RemoteServer  |       Nach erfolgreichen Login        | 11 |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+|           alg            |       RS512        | RemoteServer  |       Nach erfolgreichen Login        | 12 |
++--------------------------+--------------------+---------------+---------------------------------------+----+
+
+
+[Tabelle 5.1:
+Headers 
+]
+]
+
+• (1) Content-Security-Policy spiel eine bedeutende Rolle um 
+  XSS-Attack zu vermeiden. mit dem Wert script-src 'self' weist 
+  die Header hin, dass alle JavaScript source Datei nur von 
+  Server geladen werden dürfen. In unsere Fall vom LocalServer.
+
+• (2) (3) (4) und (5) Informieren den Webbrowser über dem 
+  Authentication Algorithmus bzw. dem Hash-Algorithmus, der 
+  eingesetzt wird.
+
+• (6)Wichtige Header gegen XSRF-Attacke (Cross Site Request 
+  Forgery)[Fußnote:
+XSRF : Manipulation von Parametern, so dass im Browser Skriptcode 
+ausgeführt wird; häufig auch synonym zu HTML-Injection verwendet[8]
+]
+
+5.3 Frontend
+
+In diesem Kapitel handelt es sich um der Clientoberfläche in Form 
+eine Webapplication, die der Endbenutzer auf irgendeinem Rechner 
+der über eine Webbrowser verfügt aufrufen kann. Hier ist noch mal 
+zu erinnern, dass eine der wichtige Anforderung von dieser Arbeit 
+war das der Software so konzipiert wird, dass es kein zusätzliche 
+Softwareinstallation benötigt wird. Das Webapplication wurde in 
+Form eine sog. Single Page Application, wie bereits erwärnt, 
+handelt es sich um eine Technik Webseite zu entwerfen, so dass 
+die Bedinung von Webapplication ähnlich ist wie von Benutzer 
+schon bekannt Computersprogramm. Neben der Usability und 
+Portierungsargumente kommt auch die strenge Haltung von wichtigen 
+Softwarearchiktekture und Regeln die mit Einsatz von AngularJS 
+verbunden sind, nämmlich Separation of Concern und MVVM . 
+Ausserdem ermöglicht angular eine wesentliche Reduzierung von 
+Request an Server, dass hat zur Folge dass der  Man-in-the-middle 
+ ehe wenige Material bekommt um eine  Offline-attacke  
+dürchzuführen. 
+
+  AngularJS und Security
+
+An der Webbrowser wird vorwiegend Angularjs eingesetzt. Was 
+Sicherheit angeht, werden nämmlich den Angular Speicher 
+strategie,  cookies  , die über den angular-service einsetzbar 
+ist. 
+
+[Gleitobjekt Abbildung:
+      
+
+var options = 
+
+{
+
+ 	secure : true
+
+};
+
+
+
+function refresh_storage(){
+
+        var d = new Date( Auth.getHeader( EXPIRES_TOKEN ) );
+
+        var n = d.toUTCString().toString();
+
+        options.expires = n;
+
+}
+
+<code:angular-cookie>[Abbildung 5.1:
+Angular: Cookie Konfigurierung
+]
+]
+
+Was path und domain angeht wurden die Default Werte gelassen, und 
+zwar Cookie steht zur Verfügung für aktuelle Pfad und alle 
+untergeordnete Pfäder bzw. Cookie steht zur Verfügung nur für die 
+Application domain. Was hier konfiguriert wurde war den Parameter 
+secure mit den wert true und expires mit eine Date Instance in 
+Form eine Zeichenkette, der konfigurierte die Lebensdauer der 
+Cookies. Zusammengefasst darf nur der aktuelle Angular 
+Application auf der Cookies zugreifen, und der Lebensdauer von 
+der Cookie wird von Angular managiert. in der Abbildung [code:angular-cookie]
+ wird die in Cookie gespeicherte Daten nach Sechs Minute 
+zerstört,infolgedessen der Benutzer automatisch ausgeloggt wird. 
+die Ablaufzeit wird von der Server bestimmt und über der Header „
+EXPIRES_IN“ zur LocalServer bzw. zur Angular Applikation 
+übermittelt.
+
+5.3.1 Ausstatung von Routes
+
+Die unterstehende Grafik repräsentiert die mögliche Aktionen, die 
+den Be- nutzer mithilfe der Webbrowser auslösen kann. Es lass 
+sich dadurch nochmal eine graphische abstrahierende Darstellung 
+von funktionale Anforderungen darstellen.
+
+[Umflossenes Gleitobjekt Abbildung:
+[Abbildung 5.2:
+Routes-Übersicht
+]
+]
+
+5.4 allgemeine Implementierung Entscheidung von Local-und 
+  Remoteserver
+
+Beide LocalServer und Remoteserver wurde in Java mithilfe der 
+Framework Spring programmiert. Spring ist eine allgemeine Zweck 
+Framework um Desktop- sowie Internetbasierte Anwendungen zu 
+implementieren. Folgedessen ist Spring meistens eng mit Internet 
+bezogene Context verbunden, was das Testen von Software behindert 
+oder sogar nicht möglich macht. 
+
+5.5 LocalServer
+
+LocalServer wurde konzipierte um in ein USB-Stick laufähig zu 
+sein, und zwar ganz unerterschieden von Betriebsystemart[Fußnote:
+Jetzige Stand von LocalServer wurde auf Linux basierte 
+Betriebsystem und Window Betriebsystem erfolgreich getestet.
+] . Das Ziel wurde erreicht indem dass LocalServer mit Java 
+programmiert wurde. Das Programm an sich und eine lauffähige JVM 
+liegen dann in der USB Stick. 
+Auch wenn LocalServer mit einem Plattform unabhängige 
+Programmiersprache implementiert wurde, musste nochmal dass 
+Programm rücksichtvoll konfiguriert werden, damit beispielerweise 
+Der LocalServer nicht auf ein Port zuweisen den schon für ein 
+andere Zweck auf der Benutzerrechner belegt wurde. 
+
+
+  Konfigurationsdatei
+
+[Gleitobjekt Abbildung:
+[
+app:
+
+name: CryptLocal
+
+description: CryptoLocal Server
+
+server:
+
+port: 0
+
+multipart:
+
+maxFileSize: 128KB
+
+maxRequestSize: 128KB
+
+remote:
+
+url: http://localhost:8080
+
+users: /api/users
+
+document: /api/documents
+
+groups: /api/groups
+
+friends: /api/friends
+
+login:
+
+challenge: /session/login/challenge
+]
+
+[Abbildung 5.3:
+Konfigurationsdatei 
+]
+]<sub:konfiguration_localserver>
+
+Abbildung [sub:konfiguration_localserver] zeigt eine 
+examplarische Spring boot projekt konfiguration wie es in den 
+Projekt eingesetzt wurde. Spring-Boot übernimmt die Verwaltung 
+von Konfigurationdatei und sorgt zur Verbindung von in der 
+Konfigurationsdatei eingetragene Wert und dessen Verweis in 
+Java-code, oder auch zur Bestimmung der Context. in der oben 
+bennante konfigurationdatei wird zum Beispiel der Wert Port zu 0 
+gesetzt, was dafür sorg dass LocalServer immer eine beim 
+Clientrechner nicht verwendete Port benutzt. Beim RemoteServer 
+muss dieser Wert jedoch immer fest sein. Weitere werden in 
+Konfigurationdatei Werte wie Schlüssellänge, Servermessage un 
+Datenbankverbindungsinformationen festgelegt. Es ist anzudeuten 
+dass die Konfigurationswert von RemoteServer modifiziert sein 
+können um etwa die Datenbankverbindungsinformationen auf der 
+RemoteServer anzupassen. Diese modifikation gescheht durch 
+modifizierung der Konfigurationsdatei oder per 
+commandline-argument beim aufrufen von  java  zur Compilierung.
+
+
+$ java -jar -Dspring.profiles.active=production 
+CryptoRemote-0.0.1-SNAPSHOT.jar 
+
+  Model View Controller
+
+Model view controller (MVC, englisch für Modell Präsentation 
+Steuerung) ist ein Muster zur Struktierung von 
+Software-Entwicklung in die drei Einheiten Datenmodell, 
+Präsentation und Programmsteuerung. Ziel des Musters ist ein 
+flexibler Programmentwurf, der eine spätere Änderung oder 
+Erweiterung erleichtert und eine Wiederverwendbarkeit. 
+
+Diese Entwurf ist ein Kern-feature von Spring-boot, die 
+verschiedene Erleichterung bereitstellt für eine einfache 
+Implementierung von Software nach MVC Modell. Diese 
+Erleichterungen sind zum Beispiel Annotations wie „
+@RestController“ „@Service“ oder auch „@Component“. 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/MVC.svg>
+]
+
+[Abbildung 5.4:
+MVC-Muster
+]
+]
+
+Der Controller (mit RestController oder Controller Annotation 
+vorgesehen) ist mit Applicationlogic (mit Service Annotation 
+vorgesehen) verkoppelt. Controller-einheit stellt auch die 
+Resources zur Ausserwelt zur Verfügung. 
+
+  Fehlerbehandlung und Benutzerrückmeldung
+
+Fehlerbehandlung ist der Kern ein Softwaresystem. Implizite 
+Anforderungen beim Entwurf eines Software ist immer eine 
+sinnvolle Rückmeldung an Benutzer ( Aktion erfolgreich bzw. nicht 
+erfolgreich ). Die Gründe für eine nicht erfolgreiche Aktion 
+könnten an viele Stelle sein: 
+
+• Falsche Request
+
+• momentane nicht ansprechbare Resource
+
+• Fehler im Code
+
+Je nach Fehlerart bzw. Meldungsart, ist es wichtig den Benutzer 
+ein gewisse Feedback zu geben und schliesslich den Fehler 
+behandeln können oder dokumentiert für eine nachtragliche 
+Verbesserung des Softwares
+Anhand dieser Arbeit wurde folgende Http-Status code benutzt :
+
+[Gleitobjekt Abbildung:
+
++----+--------------+-----------------------+--------------+
+|    | Status-code  |   Kurzbeschreibung    | Beschreibung |
++----+--------------+-----------------------+--------------+
++----+--------------+-----------------------+--------------+
+| 1  |     200      |          OK           |              |
++----+--------------+-----------------------+--------------+
+| 2  |     201      |       CREATED         |              |
++----+--------------+-----------------------+--------------+
+| 3  |     202      |       DELETED         |              |
++----+--------------+-----------------------+--------------+
+| 4  |    204       |      No Content       |              |
++----+--------------+-----------------------+--------------+
+| 5  |     401      | Error Authentication  |              |
++----+--------------+-----------------------+--------------+
+| 6  |     403      |      Forbidden        |              |
++----+--------------+-----------------------+--------------+
+| 7  |     405      |      Not allow        |              |
++----+--------------+-----------------------+--------------+
+| 8  |     400      |        ERROR          |              |
++----+--------------+-----------------------+--------------+
+
+[Abbildung 5.5:
+Http-Status code. RFC2616[1] 
+]
+]
+
+Mit Hilfe von Angular Http Interceptor wurde ein Logik 
+implementiert, die die Status-code von Http Response filtert, und 
+jenach status code eine zugehörige Rückmeldung im Browser 
+anzeigt. 
+Sollte ein Fehler Code auftauchen, dann wird automatische eine 
+Antwort mit Status-Code 500 an Browser geschickt. Diese 
+Sachverhalten ist aber nicht gewünscht, da es Benutzer und/oder 
+ein eventueller Angreifer darüber informiert dass beispielerweise 
+ein NullPointer Exception in Code aufgetaucht wurde. Dies kann 
+der Angreifer benutzen um das System zu hacken. RemoteServer und 
+LocalServer haben ein Filter, der die Anwort an Client filtert 
+und 500 Status code durch 400 Status code ersetzt, weitere wird 
+die verbose Nachricht was die Fehlerquelle beschreibt durch eine 
+weniger informative Message ersetzt. Alle Code Fehler, 
+materialisiert durch 500 Status Code werden dokumentiert, in Log 
+Datenbank und Log-Datei, ein Email mit genau Beschreibung des 
+Fehlers wird zur Admin geschickt jedes mal das solche Fehler 
+auftauchen. 
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/src/pu/activity/user_error.plantuml>
+]
+
+[Abbildung 5.6:
+Status-Code Filter
+]
+
+
+]
+
+  Caching
+
+Um häufigere Http-Anfrage an RemoteServer zu vermeiden, wurde 
+eine Caching-Strategie im LocalServer und Angular 
+Frontend-Application entworfen. Eine Vorteil von Caching ist es 
+die Overhead zu vermeiden. Und eventuele ein Dritter der die 
+Kommunikation abhört, nicht durch häufige Anfrage mit Infos 
+füttert. Caching spielt auch eine beteundente Rolle bei 
+Skalierung von Software und führt dass die Software mehr 
+Fehlertorant wird. Caching erbringt mehr Leistung durch eine 
+Verringerung der durchschnittlichen Latenzzeit von einer einer 
+Reihe von Interaktion und erhöht die benutzerwahrgenommene 
+Leistung. 
+
+[Gleitobjekt Tabelle:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/cacheConfig.png>
+]
+
+[Tabelle 5.2:
+Caching configuration
+]
+
+
+]
+
+Weitere wird Caching benutzt um Session Daten wie zum Beispiel 
+chiffriert Passphrase zu speichern. Dadürch wird vermeidet dass 
+Benutzer immer wieder seine Passphrase eingeben muss und 
+eventuelle Keylogger-attacke vermeidet. 
+
+  Datenbank Schema
+
+Das unterstehende Abbildung zeigt die Datenbankschema. Dabei ist 
+zu beachten dass alle als kritischen bzw. sensiblen Informationen 
+mit zwei wichtige Einträge vorgesehen sind und zwar : „hash“ und „
+signature“. Wie vorher erwarnt, sind diese Einträge wichtig für 
+die Integritätüberprüfung von Daten.
+
+[Gleitobjekt Abbildung:
+[
+<Grafikdatei: /home/batie/Downloads/documentations/bachelor/images/relationships.real.large.png>
+]
+
+[Abbildung 5.7:
+Datenbank schema
+]
+]
+
+Datenbankschema beschreibung : 
+
+  Users: Im Schemas Users wird die Benutzerinformationen 
+  gespeichert
+
+  SrpCredentials: In dieser Tabelle werden Benutzerinformations 
+  bezuglich SRP-A, aus Sicherheitgründe wurde diese Informationen 
+  vom Users Schema entkoppelt. 
+
+  Friends: Friends ist die Materialsierung von eine 
+  Vertrauenbeziehung zwischen zwei Benutzer. stellt die 
+  Vertrauensbeziehung zwischen dem Benutzer dar. Sobald ein 
+  Benutzer den öffentlichen Schlüssel eines anderen Benutzers 
+  signiert, wird eine Zeile in dieser Tabelle eingefügt, wobei 
+  die signority_id und user_id die Id der vertrauenden und des 
+  Vertrauten sind.
+
+  Roles: Benutzer Roles, die sind festgelegt, wert für eine Role 
+  könnten : „Admin“ oder „User“ sein. Es ist zu beachten dass pro 
+  Deployment nur ein einziger Benutzer als Admin markiert werden 
+  darf. Weitere Benutzer werden alle als „user“ markiert. 
+
+  Session: Es handelt sich um die Materialsierung einer aktiven 
+  Session
+
+  UsersGroups: Überbrücke zwischen die Tabelle User und Group 
+
+  Groups: Hier werden die Informationen relativ zu den Gruppen 
+  gespeichert. Hier ist der Attribute SGK ist der gemeinsam 
+  Gruppe Schlüssel und ist mit dem öffentlichen Schlüssel des 
+  Administrators oder Gründer dieser Gruppe verschlüsselt.
+
+  Documents: beinhaltet Dokumenteninformationen. 
+
+  SymKeys: Symmetrischen Schlüssel
+
+  PairKeys: Assymetrischen Schlüssel.
+
+5.6 Evaluierung 
+
+In diesemen Abschnitt wird überprüft, in wieweit die Umsetzung 
+des Lösungskonzeptes die geforderten Anforderungen an der 
+Cryptone-System erfüllt. Zusätzlich wird auf Maßnahmen 
+eingegangen, um Korrektheit des Dienstes sicherzustellen. 
+
+5.6.1 Anforderungserfüllung
+
+Die Anforderungen aus Kapitel [chap:Anforderungen] wurde in in 
+funktionale und nichtfunktionale Anforderungen unterteilt. 
+Während die funktionalen Anforderungen durch konkrete 
+softwaretechnische Einheit (Klasse, Module) werden konnten, 
+beziehen sich die nichtfunktionalen Anforderungen auf 
+Eigenschaften des Gesamtsystems, die sich mnicht an einzeilnen 
+Modulen festmachen lassen. 
+Um die funktionalen Anforderungen mit den Modulen abzugleichen, 
+mussten die einzelnen Anforderungen teilweise in kleinere 
+Schritte unterteilt werden, um Software besser zu gestalten. 
+Die Kernfunktionalität von Software ( Authentication, 
+Registrierung, Dateiaustauschoptionen ...) wurde durch eine 
+Unit-Test Programm getestet. [Siehe Anhang für die Ergebnisse], 
+sowie auch nichtfunktionale Anforderungen wie :
+
+• Funktionparameter Integrität prüfung ( Null-Object , nicht 
+  genug Argument, falsche Argument, Argumenttyp Prüfung ) 
+
+• Allgemein Laufzeit Fehler ( Zum beispiel 
+  Cryptographie-Algorithmus nicht Verfügbar ) 
+
+  Nicht funktionale Anforderungen : Portabilität
+
+RemoteServer und LocalServer sollte portable sein. 
+
+[Gleitobjekt Abbildung:
+
++---------------+--------------------+----------------+--------------------+
+|               | Nach Kompilierung  | Betriebsystem  |    Laufumgebung    |
++---------------+--------------------+----------------+--------------------+
++---------------+--------------------+----------------+--------------------+
+| LocalServer   |        JAR         |  unabhängig    |        JRE         |
++---------------+--------------------+----------------+--------------------+
+| RemoteServer  |        WAR         |  unabhängig    | Servlet Container  |
++---------------+--------------------+----------------+--------------------+
+|  FrontenApp   |     JS, HTML       |  unabhängig    |     Webbrowser     |
++---------------+--------------------+----------------+--------------------+
+
+
+[Abbildung 5.8:
+Cryptone Compilierung
+]
+
+
+]
+
+die obere Tabelle, zeigt die Verschiede Softwareteile des 
+Projekts, Alle Softwareteil können ganz unabhängig von 
+Betriebsystem zur Laufen gebracht werden.Obwohl Die 
+Softwareteilen betriebsystem-webbrowser bzw. laufumgebungsoftware 
+unabhängig sind, müssen sie eventuelle angepasst oder zusätzliche 
+Software wie Browser (Internet Explorer hat eine renomierte 
+Compatibiltät-Problem mit den aktuellten Internet Standard) 
+installiert werden, aber keinerlei wird eine Softwareänderung 
+benötigt. 
+
+Stand des Tests: 
+
+• LocalServer läuft auf eine USB-Stick : diese USB-Stick ist mit 
+  Java Runtime Environment (JRE) (64 und 32 Bit) vorgesehen, 
+  sowie Windows JRE (64 Bits), und eine skript ( bash für Linux 
+  System und bat für Window), schliesslich das LocalServer 
+  Software an sich. LocalServer wurde erfolgreich auf Ubuntu 
+  15.10 wily 64 Bits und Windows 7 64 Bits getestet. 
+
+• RemoteServer wurde erfolgreich unter Ubuntu 15.10 wily 64 Bits, 
+  mit Apache Tomcat 8.x getestet
+
+• FrontendApp wurde erfolgreich unter Ubuntu 15.10 wily 64 Bits 
+  und Windows 7 64 Bits mit Webbrowser Google Chrome und Mozilla 
+  Firefox erfolgreich getestet.
+
+  Nicht funktionale Anforderungen : Usability
+
+Trotz die Komplexität des Projektes wurde die CryptoSystem-Client 
+User-Freundlich wie möglich entworfen. Die Interaktion gescheht 
+durch eine Webseite. Die mögliche Aktionen („sign-in“, „sign-up“, 
+„upload“, „download“, „share“, „add-friend“ ), Drag-and-Drop sind 
+üblich und von Benutzer aus andere Webseite bekannt. Fakt ist 
+dass Zielbenutzer von Cryptone-System sind mit diese Aktionen 
+schon gewöhnt. Weitere alle Komplexe Logik passiert im 
+LocalServer und der Endbenutzer kriegt nichts mit von dieser 
+Logik. 
+LocalServer kümmert sich auch selbst darum eine freie nicht 
+verwendete Port zu belegen und starte auch die Webseite 
+(Loginseite von LocalServer). 
+Was von Benutzer verlangt ist sein USB-Stick anzuschliessen und 
+auf Start-Skript (BAT für Window und BASH für Linux) zu starten. 
+
+  Nicht funktionale Anforderungen : Functionality und 
+  Maintainability
+
+• Interoperability und Compliance, LocalServer und RemoteServer 
+  sind nach REST-Full Standard entwickelt wurde. Überall Daten 
+  die produziert werden sind in JSON-Format. LocalServer oder 
+  RemoteServer können getausch werden oder in eine andere 
+  Programmiersprache programmiert solange die Ersatzsoftware die 
+  REST-Spezifikation erfüllt und auf schon definiert Resource mit 
+  definierten Methoden zugreifft. 
+
+Zusammenfassung und Ausblick
+
+6.1 Zusammenfassung
+
+KryptoOne-System ist ein Internetbasierte Dokumentverwaltung 
+(Dokumentaustausch, Dokumentablagerung .. ) konzipiert mit eine 
+intuitive Benutzer Interaktion durch Webbrowser und mit dem Ziel 
+kryptographische Komplexität zu abstrahieren, das heisst so gut 
+wie keiner Kryptographierelevante Aufgabe an Benutzer zu 
+überlassen, unterschied zu andere Cloud-Service werden die Datei 
+verschlüsselt bevor sie hochgeladen werden. KryptoOne-System 
+verwaltet auch die Benutzer und fügt das Konzept von 
+Vertrauenbeziehung in Dateiaustausch. Ferner wird die 
+Sicherstärke an Unternehmen, die das Software benutzt überlassen. 
+Das heisst ein Unternehmen ist nicht durch geschränkte 
+Sicherheitgrad von andere Anbieter gezwungen. 
+Die bisherige Lösung diese Problems sah ein grosses Aufwand für 
+Endbenutzer vor. Benutzer sollte sich selber darum kümmert 
+Schlüssel zu erzeugen, Schlüssel managieren und Schlüssel an 
+Kommunikationspartner übergeben. Die entscheidente Nachteile 
+dabei waren der Aufwand von die vorher beschriebene Prozess, die 
+Annahme dass die Benutzer sich mit Kryptographie auskennen, Die 
+Schlüsselverteilungproblematik und schliesslich Installation von 
+neuer Software. 
+Zu Beginn der Arbeit wurden die Probleme der bisherigen 
+eingesetze Lösung genauer beleuchtet und die Motivation für eine 
+Komplexität-transparent Cryptosoftware mit spezifizierte 
+Anforderungen abgeleitet. Anschlißend wurden die Ziele der Arbeit 
+ausgearbeitet.
+Im theoritischen Teil wurde auf die für Umsetzung des 
+CryptoOne-System benötigten Grundlagen eingegangen. Zuerst wurden 
+die heutigen sichere kryptographische Standard und wichtige 
+Begriffe erläutert. Die Begrenzungen von diese Standard wurde auf 
+Licht gebracht. Im Anschluss daran wurde auf die Zusammenarbeit 
+von diese Standard, um Grenze diese Standard zu überschreiten, 
+mit dem Ziel die Sicherheitgrad der entworfenen Lösung zu 
+erhöhen, wie zum Beispiel Hybrid-Verschlüsselung aus RSA und AES 
+um Perfomance zu erhöhen. 
+Der praktische Teil dieser Arbeit wurde in vier Teile gegliedert: 
+Anforderunganalyse, Erstellung eines Lösungskonzeptes, Umsetzung 
+und Bewertung des umgesetzten Lösungskonzeptes. 
+
+Durch die Anforderungssanalyse wurden die konkreten Anforderungen 
+an CryptoOne-System herausgearbeitet, dabei wurde sowohl 
+funktionale als auch nichtfunktionale Anforderungen 
+berücksichtigt. 
+
+[Programmlisting 1: Application.java
+package de.app;
+import de.security.*;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.Filter;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
+@SpringBootApplication
+@EnableScheduling
+@Controller
+public class Application extends SpringBootServletInitializer{
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Application.class);
+    }
+
+	// Match everything without a suffix (so not a static resource)
+	@RequestMapping(value = "/{[path:[^\\.]*}")
+	public String redirect() {
+		// Forward to home page so that route is preserved.
+		return "forward:/";
+	}
+	
+	@RequestMapping(value = "/free")
+	@ResponseBody
+	public Map<String, Object> foo() {
+		// Forward to home page so that route is preserved.
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("content", "authenticate");
+		return model;
+	}
+
+	
+//	@Override
+//	public void onStartup(ServletContext servletContext) throws ServletException {
+//		//servletContext.getSessionCookieConfig().
+//		//servletContext.addFilter(filterName, filterClass)
+//		servletContext.setInitParameter("filter", "");
+//		super.onStartup(servletContext);
+//	}
+	
+	@Configuration
+	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+		public SecurityConfiguration() {
+			super(false);
+		}
+		
+		@Override
+		public void configure(WebSecurity web) throws Exception {
+          web.ignoring().antMatchers("/free", "/session/**", "/error");
+		}
+
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.httpBasic().and().authorizeRequests()
+			.antMatchers("/index.html", "/", "/login", "/message", "/home", "/free", "/session/**")
+			.permitAll().anyRequest().authenticated().and().csrf().disable()
+			.addFilterBefore( authProcessingFilter( this.authenticationManager(), this.tokenUtils()), UsernamePasswordAuthenticationFilter.class)
+            .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint())
+            .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and().anonymous();
+		}
+
+		private Filter authProcessingFilter( AuthenticationManager authManager, TokenUtils tokenUtils ) {
+            return new AuthFilter( authManager, tokenUtils );
+		}
+
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.authenticationProvider(tokenAuthenticationProvider());
+        }
+
+        @Bean
+        public AuthenticationProvider tokenAuthenticationProvider() {
+            return new AuthProvider();
+        }
+        
+        @Bean 
+        public TokenUtils tokenUtils(){
+        	return new TokenUtils();
+        }
+
+        @Bean
+        public AuthenticationEntryPoint unauthorizedEntryPoint() {
+            return (request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        }
+
+	}
+	
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(Application.class);
+//	}	
+	
+	public static void main( String[] args ) {
+		SpringApplication.run(Application.class, args);	
+		Application.makeUploadDir();
+	}
+	
+	public static void makeUploadDir(){
+		File file = new File("uploads");
+		
+		if( !file.exists()){
+			if( file.mkdir()){
+				System.out.println("Make upload dir");
+			}
+			else{
+				System.out.println("Upload dir already exists");
+			}
+		}
+	}
+}
+
+]
+
+6.2 Ausblick
+
+
+
+
+
+[LaTeX-Befehl: nomenclature] [LaTeX-Befehl: nomenclature][LaTeX-Befehl: nomenclature]
+ [LaTeX-Befehl: nomenclature][LaTeX-Befehl: nomenclature]
+
+
+
+
+
+Literaturverzeichnis
+
+[1] IEFT, "Hypertext Transfer Protocol -- HTTP/1.1" (2016).
+
+[2] IEFT, "JSON Web Encryption (JWE)" (2016).
+
+[3] IEFT, "JSON Web Signature (JWS)" (2016).
+
+[4] ISO/IEC, "Information technology - Software Product Evaluation - Quality characteristics and guidelines for their use" (2016).
+
+[5] J. Postel, "FILE TRANSFERT PROTOCOL (FTP)" (2016).
+
+[6] T. Wu, "The SRP Authentication and Key Exchange System" (2016).
+
+[7] duden, "das Passwort" (2016).
+
+[8] BSI: Bundesamt für Sicherheit in der Informationstechnik, "Sicherheit von Webanwendungen, Maßnahmenkatalog und Best Practices" (2016), 104--108.
+
+
+

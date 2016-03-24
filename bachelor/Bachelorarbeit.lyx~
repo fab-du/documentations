@@ -1755,10 +1755,11 @@ key "RFC959"
 
 \end_inset
 
- spezifiertes zustandsbehaftetes Netzwerkprotokoll zur Übertragung von Dateien.
- FTP läuft in der Anwendungsschichtmodel.
+ spezifiziertes zustandbehaftetes Netzwerkprotokoll zur Übertragung von
+ Dateien.
+ FTP läuft in der Anwendungsschichtmodell.
  Es wird benutzt um Dateien von Server zu Client herunterzuladen bzw.
- von Client zum Server hochzuladen.
+ von Client zum Server hoch zu laden.
  
 \begin_inset Newline newline
 \end_inset
@@ -1768,23 +1769,23 @@ key "RFC959"
 
 \begin_layout Standard
 Eine wesentliche vorteilhafte Eigenschaft von FTP ist, dass die meisten
- Betriebsystem (Unix basierende zum Beispiel) werden mit FTP-Client-und-Server
+ Betriebssysteme (Unix basierende zum Beispiel) werden mit FTP-Client-und-Server
  vorinstalliert.
  Dadurch ist kein zusätzliche Softwareinstallation nötig.
  
 \begin_inset Newline newline
 \end_inset
 
-Es existiert zahlreichende robuste FTP-Clients von Terminal-Client (mit
- linux vorinstalliert) bis GUI-Client ( Filezilla ), welche die auch als
- Mozilla-Firefox oder Chrome Addons benutzt werden können.
+Es existieren zahlreiche robuste FTP-Clients von Terminal-Client (mit Linux
+ vorinstalliert) bis GUI-Client ( Filezilla ), welche die auch als Mozilla-Firef
+ox oder Chrome Addons benutzt werden können.
 \begin_inset Newline newline
 \end_inset
 
 Mit dem Ziel, bessere Sicherheit zu gewährleisten, wurde SFTP (SSH Transfer
  Protocol) implementiert.
  SFTP ist eine alternative zum FTP.
- SFTP benutzt eine sichere Kanal mit hilfe von SSH für Dateitransfer.
+ SFTP benutzt eine sichere Kanal mit Hilfe von SSH für Dateitransfer.
 \end_layout
 
 \begin_layout Section
@@ -1792,10 +1793,10 @@ Cloud-Service
 \end_layout
 
 \begin_layout Standard
-Cloud-Service hat sich in der letzen 5 Jahre wesentlich verbreitet.
+Cloud-Service hat sich in den letzten fünf Jahren wesentlich verbreitet.
  Und war auf einer guten Weg bis zum NSA-Affäre sich als Standard einzusetzen.
- Heute auch trotz die Spionnageskandale, wird Cloud-Service bei viele Endbenutze
-r sehr beliebt.
+ Heute auch trotz die Spionageskandale, wird Cloud-Service bei viele Endbenutzer
+ sehr beliebt.
  Gerade bei der Bereitstellung von sensiblen Dokumenten über die Cloud ist
  es unumgänglich, auf Sicherheit und Schutz vor fremdem Eingriff zu achten.
  Doch oft möchte man, einige Dateien mit einem Geschäftpartner oder Kollegen
@@ -1805,9 +1806,9 @@ r sehr beliebt.
  Die Richtlinien solcher Cloud-Speicher entsprechen nicht dem deutschen
  Datenschutzrecht.
  Einer der eventuelle gravierende Problem ist es dass die Daten unverschlüsselt
- abgespeichert werden, Anders ausgedruckt, ein Dritter benötigt nür den
- Benutzer Credential um das Dokument unverschlüsselt runterzuladen.
- Möchte man sein Dokument verschlüsselt hochladen, muss man sich selber
+ abgespeichert werden, Anders ausgedruckt, ein Dritter benötigt nur die
+ Benutzer-Credentials, um das Dokument unverschlüsselt runter zu laden.
+ Möchte man sein Dokument verschlüsselt hoch laden, muss man sich selber
  darum kümmert, dadurch entstehen die gleiche Problematiken wie beim Webupload
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1875,77 +1876,80 @@ examplarische zertifikat
 \end_layout
 
 \begin_layout Standard
-PGP [Zim95] [ASZ96] [Sta95] ist eine Datenver- und Entschlüsselung Computer-
- programm, das kryptographische Privatsphäre und Authentifizierung für die
- Daten- kommunikation zur Verfügung stellt.
+PGP [Zim95] [ASZ96] [Sta95] ist eine Daten-Ver- und Entschlüsselung Computerprog
+ramm, das kryptographische Privatsphäre und Authentifizierung für die Datenkommu
+nikation zur Verfügung stellt.
  PGP wird oft zum Signieren und zur Ver-und Entschlüsselung von Texten,
  E-Mails, Dateien und Verzeichnisse verwendet, um die Sicherheit der E-Mail-Komm
 unikation zu erhöhen.
- Es wurde von Phil Zimmer- mann im Jahr 1991 entwickelt.
+ Es wurde von Phil Zimmermann im Jahr 1991 entwickelt.
 \begin_inset Newline newline
 \end_inset
 
 Im PGP-System wird für einen Benutzer ein Schlüsselpaar (öffentlicher Schlüssel
  und privater Schlüssel) erzeugt.
  Dieses Schlüsselpaar ist mit einer eindeutigen ID verbunden, die normalerweise
- ein Name oder eine E-mailadresse ist.
+ ein Name oder eine Email-Adresse ist.
  Die Schlüssel werden in einem Schlüsselbund Datensatz gespeichert.Der Eintrag
  eines öffentli- chen Schlüssels im Schlüsselbund besteht aus einer ID,
  dem öffentlichen Schlüssel selbst und einem Zeitstempel, der auf das Erstellung
-sdatum des Schlüsselpaars refe- renziert.
- Öffentliche Schlüssel werden auf einem öffentlichen Schlüsselring gespei-
- chert, wohingegen private Schlüssel auf einem privaten Schlüsselring gespeicher
-t werden.
- Jeder Benutzer muss einen öffentlichen und privaten Schlüsselring spei-
- chern und verwalten[AR95][JF96].
+sdatum des Schlüsselpaars referenziert.
+ Öffentliche Schlüssel werden auf einem öffentlichen Schlüsselring gespeichert,
+ wohingegen private Schlüssel auf einem privaten Schlüsselring gespeichert
+ werden.
+ Jeder Benutzer muss einen öffentlichen und privaten Schlüsselring speichern
+ und verwalten[AR95][JF96].
  Wenn Benutzer A eine gute Kopie des öffentlichen Schlüssels von Benutzer
- B be- sitzt, z.B.
- eine Kopie, deren er von der Integrität und Authentizität (keine Verfäl-
- schung etc.) überzeugt ist, dann kann A diese Kopie unterschreiben und an
- Benut- zer C weitergeben.
+ B besitzt, z.B.
+ eine Kopie, deren er von der Integrität und Authentizität (keine Verfälschung
+ etc.) überzeugt ist, dann kann A diese Kopie unterschreiben und an Benutzer
+ C weitergeben.
  A wirkt somit als eine Mittelsperson von B zu C.
  Der von A signierte Schlüssel wird als Schlüssel Zertifikat bezeichnet.
  Jeder Benutzer muss im PGP-System erklären, welchen Personen er oder sie
  als Mittelsperson vertraut und muss den öffentlichen Schlüssel der Mittelsperso
 n mit seinem eigenen privaten Schlüssel signieren.
- Außerdem muss der Benutzer die verschiedenen Vertrauens- grade angeben,
- welche er zu seinen Mittelspersonen hat.
+ Außerdem muss der Benutzer die verschiedenen Vertrauensgrade angeben, welche
+ er zu seinen Mittelsperson hat.
  Eine Vertrauensbeziehung zu einer Person kann in Graden als unbekannt,
  nicht vertrauenswürdig, geringfügig vertrauenswürdig oder vollständig eingestuf
 t, also klassifiziert werden.
- Jeder Benut- zer speichert seine vertrauten Informationen oder Zertifikaten
+ Jeder Benutzer speichert seine vertrauten Informationen oder Zertifikaten
  auf seinem in seinem PGP Konto.
- Abhängig vom Vertrauensgrad zu einer Mittelsperson ist dem entspre- chenden
- Zertifikat im Schlüsselbund einen Gültigkeitgrad zugewiesen.
+ Abhängig vom Vertrauensgrad zu einer Mittelsperson ist dem entsprechenden
+ Zertifikat im Schlüsselbund einen Gültigkeitsgrad zugewiesen.
  Er kann den Schlüssel in diesem Zertifikat nur dann verwenden, wenn der
- Gültigkeitgrad hoch genug ist.
- Zum Beispiel kann ein skeptischer Anwender zwei vollständige Unter- schriften
+ Gültigkeitsgrad hoch genug ist.
+ Zum Beispiel kann ein skeptischer Anwender zwei vollständige Unterschriften
  für einen öffentlichen Schlüssel einfordern, um ihn als gültig anzusehen,
  wohingegen ein wenig skeptischer Benutzer, nur eine vollständig vertrauenswürdi
-- ge Signatur oder zwei geringfügig vertrauenswürdige Signaturen verlangen
+ge Signatur oder zwei geringfügig vertrauenswürdige Signaturen verlangen
  könnte.
  Es ist wichtig zu beachten, dass Schlüsselringe und Vertrauensgrade es
- ermögli- chen, jedem Benutzer seine eigene Vertrauenspolitik zu gestalten.
- Diese enge Vor- stellung von Politik ist in PGP angebracht, denn es wurde
+ ermöglichen, jedem Benutzer seine eigene Vertrauenspolitik zu gestalten.
+ Diese enge Vorstellung von Politik ist in PGP angebracht, denn es wurde
  speziell entworfen, um sichere E-Mails für den Einzelnen bereitzustellen.
  Die Unterschrift von A auf öffentlichen Schlüssel von B nicht so interpretiert
- wer- den sollte, dass A der persönliche Integrität von B vertraut.
+ werden sollte, dass A der persönliche Integrität von B vertraut.
  Die richtige Interpretation ist eher, dass A glaubt, dass die Bindung der
  Identität von B zum Schlüssel richtig ist.
- Darüber hinaus ist es wichtig zu beachten, dass das Vertrauen nicht tran-
- sitiv ist.
+ Darüber hinaus ist es wichtig zu beachten, dass das Vertrauen nicht transitiv
+ ist.
  Die Tatsache, dass A dem B vollständig als Mittelsperson vertraut und dass
  B vollständig C vertraut, bedeutet nicht automatisch, dass A mit dem gleichen
  Grad C vertraut.
- Da PGP in der Popularität gewachsen ist, ist ein dezentrales "Web of Trustëntst
-an- den.
+ Da PGP in der Popularität gewachsen ist, ist ein dezentrales "Web of Trust
+\begin_inset Quotes grd
+\end_inset
+
+ entstanden.
  Jedes Individuum ist verantwortlich für den Erwerb der öffentlichen Schlüssel,
- die er braucht, und für die Zuordnung des Vertrauensgrads zu den Mittelspersone
-n, von denen er sie bekommt.
+ die er braucht, und für die Zuordnung des Vertrauensgrads zu den Mittelpersonen
+, von denen er sie bekommt.
  Ähnlich muss jedes Individuum sein eigenes Schlüssel- paar erstellen und
  seinen öffentlichen Schlüssel verbreiten.
- Sein Ansatz lehnt folg- lich die Benutzung der offiziellen Zertifizierungsstell
-en ab, welche die öffentlichen Schlüssel eines Individuums unterschreiben.
+ Sein Ansatz lehnt folglich die Benutzung der offiziellen Zertifizierungsstellen
+ ab, welche die öffentlichen Schlüssel eines Individuums unterschreiben.
  Damit handelt eine einzelne Person als "Vertrauensserver"für die Benutzer
  von diesen Schlüsseln.
  Ein Vorteil von PGP ist, dass jeder Benutzer denjenigen vertrauen (öffentlichen
@@ -1953,10 +1957,10 @@ en ab, welche die öffentlichen Schlüssel eines Individuums unterschreiben.
  Außerdem bietet PGP die Möglichkeit, Gruppen zu erzeugen und in dieser
  Gruppe verschlüsselte Nachricht oder Dateien zwischen den Mitgliedern auszutaus
 chen.
- Der erste Nachteil von PGP ist, dass die Software auf dem lokalen Rech-
- ner installiert werden muss und dort alle Schlüssel gespeichert werden.
+ Der erste Nachteil von PGP ist, dass die Software auf dem lokalen Rechner
+ installiert werden muss und dort alle Schlüssel gespeichert werden.
  Wie soll der Benutzer dann seinen Schlüssel in einem anderen System oder
- in einer ande- ren IT-Infrastruktur benutzen.
+ in einer anderen IT-Infrastruktur benutzen.
  Die Schlüssel können zwar exportiert und importiert werden, jedoch führt
  dies zu einem erhöhten Aufwand.
  Ferner stellt sich die Frage, wie der Benutzer es einem Vertrauten ermöglicht,
@@ -1969,60 +1973,58 @@ X.509
 \end_layout
 
 \begin_layout Standard
-Der X.509 [Ada99] [CDH + 05] Authentifizierungsframework versucht, den glei-
- chen Teil des Trust Management Problems wie PGP zu lösen, nämlich die Not-
- wendigkeit, eine entsprechend zuverlässige vertrauenswürdige Kopie des
- öffentli- chen Schlüssels einer Person zu finden, mit der man kommunizieren
- will.
+Der X.509 [Ada99] [CDH + 05] Authentifizierungsframework versucht, den gleichen
+ Teil des Vertrauen-Management Problems wie PGP zu lösen, nämlich die Notwendigk
+eit, eine entsprechend zuverlässige vertrauenswürdige Kopie des öffentlichen
+ Schlüssels einer Person zu finden, mit der man kommunizieren will.
  Wie in PGP, sind X.509-Zertifikate unterzeichnete Datensätze, welche die
  Benutzer ID mit ihrem kryptographischen Schlüssel assoziieren.
  X.509-Zertifikate enthalten weitere Informationen über PGP-Zertifikate,
- wie zum Beispiel den Namen des verwendeten Signaturverfahrens, um sie zu
- erstellen und das Zeitintervall, in dem sie gültig sind.
+ wie zum Beispiel den Namen des verwendeten Signatur-Verfahrens, um sie
+ zu erstellen und das Zeitintervall, in dem sie gültig sind.
 \begin_inset Newline newline
 \end_inset
 
 Aber ihr Hauptziel ist einfach die Bindung zwischen Benutzern zu ihren Schlüssel
 n zu schaffen.
- Jedoch unterscheidet sich X.509 scharf von PGP im Grad der Zentrali- sierung
+ Jedoch unterscheidet sich X.509 scharf von PGP im Grad der Zentralisierung
  der Informationen.
  In PGP kann jeder öffentliche Schlüssel signieren und damit als Mittelsperson
- han- deln.
+ handeln.
  Der X.509 Framework fordert dagegen, dass jeder Benutzer seine Zertifikate
  von einer offiziellen Zertifizierungsstelle (CA) erhalten muss.
  Wenn Benutzer A ein Schlüsselpaar (öffentlicher Schlüssel , privater Schlüssel)
  erstellt, muss er es und die Rest der erforderlichen Informationen von
- einem oder mehreren CAS zertifi- zieren lassen und die erhaltenen Zertifikate
+ einem oder mehreren CAS zertifizieren lassen und die erhaltenen Zertifikate
  in einem offiziellen Verzeichnisdienst registrieren.
- Wenn A später mit B sicher kommunizieren will, erhält er ein Zer- tifikat
+ Wenn A später mit B sicher kommunizieren will, erhält er ein Zertifikat
  von B aus dem Verzeichnis-Server.
  Wenn A und B von der gleichen CA zertifiziert wurden, kann nur der Verzeichniss
 erver B’s Zertifikat zu A senden.
  A kann dann die Gültigkeit dieser Zertifikat mit dem öffentlichen Schlüssel
  dieser gemeinsamen CA prüfen kann.
- Wenn A und B nicht unmittelbar durch eine ge- meinsame CA zertifiziert
- werden, dann die Verzeichnisdienst müssen einen Zertifi- zierungspfad von
- A nach B erstellen.
+ Wenn A und B nicht unmittelbar durch eine gemeinsame CA zertifiziert werden,
+ dann die Verzeichnisdienst müssen einen Zertifizierung-Pfad von A nach
+ B erstellen.
  Um diesen Pfad zu verwenden, muss A den öffentlichen Schlüssel von der
- erste Zertifizierungstelle in dem Pfad kennen.
+ erste Zertifizierungsstelle in dem Pfad kennen.
  Somit beruht X.509 Framework auf der Annahme, dass CAs zu einem globalen
- SZertifi- zierungsstellen Baumörganisiert sind und dass alle Benutzer,
- die von CAs mit einem gemeinsamen Vorfahren in diesem globalen Baum unterzeichn
-et wurden[DWC03] [HPFS02] [CD03].
+ Zertifizierungsstellen Baum-organisiert sind und dass alle Benutzer, die
+ von CAs mit einem gemeinsamen Vorfahren in diesem globalen Baum unterzeichnet
+ wurden[DWC03] [HPFS02] [CD03].
 \begin_inset Newline newline
 \end_inset
 
-Das Problem ist, dass der Benutzer nicht eine autonome Identität ei- ner
- weiteren Person prüfen kann, denn er ist vom öffentlichen Schlüssel seiner
- CA abhängig.
+Das Problem ist, dass der Benutzer nicht eine autonome Identität einer weiteren
+ Person prüfen kann, denn er ist vom öffentlichen Schlüssel seiner CA abhängig.
  Außerdem vertraut er automatisch alle Personen, denen die Öffentlichen
  Schlüssel durch die selbe Zertifizierungsstelle signiert wurden oder durch
- einer an- deren vertrauten Zertifizierungsstelle.
+ einer anderen vertrauten Zertifizierungsstelle.
  Dies stößt gegen einige Anforderungen, die fordern, dass die Benutzer nur
  gewünschte Personen vertrauen müssen.
  Darüber hinaus hat die NSA Affären bewiesen, dass Zertifizierungsstelle
- verfälschte Zertifi- kate erstellen können und somit werden verfälschte
- Identitäten freigegeben.
+ verfälschte Zertifikate erstellen können und somit werden verfälschte Identität
+en freigegeben.
 \end_layout
 
 \begin_layout Section
@@ -2031,38 +2033,38 @@ SPKI / SDSI
 
 \begin_layout Standard
 SDSI [EFL + 99][RL96] [ST00] wurde von Ronald Nieten und Butler Lampson
- kon- zipiert.
+ konzipiert.
  Seine Entwicklung wurde durch die Komplexität der herkömmlichen Public
  Key Infrastrukturen speziell die Abhängigkeit auf den globalen Namensraum
  motiviert.
  SDSI ist eine Public Key-Infrastruktur mit lokalen Namensraum.
  Dies macht es zu einem dezentralen Sicherheitssystem.
  SPKI wurde von Carl Ellison entwickelt und Andere.
- Es ist ein einfaches Autorisierungssystem.
+ Es ist ein einfaches Autorisierungs-System.
  Hier wird der öffentliche Schlüssel nicht dazu genutzt, die Identität des
  Schlüsselbesitzers zu prüfen, sondern direkt seine Berechtigung zu bestimmten
  Diensten zu definieren.
  Die Vereinigung der beiden Projekte führt zum SPKI / SDSI, ein System zur
- Autorisierung und Au- thentifizierung.
+ Autorisierung und Authentifizierung.
  das SDSI lokalen Namensräume mit SPKI Autorisierung Systems kombiniert.
  SPKI / SDSI ist eine vollständig verteilte Lösung.
- Jeder Benutzer wird eine Zertifi- zierungsstelle und ist für die Verwaltung
+ Jeder Benutzer wird eine Zertifizierungsstelle und ist für die Verwaltung
  von Zertifikaten selbst zuständig.
  In SPKI / SDSI werden die Benutzer durch einen öffentlichen Schlüssel identifiz
 iert und der öffentliche Schlüssel ist einem lokalen Benutzernamen Raum
  zugeordnet.
  Dieser Verein ist gültig lokal, das heißt, die zugehörigen Namen sind nicht
- global eindeu- tig.
+ global eindeutig.
  SPKI / SDSI erlaubt die Definition von Gruppen von Benutzern.
  Hier werden die öffentlichen Schlüssel der Mitglieder einer Gruppe des
  gleichen Namens zuge- ordnet.
  In SPKI / SDSI, gibt es zwei Arten von Zertifikaten: Namenszertifikate
- und Be- rechtigungszertifikate.
- Das Namenszertifikat bescheinigt, dass ein Name in einem Namenraum eines
+ und Berechtigungszertifikate.
+ Das Namenszertifikat bescheinigt, dass ein Name in einem Namensraum eines
  Emittent gültig ist.
  Das Berechtigungszertifikat gewährt den Res- sourcenzugriff eines Benutzers.
  Namenszertifikate bestehen aus vier Bereichen zusammen:Issuer(Emittenten),
- Iden- tifier( Identifizierter), subject(Subjekt) und validity specification
+ Iden- tifier( Identifizierter), Subject (Subjekt) und validity specification
  (Gültigkeit Spezi- fikation).
  Der Issuer ist derjenige, der das Zertifikat unterzeichnet.
  Der Identifizier- ter ist ein Byte, Zeichenkette, die einen Namen repräsentiert.
