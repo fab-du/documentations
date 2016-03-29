@@ -6,13 +6,20 @@ server:
 multipart:
     maxFileSize: 128KB
     maxRequestSize: 128KB
-remote:
-    url: http://localhost:8080
-    users: /api/users
-    document: /api/documents
-    groups: /api/groups
-    friends: /api/friends
-login:
-    challenge: /session/login/challenge
+remoteserver:
+    uri:
+        register: /session/register
+        logout: /session/logout
+        challenge: /session/login/challenge
+        authenticate: /session/login/authenticate
+        documents: /api/groups/{preffix}/documents/{suffix2}
+        friends:   /api/{preffix1}/friends/{suffix1}/{suffix2}
+        users:     /api/{prefix1}/{prefix2}/users/{suffix1}
+        groups:    /api/groups/{suffix1}/{suffix2}/{suffix3}
+        keypairs:  /api/{userId}/keypair
+        symkeys:   /api/{groupId}/keysym
+        url: http://localhost:8080/
+
+
 
  

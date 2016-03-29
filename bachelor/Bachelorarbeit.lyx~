@@ -85,14 +85,14 @@
 
 %Bezeichungen anpassen
 %Babelpaket muß zuvor geladen werden
-%\usepackage[ngerman]{babel}
+\usepackage[ngerman]{babel}
 %von Fabrice dufils geaendert
-%\addto\captionsngerman{ 
-%\renewcommand{\figurename}{Abb.}% 
-%\renewcommand{\tablename}{Tab.}% 
-%\renewcommand{\abstractname}{Kurzfassung}
-%\renewcommand{\nomname}{Abkürzungen}
-%}
+\addto\captionsngerman{ 
+\renewcommand{\figurename}{Abb.}% 
+\renewcommand{\tablename}{Tab.}% 
+\renewcommand{\abstractname}{Kurzfassung}
+\renewcommand{\nomname}{Abkürzungen}
+}
 
 % Alle Querverweise und URLs als Link darstellen
 % In der PDF-Ausgabe
@@ -104,6 +104,8 @@
   pdftitle={LyX's Figure, Table, Floats, Notes, and Boxes manual},
   pdfsubject={LyX-documentation about figures, tables, floats, notes, and boxes},
   pdfkeywords={LyX, Tables, Figures, Floats, Boxes, Notes}]{hyperref}
+
+\usepackage{graphicx}
 
 %mehr Platz zwischen Überschrift und Tabelle
 \newcommand{\@ldtable}{}
@@ -956,7 +958,7 @@ Gliederung
 \begin_layout Standard
 Diese Arbeit lässt sich in drei große Abschnitte unterteilen: Kapitel 2
  behandelt die Anforderungen eines sicheren Dokumentenaustauschs sowie der
- Authentifizierungmechanismen, die für das Verständnis der weiteren Kapitel
+ Authentifizierungsmechanismen, die für das Verständnis der weiteren Kapitel
  wichtig sind.
  Im folgenden Kapitel 3 wird beispielhaft der aktuelle Stand der Technik
  vorgestellt und ihre technische Umsetzung aufgeführt.
@@ -1015,12 +1017,12 @@ Die Notwendigkeit eines sicheren Dokumentenaustauschs hat sich in den letzten
 \end_layout
 
 \begin_layout Standard
-Dokumentensautausch gibt es schon längst innerhalb geschlossener Netzwerke
+Dokumentensaugtausch gibt es schon längst innerhalb geschlossener Netzwerke
  (Intranet).
- Wobei manche Sicherheitaspekte wie Datenverschlüsselung oder auch Datenintegrit
-ät absichtlich weggelassen werden, da man davon ausgeht, dass alle Benutzer
- des Intranets sich innerhalb des Unternehmens befinden und folglich vertrauenwü
-rdig sind.
+ Wobei manche Sicherheitsaspekte wie Datenverschlüsselung oder auch Datenintegri
+tät absichtlich weggelassen werden, da man davon ausgeht, dass alle Benutzer
+ des Intranets sich innerhalb des Unternehmens befinden und folglich vertrauensw
+ürdig sind.
  
 \end_layout
 
@@ -1055,9 +1057,9 @@ reference "sec:Problemstellung-und-Motivation"
 
 \end_inset
 
- stellt man fest, dass in Unternehmen die verbreiteste Lösung für den Dokumenten
-austausch per Intranet erfolgt.
- Diese Lösung schutzt gegen äußere Gefahren, weil Intranet ein geschlossenes
+ stellt man fest, dass in Unternehmen die verbreitete Lösung für den Dokumentena
+ustausch per Intranet erfolgt.
+ Diese Lösung schützt gegen äußere Gefahren, weil Intranet ein geschlossenes
  Netzwerk ist.
  Heutzutage ist aber ein gemeinsamer Zugriff auf digitale Informationen
  nicht nur innerhalb, sondern auch über Unternehmengrenzen hinweg mit Partnern
@@ -1106,9 +1108,9 @@ Kritische (sensible) Informationen
 \begin_layout Standard
 Es handelt sich hierbei um Informationen bzw.
  Daten, die auf keinen Fall irgendwo in den verschiedenen Softwarekomponenten
- unverschlüsselt abgespeichert oder unchiffriert durch das Netz geschickt
+ unverschlüsselt abgespeichert oder unverschlüsselt durch das Netz geschickt
  werden dürfen.
- Zu dieser Kategorie gehören beispielweise wichtige Benutzersdokumente oder
+ Zu dieser Kategorie gehören beispielsweise wichtige Benutzerdokumente oder
  Benutzeranmeldeinformationen.
  Solche Informationen werden immer signiert, bevor sie gespeichert werden.
  
@@ -1123,7 +1125,7 @@ Hierunter versteht man ein kryptographisches Werkzeug oder anders ausgedrückt
  ein Mittel zum Chiffrieren bzw.
  Dechiffrieren.
  Dieses kann verschiedene Formen haben und je nach Schlüsselart entweder
- zu den kritischen oder nichtkritischen Informationen gehören.
+ zu den kritischen oder nicht kritischen Informationen gehören.
  Bei der Behandlung der einzelnen Schlüsselarten wird jeweils kenntlich
  gemacht, ob sie als kritisch oder nicht kritisch einzuschätzen sind.
  
@@ -1163,12 +1165,6 @@ reference "sub:Digitale-Signature"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -1185,24 +1181,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/asym_crypt.png
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Assymetrische Kryptographie
-\end_layout
+	scale 35
 
 \end_inset
 
@@ -1210,6 +1189,18 @@ Assymetrische Kryptographie
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Asymmetrische Verschlüsselung}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1230,9 +1221,9 @@ name "sub:Assymetrische-Schlüssel"
 \end_layout
 
 \begin_layout Standard
-Beim RSA-Algorithmus werden Sclüsselpaare benötigt.
- Schüsselpaare bestehen aus zwei Schlüsseln, einem geheimen und einem öffentlich
-en Schlüssel.
+Beim RSA-Algorithmus werden Schlüsselpaare benötigt.
+ Schlüsselpaare bestehen aus zwei Schlüsseln, einem geheimen und einem öffentlic
+hen Schlüssel.
  Öffentliche Schlüssel werden eingesetzt, um Chiffrierung durchzuführen.
  Sie zählen nicht zu den kritischen Informationen.
  Mit geheimen Schlüsseln dagegen führt man die Dechiffrierung durch.
@@ -1245,7 +1236,7 @@ Benutzer-Masterkey
 \end_layout
 
 \begin_layout Standard
-Benutzer-Masterkey ist ein assymetrischer Schlüssel der quasi eine 
+Benutzer-Masterkey ist ein asymmetrischer Schlüssel der quasi eine 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1267,7 +1258,7 @@ Symmetrische Kryptographie
 
 \begin_layout Standard
 Symmetrische Kryptographie ist ein Kryptosystem, beim welchem im Gegensatz
- zu einem asymmetrischen Kryptosytem beide Teilnehmer denselben Schlüssel
+ zu einem asymmetrischen Kryptosystem beide Teilnehmer denselben Schlüssel
  (Symmetrische Schlüssel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1280,17 +1271,11 @@ reference "sub:Symmetrische-Schlüssel"
  IDEA) sind die beiden Schlüssel nicht identisch, doch kann leicht der einer
  aus dem anderen abgeleitet werden.
  Für diese Arbeit wird exklusiv der AES-Algorithmus als symmetrisches kryptograp
-isches Verfahren benutzt, wobei die Chiffrierschlüssel und Dechiffrierschlüssel
+hisches Verfahren benutzt, wobei die Chiffrierschlüssel und Dechiffrierschlüssel
  gleich sind.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -1307,12 +1292,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/sym_crypt.png
-	scale 40
-
-\end_inset
-
-
-\end_layout
+	scale 35
 
 \end_inset
 
@@ -1320,10 +1300,14 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Symmetrische Kryptographie
+
+
+\backslash
+captionof{figure}{Symmetrische Verschlüsselung}
 \end_layout
 
 \end_inset
@@ -1353,6 +1337,19 @@ che Verschlüsselungsverfahren) eingesetzt wird, um Chiffrierung und Dechiffrier
 ng durchzuführen.
  Da die symmetrischen Schlüssel sowohl zur Chiffrierung als auch zur Dechiffrier
 ung eingesetzt werden, sind sie als kritische Informationen zu sehen.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Dateischlüssel
+\end_layout
+
+\begin_layout Standard
+Ein Dateischlüssel ist ein symmetrischer Schlüssel, der eingesetzt wird,
+ um Dateien zu chiffrieren bzw.
+ zu dechiffrieren.
+ In dieser Arbeit entspricht der Dateischlüssel den Gruppenschlüssel, kurz
+ SGK (Secret Group Key).
  
 \end_layout
 
@@ -1412,14 +1409,14 @@ name "sub:Digitale-Signature"
 \end_layout
 
 \begin_layout Standard
-Eine digitale Signatur, auch digitales Signaturverfahren, ist ein asymetrisches
- Kryptosystem, bei dem ein Sender mit Hilfe eines geheimen Signaturschlüssels
- (dem private Schlüssel) zu einer digitalen Nachricht einen Wert berechnet,
+Eine digitale Signatur, auch digitales Signatur-Verfahren, ist ein asymmetrische
+s Kryptosystem, bei dem ein Sender mit Hilfe eines geheimen Singnaturschlüssels
+ (dem privaten Schlüssel) zu einer digitalen Nachricht einen Wert berechnet,
  der ebenfalls digitale Signatur benannt wird.
  Dieser Wert ermöglicht es jedem, mit Hilfe des öffentlichen Verifikationsschlüs
-sels (den öffentlichen Schlüssel) die nichtabstreitbare Urheberschaft und
+sels (dem öffentlichen Schlüssel) die nicht bestreitbare Urheberschaft und
  Integrität der Nachricht zu prüfen.
- Um eine mit einem Signaturschlüssel erstellte Signatur einer Person zuordnen
+ Um eine mit einem Singnaturschlüssel erstellte Signatur einer Person zuordnen
  zu können, muss der zugehörige Verifikationsschlüssel dieser Person zweifelsfre
 i zugeordnet sein.
 \end_layout
@@ -1429,15 +1426,15 @@ Hybride Verschlüsselung
 \end_layout
 
 \begin_layout Standard
-Hybride Verschlüsselung ist eine Kombination aus assymetrischer Verschlüsselung
+Hybride Verschlüsselung ist eine Kombination aus asymmetrischer Verschlüsselung
  und symmetrischer Verschlüsselung.
- Dabei wählt der Sender zufälligen symmetrischen Schlüssel, der Session-Key
- gennant wird.
+ Dabei wählt der Sender einen zufälligen symmetrischen Schlüssel, der Session-Ke
+y genannt wird.
  Mit diesem Session-Key werden die zu schützenden Daten symmetrisch verschlüssel
 t.
  Anschließend wird der Session-Key asymmetrisch mit dem öffentlichen Schlüssel
  des Empfängers verschlüsselt.
- Dieses Vorgehen löst das Schlüsselverteilungsproblem und erhält dabei den
+ Dieses Vorgehen löst das Schlüsselverteilungsproblem und behält dabei den
  Geschwindigkeitsvorteil der symmetrischen Verschlüsselung.
 \end_layout
 
@@ -1445,7 +1442,7 @@ t.
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -1497,7 +1494,7 @@ Effizienz
 \begin_inset Text
 
 \begin_layout Plain Layout
-schnell
+langsam
 \end_layout
 
 \end_inset
@@ -1506,7 +1503,7 @@ schnell
 \begin_inset Text
 
 \begin_layout Plain Layout
-langsam
+schnell
 \end_layout
 
 \end_inset
@@ -1526,7 +1523,7 @@ Schlüsellaustausch
 \begin_inset Text
 
 \begin_layout Plain Layout
-problematisch
+elegant
 \end_layout
 
 \end_inset
@@ -1535,7 +1532,7 @@ problematisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-elegant
+problematisch
 \end_layout
 
 \end_inset
@@ -1566,17 +1563,17 @@ Vergleich asymmetrische/symmetrische Verschlüsselugn
 \end_layout
 
 \begin_layout Standard
-Wie die Obere Abbildung zeigt, Ist Symmetrische Verschlüsselungsverfahren
- sind auch bei großen Datenmengen sehr schnell, assymetrische dagegen sind
- sehr langsam , und sind dann nur für kleine Datenmengen ( Wie Schlüssel
- ) geeignet.
+Wie die Abbildung oben zeigt, sind symmetrische Verschlüsselungsverfahren
+ auch bei großen Datenmengen sehr schnell, asymmetrische dagegen sind sehr
+ langsam, und deshalb nur für kleine Datenmengen (wie etwa für Schlüssel)
+ geeignet.
  
 \begin_inset Newline newline
 \end_inset
 
-Beim Schlüsselverteilung hat Symmetrische Verschlüsselungsverfahren das
- Problem, dass sich die Kommunikationspartner vor der Übermittlung der Nachricht
- auf einen geheimen Schlüssel einigen müssen.
+Bei der Schlüsselverteilung hat das symmetrische Verschlüsselungsverfahren
+ den Nachteil, dass sich die Kommunikationspartner vor der Übermittlung
+ der Nachricht auf einen geheimen Schlüssel einigen müssen.
  Dazu muss ein sicherer Kommunikationskanal benutzt werden, wie zum Beispiel
  ein Kurier.
  Asymmetrische Verschlüsselungsverfahren dagegen lösen das Problem sehr
@@ -1587,8 +1584,8 @@ Beim Schlüsselverteilung hat Symmetrische Verschlüsselungsverfahren das
 \begin_inset Newline newline
 \end_inset
 
-Hybride Verschlüsselungsverfahren kombinieren die beiden Verschlüsselungsverfahr
-en so, dass ihre Vorteile erhalten bleiben: 
+Hybride Verschlüsselungsverfahren kombinieren die beiden Verfahren (asymmetrisch
+ und symmetrisch) so, dass deren Vorteile erhalten bleiben: 
 \end_layout
 
 \begin_layout Itemize
@@ -1600,26 +1597,27 @@ Hybride Verschlüsselungsverfahren sind sehr schnell und eignen sich für
 
 \begin_layout Itemize
 Es muss vor dem Senden der Nachricht kein geheimer Schlüssel ausgetauscht
- werden, Kenntnis des öffentlichen Schlüssels des Empfängers reicht um zu
- verschlüsseln.
+ werden.
+ Die Kenntnis des öffentlichen Schlüssels des Empfängers reicht, um zu verschlüs
+seln.
 \end_layout
 
 \begin_layout Section*
-Public-Key-Infrastruktur (PKI)
+Public Key Infrastructur (PKI)
 \end_layout
 
 \begin_layout Standard
-Public Key Infrakstruktur ist ein System, das digitale Zertifikate ausstellen,
+Public Key Infrastructur ist ein System, das digitale Zertifikate ausstellen,
  verteilen und prüfen kann.
- Die innerhabl einer PKI ausgestellten Zertifikate werden zur Absicherung
- rechnergestützter Kommunikation verwendet.
+ Die innerhalb einer PKI ausgestellten Zertifikate werden zur Absicherung
+ Rechner-gestützter Kommunikation verwendet.
  
 \begin_inset Newline newline
 \end_inset
 
-Basis für Public-Key-Infrastruktur ist asymmetrisch Kryptosystem und Hybride
- Verschlüsselung.
- mit Hilfe asymmetrische Kryptosystem werden die Daten digital signiert
+Basis für Public Key Infrastructur sind das asymmetrische Kryptosystem und
+ die hybride Verschlüsselung.
+ Mit Hilfe des asymmetrischen Kryptosystems werden die Daten digital signiert
  und verschlüsselt.
  
 \end_layout
@@ -1629,60 +1627,70 @@ Email
 \end_layout
 
 \begin_layout Standard
-Autausch von elektronischen Daten per Email ist weit verbreitet.
+Der Austausch von elektronischen Daten per Email ist weit verbreitet.
  Email-Dienste werden von eigenen Unternehmen oder auch von Internet-Dienstleist
-ung angeboten.
- Die versendung von Emails durch Internet ist zunächst unverschlüsselt.
+ern angeboten.
+ Die Versendung von Emails über das Internet ist zunächst unverschlüsselt.
  Somit sind die Inhalte relativ einfach auch für Dritte lesbar.
  
 \begin_inset Newline newline
 \end_inset
 
-Die Indentitäten der Kommunikationspartner werden i.a mit den Email-Adressen
- gleichgesetzt.
+Die Identitäten der Kommunikationspartner werden i.
+ Allg.
+ mit den Email-Adressen gleichgesetzt.
  Eine weitergehende Prüfung findet nicht statt.
- Was Indentitätbetrug ist leicht zu erstellen, Damit man die Indentität
- (Email-Adresse) von einer der Kommunikationpartner fekt.
- Obwohl dieser Funktionalität um diese Risiko zu schlagen in der meistens
- Email-Client vorgesehen ist (Gmail), geschet die Email-Adressürberprüfung
- nicht automatisch.
- Diese Aufgabe ist an Benutzer überlassen.
+ Dadurch aber wird der Identitätsdiebstahl erleichtert, das heißt die Vortäuschu
+ng einer fremden Identität (Email-Adresse).
+ Obwohl in der meisten Email-Clients eine Funktion vorgesehen ist, um das
+ Risiko des Identitätstäuschung zu umgehen, geschieht die Email-Adressenüberprüf
+ung nicht automatisch.
+ Dies bleibt dem Benutzer überlassen.
  
 \begin_inset Newline newline
 \end_inset
 
 Ein Austausch über Firmengrenzen hinweg ist problemlos möglich.
- Problematisch ist aber Austausch von kritischen Informationen.
+ Problematisch ist aber der Austausch von kritischen Informationen.
  
 \end_layout
 
 \begin_layout Standard
-eine im ersten Blick triviale Lösung was Austausch von sensiblen elektronischen
- Daten angeht besteht darin diese Daten zu verschlüsseln und die resultierende
- verschlüsselte Dokument per Email an der Kommunikationspartner zu senden.
- Diese Lösung ist solange ertragbar wenn die Teilnehmer (Sender und Empfänger)
- sich mit Kryptographie bzw Kryptographiesoftware auskennen.
- Begrenzungen an diese Technik sind unerheblich und unheimlich viele : 
+Eine auf dem ersten Blick triviale Lösung, was das Austauschen von sensiblen
+ elektronischen Daten angeht, besteht darin, die Daten zu verschlüsseln
+ und diese per Email an den Kommunikationspartner zu senden.
+ Diese Lösung ist nur möglich, sofern sich die Teilnehmer (Sender und Empfänger)
+ mit Kryptographie bzw.
+ Kryptographiesoftware auskennen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Überhaupt stellen sich dieser Lösung etliche Hürden in den Weg: 
 \end_layout
 
 \begin_layout Itemize
-Diese Lösung setzt voraus dass der Kommunikationspartner sich auch mit der
- Kryptographie bzw.
- Kryptographiesoftware auskennt.
+Wie gerade erwähnt, setzt diese Lösung voraus, dass sich die Kommunikationspartn
+er mit der Kryptographie bzw.
+ Kryptographiesoftware auskennen.
  
 \end_layout
 
 \begin_layout Itemize
-Zusätzliche Softwareinstallation 
-\end_layout
-
-\begin_layout Itemize
-Schlüsselaustauschsproblematik.
+Zusätzliche Softwareinstallationen sind zwingend erforderlich.
  
 \end_layout
 
 \begin_layout Itemize
-Infrakstrukturproblemetik.
+Der Schlüsselaustausch ist problematisch, und zwar insofern, als der Dechiffrier
+schlüssel an den Kommunikationspartner übermittelt werden muss.
+\end_layout
+
+\begin_layout Itemize
+Dazu kommt noch die Infrastrukturproblematik: Schlüsselmanagement, Sicherheit
+ der Schlüssel, Software-Installation etc.
+ ...
+ 
 \end_layout
 
 \begin_layout Section
@@ -1700,45 +1708,59 @@ name "sec:Web-upload"
 Das Speichern von Dokumenten auf einem Internet-Server ist weit verbreitet
  und weltweit von jedem Browser aus möglich.
  Eine Installation zusätzlicher Software, oder gar die Öffnung zusätzlicher
- Ports der Unternehmens-Firewall ist nicht notwendig.
+ Ports der Unternehmens-Firewall ist nicht erforderlich.
  Die Benutzer-Authentifizierung erfolgt i.d.R.
- per Lo- gin/Password.
- Daten können im Internet mittels des https-Protokolls verschlüsselt.
- schlüsselt übertragen wer- den.
+ per Login/Password.
+ Daten können im Internet mittels des http-Protokolls verschlüsselt übertragen
+ werden.
  Fälschlicherweise wird angenommen, dass die übertragenen Dokumente dann
- auch beim Empfänger „sicher“ gespe- ichert sind.
- Jedoch werden lediglich die Doku- mente auf dem Weg zum Server mit SSL
- verschlüsselt.
+ auch beim Empfänger „sicher“ gespeichert sind.
+ Jedoch werden lediglich die Dokumente auf dem Weg zum Server mit SSL verschlüss
+elt.
  Danach liegen sie zunächst unverschlüsselt vor.
- So werden von einem Server verschlüsselt übertragene Doku- mente vom Browser
+ So werden von einem Server verschlüsselt übertragene Dokumente vom Browser
  entschlüsselt und im Klartext auf dem lokalen PC gespeichert.
- Ebenso werden Dokumente, die vom Browser für die Übertragung verschlüs-
- selt werden vom Server entschlüsselt und liegen am Server unverschlüsselt
+ Ebenso werden Dokumente, die vom Browser für die Übertragung verschlüsselt
+ werde, vom Server entschlüsselt und liegen dann am Server unverschlüsselt
  vor.
- Somit besteht dieselbe Problematik und auch derselbe Lösungsansatz wie
- bei Datei- Servern.
+ Somit ergeben sich dieselbe Problematik und derselbe Lösungsansatz wie
+ bei Datei-Servern.
  In Folge dessen sollten Dokumente, die per Browser auf einen Datei-Server
  geladen werden, vom Client-PC verschlüsselt wer- den.
  Die Dokumente müssen also vor dem Upload verschlüsselt worden sein, oder
  aber der Browser führt die Verschlüsselung durch.
- Eine Vorab- Verschlüsselung der Dateien hat den Nachteil, dass das Dokumenten-
+ Eine Vorab-Verschlüsselung der Dateien hat den Nachteil, dass das Dokumenten-
  und Schlüssel-Management vom Anwender eigenverantwortlich durchgeführt
- wer- den muss.
- Dies ist i.a.
- den Anwendern zu aufwendig.
+ werden muss.
+ Dies ist den Anwendern i.
+ Allg.
+ zu aufwendig.
  Folglich sollte die Verschlüsselung durch den Browser quasi automatisch
  erfolgen.
  Dies wird aktuell nur sehr selten durchgeführt, da die Verschlüsselungs-Softwar
-e auch vom Web-Server geladen werden müssen.
- Und es kann nicht garantiert wer- den, dass die geladene Software nicht
- Eindringlingen unbeabsichtigten Zugriff ermöglicht.
- In Folge dessen werden Dokumente SSL-verschlüsselt zum Server gesen- det.
- Die dort empfangenen, unverschlüsselten Dokumente wer- den sofort verschlüs-
- selt und als Datei abgelegt.
- Hier bestehen jedoch fol- gende Probleme: (1) Wie kommen die notwendigen
- Schlüssel zum Server? (2) Ein Eindringling auf dem Server kann die Klartext-Dat
-ei und/oder die Schlüssel mitlesen.
- Zusammenfassung Ein Ansatz für ein sicheres web-upload ist bisher nicht
+es auch vom Web-Server geladen werden müssen.
+ Und es kann nicht garantiert werden, dass die geladene Software nicht Eindringl
+ingen unbeabsichtigten Zugriff ermöglicht.
+ In Folge dessen werden Dokumente SSL-verschlüsselt zum Server gesendet.
+ Die dort empfangenen, unverschlüsselten Dokumente werden sofort verschlüsselt
+ und als Datei abgelegt.
+\begin_inset Newline newline
+\end_inset
+
+Hier bestehen jedoch folgende Probleme: 
+\end_layout
+
+\begin_layout Itemize
+Wie kommen die notwendigen Schlüssel zum Server? 
+\end_layout
+
+\begin_layout Itemize
+Ein Eindringling auf dem Server kann die Klartext-Datei und/oder die Schlüssel
+ mitlesen
+\end_layout
+
+\begin_layout Standard
+Zusammenfassung: Ein Ansatz für ein sicheres web-upload ist bisher nicht
  bekannt.
 \end_layout
 
@@ -1800,7 +1822,7 @@ Cloud-Service hat sich in den letzten fünf Jahren wesentlich verbreitet.
  Gerade bei der Bereitstellung von sensiblen Dokumenten über die Cloud ist
  es unumgänglich, auf Sicherheit und Schutz vor fremdem Eingriff zu achten.
  Doch oft möchte man, einige Dateien mit einem Geschäftpartner oder Kollegen
- austauschen und actet wenig auf Sicherheit.
+ austauschen und achtet wenig auf Sicherheit.
  Beliebte Cloud-Lösungen aus dem Privatbereich wie Dropbox werden hierbei
  gerne verwendet.
  Die Richtlinien solcher Cloud-Speicher entsprechen nicht dem deutschen
@@ -1876,9 +1898,9 @@ examplarische zertifikat
 \end_layout
 
 \begin_layout Standard
-PGP [Zim95] [ASZ96] [Sta95] ist eine Daten-Ver- und Entschlüsselung Computerprog
-ramm, das kryptographische Privatsphäre und Authentifizierung für die Datenkommu
-nikation zur Verfügung stellt.
+PGP ist eine Daten-Ver- und Entschlüsselung Computerprogramm, das kryptographisc
+he Privatsphäre und Authentifizierung für die Datenkommunikation zur Verfügung
+ stellt.
  PGP wird oft zum Signieren und zur Ver-und Entschlüsselung von Texten,
  E-Mails, Dateien und Verzeichnisse verwendet, um die Sicherheit der E-Mail-Komm
 unikation zu erhöhen.
@@ -1891,9 +1913,9 @@ Im PGP-System wird für einen Benutzer ein Schlüsselpaar (öffentlicher Schlüs
  Dieses Schlüsselpaar ist mit einer eindeutigen ID verbunden, die normalerweise
  ein Name oder eine Email-Adresse ist.
  Die Schlüssel werden in einem Schlüsselbund Datensatz gespeichert.Der Eintrag
- eines öffentli- chen Schlüssels im Schlüsselbund besteht aus einer ID,
- dem öffentlichen Schlüssel selbst und einem Zeitstempel, der auf das Erstellung
-sdatum des Schlüsselpaars referenziert.
+ eines öffentlichen Schlüssels im Schlüsselbund besteht aus einer ID, dem
+ öffentlichen Schlüssel selbst und einem Zeitstempel, der auf das Erstellungsdat
+um des Schlüsselpaars referenziert.
  Öffentliche Schlüssel werden auf einem öffentlichen Schlüsselring gespeichert,
  wohingegen private Schlüssel auf einem privaten Schlüsselring gespeichert
  werden.
@@ -1973,10 +1995,17 @@ X.509
 \end_layout
 
 \begin_layout Standard
-Der X.509 [Ada99] [CDH + 05] Authentifizierungsframework versucht, den gleichen
- Teil des Vertrauen-Management Problems wie PGP zu lösen, nämlich die Notwendigk
-eit, eine entsprechend zuverlässige vertrauenswürdige Kopie des öffentlichen
- Schlüssels einer Person zu finden, mit der man kommunizieren will.
+Der X.509
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RFC4158"
+
+\end_inset
+
+ Authentifizierungsframework versucht, den gleichen Teil des Vertrauen-Managemen
+t Problems wie PGP zu lösen, nämlich die Notwendigkeit, eine entsprechend
+ zuverlässige vertrauenswürdige Kopie des öffentlichen Schlüssels einer
+ Person zu finden, mit der man kommunizieren will.
  Wie in PGP, sind X.509-Zertifikate unterzeichnete Datensätze, welche die
  Benutzer ID mit ihrem kryptographischen Schlüssel assoziieren.
  X.509-Zertifikate enthalten weitere Informationen über PGP-Zertifikate,
@@ -2034,9 +2063,8 @@ SPKI / SDSI
 \begin_layout Standard
 SDSI [EFL + 99][RL96] [ST00] wurde von Ronald Nieten und Butler Lampson
  konzipiert.
- Seine Entwicklung wurde durch die Komplexität der herkömmlichen Public
- Key Infrastrukturen speziell die Abhängigkeit auf den globalen Namensraum
- motiviert.
+ Seine Entwicklung wurde durch die Komplexität der herkömmlichen Public-Key
+ Infrastrukturen speziell die Abhängigkeit auf den globalen Namensraum motiviert.
  SDSI ist eine Public Key-Infrastruktur mit lokalen Namensraum.
  Dies macht es zu einem dezentralen Sicherheitssystem.
  SPKI wurde von Carl Ellison entwickelt und Andere.
@@ -2067,7 +2095,7 @@ iert und der öffentliche Schlüssel ist einem lokalen Benutzernamen Raum
  Iden- tifier( Identifizierter), Subject (Subjekt) und validity specification
  (Gültigkeit Spezi- fikation).
  Der Issuer ist derjenige, der das Zertifikat unterzeichnet.
- Der Identifizier- ter ist ein Byte, Zeichenkette, die einen Namen repräsentiert.
+ Der Identifizierter ist ein Byte, Zeichenkette, die einen Namen repräsentiert.
  Das Subject kann ein Name sein, oder ein öffentlicher Schlüssel.
  Wenn das Subject ein Name ist, ist es in lokalen Namenraum und der damit
  verbundene öffentliche Schlüssel kann wieder- hergestellt werden.
@@ -2113,8 +2141,8 @@ name "chap:Anforderungen"
 \end_layout
 
 \begin_layout Standard
-Bei der Anförderungsanalyse unterscheidet man zwischen funktionalen und
- nichtfunktionalen Anforderungen.
+Bei der Anforderungsanalyse unterscheidet man zwischen funktionalen und
+ nicht funktionalen Anforderungen.
  Während funktionale Anforderungen den gewünschte Verhalten und die Funktionalit
 ät vorgeben, beschreiben nicht- funktionale Anforderungen Rahmenbedingungen
  wie Performance oder Zuverlässigkeit.
@@ -2125,16 +2153,6 @@ funktionale Anforderungen
 \end_layout
 
 \begin_layout Standard
-Funktionale Anforderungen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -2152,6 +2170,7 @@ status open
 \begin_inset Graphics
 	filename images/src/pu/usecase/functionaleAnforderungen.plantuml
 	scale 45
+	clip
 	rotateAngle 360
 	rotateOrigin center
 
@@ -2160,24 +2179,20 @@ status open
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Allg.
+ funktionale Anforderungen-Überblick}
+\end_layout
+
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Funktionale Anforderungen Überblick
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2187,17 +2202,17 @@ Funktionale Anforderungen Überblick
 \end_layout
 
 \begin_layout Subsubsection
-Administrator role
+Administrator Rolle
 \end_layout
 
 \begin_layout Itemize
-Der Administrator muss in der Lage sein, neue Benutzer im System hinzuzu-
+Der Administrator muss in der Lage sein, neue Benutzer im System hinzu zu
  fügen und zu entfernen.
  
 \end_layout
 
 \begin_layout Itemize
-Der Administrator darf nicht in der Lage sein Benutzer kritische Informationen
+Der Administrator darf nicht in der Lage sein, Benutzer kritische Informationen
  zu modifizieren oder zu lesen.
 \end_layout
 
@@ -2206,25 +2221,17 @@ Benutzer role
 \end_layout
 
 \begin_layout Itemize
-Der Benutzer kann eine Vertrauensbeziehung zu anderen Benutzern erstellen
+Der Benutzer kann eine Vertrauensbeziehung zu anderen Benutzern herstellen
  und sie wieder zurückziehen.
  
 \end_layout
 
 \begin_layout Itemize
-Der Benutzer kann eine Gruppe erstellen und entfernen.
+Der Benutzer kann eine Gruppe bilden und wieder auflösen.
 \end_layout
 
 \begin_layout Itemize
-Der Benutzer kann vertraute Benutzer 
-\begin_inset space ~
-\end_inset
-
-Friend
-\begin_inset space ~
-\end_inset
-
- in einer Gruppe hinzufügen
+Der Benutzer kann einer Gruppe vertraute Benutzer (Friends) hinzufügen.
 \end_layout
 
 \begin_layout Itemize
@@ -2237,15 +2244,17 @@ Registrierung und login
 \end_layout
 
 \begin_layout Itemize
-Beim Registrierung/Login Phase dürfen kein Password/Passphrase sowie in
- irgendeine Art zu Password/Passphrase korrespondierte Daten ins Netz gehen.
+Bei der Registrierung bzw.
+ beim Login Phase dürfen kein Password oder keine Passphrase sowie Daten,
+ die in irgendeiner Art mit dem Password bzw.
+ mit der Passphrase korrespondieren, ins Netz gehen.
 \end_layout
 
 \begin_layout Subsubsection
 Server-Client Kommunikation 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Die Verbindung zwischen 
 \begin_inset space ~
 \end_inset
@@ -2262,17 +2271,21 @@ RemoteServer
 \begin_inset space ~
 \end_inset
 
- sollte zustandlos sein.
- Außerdem darf keine SSL Verbindung im Einsatz kommen.
+ sollte Zustand-los sein.
  
 \end_layout
 
-\begin_layout Section
-Nichtfunktionale Anforderungen 
+\begin_layout Itemize
+es darf keine SSL Verbindung zum Einsatz kommen.
+ 
 \end_layout
 
-\begin_layout Standard
-Nicht funktionale Anforderungen sind wiefolg in ISO/IEC 9126
+\begin_layout Itemize
+Server und Client müssen in der Lage sein sich gegenseitig zu authentifizieren.
+\end_layout
+
+\begin_layout Section
+Nicht-funktionale Anforderungen 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ISO/IEC9126"
@@ -2280,6 +2293,20 @@ key "ISO/IEC9126"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Nicht-funktionale Anforderungen sind in ISO/IEC 9126 definiert.
+ Im Gegensatz zu funktionalen Anforderungen, die beschreiben was ein System
+ leisten soll (funktional).
+ geben die nicht-funktionalen Anforderungen an, Wie gut ein System etwas
+ leisten soll (qualitativ).
+ Die nicht funktionale Anforderungen sind in Rahmen des ISO Standards 9126
+ definiert.
+ Dabei sind nicht-funktionalen Anforderungen Typen (Qualitätsattribute)
+ wie Performance, Funktionalität, Usability, Portabilität, Sicherheit zu
+ identifizieren.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -2291,33 +2318,34 @@ Kein Einsatz von HTTPS
 \end_layout
 
 \begin_layout Itemize
-RemoteServer darf keine Chiffrierung/Dechiffrierung durchführen 
+RemoteServer darf keine Verschlüsselung bzw.
+ Entschlüsselung durchführen 
 \end_layout
 
 \begin_layout Itemize
-LocalServer soll von ein USB-Stick getart werden, und soll auch von dort
- aus im hintergrund laufen.
+LocalServer soll von ein USB-Stick gestartet werden, und soll auch von dort
+ aus im Hintergrund laufen.
  
 \end_layout
 
 \begin_layout Itemize
-Benutzerinteraktion erfolgt durch ein Browser sodass keine zusätzliche Software
- erforderlich ist.
+Benutzerinteraktion erfolgt durch ein Browser so, dass keine zusätzliche
+ Software-Installation erforderlich ist.
 \end_layout
 
 \begin_layout Subsection
-Wartbarkeit und Änderbarkeit
+Wartbarkeit und Erweiterbarkeit
 \end_layout
 
 \begin_layout Standard
 Die resultierende Software dieser Arbeit, soll in Zukunft gewartet, erweitert
- und geändert werden.
+ und verändert werden.
  Neu Features sind schon festgelegt ( sollen aber in der jetzige Version
  nicht implementiert werden )
 \end_layout
 
 \begin_layout Subsection
-Portierbarkeit und Plattformunabhängigkeit
+Portierbarkeit und Plattform-Unabhängigkeit
 \end_layout
 
 \begin_layout Standard
@@ -2356,12 +2384,6 @@ Das System Architektur wurde als eine Server-Client Anwendung entworfen,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -2379,24 +2401,7 @@ status open
 \begin_inset Graphics
 	filename images/src/pu/usecase/generalUsecase.plantuml
 	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Allg.
- Architektur
-\end_layout
+	clip
 
 \end_inset
 
@@ -2405,6 +2410,9 @@ Allg.
 
 \begin_layout Plain Layout
 
+\backslash
+captionof{figure}{Allg.
+ Architektur}
 \end_layout
 
 \end_inset
@@ -2417,7 +2425,7 @@ Authentifizierung
 \end_layout
 
 \begin_layout Standard
-Authenfizierung spielt systemweit eine bedeutende Rolle.
+Authentifizierung spielt System-weit eine bedeutende Rolle.
  Dabei passieren alle notwendige Prüfung von [LocalServer], [RemoteServer],
  [RemoteServer] integrität und natürlich Verifizierung von Benutzer.
  Es durfte systemweit keine Einsatzt von Zertifikat/SSL-Verbindung oder
@@ -2443,7 +2451,7 @@ Beim Einsatz von SRP-Secure Remote Password Protocol lasst sich auch einfach
 
 SRP Protokoll ist ein Authentifizierung protokoll, dabei können manche per-Sitzu
 ng zufällige generierte Werte als Sitzungschlüssel verwendet werden (B).
- Das bestehende Problem beim Einsatzt von dauerhafte Passwort wird durch
+ Das bestehende Problem beim Einsatz von dauerhafte Passwort wird durch
  SRP minimisiert, indem keine Passwort-korrespondierte ( Hash, verschlüsselte
  Passwort ....
  ) gepeichert wird, sondern ein 
@@ -2483,35 +2491,27 @@ Sniffing-Attack
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/localServer.plantuml
 	scale 40
-	rotateAngle 90
+	rotateAngle 270
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Authenticationsablauf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2529,16 +2529,16 @@ Schlüsselaustausch
 \end_layout
 
 \begin_layout Standard
-Dokumentsschlüssel stehen nicht direct in Verbindung mit Benutzer sondern
+Dokumentenschlüssel stehen nicht direkt in Verbindung mit Benutzer sondern
  mit der Gruppe.
- Wenn eine Gruppe kreiert wird, wird eine Gruppeschlüssel erzeugt.
- Dieser Schlüssel wird mit öffentliche Schlüssel der Gruppeverantwortlich
- verschlüsselt.
- Jeder Benutzer der in der Gruppe eingeladen wird bekommt dann eine Kopie
- der Gruppeschlüssel.
- Falls der zuvor eingeladenen Benutzer wieder durch der Gruppeverantwortlich
- aus der Gruppe gelöscht wird, dann wird auch eine die seiner Kopie der
- Gruppeschlüssel gelöscht sowie der seine Verbindung zur Gruppe.
+ Wenn eine Gruppe kreiert wird, wird eine Gruppenschlüssel erzeugt.
+ Dieser Schlüssel wird mit öffentliche Schlüssel der Gruppe-verantwortlich
+ (GV) verschlüsselt.
+ Jeder Benutzer der in der Gruppe eingeladen wird, bekommt dann eine Kopie
+ der Gruppenschlüssel.
+ Falls der zuvor eingeladenen Benutzer wieder durch der Gruppe-verantwortlich
+ aus der Gruppe gelöscht wird, dann wird auch seiner Kopie der Gruppenschlüssel
+ gelöscht sowie seine Verbindung zur Gruppe.
  
 \end_layout
 
@@ -2649,24 +2649,18 @@ Public Key Signature
 \end_layout
 
 \begin_layout Enumerate
-Private Key (verschlüsselt mit Secret-Key) 
+Private Schlüssel (verschlüsselt mit Secret-Key) 
 \end_layout
 
 \begin_layout Enumerate
-Hashwert von Private Key
+Hashwert von der privaten Schlüssel
 \end_layout
 
 \begin_layout Standard
-Examplarische Vertrauenbeziehung zwischen Zwei Benutzer:
+Exemplarische Vertrauensbeziehung zwischen Zwei Benutzer:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -2681,26 +2675,12 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/signature.png
 	scale 57.5
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Vertrauenbeziehung zwischen zwei Benutzer
-\end_layout
+	clip
 
 \end_inset
 
@@ -2708,6 +2688,18 @@ Vertrauenbeziehung zwischen zwei Benutzer
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{exemplarische Vertrauenbeziehung}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -2720,74 +2712,7 @@ Vertrauenbeziehung zwischen zwei Benutzer
 Unterschied zu PGP bzw.
  OpenPGP wird eine weniger komplexer immerhin informative Daten abgepeichert
  zur Materialiesierung von Vertrauenbeziehung zwischen zwei Benutzer.
- Eine Vergleich von die beide Vertrauenbeziehungmaterialisierung zeigt der
- Abb.
  
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "untershied zu pgp-zertifikat"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "untershied zu pgp-zertifikat"
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Unterschied zwischen PGP-Zertifikat und Vertrauenbeziehungsmaterialsierung
- in Cryptone
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection*
@@ -2833,28 +2758,29 @@ Friends
 
  [WEB-OF-TRUST].
  Weitere ist die Freundschaftbeziehung zwischen Benutzer ein Randbedingung
- damit A beispielerweise B in eine Gruppe hinzufügen kannst, und mit B dann
- auch Dokument durch von A gegründete Gruppe austauschen kannst.
+ damit A beispielsweise B in eine Gruppe hinzufügen kann, und mit B dann
+ auch Dokumenten durch von A gegründete Gruppe austauschen kann.
 \begin_inset Newline newline
 \end_inset
 
-Bei der Aufbau eine Vertrauenbeziehung ( Friend ) zwischen A und B , wird
- der öffentliche Sclüssel B von A signiert.
- diese Signature bildet materialisch den Vertrauenbeziehung zwischen A und
- B.
- Diese Signature spielt nicht nur eine Rolle um der Vertrauenbeziehung zwischen
- zwei Benutzer zu materialisieren, sondern auch beim Überprüfung von RemoteServe
-r Integrität.
+Bei der Herstellung eine Vertrauensbeziehung ( Friend ) zwischen A und B
+ , wird die öffentliche Schlüssel B von A signiert.
+ diese Signatur bildet materialistisch die Vertrauensbeziehung zwischen
+ A und B.
+ 
 \begin_inset Newline newline
 \end_inset
 
-Log sich ein Benutzer ein und merkt dass seine Signature nicht mehr stimmt,
- dann wurde der RemoteServer kompromitiert.
+Die Signatur spielt nicht nur eine Rolle, um der Vertrauensbeziehungsherstellung
+ zwischen zwei Benutzer, sondern auch beim Überprüfung von RemoteServer
+ Integrität.
+ Log sich ein Benutzer ein und merkt dass seine Signaturen nicht mehr stimmen,
+ dann wurde der RemoteServer kompromittiert.
  
 \end_layout
 
 \begin_layout Subsection*
-Vertrauenbeziehung zurückziehen
+Vertrauensbeziehung zurückziehen
 \end_layout
 
 \begin_layout Section
@@ -3014,10 +2940,6 @@ Zwischen Benutzer und Group
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -3081,10 +3003,6 @@ Public Group zu Public Group
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -3122,8 +3040,8 @@ Ein Benutzer A kann sich entscheiden ein Dokument D nur mit einer Ihrer
  der Benutzer B öffentliche Schlüssel wird von Benutzer A signiert ).
  Eine Gruppe wird dann erzeugt und das zu auszuteilenden Dokuments wird
  in der neulich erzeugte Gruppe verwiesen.
- der Benutzer B muss dann die Freundschaftanfrage von A bestätigen schliesslich
- darf er auf Dokument D zugreiffen.
+ der Benutzer B muss dann die Freundschaft anfrage von A bestätigen schließlich
+ darf er auf Dokument D zugreifen.
  
 \begin_inset Newline newline
 \end_inset
@@ -3143,12 +3061,6 @@ rtlich der zu erzeugende Gruppe markiert, in der Fall Benutzer Alice.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3156,11 +3068,11 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "100page%"
+width "100col%"
 special "none"
-height "5pheight%"
-height_special "none"
-status collapsed
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3172,12 +3084,28 @@ status collapsed
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Benutzer-Benutzer Dokumentsaustausch}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3189,7 +3117,7 @@ width "100page%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3201,22 +3129,15 @@ status collapsed
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Benutzer-Benutzer-Dokumentsaustausch"
 
-\end_inset
-
-Benutzer-Benutzer Dokumentsaustausch
+\backslash
+captionof{figure}{Benutzer-Benutzer Dokumentsaustausch Ablauf}
 \end_layout
 
 \end_inset
@@ -3260,12 +3181,6 @@ Query String
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3277,31 +3192,14 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/dotty/routes.dot
-	scale 60
-	rotateAngle 90
-	rotateOrigin leftBottom
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Routes/Aktionen
-\end_layout
+	scale 70
+	clip
+	rotateAngle 270
 
 \end_inset
 
@@ -3309,6 +3207,18 @@ Routes/Aktionen
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{CryptoOne HTTP Resources nach REST-Spezifikation}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3322,7 +3232,7 @@ Integrität der transportierte kritischen Daten ( JWS )
 \end_layout
 
 \begin_layout Standard
-Beim sicherheitrelevante Software ist es wichtig die Daten zu verschlüsseln
+Bei sicherheitsrelevanten Software ist es wichtig die Daten zu verschlüsseln
  mit einem konsequent Schlüssellänge, und die Integrität diese Schlüssel
  gewährleistet.
  Diese gilt und ist ausreichend solange die Daten und Schlüssel nicht über
@@ -3366,7 +3276,7 @@ JWS benutzt die von JWE implementiert RSA um Daten zu signiert.
 \end_layout
 
 \begin_layout Standard
-examplarische Header:
+exemplarische JWT Headers:
 \end_layout
 
 \begin_layout Standard
@@ -3562,12 +3472,6 @@ JWS stellen weitere Headers zur Verfügung, aber die werden Anhand diese
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3591,24 +3495,19 @@ status open
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Signature Filters}
+\end_layout
+
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-JWS Filter
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -3622,12 +3521,6 @@ JSON Web Token (JWT)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3651,24 +3544,19 @@ status open
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{JWT-Token : Erläuterung}
+\end_layout
+
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Json Web Token
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -3701,6 +3589,29 @@ Token werden an Stelle von Benutzername-Passwort-Kombinationen verwendet,
 \end_layout
 
 \begin_layout Section
+Notar (SGK zurückgewinnen)
+\end_layout
+
+\begin_layout Standard
+In Falls das System wird unsicher, nach Entdeckung zum Beispiel eines verfälscht
+en öffentlichen Schlüssel, wird alle Informationen in Datenbanken und dabei
+ alle Schlüssel gelöscht.
+ Es sollte eine Möglichkeit gegeben, die Dateischlüssel zurückzugewinnen.
+ Deswegen wird in System den öffentlichen Schlüssel eines Notars eingeführt.
+ Bei Hochladen eines Dateien wird eine Kopie des symmetrischen Schlüssels
+ des Dateien mit dem Notar öffentlichen Schlüssel verschlüsselt.
+ Nach Meldung eines Problems im System, wie fehlerhaftes oder falsches Signatur
+ beziehungsweise öffentlichen Schlüssel, können alle SGK anhand des Notar
+ privaten Schlüssel entschlüsselt werden und damit alle Dateien zurückgewinnen.Hi
+er ist es wichtig zu notieren, dass der Notar private Schlüssel ist nicht
+ in System gespeichert, sondern in eine sichere Ort außerhalb des Systems.
+ Nach Generierung ihres Schlüssel-paar müssen alle neuen Benutzer den Notar
+ öffentlichen Schlüssel signieren und bei jeder Anmeldung seiner Integrität
+ prüfen.
+ Dadurch wird seine Integrität gewährleisten.
+\end_layout
+
+\begin_layout Section
 Szenarien
 \end_layout
 
@@ -3715,12 +3626,6 @@ Benutzer registrieren
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3744,16 +3649,15 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-Benutzer registration sequence diagramm
+
+\backslash
+captionof{figure}{Benutzer registrieren}
 \end_layout
 
 \end_inset
@@ -3771,12 +3675,6 @@ Benutzer einlogen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3800,16 +3698,15 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-Benutzer einloggen sequence diagramm
+
+\backslash
+captionof{figure}{Einloggen}
 \end_layout
 
 \end_inset
@@ -3827,12 +3724,6 @@ Freund hinzufuegen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3850,11 +3741,7 @@ status open
 \begin_inset Graphics
 	filename images/src/pu/sequence/trust_a_new_user.plantuml
 	scale 50
-
-\end_inset
-
-
-\end_layout
+	clip
 
 \end_inset
 
@@ -3862,10 +3749,14 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Freund hinzufuegen sequence diagram
+
+
+\backslash
+captionof{figure}{Freund hinzufuegen sequence diagram}
 \end_layout
 
 \end_inset
@@ -3936,12 +3827,6 @@ Alice will Bob von seine Vertrauenbeziehungen rausnehmen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -3965,13 +3850,15 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Caption Standard
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Freund revoke sequence diagramm
+
+
+\backslash
+captionof{figure}{Revoke Friend}
 \end_layout
 
 \end_inset
@@ -4020,12 +3907,6 @@ Datei hochladen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -4049,16 +3930,15 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-Datei hochladen sequence diagramm
+
+\backslash
+captionof{figure}{Datei hochladen sequence diagramm}
 \end_layout
 
 \end_inset
@@ -4126,16 +4006,12 @@ Schliesslich wird die chiffriert Datei zu RemoteServer übermittelt und ein
 \end_layout
 
 \begin_layout Subsection*
-Datei runterladen
+Datei herunterladen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -4150,14 +4026,12 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/src/pu/sequence/download_file_from_group.plantuml
-	scale 50
-
-\end_inset
-
-
-\end_layout
+	scale 60
+	clip
 
 \end_inset
 
@@ -4165,10 +4039,11 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Datei runterladen sequence diagramm
+
 \end_layout
 
 \end_inset
@@ -4230,12 +4105,6 @@ Alice will eine neue Gruppe anlegen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -4252,12 +4121,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/sequence/new_group.plantuml
-	scale 50
-
-\end_inset
-
-
-\end_layout
+	scale 60
 
 \end_inset
 
@@ -4265,10 +4129,14 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Neue Gruppe erzeugen sequence diagramm
+
+
+\backslash
+captionof{figure}{Neue Gruppe anlegen}
 \end_layout
 
 \end_inset
@@ -4356,6 +4224,12 @@ g.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
 <features rotate="0" tabularvalignment="middle">
@@ -4560,6 +4434,23 @@ GruntJS
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Technologie-Überblick
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Allgemein Designentscheidungen
 \end_layout
@@ -4569,16 +4460,16 @@ JSON-Format
 \end_layout
 
 \begin_layout Standard
-Systemweit wird JSON-Format bevorzugt um die Daten zwischen die verschiedene
+System-weit wird JSON-Format bevorzugt um die Daten zwischen die verschiedene
  Softwarekomponente zu transpotieren.
- Explizit ausgedruckt, heisst es dass alle High-end Funktionen bzw.
- die Funktion die durch eine eine Softwarekomponent zur aussenwelt verfügbar
+ Explizit ausgedruckt, heißt es dass alle High-end Funktionen bzw.
+ die Funktion die durch eine eine Softwarekomponent zur Außenwelt verfügbar
  gemacht wurden exportieren Daten in JSON-Format.
  Diese Entscheidung lasst sich bei der Interoperabilität gründen, sowie
  auch Kriterien wie Einheitlichkeit von Softwareschnittstellen, was bei
  der Weiterentwicklung von grossen Bedeutung ist.
- Durch den Einsatz von JSON als Export-Format wird beispielerweise das Ersetzen
- von Softwarekomponent einfach.
+ Durch den Einsatz von JSON als Export-Format wird beispielsweise das Ersetzen
+ von Softwarekomponente einfach.
  Beim Einsatz von JSON wurde die von Google entwickelte GSON Bibliothek
  benutzt.
 \end_layout
@@ -5559,6 +5450,111 @@ Auch wenn LocalServer mit einem Plattform unabhängige Programmiersprache
 
 \end_layout
 
+\begin_layout Section*
+LocalServer Module
+\end_layout
+
+\begin_layout Subsubsection*
+CryptoUtils
+\end_layout
+
+\begin_layout Standard
+Diese Module enthält alle kryptographische Funktionalitäten, welche für
+ diese Arbeit eine Rolle spielen, nämlich : 
+\end_layout
+
+\begin_layout Enumerate
+Symmetrische Verschlüsselung und symmetrische Schlüssel-Generator.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Asymmetrische Verschlüsselung und asymmetrische Schlüssel-Generator
+\end_layout
+
+\begin_layout Enumerate
+Passwort basierte asymmetrische Schlüssel-Generator
+\end_layout
+
+\begin_layout Enumerate
+Digitale Signature
+\end_layout
+
+\begin_layout Enumerate
+Hashwert-Berechnung
+\end_layout
+
+\begin_layout Enumerate
+Zufall-Generator (Salt-Generator) 
+\end_layout
+
+\begin_layout Standard
+Alle oben genannte Funktionalität wurden als Funktionsmodule (Gedächtnislose-Mod
+ule) implementiert.
+ Schlüssellänge und eingesetzte Algorithmus können durch die Konfigurationsdatei
+ geändert werden.
+\begin_inset Newline newline
+\end_inset
+
+Die obengennante Untermodule verfügen über eine einheitliche Schnittstelle,
+ Parameter-Typ und Rückgabewert sind immer Base-64 codierte JSON-Zeichenkette.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/src/pu/class/crypto.plantuml
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+CryptoUtils Module
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Alle Klasse werden sowie in der oben stehenden Abbildung weiter im LocalServer
+ benutzt (
+\begin_inset Quotes gld
+\end_inset
+
+AS IS
+\begin_inset Quotes grd
+\end_inset
+
+).
+ Ausnahmeweise wird AESCrypto abstrahiert um eine Spezialisierung für Dateiversc
+hlüsselung zu entwerfen.
+ 
+\end_layout
+
 \begin_layout Subsection*
 Konfigurationsdatei
 \end_layout
@@ -5567,85 +5563,14 @@ Konfigurationsdatei
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-app:
-\end_layout
-
-\begin_layout Plain Layout
-name: CryptLocal
-\end_layout
-
-\begin_layout Plain Layout
-description: CryptoLocal Server
-\end_layout
-
-\begin_layout Plain Layout
-server:
-\end_layout
-
-\begin_layout Plain Layout
-port: 0
-\end_layout
-
-\begin_layout Plain Layout
-multipart:
-\end_layout
-
-\begin_layout Plain Layout
-maxFileSize: 128KB
-\end_layout
-
-\begin_layout Plain Layout
-maxRequestSize: 128KB
-\end_layout
-
-\begin_layout Plain Layout
-remote:
-\end_layout
-
-\begin_layout Plain Layout
-url: http://localhost:8080
-\end_layout
-
-\begin_layout Plain Layout
-users: /api/users
-\end_layout
-
-\begin_layout Plain Layout
-document: /api/documents
-\end_layout
-
-\begin_layout Plain Layout
-groups: /api/groups
-\end_layout
-
-\begin_layout Plain Layout
-friends: /api/friends
-\end_layout
-
-\begin_layout Plain Layout
-login:
-\end_layout
-
-\begin_layout Plain Layout
-challenge: /session/login/challenge
-\end_layout
+	
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "samples/application.yml"
+lstparams "emph={remoteserver, url, uri, maxFileSize, register, login, authenticate, users, documents, groups, friends, port, app, server, multipart, keypairs, symkeys, name, description, maxRequestSize, logout, challenge},emphstyle={\\color{green}},caption={application.yml},label={Konfigurationsdatei}"
 
 \end_inset
 
@@ -5684,30 +5609,30 @@ reference "sub:konfiguration_localserver"
 
 \end_inset
 
- zeigt eine examplarische Spring boot projekt konfiguration wie es in den
+ zeigt eine exemplarische Spring-Boot Projekt Konfiguration wie es in den
  Projekt eingesetzt wurde.
- Spring-Boot übernimmt die Verwaltung von Konfigurationdatei und sorgt zur
- Verbindung von in der Konfigurationsdatei eingetragene Wert und dessen
- Verweis in Java-code, oder auch zur Bestimmung der Context.
- in der oben bennante konfigurationdatei wird zum Beispiel der Wert Port
+ Spring-Boot übernimmt die Verwaltung von Konfigurationsdatei und sorgt
+ zur Verbindung von in der Konfigurationsdatei eingetragene Wert und dessen
+ Verweis im Java Code, oder auch zur Bestimmung der Kontext.
+ in der oben benannte Konfigurationsdatei wird zum Beispiel der Wert Port
  zu 0 gesetzt, was dafür sorg dass LocalServer immer eine beim Clientrechner
  nicht verwendete Port benutzt.
  Beim RemoteServer muss dieser Wert jedoch immer fest sein.
- Weitere werden in Konfigurationdatei Werte wie Schlüssellänge, Servermessage
- un Datenbankverbindungsinformationen festgelegt.
+ Weitere werden in Konfigurationsdatei Werte wie Schlüssellänge, Servermesssage
+ und Datenbankverbindungsinformationen festgelegt.
  Es ist anzudeuten dass die Konfigurationswert von RemoteServer modifiziert
  sein können um etwa die Datenbankverbindungsinformationen auf der RemoteServer
  anzupassen.
- Diese modifikation gescheht durch modifizierung der Konfigurationsdatei
- oder per commandline-argument beim aufrufen von 
+ Diese Modifikation geschieht durch Modifizierung der Konfigurationsdatei
+ oder per Commandline-Argument beim aufrufen von 
 \begin_inset space ~
 \end_inset
 
-java
+Java
 \begin_inset space ~
 \end_inset
 
- zur Compilierung.
+ zur Kompilierung.
 \begin_inset Newline newline
 \end_inset
 
@@ -5765,12 +5690,6 @@ ng bereitstellt für eine einfache Implementierung von Software nach MVC
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -5794,16 +5713,15 @@ status open
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-MVC-Muster
+
+\backslash
+captionof{figure}{MVC-Muster}
 \end_layout
 
 \end_inset
@@ -5818,8 +5736,29 @@ MVC-Muster
 
 \begin_layout Standard
 Der Controller (mit RestController oder Controller Annotation vorgesehen)
- ist mit Applicationlogic (mit Service Annotation vorgesehen) verkoppelt.
- Controller-einheit stellt auch die Resources zur Ausserwelt zur Verfügung.
+ ist mit Applikation-Logik (mit Service Annotation vorgesehen) verkoppelt.
+ Controller-Einheit stellt auch die Ressource zur Außenwelt zur Verfügung.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Applikation-Logik besteht aus zwei Schichten, Controller und Service.
+ Controller die mit Internet-spezifische Technologie gekoppelt ist nimmt
+ die Anfragen entgegen.
+ Bearbeitung der Anfrage an sich geschieht im Service.
+ Dank diese Schichtmodell und Entkopplung von Service und Controller wird
+ erzielt, dass die Integrationstest der Software ohne Http-spezifische Softwarek
+omponente durchgeführt werden kann.
+ 
+\end_layout
+
+\begin_layout Subsection*
+RestClient 
+\end_layout
+
+\begin_layout Standard
+RestClient Module ist dafür verantwortlich Http-Anfrage an RemoteServer
+ versenden.
  
 \end_layout
 
@@ -6334,10 +6273,6 @@ Status-Code Filter
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -6362,12 +6297,6 @@ ommene Leistung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -6391,24 +6320,19 @@ status open
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Caching configuration}
+\end_layout
+
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Caching configuration
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6478,6 +6402,7 @@ status open
 \begin_inset Graphics
 	filename images/relationships.real.large.png
 	scale 60
+	clip
 
 \end_inset
 
@@ -6493,7 +6418,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Datenbank schema
+Datenbank Schema
 \end_layout
 
 \end_inset
@@ -6596,8 +6521,8 @@ Evaluierung
 \end_layout
 
 \begin_layout Standard
-In diesemen Abschnitt wird überprüft, in wieweit die Umsetzung des Lösungskonzep
-tes die geforderten Anforderungen an der Cryptone-System erfüllt.
+In diesem Abschnitt wird überprüft, in wieweit die Umsetzung des Lösungskonzepte
+s die geforderten Anforderungen an der Cryptone-System erfüllt.
  Zusätzlich wird auf Maßnahmen eingegangen, um Korrektheit des Dienstes
  sicherzustellen.
  
@@ -6617,9 +6542,9 @@ reference "chap:Anforderungen"
 
  wurde in in funktionale und nichtfunktionale Anforderungen unterteilt.
  Während die funktionalen Anforderungen durch konkrete softwaretechnische
- Einheit (Klasse, Module) werden konnten, beziehen sich die nichtfunktionalen
- Anforderungen auf Eigenschaften des Gesamtsystems, die sich mnicht an einzeilne
-n Modulen festmachen lassen.
+ Einheit (Klasse, Module) werden konnten, beziehen sich die nicht-funktionalen
+ Anforderungen auf Eigenschaften des Gesamtsystems, die sich mnicht an einzelnen
+ Modulen festmachen lassen.
  
 \begin_inset Newline newline
 \end_inset
@@ -6633,13 +6558,13 @@ Um die funktionalen Anforderungen mit den Modulen abzugleichen, mussten
 
 Die Kernfunktionalität von Software ( Authentication, Registrierung, Dateiaustau
 schoptionen ...) wurde durch eine Unit-Test Programm getestet.
- [Siehe Anhang für die Ergebnisse], sowie auch nichtfunktionale Anforderungen
+ [Siehe Anhang für die Ergebnisse], sowie auch nicht-funktionale Anforderungen
  wie :
 \end_layout
 
 \begin_layout Itemize
 Funktionparameter Integrität prüfung ( Null-Object , nicht genug Argument,
- falsche Argument, Argumenttyp Prüfung ) 
+ falsche Argument, Argumenttyp Prüfung) 
 \end_layout
 
 \begin_layout Itemize
@@ -6841,10 +6766,6 @@ Cryptone Compilierung
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -6985,74 +6906,72 @@ Zusammenfassung
 \end_layout
 
 \begin_layout Standard
-KryptoOne-System ist ein Internetbasierte Dokumentverwaltung (Dokumentaustausch,
- Dokumentablagerung ..
- ) konzipiert mit eine intuitive Benutzer Interaktion durch Webbrowser und
- mit dem Ziel kryptographische Komplexität zu abstrahieren, das heisst so
- gut wie keiner Kryptographierelevante Aufgabe an Benutzer zu überlassen,
- unterschied zu andere Cloud-Service werden die Datei verschlüsselt bevor
- sie hochgeladen werden.
- KryptoOne-System verwaltet auch die Benutzer und fügt das Konzept von Vertrauen
-beziehung in Dateiaustausch.
- Ferner wird die Sicherstärke an Unternehmen, die das Software benutzt überlasse
-n.
- Das heisst ein Unternehmen ist nicht durch geschränkte Sicherheitgrad von
- andere Anbieter gezwungen.
+KryptoOne-System ist ein Internet-basierte Dokumentverwaltung (Dokumentaustausch
+, Dokumentablagerung ..
+ ) konzipiert mit einer intuitiven Benutzer Interaktion durch Webbrowser
+ und mit dem Ziel, kryptographische Komplexität zu abstrahieren, das heisst
+ so gut wie keine Kryptographie-relevante Aufgabe an Benutzer zu überlassen.
+ Im Unterschied zu anderen Cloud-Services werden die Dateien verschlüsselt,
+ bevor sie hoch geladen werden.
+ KryptoOne-System verwaltet auch die Benutzer und wendet das Konzept von
+ Vertrauensbeziehung im Dateiaustausch an.
+ Ferner wird die Sicherheits-Stärke den Unternehmen, welche die Software
+ benutzen, überlassen.
+ Das heißt, ein Unternehmen ist nicht durch einen beschränkten Sicherheitsgrad
+ gehandikapt.
  
 \begin_inset Newline newline
 \end_inset
 
-Die bisherige Lösung diese Problems sah ein grosses Aufwand für Endbenutzer
+Die bisherige Lösung diese Problems sah einen großen Aufwand für Endbenutzer
  vor.
- Benutzer sollte sich selber darum kümmert Schlüssel zu erzeugen, Schlüssel
- managieren und Schlüssel an Kommunikationspartner übergeben.
- Die entscheidente Nachteile dabei waren der Aufwand von die vorher beschriebene
- Prozess, die Annahme dass die Benutzer sich mit Kryptographie auskennen,
- Die Schlüsselverteilungproblematik und schliesslich Installation von neuer
- Software.
+ Benutzer sollte sich selber darum kümmern, Schlüssel zu erzeugen, Schlüssel
+ zu managen und Schlüssel an Kommunikationspartner zu übergeben.
+ Die entscheidenden Nachteile dabei waren der Aufwand des oben beschriebenen
+ Prozesses, die Voraussetzung, dass die Benutzer sich mit Kryptographie
+ auskennen, die Schlüsselverteilungsproblematik und schließlich die Installation
+ von neuer Software.
  
 \begin_inset Newline newline
 \end_inset
 
-Zu Beginn der Arbeit wurden die Probleme der bisherigen eingesetze Lösung
- genauer beleuchtet und die Motivation für eine Komplexität-transparent
- Cryptosoftware mit spezifizierte Anforderungen abgeleitet.
- Anschlißend wurden die Ziele der Arbeit ausgearbeitet.
-\begin_inset Newline newline
-\end_inset
+Zu Beginn der Arbeit wurden die Probleme der bisher eingesetzten Lösungen
+ genauer beleuchtet und die Motivation für eine Komplexitäts-transparente
+ Cryptosoftware mit spezifizierten Anforderungen abgeleitet.
+ Anschließend wurden die Ziele der Arbeit formuliert.
+\end_layout
 
-Im theoritischen Teil wurde auf die für Umsetzung des CryptoOne-System benötigte
-n Grundlagen eingegangen.
- Zuerst wurden die heutigen sichere kryptographische Standard und wichtige
+\begin_layout Standard
+Im theoretischen Teil wurde auf die zur Umsetzung des CryptoOne-Systems
+ benötigten Grundlagen eingegangen.
+ Zuerst wurden die heutigen sicheren kryptographischen Standards und wichtige
  Begriffe erläutert.
- Die Begrenzungen von diese Standard wurde auf Licht gebracht.
- Im Anschluss daran wurde auf die Zusammenarbeit von diese Standard, um
- Grenze diese Standard zu überschreiten, mit dem Ziel die Sicherheitgrad
- der entworfenen Lösung zu erhöhen, wie zum Beispiel Hybrid-Verschlüsselung
- aus RSA und AES um Perfomance zu erhöhen.
+ Die Einschränkungen und Nachteile dieser Standards wurden beleuchtet.
+ Im Anschluss wurde darauf eingegangen, wie sich durch das Zusammenspiel
+ dieser Standards die besagten Einschränkungen umgehen lassen.
+ Ziel dabei war es, den Sicherheitsgrad der entworfenen Lösung zu erhöhen,
+ wie zum Beispiel Hybrid-Verschlüsselung aus RSA und AES, um eine höhere
+ Performance zu erreichen.
  
 \begin_inset Newline newline
 \end_inset
 
-Der praktische Teil dieser Arbeit wurde in vier Teile gegliedert: Anforderungana
-lyse, Erstellung eines Lösungskonzeptes, Umsetzung und Bewertung des umgesetzten
- Lösungskonzeptes.
+Der praktische Teil dieser Arbeit wurde in vier Kapitel gegliedert: Anforderungs
+-Analyse, Erstellung eines Lösungskonzeptes, Umsetzung und Bewertung des
+ umgesetzten Lösungskonzeptes.
  
 \end_layout
 
 \begin_layout Standard
-Durch die Anforderungssanalyse wurden die konkreten Anforderungen an CryptoOne-S
-ystem herausgearbeitet, dabei wurde sowohl funktionale als auch nichtfunktionale
- Anforderungen berücksichtigt.
+Durch die Anforderungs-Analyse wurden die konkreten Anforderungen an das
+ CryptoOne-System herausgearbeitet.
+ Dabei wurden sowohl funktionale, als auch nicht-funktionale Anforderungen
+ berücksichtigt.
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand lstinputlisting
-filename "Application.java"
-lstparams "emph={@Configuration},emphstyle={\\color{red}},caption={ein java listing},label={src1}"
-
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -7164,6 +7083,16 @@ description "Model-View-View-Model"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -7186,6 +7115,23 @@ clearpage
 \backslash
 phantomsection
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
 
 \end_inset
 

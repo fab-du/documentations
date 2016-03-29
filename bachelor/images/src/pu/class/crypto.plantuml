@@ -1,0 +1,37 @@
+@startuml
+
+package "CryptUtils" {
+
+
+interface ICipher{
+   + String generateKey()
+   + String encrypt( String key, String data)
+   + String decrypt( String key, String data)
+}
+
+class AESCrypto implements ICipher{
+}
+
+class RSACrypto implements ICipher{
+}
+
+
+class Hash {
+	+ String hash( byte[] obj )
+	+ boolean checkHash(byte[] obj , String digesta)
+}
+
+class Signature {
+   + String sign( String prikey , String obj )
+   + String sign( KeyPair key , String passphrase, String obj )
+   + boolean verify(String pubKey , Object obj) 
+}
+
+class Hash {
+	+ String hash( byte[] obj ) 
+	+ boolean checkHash(byte[] obj , String digesta) 
+}
+
+}
+
+@enduml

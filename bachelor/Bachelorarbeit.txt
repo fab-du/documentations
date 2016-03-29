@@ -100,10 +100,11 @@ Inhaltsverzeichnis
             Benutzer-Masterkey
             Symmetrische Kryptographie
             Symmetrische Schlüssel 
+            Dateischlüssel
             Passwort und Passphrase 
             Digitale Signature 
         Hybride Verschlüsselung 
-        Public-Key-Infrastruktur (PKI)
+        Public Key Infrastructur (PKI)
         2.2 Email 
         2.3 Web-upload
         2.4 File Transfer Protocol (FTP) 
@@ -117,7 +118,7 @@ Inhaltsverzeichnis
                 Benutzer role
                 Registrierung und login
                 Server-Client Kommunikation 
-        3.2 Nichtfunktionale Anforderungen 
+        3.2 Nicht-funktionale Anforderungen 
             3.2.1 Allgemeine nichtfunktionale Anford
             3.2.2 Wartbarkeit und Änderbarkeit
             3.2.3 Portierbarkeit und Plattformunabhä
@@ -427,6 +428,13 @@ durchzuführen. Da die symmetrischen Schlüssel sowohl zur
 Chiffrierung als auch zur Dechiffrierung eingesetzt werden, sind 
 sie als kritische Informationen zu sehen. 
 
+  Dateischlüssel
+
+Ein Dateischlüssel ist ein symmetrischer Schlüssel, der 
+eingesetzt wird, um Dateien zu chiffrieren bzw. zu dechiffrieren. 
+In dieser Arbeit entspricht der Dateischlüssel den 
+Gruppenschlüssel, kurz SGK (Secret Group Key). 
+
   Passwort und Passphrase 
 
 Duden [7] definiert das Passwort bzw. Passphrase wie folgt : 
@@ -446,27 +454,27 @@ verschlüsseln.
   Digitale Signature <sub:Digitale-Signature>
 
 Eine digitale Signatur, auch digitales Signaturverfahren, ist ein 
-asymetrisches Kryptosystem, bei dem ein Sender mit Hilfe eines 
-geheimen Signaturschlüssels (dem private Schlüssel) zu einer 
+asymmetrisches Kryptosystem, bei dem ein Sender mit Hilfe eines 
+geheimen Signaturschlüssels (dem privaten Schlüssel) zu einer 
 digitalen Nachricht einen Wert berechnet, der ebenfalls digitale 
 Signatur benannt wird. Dieser Wert ermöglicht es jedem, mit Hilfe 
-des öffentlichen Verifikationsschlüssels (den öffentlichen 
-Schlüssel) die nichtabstreitbare Urheberschaft und Integrität der 
-Nachricht zu prüfen. Um eine mit einem Signaturschlüssel 
+des öffentlichen Verifikationsschlüssels (dem öffentlichen 
+Schlüssel) die nicht bestreitbare Urheberschaft und Integrität 
+der Nachricht zu prüfen. Um eine mit einem Signaturschlüssel 
 erstellte Signatur einer Person zuordnen zu können, muss der 
 zugehörige Verifikationsschlüssel dieser Person zweifelsfrei 
 zugeordnet sein.
 
   Hybride Verschlüsselung 
 
-Hybride Verschlüsselung ist eine Kombination aus assymetrischer 
+Hybride Verschlüsselung ist eine Kombination aus asymmetrischer 
 Verschlüsselung und symmetrischer Verschlüsselung. Dabei wählt 
-der Sender zufälligen symmetrischen Schlüssel, der Session-Key 
-gennant wird. Mit diesem Session-Key werden die zu schützenden 
-Daten symmetrisch verschlüsselt. Anschließend wird der 
-Session-Key asymmetrisch mit dem öffentlichen Schlüssel des 
+der Sender einen zufälligen symmetrischen Schlüssel, der 
+Session-Key genannt wird. Mit diesem Session-Key werden die zu 
+schützenden Daten symmetrisch verschlüsselt. Anschließend wird 
+der Session-Key asymmetrisch mit dem öffentlichen Schlüssel des 
 Empfängers verschlüsselt. Dieses Vorgehen löst das 
-Schlüsselverteilungsproblem und erhält dabei den 
+Schlüsselverteilungsproblem und behält dabei den 
 Geschwindigkeitsvorteil der symmetrischen Verschlüsselung.
 
 [Gleitobjekt Tabelle:
@@ -486,12 +494,12 @@ Vergleich asymmetrische/symmetrische Verschlüsselugn
 ]
 ]
 
-Wie die Obere Abbildung zeigt, Ist Symmetrische 
-Verschlüsselungsverfahren sind auch bei großen Datenmengen sehr 
-schnell, assymetrische dagegen sind sehr langsam , und sind dann 
-nur für kleine Datenmengen ( Wie Schlüssel ) geeignet. 
-Beim Schlüsselverteilung hat Symmetrische 
-Verschlüsselungsverfahren das Problem, dass sich die 
+Wie die Abbildung oben zeigt, sind symmetrische 
+Verschlüsselungsverfahren auch bei großen Datenmengen sehr 
+schnell, asymmetrische dagegen sind sehr langsam, und deshalb nur 
+für kleine Datenmengen (wie etwa für Schlüssel) geeignet. 
+Bei der Schlüsselverteilung hat das symmetrische 
+Verschlüsselungsverfahren den Nachteil, dass sich die 
 Kommunikationspartner vor der Übermittlung der Nachricht auf 
 einen geheimen Schlüssel einigen müssen. Dazu muss ein sicherer 
 Kommunikationskanal benutzt werden, wie zum Beispiel ein Kurier. 
@@ -500,8 +508,8 @@ sehr elegant, weil zum Verschlüsseln nur der öffentliche
 Schlüssel gebraucht wird. Zur Übermittlung dieses Schlüssels 
 reicht ein authentifizierter Kanal aus. 
 Hybride Verschlüsselungsverfahren kombinieren die beiden 
-Verschlüsselungsverfahren so, dass ihre Vorteile erhalten 
-bleiben: 
+Verfahren (asymmetrisch und symmetrisch) so, dass deren Vorteile 
+erhalten bleiben: 
 
 • Hybride Verschlüsselungsverfahren sind sehr schnell und eignen 
   sich für große Datenmengen, weil die Daten mit dem 
@@ -510,94 +518,105 @@ bleiben:
   wird.
 
 • Es muss vor dem Senden der Nachricht kein geheimer Schlüssel 
-  ausgetauscht werden, Kenntnis des öffentlichen Schlüssels des 
-  Empfängers reicht um zu verschlüsseln.
+  ausgetauscht werden. Die Kenntnis des öffentlichen Schlüssels 
+  des Empfängers reicht, um zu verschlüsseln.
 
-  Public-Key-Infrastruktur (PKI)
+  Public Key Infrastructur (PKI)
 
-Public Key Infrakstruktur ist ein System, das digitale 
-Zertifikate ausstellen, verteilen und prüfen kann. Die innerhabl 
-einer PKI ausgestellten Zertifikate werden zur Absicherung 
-rechnergestützter Kommunikation verwendet. 
-Basis für Public-Key-Infrastruktur ist asymmetrisch Kryptosystem 
-und Hybride Verschlüsselung. mit Hilfe asymmetrische Kryptosystem 
-werden die Daten digital signiert und verschlüsselt. 
+Public Key Infrastructur ist ein System, das digitale Zertifikate 
+ausstellen, verteilen und prüfen kann. Die innerhalb einer PKI 
+ausgestellten Zertifikate werden zur Absicherung 
+Rechner-gestützter Kommunikation verwendet. 
+Basis für Public Key Infrastructur sind das asymmetrische 
+Kryptosystem und die hybride Verschlüsselung. Mit Hilfe des 
+asymmetrischen Kryptosystems werden die Daten digital signiert 
+und verschlüsselt. 
 
 2.2 Email 
 
-Autausch von elektronischen Daten per Email ist weit verbreitet. 
-Email-Dienste werden von eigenen Unternehmen oder auch von 
-Internet-Dienstleistung angeboten. Die versendung von Emails 
-durch Internet ist zunächst unverschlüsselt. Somit sind die 
-Inhalte relativ einfach auch für Dritte lesbar. 
-Die Indentitäten der Kommunikationspartner werden i.a mit den 
+Der Austausch von elektronischen Daten per Email ist weit 
+verbreitet. Email-Dienste werden von eigenen Unternehmen oder 
+auch von Internet-Dienstleistern angeboten. Die Versendung von 
+Emails über das Internet ist zunächst unverschlüsselt. Somit sind 
+die Inhalte relativ einfach auch für Dritte lesbar. 
+Die Identitäten der Kommunikationspartner werden i. Allg. mit den 
 Email-Adressen gleichgesetzt. Eine weitergehende Prüfung findet 
-nicht statt. Was Indentitätbetrug ist leicht zu erstellen, Damit 
-man die Indentität (Email-Adresse) von einer der 
-Kommunikationpartner fekt. Obwohl dieser Funktionalität um diese 
-Risiko zu schlagen in der meistens Email-Client vorgesehen ist 
-(Gmail), geschet die Email-Adressürberprüfung nicht automatisch. 
-Diese Aufgabe ist an Benutzer überlassen. 
+nicht statt. Dadurch aber wird der Identitätsdiebstahl 
+erleichtert, das heißt die Vortäuschung einer fremden Identität 
+(Email-Adresse). Obwohl in der meisten Email-Clients eine 
+Funktion vorgesehen ist, um das Risiko des Identitätstäuschung zu 
+umgehen, geschieht die Email-Adressenüberprüfung nicht 
+automatisch. Dies bleibt dem Benutzer überlassen. 
 Ein Austausch über Firmengrenzen hinweg ist problemlos möglich. 
-Problematisch ist aber Austausch von kritischen Informationen. 
+Problematisch ist aber der Austausch von kritischen 
+Informationen. 
 
-eine im ersten Blick triviale Lösung was Austausch von sensiblen 
-elektronischen Daten angeht besteht darin diese Daten zu 
-verschlüsseln und die resultierende verschlüsselte Dokument per 
-Email an der Kommunikationspartner zu senden. Diese Lösung ist 
-solange ertragbar wenn die Teilnehmer (Sender und Empfänger) sich 
-mit Kryptographie bzw Kryptographiesoftware auskennen. 
-Begrenzungen an diese Technik sind unerheblich und unheimlich 
-viele : 
+Eine auf dem ersten Blick triviale Lösung, was das Austauschen 
+von sensiblen elektronischen Daten angeht, besteht darin, die 
+Daten zu verschlüsseln und diese per Email an den 
+Kommunikationspartner zu senden. Diese Lösung ist nur möglich, 
+sofern sich die Teilnehmer (Sender und Empfänger) mit 
+Kryptographie bzw. Kryptographiesoftware auskennen. 
+Überhaupt stellen sich dieser Lösung etliche Hürden in den Weg: 
 
-• Diese Lösung setzt voraus dass der Kommunikationspartner sich 
-  auch mit der Kryptographie bzw. Kryptographiesoftware auskennt. 
+• Wie gerade erwähnt, setzt diese Lösung voraus, dass sich die 
+  Kommunikationspartner mit der Kryptographie bzw. 
+  Kryptographiesoftware auskennen. 
 
-• Zusätzliche Softwareinstallation 
+• Zusätzliche Softwareinstallationen sind zwingend erforderlich. 
 
-• Schlüsselaustauschsproblematik. 
+• Der Schlüsselaustausch ist problematisch, und zwar insofern, 
+  als der Dechiffrierschlüssel an den Kommunikationspartner 
+  übermittelt werden muss.
 
-• Infrakstrukturproblemetik.
+• Dazu kommt noch die Infrastrukturproblematik: 
+  Schlüsselmanagement, Sicherheit der Schlüssel, 
+  Software-Installation etc. ... 
 
 2.3 Web-upload<sec:Web-upload>
 
 Das Speichern von Dokumenten auf einem Internet-Server ist weit 
 verbreitet und weltweit von jedem Browser aus möglich. Eine 
 Installation zusätzlicher Software, oder gar die Öffnung 
-zusätzlicher Ports der Unternehmens-Firewall ist nicht notwendig. 
-Die Benutzer-Authentifizierung erfolgt i.d.R. per Lo- 
-gin/Password. Daten können im Internet mittels des 
-https-Protokolls verschlüsselt. schlüsselt übertragen wer- den. 
+zusätzlicher Ports der Unternehmens-Firewall ist nicht 
+erforderlich. Die Benutzer-Authentifizierung erfolgt i.d.R. per 
+Login/Password. Daten können im Internet mittels des 
+http-Protokolls verschlüsselt übertragen werden. 
 Fälschlicherweise wird angenommen, dass die übertragenen 
-Dokumente dann auch beim Empfänger „sicher“ gespe- ichert sind. 
-Jedoch werden lediglich die Doku- mente auf dem Weg zum Server 
-mit SSL verschlüsselt. Danach liegen sie zunächst unverschlüsselt 
-vor. So werden von einem Server verschlüsselt übertragene Doku- 
-mente vom Browser entschlüsselt und im Klartext auf dem lokalen 
-PC gespeichert. Ebenso werden Dokumente, die vom Browser für die 
-Übertragung verschlüs- selt werden vom Server entschlüsselt und 
-liegen am Server unverschlüsselt vor. Somit besteht dieselbe 
-Problematik und auch derselbe Lösungsansatz wie bei Datei- 
-Servern. In Folge dessen sollten Dokumente, die per Browser auf 
-einen Datei-Server geladen werden, vom Client-PC verschlüsselt 
-wer- den. Die Dokumente müssen also vor dem Upload verschlüsselt 
-worden sein, oder aber der Browser führt die Verschlüsselung 
-durch. Eine Vorab- Verschlüsselung der Dateien hat den Nachteil, 
-dass das Dokumenten- und Schlüssel-Management vom Anwender 
-eigenverantwortlich durchgeführt wer- den muss. Dies ist i.a. den 
-Anwendern zu aufwendig. Folglich sollte die Verschlüsselung durch 
-den Browser quasi automatisch erfolgen. Dies wird aktuell nur 
-sehr selten durchgeführt, da die Verschlüsselungs-Software auch 
-vom Web-Server geladen werden müssen. Und es kann nicht 
-garantiert wer- den, dass die geladene Software nicht 
-Eindringlingen unbeabsichtigten Zugriff ermöglicht. In Folge 
-dessen werden Dokumente SSL-verschlüsselt zum Server gesen- det. 
-Die dort empfangenen, unverschlüsselten Dokumente wer- den sofort 
-verschlüs- selt und als Datei abgelegt. Hier bestehen jedoch fol- 
-gende Probleme: (1) Wie kommen die notwendigen Schlüssel zum 
-Server? (2) Ein Eindringling auf dem Server kann die 
-Klartext-Datei und/oder die Schlüssel mitlesen. Zusammenfassung 
-Ein Ansatz für ein sicheres web-upload ist bisher nicht bekannt.
+Dokumente dann auch beim Empfänger „sicher“ gespeichert sind. 
+Jedoch werden lediglich die Dokumente auf dem Weg zum Server mit 
+SSL verschlüsselt. Danach liegen sie zunächst unverschlüsselt 
+vor. So werden von einem Server verschlüsselt übertragene 
+Dokumente vom Browser entschlüsselt und im Klartext auf dem 
+lokalen PC gespeichert. Ebenso werden Dokumente, die vom Browser 
+für die Übertragung verschlüsselt werde, vom Server entschlüsselt 
+und liegen dann am Server unverschlüsselt vor. Somit ergeben sich 
+dieselbe Problematik und derselbe Lösungsansatz wie bei 
+Datei-Servern. In Folge dessen sollten Dokumente, die per Browser 
+auf einen Datei-Server geladen werden, vom Client-PC 
+verschlüsselt wer- den. Die Dokumente müssen also vor dem Upload 
+verschlüsselt worden sein, oder aber der Browser führt die 
+Verschlüsselung durch. Eine Vorab-Verschlüsselung der Dateien hat 
+den Nachteil, dass das Dokumenten- und Schlüssel-Management vom 
+Anwender eigenverantwortlich durchgeführt werden muss. Dies ist 
+den Anwendern i. Allg. zu aufwendig. Folglich sollte die 
+Verschlüsselung durch den Browser quasi automatisch erfolgen. 
+Dies wird aktuell nur sehr selten durchgeführt, da die 
+Verschlüsselungs-Softwares auch vom Web-Server geladen werden 
+müssen. Und es kann nicht garantiert werden, dass die geladene 
+Software nicht Eindringlingen unbeabsichtigten Zugriff 
+ermöglicht. In Folge dessen werden Dokumente SSL-verschlüsselt 
+zum Server gesendet. Die dort empfangenen, unverschlüsselten 
+Dokumente werden sofort verschlüsselt und als Datei abgelegt.
+Hier bestehen jedoch folgende Probleme: 
+
+• Wie kommen die notwendigen Schlüssel zum Server? 
+
+• Ein Eindringling auf dem Server kann die Klartext-Datei 
+  und/oder die Schlüssel mitlesen
+
+Zusammenfassung: Ein Ansatz für ein sicheres web-upload ist 
+bisher nicht bekannt.
 
 2.4 File Transfer Protocol (FTP) 
 
@@ -630,7 +649,7 @@ wird Cloud-Service bei viele Endbenutzer sehr beliebt. Gerade bei
 der Bereitstellung von sensiblen Dokumenten über die Cloud ist es 
 unumgänglich, auf Sicherheit und Schutz vor fremdem Eingriff zu 
 achten. Doch oft möchte man, einige Dateien mit einem 
-Geschäftpartner oder Kollegen austauschen und actet wenig auf 
+Geschäftpartner oder Kollegen austauschen und achtet wenig auf 
 Sicherheit. Beliebte Cloud-Lösungen aus dem Privatbereich wie 
 Dropbox werden hierbei gerne verwendet. Die Richtlinien solcher 
 Cloud-Speicher entsprechen nicht dem deutschen Datenschutzrecht. 
@@ -791,7 +810,7 @@ freigegeben.
 
 SDSI [EFL + 99][RL96] [ST00] wurde von Ronald Nieten und Butler 
 Lampson konzipiert. Seine Entwicklung wurde durch die Komplexität 
-der herkömmlichen Public Key Infrastrukturen speziell die 
+der herkömmlichen Public-Key Infrastrukturen speziell die 
 Abhängigkeit auf den globalen Namensraum motiviert. SDSI ist eine 
 Public Key-Infrastruktur mit lokalen Namensraum. Dies macht es zu 
 einem dezentralen Sicherheitssystem. SPKI wurde von Carl Ellison 
@@ -877,20 +896,20 @@ Funktionale Anforderungen Überblick
   Administrator role
 
 • Der Administrator muss in der Lage sein, neue Benutzer im 
-  System hinzuzu- fügen und zu entfernen. 
+  System hinzu zu fügen und zu entfernen. 
 
-• Der Administrator darf nicht in der Lage sein Benutzer 
+• Der Administrator darf nicht in der Lage sein, Benutzer 
   kritische Informationen zu modifizieren oder zu lesen.
 
   Benutzer role
 
 • Der Benutzer kann eine Vertrauensbeziehung zu anderen Benutzern 
-  erstellen und sie wieder zurückziehen. 
+  herstellen und sie wieder zurückziehen. 
 
-• Der Benutzer kann eine Gruppe erstellen und entfernen.
+• Der Benutzer kann eine Gruppe bilden und wieder auflösen.
 
-• Der Benutzer kann vertraute Benutzer  Friend  in einer Gruppe 
-  hinzufügen
+• Der Benutzer kann einer Gruppe vertraute Benutzer (Friends) 
+  hinzufügen.
 
 • Der Benutzer kann den Zugriff auf seine Dateischlüssel an alle 
   Mitglieder einer Gruppe freigeben und diese Freigabe auch 
@@ -898,19 +917,23 @@ Funktionale Anforderungen Überblick
 
   Registrierung und login
 
-• Beim Registrierung/Login Phase dürfen kein Password/Passphrase 
-  sowie in irgendeine Art zu Password/Passphrase korrespondierte 
-  Daten ins Netz gehen.
+• Bei der Registrierung bzw. beim Login Phase dürfen kein 
+  Password oder keine Passphrase sowie Daten, die in irgendeiner 
+  Art mit dem Password bzw. mit der Passphrase korrespondieren, 
+  ins Netz gehen.
 
   Server-Client Kommunikation 
 
 Die Verbindung zwischen  LocalServer  und  RemoteServer  sollte 
-zustandlos sein. Außerdem darf keine SSL Verbindung im Einsatz 
+Zustand-los sein. Außerdem darf keine SSL Verbindung zum Einsatz 
 kommen. 
 
-3.2 Nichtfunktionale Anforderungen 
+3.2 Nicht-funktionale Anforderungen 
 
-Nicht funktionale Anforderungen sind wiefolg in ISO/IEC 9126[4]
+Nicht-funktionale Anforderungen sind wie folgt in ISO/IEC 9126[4] 
+erklärt: 
+
+TODO
 
 3.2.1 Allgemeine nichtfunktionale Anforderungen
 
@@ -2182,47 +2205,49 @@ Zusammenfassung und Ausblick
 
 6.1 Zusammenfassung
 
-KryptoOne-System ist ein Internetbasierte Dokumentverwaltung 
-(Dokumentaustausch, Dokumentablagerung .. ) konzipiert mit eine 
-intuitive Benutzer Interaktion durch Webbrowser und mit dem Ziel 
-kryptographische Komplexität zu abstrahieren, das heisst so gut 
-wie keiner Kryptographierelevante Aufgabe an Benutzer zu 
-überlassen, unterschied zu andere Cloud-Service werden die Datei 
-verschlüsselt bevor sie hochgeladen werden. KryptoOne-System 
-verwaltet auch die Benutzer und fügt das Konzept von 
-Vertrauenbeziehung in Dateiaustausch. Ferner wird die 
-Sicherstärke an Unternehmen, die das Software benutzt überlassen. 
-Das heisst ein Unternehmen ist nicht durch geschränkte 
-Sicherheitgrad von andere Anbieter gezwungen. 
-Die bisherige Lösung diese Problems sah ein grosses Aufwand für 
-Endbenutzer vor. Benutzer sollte sich selber darum kümmert 
-Schlüssel zu erzeugen, Schlüssel managieren und Schlüssel an 
-Kommunikationspartner übergeben. Die entscheidente Nachteile 
-dabei waren der Aufwand von die vorher beschriebene Prozess, die 
-Annahme dass die Benutzer sich mit Kryptographie auskennen, Die 
-Schlüsselverteilungproblematik und schliesslich Installation von 
-neuer Software. 
-Zu Beginn der Arbeit wurden die Probleme der bisherigen 
-eingesetze Lösung genauer beleuchtet und die Motivation für eine 
-Komplexität-transparent Cryptosoftware mit spezifizierte 
-Anforderungen abgeleitet. Anschlißend wurden die Ziele der Arbeit 
-ausgearbeitet.
-Im theoritischen Teil wurde auf die für Umsetzung des 
-CryptoOne-System benötigten Grundlagen eingegangen. Zuerst wurden 
-die heutigen sichere kryptographische Standard und wichtige 
-Begriffe erläutert. Die Begrenzungen von diese Standard wurde auf 
-Licht gebracht. Im Anschluss daran wurde auf die Zusammenarbeit 
-von diese Standard, um Grenze diese Standard zu überschreiten, 
-mit dem Ziel die Sicherheitgrad der entworfenen Lösung zu 
-erhöhen, wie zum Beispiel Hybrid-Verschlüsselung aus RSA und AES 
-um Perfomance zu erhöhen. 
-Der praktische Teil dieser Arbeit wurde in vier Teile gegliedert: 
-Anforderunganalyse, Erstellung eines Lösungskonzeptes, Umsetzung 
-und Bewertung des umgesetzten Lösungskonzeptes. 
+KryptoOne-System ist ein Internet-basierte Dokumentverwaltung 
+(Dokumentaustausch, Dokumentablagerung .. ) konzipiert mit einer 
+intuitiven Benutzer Interaktion durch Webbrowser und mit dem 
+Ziel, kryptographische Komplexität zu abstrahieren, das heisst so 
+gut wie keine Kryptographie-relevante Aufgabe an Benutzer zu 
+überlassen. Im Unterschied zu anderen Cloud-Services werden die 
+Dateien verschlüsselt, bevor sie hoch geladen werden. 
+KryptoOne-System verwaltet auch die Benutzer und wendet das 
+Konzept von Vertrauensbeziehung im Dateiaustausch an. Ferner wird 
+die Sicherheits-Stärke den Unternehmen, welche die Software 
+benutzen, überlassen. Das heißt, ein Unternehmen ist nicht durch 
+einen beschränkten Sicherheitsgrad gehandicapt. 
+Die bisherige Lösung diese Problems sah einen großen Aufwand für 
+Endbenutzer vor. Benutzer sollte sich selber darum kümmern, 
+Schlüssel zu erzeugen, Schlüssel zu managen und Schlüssel an 
+Kommunikationspartner zu übergeben. Die entscheidenden Nachteile 
+dabei waren der Aufwand des oben beschriebenen Prozesses, die 
+Voraussetzung, dass die Benutzer sich mit Kryptographie 
+auskennen, die Schlüsselverteilungsproblematik und schließlich 
+die Installation von neuer Software. 
+Zu Beginn der Arbeit wurden die Probleme der bisher eingesetzten 
+Lösungen genauer beleuchtet und die Motivation für eine 
+Komplexitäts-transparente Cryptosoftware mit spezifizierten 
+Anforderungen abgeleitet. Anschließend wurden die Ziele der 
+Arbeit formuliert.
+Im theoretischen Teil wurde auf die zur Umsetzung des 
+CryptoOne-Systems benötigten Grundlagen eingegangen. Zuerst 
+wurden die heutigen sicheren kryptographischen Standards und 
+wichtige Begriffe erläutert. Die Einschränkungen und Nachteile 
+dieser Standards wurden beleuchtet. Im Anschluss wurde darauf 
+eingegangen, wie sich durch das Zusammenspiel dieser Standards 
+die besagten Einschränkungen umgehen lassen. Ziel dabei war es, 
+den Sicherheitsgrad der entworfenen Lösung zu erhöhen, wie zum 
+Beispiel Hybrid-Verschlüsselung aus RSA und AES, um eine höhere 
+Performance zu erreichen. 
+Der praktische Teil dieser Arbeit wurde in vier Kapitel 
+gegliedert: Anforderungs-Analyse, Erstellung eines 
+Lösungskonzeptes, Umsetzung und Bewertung des umgesetzten 
+Lösungskonzeptes. 
 
-Durch die Anforderungssanalyse wurden die konkreten Anforderungen 
-an CryptoOne-System herausgearbeitet, dabei wurde sowohl 
-funktionale als auch nichtfunktionale Anforderungen 
+Durch die Anforderungs-Analyse wurden die konkreten Anforderungen 
+an das CryptoOne-System herausgearbeitet. Dabei wurden sowohl 
+funktionale, als auch nicht-funktionale Anforderungen 
 berücksichtigt. 
 
 [Programmlisting 1: Application.java
