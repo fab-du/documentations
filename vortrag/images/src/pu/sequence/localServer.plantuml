@@ -1,0 +1,65 @@
+@startuml
+autonumber
+
+actor User
+participant Browser
+
+participant SpringFramework
+activate SpringFramework
+
+box "LocalServer" #LightBlue
+
+participant LocalServerFilter
+participant LocalServerLogic
+
+end box 
+
+
+box "RemoteServer" #Green
+
+participant RemoteServerFilter
+participant RemoteServerLogic
+
+end box 
+
+
+User -> Browser 
+
+Browser -> SpringFramework
+
+activate LocalServerFilter
+SpringFramework -> LocalServerFilter : POST /session/challenge { email,password } 
+LocalServerFilter -> LocalServerFilter : check_csrf_header() \n check_credentials(email, password)
+LocalServerFilter --> Browser  : csrf-header was not previously set \n or null credentials
+
+LocalServerFilter  -> LocalServerLogic
+activate LocalServerLogic
+LocalServerLogic -> RemoteServerFilter : POST /session/challenge { email } 
+
+activate RemoteServerFilter 
+RemoteServerFilter -> RemoteServerFilter : check_headers() \n check_if_present()
+
+RemoteServerFilter  --> LocalServerLogic : <200 OK: authenticated>
+
+RemoteServerFilter  --> RemoteServerLogic : POST /session/challenge{ email } 
+activate RemoteServerLogic 
+
+RemoteServerLogic -> DB : findByUserEmail( email )
+activate DB
+DB -> RemoteServerLogic : { salt, verifier }
+RemoteServerLogic <- RemoteServerLogic : server.step1(email, salt, verifier)
+
+RemoteServerLogic -> LocalServerLogic : {salt, B}
+
+LocalServerLogic -> LocalServerLogic : client.step1(email,password)\nclient.step2(salt,B)
+LocalServerLogic -> RemoteServerLogic : POST /session/authenticate { email, A, M1 }
+RemoteServerLogic -> DB : findBySessionEmail( email )
+
+RemoteServerLogic <- RemoteServerLogic : server.step2(A, M1)
+
+RemoteServerLogic --> LocalServerLogic : <200 Authorization header: Access-Token> \n
+
+LocalServerLogic --> Browser : <200 Authorization header: Access-Token>
+
+
+@enduml

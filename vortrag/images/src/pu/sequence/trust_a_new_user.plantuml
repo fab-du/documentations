@@ -1,0 +1,14 @@
+@startuml 
+
+user -> locale : trusts a user(signs  his public key)
+locale -> remote : downloads the user public key 
+locale -> locale : valid the public key
+user <- locale : requests after passphrase
+user --> locale : passphrase
+locale -> locale : decrypts user secret key with passphrase
+locale -> locale : signs the new trsuted user public key with the secret key
+locale -> locale : encrypts  the new trsuted user public key with the user public key
+locale -> remote : uploads the signature and the encrypted public key 
+locale <-- remote : ok
+
+@enduml

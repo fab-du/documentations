@@ -1,0 +1,97 @@
+@startuml
+
+package "AuthenticationPersistenceManager" {
+
+class SessionModel{
+
+	+ String getId()
+	+ String getEmail()
+	+ String getToken()
+
+	+ void setId( Long id )
+	+ void setEmail( String email )
+	+ void setToken( String authToken )
+
+	__ private data __
+	Long id
+    Date createdAt
+	String email
+	String token
+}
+
+class SessionRepository <extends CrudRepository>{
+	SessionModel findByEmail( String email )
+	SessionModel findByAuthToken( String authToken )
+}
+
+class SessionService{
+    + void deleteExpiredSession()
+	+ boolean exists( String token )
+	+ Session findByEmail( String email )
+	+ Session findByToken( String email )
+	- boolean isExpired( Long expireIn  )
+}
+	SessionModel -o SessionRepository  
+	SessionRepository  --o SessionService
+}
+
+package "Authentication" {
+
+class TokenService{
+	@Autowired
+	- SessionService sessionService;
+	- final static Logger log = LoggerFactory.getLogger( AuthFilter.class);
+	+ static final int SCHEDULE_TIME = 360000; 
+
+	@Scheduled(fixedRate= SCHEDULE_TIME)
+	+ void removeExpiredSession()
+
+	+ void save( String token )
+	+ boolean exists( String token )
+	+ Session retrieve( String token )
+}
+
+class AuthFilter<extends AbstractAuthenticationProcessingFilter>{
+}
+
+class TokenAuthenticationProvider<implements AuthenticationProvider> {
+	@Override
+	+ Authentication authenticate(Authentication authentication)
+}
+
+
+class AuthConfig<extends WebSecurityConfigurerAdapter>{
+}
+
+
+class AuthExceptionHandler<extends AuthenticationException>{
+}
+
+class AuthPreAuthentication<implements Authentication>{
+}
+
+class AuthenticationToken<extends AbstractAuthenticationToken>{
+}
+
+TokenAuthenticationProvider --o AuthConfig
+AuthFilter --o AuthConfig
+AuthenticationToken --o AuthFilter
+AuthPreAuthentication -o AuthFilter
+AuthConfig o-- AuthExceptionHandler 
+
+TokenService o- SessionService
+TokenService -o AuthConfig
+
+}
+
+legend top
+
+CrudRepository	        : @ref : org.springframework.data.repository  
+AuthenticationProvider : @ref : org.springframework.core.security.AuthenticationProvider  
+AuthenticationProvider : @ref : org.springframework.core.security.Authentication  
+AuthenticationProvider : @ref : org.springframework.core.security.WebSecurityConfigurerAdapter  
+
+endlegend 
+
+
+@enduml

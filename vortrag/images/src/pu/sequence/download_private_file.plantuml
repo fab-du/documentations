@@ -1,0 +1,15 @@
+@startuml 
+
+user -> locale : downloads my  file
+locale -> remote : donwloads the encrypted file
+locale <-- remote :   encrypted file
+locale -> remote : donwloads the encrypted symkey
+locale <-- remote :   encrypted symkey
+user <- locale : requests after passphrase
+user --> locale  : passphrase
+locale -> locale : decrypts secret key with passphrase
+locale -> locale : decrypts symkey with the user secret key
+locale -> locale : decrypts file with the symkey
+user <-- locale : decrypted file
+
+@enduml

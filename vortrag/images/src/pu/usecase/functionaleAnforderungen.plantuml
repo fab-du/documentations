@@ -1,0 +1,91 @@
+@startuml
+
+skinparam usecase{
+}
+
+left to right direction
+
+actor Bob
+actor GruppeVerantwortlich
+actor Admin
+actor Alice
+
+
+rectangle CryptoONE {
+
+usecase UC_registrieren      as  "Registrieren"
+usecase UC_einloggen         as "Einloggen"
+
+usecase UC_uploadData  as "data Upload"
+usecase UC_uploadData_Public        as "Private Data \n upload"
+usecase UC_uploadData_Private        as "Group Data \n upload"
+
+usecase UC_downloadData as "data download"
+usecase UC_downloadData_Public        as "Private Data \n download"
+usecase UC_downloadData_Private        as "Group Data \n  download"
+
+usecase UC_makeGruppe        as "Gruppe \n erstellen"
+
+usecase UC_freundEinladen    as "Freunde in Gruppe \n hinzüfugen" 
+usecase UC_UserEntfernen     as "User von der Gruppe \n entfernen" 
+
+usecase UC_freundschaft   as "Freundschaft \n ab\/annhemen"
+usecase UC_freundBestaetigen as "Freundschaft \n bestaetigen" 
+usecase UC_freundAblehnen    as "Freundschaft \n  ablehnen"
+
+usecase UC_req               as "Request to \n RemoteServer" 
+
+
+UC_uploadData -- UC_uploadData_Public  
+UC_uploadData -- UC_uploadData_Private 
+Bob                  -- UC_uploadData
+
+UC_downloadData -- UC_downloadData_Public  
+UC_downloadData -- UC_downloadData_Private 
+Bob              -- UC_downloadData  
+
+UC_freundschaft -- UC_freundAblehnen 
+UC_freundschaft -- UC_freundBestaetigen 
+Bob                  -- UC_freundschaft  
+left to right direction
+Alice                -- UC_freundschaft 
+
+Admin                  -right- UC_registrieren
+UC_registrieren       -- Bob
+
+GruppeVerantwortlich  -left- UC_UserEntfernen 
+
+Bob                  -- UC_einloggen
+Bob                  -- UC_freundEinladen
+left to right direction
+UC_freundEinladen    -- Alice
+Bob                  -- UC_makeGruppe
+
+
+UC_UserEntfernen    -- UC_req
+UC_uploadData_Public        -- UC_req
+UC_uploadData_Private        -- UC_req
+
+UC_downloadData_Public -- UC_req 
+UC_downloadData_Private -- UC_req 
+
+UC_freundBestaetigen -- UC_req 
+UC_freundBestaetigen -- UC_req 
+
+UC_registrieren      -- UC_req
+UC_einloggen         -- UC_req
+
+UC_freundEinladen    -- UC_req
+
+UC_makeGruppe        -- UC_req
+
+}
+
+
+rectangle RemoteServer {
+
+}
+
+UC_req -- RemoteServer
+
+@enduml 

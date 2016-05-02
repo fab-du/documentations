@@ -1,0 +1,21 @@
+@startuml
+
+abstract class AbstractController {
+    + Map<String, Object> errorHandler( HttpServletResponse response )
+}
+
+class ControllerDocuments {
+}
+
+class ControllerUsers {
+}
+
+class ControllerGroups {
+}
+
+
+AbstractController <|-- ControllerDocuments
+AbstractController <|-- ControllerUsers
+AbstractController <|-- ControllerGroups
+
+@enduml

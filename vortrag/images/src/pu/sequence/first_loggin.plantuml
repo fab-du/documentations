@@ -1,0 +1,15 @@
+@startuml
+
+user -> locale : initialisation
+locale -> locale : generates keypair for the user
+user <- locale : request after a paassphrase
+user --> locale : passphrase
+locale -> locale : encrypts the user secret key with the passphrase
+locale -> remote : uploads keypair
+locale <-- remote : ok
+user -> locale : uploads a image
+locale -> locale : encrypts image with the user public key
+locale -> remote : uploads image
+locale <-- remote : ok
+
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+
+user -> locale : delete menber from the group (user_id)
+locale -> remote : requests to delete the menber of the group
+locale -> remote :delete the shared `KGV
+locale  <-- remote : ok
+
+@enduml

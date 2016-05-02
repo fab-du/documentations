@@ -809,9 +809,6 @@ Siyapdje Fabrice Dufils
 \end_layout
 
 \begin_layout Standard
-\begin_inset space ~
-\end_inset
-
 
 \end_layout
 
@@ -2217,7 +2214,7 @@ Der Administrator darf nicht in der Lage sein, Benutzer kritische Informationen
 \end_layout
 
 \begin_layout Subsubsection
-Benutzer role
+Benutzer Rolle
 \end_layout
 
 \begin_layout Itemize
@@ -2240,7 +2237,7 @@ Der Benutzer kann den Zugriff auf seine Dateischlüssel an alle Mitglieder
 \end_layout
 
 \begin_layout Subsubsection
-Registrierung und login
+Registrierung und Login
 \end_layout
 
 \begin_layout Itemize
@@ -2353,7 +2350,7 @@ Defakto ist der LocalServer portierbar, LocalServer läuft auf USB-Stick
  .
  Localserver soll auch plattformsunabhängig sein.
  Was RemoteServer angeht soll auch plattformunabhängig sein.
- Alle Einstellungen des Remoteserver müssen sich durch externe Konfigurationsdat
+ Alle Einstellungen des RemoteServer müssen sich durch externe Konfigurationsdat
 eien durchführen lassen.
 \end_layout
 
@@ -2452,7 +2449,7 @@ Beim Einsatz von SRP-Secure Remote Password Protocol lasst sich auch einfach
 SRP Protokoll ist ein Authentifizierung protokoll, dabei können manche per-Sitzu
 ng zufällige generierte Werte als Sitzungschlüssel verwendet werden (B).
  Das bestehende Problem beim Einsatz von dauerhafte Passwort wird durch
- SRP minimisiert, indem keine Passwort-korrespondierte ( Hash, verschlüsselte
+ SRP minimiert, indem keine Passwort-korrespondierte ( Hash, verschlüsselte
  Passwort ....
  ) gepeichert wird, sondern ein 
 \begin_inset Quotes gld
@@ -4001,7 +3998,7 @@ mit der dechiffriert SGK wird die Datei verschlüsselt.
 \end_layout
 
 \begin_layout Itemize
-Schliesslich wird die chiffriert Datei zu RemoteServer übermittelt und ein
+Schließlich wird die chiffriert Datei zu RemoteServer übermittelt und ein
  Eintrag von Typ Dokuments auf der Datenbank gespeichert.
 \end_layout
 
@@ -6432,7 +6429,7 @@ Datenbank Schema
 \end_layout
 
 \begin_layout Standard
-Datenbankschema beschreibung : 
+Datenbankschema Beschreibung : 
 \end_layout
 
 \begin_layout Description
@@ -6447,8 +6444,8 @@ SrpCredentials: In dieser Tabelle werden Benutzerinformations bezuglich
 \end_layout
 
 \begin_layout Description
-Friends: Friends ist die Materialsierung von eine Vertrauenbeziehung zwischen
- zwei Benutzer.
+Friends: Friends ist die Immaterialisierung von eine Vertrauensbeziehung
+ zwischen zwei Benutzer.
  stellt die Vertrauensbeziehung zwischen dem Benutzer dar.
  Sobald ein Benutzer den öffentlichen Schlüssel eines anderen Benutzers
  signiert, wird eine Zeile in dieser Tabelle eingefügt, wobei die signority_id
@@ -6489,11 +6486,11 @@ user
 \end_layout
 
 \begin_layout Description
-Session: Es handelt sich um die Materialsierung einer aktiven Session
+Session: Es handelt sich um die Materialisierung einer aktiven Session
 \end_layout
 
 \begin_layout Description
-UsersGroups: Überbrücke zwischen die Tabelle User und Group 
+UsersGroups: Überbrücke zwischen die Tabelle User und Gruppe 
 \end_layout
 
 \begin_layout Description

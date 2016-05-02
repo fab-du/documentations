@@ -1,0 +1,14 @@
+@startuml
+
+user -> locale : add new group
+user -> locale : send info about the new group
+locale -> locale : generate KGV for this group
+user <- locale : requests after user passphrase
+user --> locale : passphrase
+locale -> locale : decrypts user secret key with passphrase
+locale -> locale : encrypts KGV with user secret key
+locale -> remote : uploads the KGV  and group infos
+locale <-- remote : ok 
+
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+rectangle Model{
+}
+
+rectangle View{
+}
+
+rectangle Controller{
+}
+
+Controller --> View
+Controller --> Model
+
+View -> Model
+Model --> View
+View --> Controller
+
+@enduml

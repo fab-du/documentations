@@ -1,0 +1,12 @@
+@startuml
+
+note "share document between two users" as Note
+
+actor Bob
+actor Alice
+
+
+Alice -right- Note
+Note -right-> Bob
+
+@enduml 

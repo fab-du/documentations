@@ -1,0 +1,15 @@
+@startuml 
+skinparam packageStyle rect
+
+rectangle public_groupA{ 
+}
+
+rectangle public_groupB{ 
+}
+
+note "share document" as Note
+
+public_groupA -right- Note 
+Note -right-> public_groupB
+
+@enduml 

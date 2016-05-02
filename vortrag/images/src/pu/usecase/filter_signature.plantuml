@@ -1,0 +1,32 @@
+@startuml
+
+left to right direction
+
+rectangle JWSFilter{
+}
+rectangle HttpServerLogic{
+}
+rectangle JWSIntegrityCheckFilter{
+}
+rectangle incomingPayload{
+    rectangle "JSON Payload"{
+    }
+    rectangle "alg : sha-256 \n hash: xxxx.yyyyy.zzzz"{
+    }
+}
+rectangle outGoingPayload{
+    rectangle JSON_DATEN{
+    }
+}
+rectangle outGoingpayload{
+}
+
+incomingPayload -->JWSIntegrityCheckFilter 
+JWSIntegrityCheckFilter --> HttpServerLogic  
+HttpServerLogic --> outGoingPayload 
+outGoingPayload --> JWSFilter
+
+JWSFilter -> outGoingpayload
+
+
+@enduml

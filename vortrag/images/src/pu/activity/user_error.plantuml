@@ -1,0 +1,13 @@
+@startuml
+(*) --> "statuscode = getResponseStatusCode()"
+
+if "statuscode == 500" then
+-left->[true] "replaceResponseStatusCode(400)"
+--> "replaceMessage(non_verbose_message)"
+-right-> "documentError()"
+--> "commitResponse()"
+else
+-right->[false] "commitResponse()" 
+-right->[Ending process] (*)
+endif
+@enduml
