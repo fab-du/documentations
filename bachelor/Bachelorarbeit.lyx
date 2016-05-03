@@ -1162,11 +1162,18 @@ reference "sub:Digitale-Signature"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
-inner_pos "t"
+has_inner_box 0
+inner_pos "c"
 use_parbox 0
 use_makebox 0
 width "100col%"
@@ -1179,6 +1186,12 @@ status open
 \begin_inset Graphics
 	filename images/asym_crypt.png
 	scale 35
+	clip
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -1186,18 +1199,18 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Asymmetrische Verschlüsselung}
+Asymetrische Verschlüsselung
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -1273,10 +1286,16 @@ hisches Verfahren benutzt, wobei die Chiffrierschlüssel und Dechiffrierschlüss
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -1284,12 +1303,18 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/sym_crypt.png
 	scale 35
+	clip
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -1297,18 +1322,18 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Symmetrische Verschlüsselung}
+Symmetrische Verschlüsselung
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -1898,7 +1923,7 @@ examplarische zertifikat
 PGP ist eine Daten-Ver- und Entschlüsselung Computerprogramm, das kryptographisc
 he Privatsphäre und Authentifizierung für die Datenkommunikation zur Verfügung
  stellt.
- PGP wird oft zum Signieren und zur Ver-und Entschlüsselung von Texten,
+ PGP wird oft zum Signieren und zur Ver-und-Entschlüsselung von Texten,
  E-Mails, Dateien und Verzeichnisse verwendet, um die Sicherheit der E-Mail-Komm
 unikation zu erhöhen.
  Es wurde von Phil Zimmermann im Jahr 1991 entwickelt.
@@ -1908,7 +1933,7 @@ unikation zu erhöhen.
 Im PGP-System wird für einen Benutzer ein Schlüsselpaar (öffentlicher Schlüssel
  und privater Schlüssel) erzeugt.
  Dieses Schlüsselpaar ist mit einer eindeutigen ID verbunden, die normalerweise
- ein Name oder eine Email-Adresse ist.
+ eine Name oder eine Email-Adresse ist.
  Die Schlüssel werden in einem Schlüsselbund Datensatz gespeichert.Der Eintrag
  eines öffentlichen Schlüssels im Schlüsselbund besteht aus einer ID, dem
  öffentlichen Schlüssel selbst und einem Zeitstempel, der auf das Erstellungsdat
@@ -1917,7 +1942,7 @@ um des Schlüsselpaars referenziert.
  wohingegen private Schlüssel auf einem privaten Schlüsselring gespeichert
  werden.
  Jeder Benutzer muss einen öffentlichen und privaten Schlüsselring speichern
- und verwalten[AR95][JF96].
+ und verwalten [AR95][JF96].
  Wenn Benutzer A eine gute Kopie des öffentlichen Schlüssels von Benutzer
  B besitzt, z.B.
  eine Kopie, deren er von der Integrität und Authentizität (keine Verfälschung
@@ -2150,10 +2175,17 @@ funktionale Anforderungen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -2176,20 +2208,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Allg.
- funktionale Anforderungen-Überblick}
+\begin_layout Plain Layout
+funktionale Anforderungen-Überblick
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2374,17 +2410,26 @@ Allgemein Architektur
 \begin_layout Standard
 Das System Architektur wurde als eine Server-Client Anwendung entworfen,
  LocalServer und RemoteServer, wobei der LocalServer eine Überbrückungsrolle
- zwischen den Frontend (Webbrowser Javascriptapplication) und RemoteServer
+ zwischen den Frontend (Webbrowser JavaScript-Application) und RemoteServer
  spielt, LocalServer ist vergleichbar mit ein Proxy.
  Alle Chiffrierung-bzw-Dechiffrierungoperationen geschehen.
+\begin_inset Newline newline
+\end_inset
+
  
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -2397,8 +2442,21 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/usecase/generalUsecase.plantuml
-	scale 40
-	clip
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Allgemeine Anwendungsfall
+\end_layout
 
 \end_inset
 
@@ -2407,9 +2465,6 @@ status open
 
 \begin_layout Plain Layout
 
-\backslash
-captionof{figure}{Allg.
- Architektur}
 \end_layout
 
 \end_inset
@@ -2488,10 +2543,17 @@ Sniffing-Attack
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -2499,7 +2561,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2509,6 +2571,27 @@ status collapsed
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Authentifizierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2658,10 +2741,17 @@ Exemplarische Vertrauensbeziehung zwischen Zwei Benutzer:
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -2669,7 +2759,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -2684,19 +2774,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{exemplarische Vertrauenbeziehung}
+\begin_layout Plain Layout
+exemplarische Vertrauenbeziehung
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3058,10 +3153,17 @@ rtlich der zu erzeugende Gruppe markiert, in der Fall Benutzer Alice.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3069,7 +3171,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3081,19 +3183,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Benutzer-Benutzer Dokumentsaustausch}
+\begin_layout Plain Layout
+Benutzer-Benutzer Dokumentsaustausch
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3103,10 +3210,17 @@ captionof{figure}{Benutzer-Benutzer Dokumentsaustausch}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3119,7 +3233,13 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/src/pu/activity/user_user_document_share.plantuml
-	scale 40
+	lyxscale 70
+	scale 35
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3127,18 +3247,18 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Benutzer-Benutzer Dokumentsaustausch Ablauf}
+Benutzer-Benutzer Dokumentaustausch
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3178,10 +3298,17 @@ Query String
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3189,7 +3316,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3203,19 +3330,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{CryptoOne HTTP Resources nach REST-Spezifikation}
+\begin_layout Plain Layout
+CryptoOne HTTP Resources nach REST-Spezifikation
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3225,7 +3357,7 @@ captionof{figure}{CryptoOne HTTP Resources nach REST-Spezifikation}
 \end_layout
 
 \begin_layout Section
-Integrität der transportierte kritischen Daten ( JWS )
+Integrität der transportierte kritischen Daten: JWS
 \end_layout
 
 \begin_layout Standard
@@ -3233,9 +3365,9 @@ Bei sicherheitsrelevanten Software ist es wichtig die Daten zu verschlüsseln
  mit einem konsequent Schlüssellänge, und die Integrität diese Schlüssel
  gewährleistet.
  Diese gilt und ist ausreichend solange die Daten und Schlüssel nicht über
- Internet beispielerweise transportiert werden.
+ Internet beispielsweise transportiert werden.
  Wenn die Daten über eine unsichere Neztwerk übermittelt werden muss eine
- zusätzlicher Integritätmechanismus im Spiel kommen, um sicherzustellen
+ zusätzlicher Integritätsmechanismus im Spiel kommen, um sicherzustellen
  dass eine Daten die von A zu B beispielerweise transitiert, unterwegs nicht
  verfälscht wurde.
 \begin_inset Newline newline
@@ -3277,9 +3409,23 @@ exemplarische JWT Headers:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
+\begin_inset Float table
 wide false
 sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
@@ -3441,6 +3587,11 @@ JSON Web Key
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
@@ -3469,10 +3620,17 @@ JWS stellen weitere Headers zur Verfügung, aber die werden Anhand diese
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3480,7 +3638,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3492,19 +3650,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Signature Filters}
+\begin_layout Plain Layout
+Signature Filters
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3514,14 +3677,21 @@ captionof{figure}{Signature Filters}
 \end_layout
 
 \begin_layout Section
-JSON Web Token (JWT) 
+JSON Web Token : JWT
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3529,7 +3699,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3541,19 +3711,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{JWT-Token : Erläuterung}
+\begin_layout Plain Layout
+Examplarische Json Web Token
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3586,7 +3761,7 @@ Token werden an Stelle von Benutzername-Passwort-Kombinationen verwendet,
 \end_layout
 
 \begin_layout Section
-Notar (SGK zurückgewinnen)
+Notar: SGK zurückgewinnen
 \end_layout
 
 \begin_layout Standard
@@ -3623,10 +3798,17 @@ Benutzer registrieren
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3634,7 +3816,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3646,19 +3828,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Benutzer registrieren}
+\begin_layout Plain Layout
+Benutzer registrieren
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3668,14 +3855,21 @@ captionof{figure}{Benutzer registrieren}
 \end_layout
 
 \begin_layout Subsection*
-Benutzer einlogen
+Benutzer einloggen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3683,7 +3877,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3695,19 +3889,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Einloggen}
+\begin_layout Plain Layout
+Benutzer einloggen
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3717,14 +3916,21 @@ captionof{figure}{Einloggen}
 \end_layout
 
 \begin_layout Subsection*
-Freund hinzufuegen
+Freund hinzufügen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3732,7 +3938,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3745,19 +3951,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Freund hinzufuegen sequence diagram}
+\begin_layout Plain Layout
+Freund hinzufügen
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3771,7 +3982,7 @@ Beispielszenario: Alice will Bob als Freund markieren
 \begin_inset Newline newline
 \end_inset
 
-Alice forder die Benutzerlisteseite auf, clicke auf den 
+Alice fordert die Benutzerlistenseite auf, klicke auf den 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3811,7 +4022,7 @@ Friend
 \end_inset
 
  Objekt erzeugt.
- Dies entspricht die Vertrauenbeziehung zwischen Alice und Bob.
+ Dies entspricht die Vertrauensbeziehung zwischen Alice und Bob.
  Diese Objekt wird an RemoteServer geschickt und dort gespeichert.
 \end_layout
 
@@ -3820,14 +4031,21 @@ Freund revoke
 \end_layout
 
 \begin_layout Standard
-Alice will Bob von seine Vertrauenbeziehungen rausnehmen
+Alice will Bob von seine Vertrauensbeziehungen widerrufen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3835,7 +4053,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3847,19 +4065,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Revoke Friend}
+\begin_layout Plain Layout
+Vertrauensbeziehung widerrufen
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -3869,7 +4092,7 @@ captionof{figure}{Revoke Friend}
 \end_layout
 
 \begin_layout Itemize
-Alice fordert die Freundelisteseite auf, clicke auf den 
+Alice fordert die Freundenlistensseite auf, klicke auf den 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3904,10 +4127,17 @@ Datei hochladen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -3915,7 +4145,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3927,19 +4157,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Datei hochladen sequence diagramm}
+\begin_layout Plain Layout
+Datei hochladen
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -4009,10 +4244,19 @@ Datei herunterladen
 \begin_layout Standard
 \noindent
 \align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -4020,7 +4264,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -4035,16 +4279,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
+\begin_layout Plain Layout
+Datei herunterladen
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -4076,7 +4328,7 @@ Alice Passphrase wird gefördert falls noch nicht im LocalServer vorhanden
 \end_layout
 
 \begin_layout Itemize
-Alices Schlüsselpaare wird von RemoteServer runtergeladen sowie von Alice
+Alices Schlüsselpaare wird von RemoteServer heruntergeladen sowie von Alice
  ausgewählte Gruppe Secret Key (SGK)
 \end_layout
 
@@ -4102,10 +4354,17 @@ Alice will eine neue Gruppe anlegen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -4113,7 +4372,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4125,19 +4384,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Neue Gruppe anlegen}
+\begin_layout Plain Layout
+Neue Gruppe anlegen
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -4179,7 +4443,7 @@ Nach die vorherige Vorgang, werden ein Gruppe Objekt und SymKey Object erzeugt.
 \end_layout
 
 \begin_layout Chapter
-Implementierung und Evalierung
+Implementierung und Evaluierung
 \end_layout
 
 \begin_layout Standard
@@ -4222,8 +4486,23 @@ g.
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
@@ -4431,6 +4710,11 @@ GruntJS
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
@@ -4460,7 +4744,7 @@ JSON-Format
 System-weit wird JSON-Format bevorzugt um die Daten zwischen die verschiedene
  Softwarekomponente zu transpotieren.
  Explizit ausgedruckt, heißt es dass alle High-end Funktionen bzw.
- die Funktion die durch eine eine Softwarekomponent zur Außenwelt verfügbar
+ die Funktion die durch eine Softwarekomponente zur Außenwelt verfügbar
  gemacht wurden exportieren Daten in JSON-Format.
  Diese Entscheidung lasst sich bei der Interoperabilität gründen, sowie
  auch Kriterien wie Einheitlichkeit von Softwareschnittstellen, was bei
@@ -4496,9 +4780,24 @@ Headers sind mächtige Werkzeuge wenn es zum Internet kommt, und wichtiger
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
-status collapsed
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -5127,6 +5426,11 @@ Nach erfolgreichen Login
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
@@ -5197,9 +5501,15 @@ ation, die der Endbenutzer auf irgendeinem Rechner der über eine Webbrowser
  ist wie von Benutzer schon bekannt Computersprogramm.
  Neben der Usability und Portierungsargumente kommt auch die strenge Haltung
  von wichtigen Softwarearchiktekture und Regeln die mit Einsatz von AngularJS
- verbunden sind, nämmlich Separation of Concern und MVVM .
- Ausserdem ermöglicht angular eine wesentliche Reduzierung von Request an
+ verbunden sind, nämmlich 
+\emph on
+Separation of Concern
+\emph default
+ und MVVM .
+ Ausserdem ermöglicht Angular eine wesentliche Reduzierung von Request an
  Server, dass hat zur Folge dass der 
+\emph on
+
 \begin_inset space ~
 \end_inset
 
@@ -5207,15 +5517,17 @@ Man-in-the-middle
 \begin_inset space ~
 \end_inset
 
- ehe wenige Material bekommt um eine 
+ 
+\emph default
+ehe wenige Material bekommt um eine 
 \begin_inset space ~
 \end_inset
 
-Offline-attacke
+Offline-Attacke
 \begin_inset space ~
 \end_inset
 
- dürchzuführen.
+ durchzuführen.
  
 \end_layout
 
@@ -5225,8 +5537,7 @@ AngularJS und Security
 
 \begin_layout Standard
 An der Webbrowser wird vorwiegend Angularjs eingesetzt.
- Was Sicherheit angeht, werden nämmlich den Angular Speicher strategie,
- 
+ Was Sicherheit angeht, werden nämlich den Angular Speicher Strategie, 
 \begin_inset space ~
 \end_inset
 
@@ -5337,7 +5648,7 @@ Was path und domain angeht wurden die Default Werte gelassen, und zwar Cookie
  steht zur Verfügung für aktuelle Pfad und alle untergeordnete Pfäder bzw.
  Cookie steht zur Verfügung nur für die Application domain.
  Was hier konfiguriert wurde war den Parameter secure mit den wert true
- und expires mit eine Date Instance in Form eine Zeichenkette, der konfigurierte
+ und expires mit eine Date Instanz in Form eine Zeichenkette, der konfigurierte
  die Lebensdauer der Cookies.
  Zusammengefasst darf nur der aktuelle Angular Application auf der Cookies
  zugreifen, und der Lebensdauer von der Cookie wird von Angular managiert.
@@ -5371,31 +5682,6 @@ Die unterstehende Grafik repräsentiert die mögliche Aktionen, die den Be-
  nutzer mithilfe der Webbrowser auslösen kann.
  Es lass sich dadurch nochmal eine graphische abstrahierende Darstellung
  von funktionale Anforderungen darstellen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement o
-overhang 0col%
-width "50col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Routes-Übersicht
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -5504,6 +5790,7 @@ Die obengennante Untermodule verfügen über eine einheitliche Schnittstelle,
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -5557,7 +5844,7 @@ Konfigurationsdatei
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
+\begin_inset Float algorithm
 wide false
 sideways false
 status open
@@ -5568,18 +5855,6 @@ status open
 LatexCommand lstinputlisting
 filename "samples/application.yml"
 lstparams "emph={remoteserver, url, uri, maxFileSize, register, login, authenticate, users, documents, groups, friends, port, app, server, multipart, keypairs, symkeys, name, description, maxRequestSize, logout, challenge},emphstyle={\\color{green}},caption={application.yml},label={Konfigurationsdatei}"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Konfigurationsdatei 
-\end_layout
 
 \end_inset
 
@@ -5687,10 +5962,17 @@ ng bereitstellt für eine einfache Implementierung von Software nach MVC
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -5698,7 +5980,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -5710,19 +5992,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{MVC-Muster}
+\begin_layout Plain Layout
+MVC-Muster
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -5792,14 +6079,14 @@ Je nach Fehlerart bzw.
 \begin_inset Newline newline
 \end_inset
 
-Anhand dieser Arbeit wurde folgende Http-Status code benutzt :
+Anhand dieser Arbeit wurde folgende Http-Status Code benutzt :
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
+\begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Frameless
@@ -5808,7 +6095,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
-use_makebox 0
+use_makebox 1
 width "100col%"
 special "none"
 height "1in"
@@ -6225,6 +6512,7 @@ Sollte ein Fehler Code auftauchen, dann wird automatische eine Antwort mit
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -6233,7 +6521,7 @@ status collapsed
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -6294,10 +6582,17 @@ ommene Leistung.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
@@ -6305,7 +6600,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -6317,19 +6612,24 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
 
-
-\backslash
-captionof{figure}{Caching configuration}
+\begin_layout Plain Layout
+Caching Configuration
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -6377,19 +6677,20 @@ signature
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
-has_inner_box 1
+has_inner_box 0
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "55col%"
+width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -6403,8 +6704,7 @@ status open
 
 \end_inset
 
-Damé Damé (Official music video)SANGOA MBOA feat Sissongho MC's BASHIRU
- DJESS PANEBO GERRY 
+
 \end_layout
 
 \end_inset
@@ -6566,7 +6866,7 @@ Funktionparameter Integrität prüfung ( Null-Object , nicht genug Argument,
 \end_layout
 
 \begin_layout Itemize
-Allgemein Laufzeit Fehler ( Zum beispiel Cryptographie-Algorithmus nicht
+Allgemein Laufzeit Fehler ( Zum Beispiel Kryptographie-Algorithmus nicht
  Verfügbar ) 
 \end_layout
 
@@ -6580,9 +6880,24 @@ RemoteServer und LocalServer sollte portable sein.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
+\begin_inset Float table
+placement H
 wide false
 sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
@@ -6746,6 +7061,11 @@ Webbrowser
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
