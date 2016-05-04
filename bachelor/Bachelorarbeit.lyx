@@ -2478,12 +2478,12 @@ Authentifizierung
 
 \begin_layout Standard
 Authentifizierung spielt System-weit eine bedeutende Rolle.
- Dabei passieren alle notwendige Prüfung von [LocalServer], [RemoteServer],
- [RemoteServer] integrität und natürlich Verifizierung von Benutzer.
+ Dabei passieren alle notwendige Prüfung von LocalServer, RemoteServer,
+ RemoteServer integrität und natürlich Verifizierung von Benutzer.
  Es durfte systemweit keine Einsatzt von Zertifikat/SSL-Verbindung oder
  Aufbau eine zustandbehaft Verbindung kommen, spricht die Kommunikationskanal
  ist unsicher.
- Um Benutzercredentials von [LocalServer] auf [RemoteServer] zu übermitteln
+ Um Benutzercredentials von LocalServer auf RemoteServer zu übermitteln
  unter Anhaltung von Spezifikation, wurde SRP 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2543,11 +2543,11 @@ Sniffing-Attack
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
+\begin_inset Float figure
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2745,7 +2745,7 @@ Exemplarische Vertrauensbeziehung zwischen Zwei Benutzer:
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2762,8 +2762,6 @@ height_special "totalheight"
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
-\align center
 \begin_inset Graphics
 	filename images/signature.png
 	scale 57.5
@@ -3214,7 +3212,7 @@ Benutzer-Benutzer Dokumentsaustausch
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3279,7 +3277,7 @@ pt.
  Der REST-Konzept besagt dass eine Anfrage alle Informationen zur vollständige
  Bearbeitung der Anfrage beinhalten muss.
  die Anfrage benutzen explizite Http Methode ( GET, POST , PUT, DELETE ),
- und die auf der Server zur Verfügung gestellte Resource haben eine Dokument
+ und die auf der Server zur Verfügung gestellte Ressource haben eine Dokument
  ähnliche Organisation.
  
 \begin_inset Newline newline
@@ -3293,7 +3291,7 @@ Query String
 \begin_inset space ~
 \end_inset
 
- benutzt, was als Vorteil hat, eine mögliche Sicherheitlücke zu vermeiden.
+ benutzt, was als Vorteil hat, eine mögliche Sicherheitslücke zu vermeiden.
  Eine weitere Vorteil ist die Überschaubarkeit der Software.
 \end_layout
 
@@ -3339,7 +3337,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-CryptoOne HTTP Resources nach REST-Spezifikation
+CryptOne HTTP Ressourcen nach REST-Spezifikation
 \end_layout
 
 \end_inset
@@ -3368,12 +3366,12 @@ Bei sicherheitsrelevanten Software ist es wichtig die Daten zu verschlüsseln
  Internet beispielsweise transportiert werden.
  Wenn die Daten über eine unsichere Neztwerk übermittelt werden muss eine
  zusätzlicher Integritätsmechanismus im Spiel kommen, um sicherzustellen
- dass eine Daten die von A zu B beispielerweise transitiert, unterwegs nicht
- verfälscht wurde.
+ dass eine Daten die von A zu B beispielsweise transmittiert, unterwegs
+ nicht verfälscht wurde.
 \begin_inset Newline newline
 \end_inset
 
-Als Lösungsatzt wird eine End-to-End Integritätsprüfung eingesetzt mithilfe
+Als Lösungssatz wird eine Ende-zu-Ende Integritätsprüfung eingesetzt mithilfe
  der JWS ( JSON Web Signature ) spezifiziert in RFC 7515
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3393,7 +3391,7 @@ key "JWE"
 \end_inset
 
  um kryptographische Operationen durchzuführen.
- JWE implementiert die meistens bekannte standard kryptographie Algorithmus,
+ JWE implementiert die meistens bekannte Standard Kryptographie-Algorithmus,
  wie RSA, AES ....
 \begin_inset Newline newline
 \end_inset
@@ -3487,7 +3485,7 @@ alg
 \begin_inset Text
 
 \begin_layout Plain Layout
-Name der kryptograpschische Algorithmus
+Name der Kryptographie-Algorithmus
 \end_layout
 
 \end_inset
@@ -3516,7 +3514,7 @@ hash
 \begin_inset Text
 
 \begin_layout Plain Layout
-hash Wert
+Hash Wert
 \end_layout
 
 \end_inset
@@ -3624,7 +3622,7 @@ JWS stellen weitere Headers zur Verfügung, aber die werden Anhand diese
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3685,7 +3683,7 @@ JSON Web Token : JWT
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -3741,11 +3739,11 @@ Examplarische Json Web Token
 JWT ist eine JSON-basierte Standard um Authentication-Objekt zu repräsentieren.
  Eine Anwendungsfall ist beispielerweise OpenID-Authentication.
  Es erlaubt einem Benutzer, der sich bei seinem sog.
- AuthenticationProvider einmal mit der Benutzername und Passwort angemeldet
+ Authentication-Provider einmal mit der Benutzername und Passwort angemeldet
  hat, sich nur mit Hilfe erhaltene JSON Web Token (JWT) ohne Benutzername
  und Passwort bei allen das System unterstützenden Websites anzumelden.
  wobei man sich gegen ein Authenticationserver A authentifizieren kann,
- den erhaltene Token wird dann später anhand eine Anfrage an ResourceServer
+ den erhaltene Token wird dann später anhand eine Anfrage an Ressource-Server
  benutzt.
  
 \begin_inset Newline newline
@@ -3938,7 +3936,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4013,7 +4011,7 @@ Bobs öffentlichen Schlüssel wird mit Alices privaten Schlüssel signiert.
 \end_layout
 
 \begin_layout Itemize
-Aus Signature, Alices und Bobs Id wird ein 
+Aus Signatur, Alices und Bobs Id wird ein 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4053,7 +4051,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4192,12 +4190,12 @@ Alice wählt sich eine Gruppe aus wo sie mitglied ist
 \end_layout
 
 \begin_layout Itemize
-Alice clickt auf Datei Upload und wählt sich Datei aus, die sie gerne in
+Alice klickt auf Datei Upload und wählt sich Datei aus, die sie gerne in
  die vorherige ausgewählte Gruppe hinzüfügen will
 \end_layout
 
 \begin_layout Itemize
-Alice Clickt auf dem Button 
+Alice Klickt auf dem Button 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4267,8 +4265,6 @@ height_special "totalheight"
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
-\align center
 \begin_inset Graphics
 	filename images/src/pu/sequence/download_file_from_group.plantuml
 	scale 60
@@ -4311,11 +4307,15 @@ Alice befindet sich in einer Gruppe und will ein Datei runterladen.
 \end_layout
 
 \begin_layout Itemize
-Alice click auf 
+Alice klickt auf 
 \begin_inset Quotes gld
 \end_inset
 
+
+\emph on
 download
+\emph default
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -4468,7 +4468,7 @@ Frontend
 \end_layout
 
 \begin_layout Itemize
-Inbetriebnahme-programm
+Inbetriebnahme-Programm
 \end_layout
 
 \begin_layout Standard
@@ -4476,8 +4476,9 @@ Es wird als erste eine Unterkapitel über die wesentliche Technologien die
  für die Anfertigung des Projektes benötigt wurde, gefolgt von deren Beschreibun
 g.
  Insbesondere wird Wert auf die Funktionalität von die Framework gelegt,
- die eine bedeutende Role in der Implementierung haben, und die Gewährleistung
- von relevante Sicherheitmechanismen zur Erfüllung die vorgegebene Anförderungen.
+ die eine bedeutende Rolle in der Implementierung haben, und die Gewährleistung
+ von relevante Sicherheitsmechanismen zur Erfüllung die vorgegebene Anforderunge
+n.
 \end_layout
 
 \begin_layout Section
@@ -4489,7 +4490,7 @@ g.
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Frameless
@@ -4767,10 +4768,10 @@ HTTP Headers
 Headers sind mächtige Werkzeuge wenn es zum Internet kommt, und wichtiger
  noch im Bereich Security von Webbasierte Anwendungen.
  Bei der Entwurf von dieser Arbeit, wurde die Entscheidung getroffen soviel
- wie möglich auf die Standard zu halten, insbesondere bei sicherheitrelevante
+ wie möglich auf die Standard zu halten, insbesondere bei sicherheitsrelevanten
  Bereiche.
  Die richtige Einstellung/Konfiguration von manche Headers tragen wesentlich
- bei, um der Sicherheitgrad eine Webanwendung zu erhöhen.
+ bei, um der Sicherheitsgrad eine Webanwendung zu erhöhen.
  Es wird nochmal über Headers die Rede sein, bei alle Softwareteil wo sie
  gesetzt bzw.
  geprüft werden ( LocalServer, RemoteServer, Frontend ), aber hier ist schon
@@ -4783,7 +4784,7 @@ Headers sind mächtige Werkzeuge wenn es zum Internet kommt, und wichtiger
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Frameless
@@ -5449,8 +5450,11 @@ Headers
 \end_layout
 
 \begin_layout Itemize
-(1) Content-Security-Policy spiel eine bedeutende Rolle um XSS-Attack zu
- vermeiden.
+(1) 
+\emph on
+Content-Security-Policy
+\emph default
+ spiel eine bedeutende Rolle um XSS-Attack zu vermeiden.
  mit dem Wert script-src 'self' weist die Header hin, dass alle JavaScript
  source Datei nur von Server geladen werden dürfen.
  In unsere Fall vom LocalServer.
@@ -5489,24 +5493,28 @@ Frontend
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel handelt es sich um der Clientoberfläche in Form eine Webapplic
-ation, die der Endbenutzer auf irgendeinem Rechner der über eine Webbrowser
- verfügt aufrufen kann.
+In diesem Kapitel handelt es sich um der Client-Oberfläche in Form eine
+ Webapplikation, die der Endbenutzer auf irgendeinem Rechner der über eine
+ Webbrowser verfügt aufrufen kann.
  Hier ist noch mal zu erinnern, dass eine der wichtige Anforderung von dieser
  Arbeit war das der Software so konzipiert wird, dass es kein zusätzliche
  Softwareinstallation benötigt wird.
- Das Webapplication wurde in Form eine sog.
- Single Page Application, wie bereits erwärnt, handelt es sich um eine Technik
- Webseite zu entwerfen, so dass die Bedinung von Webapplication ähnlich
- ist wie von Benutzer schon bekannt Computersprogramm.
+ Das Webapplikation wurde in Form eine sog.
+ 
+\emph on
+Single Page Application
+\emph default
+ (SPA), wie bereits erwärnt, handelt es sich um eine Technik Webseite zu
+ entwerfen, so dass die Bedienung von Webapplikation ähnlich ist wie von
+ Benutzer schon bekannt Computerprogramm.
  Neben der Usability und Portierungsargumente kommt auch die strenge Haltung
  von wichtigen Softwarearchiktekture und Regeln die mit Einsatz von AngularJS
- verbunden sind, nämmlich 
+ verbunden sind, nämlich 
 \emph on
 Separation of Concern
 \emph default
  und MVVM .
- Ausserdem ermöglicht Angular eine wesentliche Reduzierung von Request an
+ Außerdem ermöglicht Angular eine wesentliche Reduzierung von Request an
  Server, dass hat zur Folge dass der 
 \emph on
 
@@ -5523,7 +5531,11 @@ ehe wenige Material bekommt um eine
 \begin_inset space ~
 \end_inset
 
+
+\emph on
 Offline-Attacke
+\emph default
+
 \begin_inset space ~
 \end_inset
 
@@ -5793,7 +5805,7 @@ Die obengennante Untermodule verfügen über eine einheitliche Schnittstelle,
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -6064,7 +6076,7 @@ Falsche Request
 \end_layout
 
 \begin_layout Itemize
-momentane nicht ansprechbare Resource
+momentane nicht ansprechbare Ressource
 \end_layout
 
 \begin_layout Itemize
@@ -6658,7 +6670,7 @@ Das unterstehende Abbildung zeigt die Datenbankschema.
 \begin_inset Quotes gld
 \end_inset
 
-hash
+Hash
 \begin_inset Quotes grd
 \end_inset
 
@@ -6666,12 +6678,12 @@ hash
 \begin_inset Quotes gld
 \end_inset
 
-signature
+Signatur
 \begin_inset Quotes grd
 \end_inset
 
 .
- Wie vorher erwarnt, sind diese Einträge wichtig für die Integritätüberprüfung
+ Wie vorher erwarnt, sind diese Einträge wichtig für die Integritätsüberprüfung
  von Daten.
 \end_layout
 
@@ -6739,7 +6751,7 @@ Users: Im Schemas Users wird die Benutzerinformationen gespeichert
 
 \begin_layout Description
 SrpCredentials: In dieser Tabelle werden Benutzerinformations bezuglich
- SRP-A, aus Sicherheitgründe wurde diese Informationen vom Users Schema
+ SRP-A, aus Sicherheitsgründe wurde diese Informationen vom Users Schema
  entkoppelt.
  
 \end_layout
@@ -6838,7 +6850,7 @@ reference "chap:Anforderungen"
 
 \end_inset
 
- wurde in in funktionale und nichtfunktionale Anforderungen unterteilt.
+ wurde in in funktionale und nicht-funktionale Anforderungen unterteilt.
  Während die funktionalen Anforderungen durch konkrete softwaretechnische
  Einheit (Klasse, Module) werden konnten, beziehen sich die nicht-funktionalen
  Anforderungen auf Eigenschaften des Gesamtsystems, die sich mnicht an einzelnen
@@ -7207,11 +7219,11 @@ Nicht funktionale Anforderungen : Functionality und Maintainability
 
 \begin_layout Itemize
 Interoperability und Compliance, LocalServer und RemoteServer sind nach
- REST-Full Standard entwickelt wurde.
+ RESTFull Standard entwickelt wurde.
  Überall Daten die produziert werden sind in JSON-Format.
- LocalServer oder RemoteServer können getausch werden oder in eine andere
+ LocalServer oder RemoteServer können getauscht werden oder in eine andere
  Programmiersprache programmiert solange die Ersatzsoftware die REST-Spezifikati
-on erfüllt und auf schon definiert Resource mit definierten Methoden zugreifft.
+on erfüllt und auf schon definiert Ressource mit definierten Methoden zugreifft.
  
 \end_layout
 
@@ -7227,7 +7239,7 @@ Zusammenfassung
 KryptoOne-System ist ein Internet-basierte Dokumentverwaltung (Dokumentaustausch
 , Dokumentablagerung ..
  ) konzipiert mit einer intuitiven Benutzer Interaktion durch Webbrowser
- und mit dem Ziel, kryptographische Komplexität zu abstrahieren, das heisst
+ und mit dem Ziel, kryptographische Komplexität zu abstrahieren, das heißt
  so gut wie keine Kryptographie-relevante Aufgabe an Benutzer zu überlassen.
  Im Unterschied zu anderen Cloud-Services werden die Dateien verschlüsselt,
  bevor sie hoch geladen werden.
@@ -7257,6 +7269,7 @@ Zu Beginn der Arbeit wurden die Probleme der bisher eingesetzten Lösungen
  genauer beleuchtet und die Motivation für eine Komplexitäts-transparente
  Cryptosoftware mit spezifizierten Anforderungen abgeleitet.
  Anschließend wurden die Ziele der Arbeit formuliert.
+ 
 \end_layout
 
 \begin_layout Standard
