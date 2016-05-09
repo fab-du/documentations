@@ -386,7 +386,7 @@ Format 15
 \Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"	"image/x-emf"
 \Format wordhtml  "html, htm" "HTML (MS Word)"    "" "" ""	"document"	""
 
-\converter plantuml png "java -jar /home/batie/bin_external/plantuml.jar -tpng $$i -ofile $$o" ""
+\converter plantuml png "java -jar /home/batie/bin_external/plantuml/plantuml.jar -tpng $$i -ofile $$o" ""
 
 \converter pdflatex   pdf2       "pdflatex $$i"	"latex=pdflatex"
 \converter xetex      pdf4       "xelatex $$i"	"latex=xelatex"

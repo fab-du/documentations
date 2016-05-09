@@ -929,6 +929,39 @@ setcounter{page}{7}
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -2423,7 +2456,7 @@ Das System Architektur wurde als eine Server-Client Anwendung entworfen,
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Box Boxed
@@ -2697,13 +2730,18 @@ Pretty Good Privacy
 \begin_inset Quotes grd
 \end_inset
 
- ( PGP ) entworfen, das mittlerweile zu OpenPGP [ RFC 4880 ] weiterentwickelt
- wurde.
+ ( PGP ) entworfen, das mittlerweile zu OpenPGP 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RFC1991"
+
+\end_inset
+
+ weiterentwickelt wurde.
  Das Konzept basiert nicht auf der Existenz einer Vertrauenswürdigen Instanz,
  von der aus sich das Vertrauen automatisch transitiv ausgebreitet, sondern
  überlässt die Vertrauensbildung den Benutzern untereinander.
- Beim Einsatz dieses Konzept wird kein Zertifikat wie in der Spezifikation
- [ XXX ] benötigt.
+ Beim Einsatz dieses Konzept wird kein Zertifikat.
  Anstelle von Zertifikate werden ehe Öffentliche Schlüsseln benutzt.
  Ein in System System registrierte Benutzer bekommt eine Schlüsselpaare,
  wobei der private Schlüssel mit seinem Secret-Key verschlüsselt wird, und
@@ -2806,7 +2844,15 @@ Unterschied zu PGP bzw.
 \end_layout
 
 \begin_layout Subsection*
-Benutzer als Friend hinzufügen
+Benutzer als 
+\begin_inset Quotes gld
+\end_inset
+
+Freund
+\begin_inset Quotes grd
+\end_inset
+
+ hinzufügen
 \end_layout
 
 \begin_layout Standard
@@ -2815,8 +2861,16 @@ Sei Alice und Bob zwei Benutzer des Cryptone System.
 \end_layout
 
 \begin_layout Standard
-Alice möchte Bob als Freund hinzufügen.
- Eine Friend-Beziehung bzw.
+Alice möchte Bob als 
+\begin_inset Quotes gld
+\end_inset
+
+freund
+\begin_inset Quotes grd
+\end_inset
+
+ hinzufügen.
+ Eine Freundschaft-Beziehung bzw.
  Vertrauenbeziehung zwischen Alice und Bob entsteht wenn das Public-Key
  von Bob von Alice signiert wurde und das Public-Key von Alice von Bob ebenso
  signiert wurde.
@@ -2824,8 +2878,8 @@ Alice möchte Bob als Freund hinzufügen.
 \end_layout
 
 \begin_layout Standard
-Die Benutzer die sich in System befinden können sich in eine Freundschaftbeziehu
-ng befinden ( Friends ).
+Die Benutzer die sich in System befinden, können sich in eine Freundschaftbezieh
+ung befinden ( Friends ).
 \begin_inset Newline newline
 \end_inset
 
@@ -2846,17 +2900,18 @@ Friends
 \begin_inset space ~
 \end_inset
 
- [WEB-OF-TRUST].
- Weitere ist die Freundschaftbeziehung zwischen Benutzer ein Randbedingung
- damit A beispielsweise B in eine Gruppe hinzufügen kann, und mit B dann
- auch Dokumenten durch von A gegründete Gruppe austauschen kann.
+ Web-Of-Trust.
+ Weitere ist die Vertrauenbeziehung zwischen Benutzer eine Randbedingung
+ damit Alice beispielsweise Bob in eine Gruppe hinzufügen kann, und mit
+ Bob dann auch Dokumenten durch von Alice gegründete Gruppe austauschen
+ kann.
 \begin_inset Newline newline
 \end_inset
 
-Bei der Herstellung eine Vertrauensbeziehung ( Friend ) zwischen A und B
- , wird die öffentliche Schlüssel B von A signiert.
+Bei der Erstellung eine Vertrauensbeziehung ( Friend ) zwischen Alice und
+ Bob , wird die öffentliche Schlüssel von Bob von Alice signiert.
  diese Signatur bildet materialistisch die Vertrauensbeziehung zwischen
- A und B.
+ Alice und Bob.
  
 \begin_inset Newline newline
 \end_inset
@@ -3936,7 +3991,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4051,7 +4106,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -6766,39 +6821,6 @@ Friends: Friends ist die Immaterialisierung von eine Vertrauensbeziehung
 \end_layout
 
 \begin_layout Description
-Roles: Benutzer Roles, die sind festgelegt, wert für eine Role könnten :
- 
-\begin_inset Quotes gld
-\end_inset
-
-Admin
-\begin_inset Quotes grd
-\end_inset
-
- oder 
-\begin_inset Quotes gld
-\end_inset
-
-User
-\begin_inset Quotes grd
-\end_inset
-
- sein.
- Es ist zu beachten dass pro Deployment nur ein einziger Benutzer als Admin
- markiert werden darf.
- Weitere Benutzer werden alle als 
-\begin_inset Quotes gld
-\end_inset
-
-user
-\begin_inset Quotes grd
-\end_inset
-
- markiert.
- 
-\end_layout
-
-\begin_layout Description
 Session: Es handelt sich um die Materialisierung einer aktiven Session
 \end_layout
 
@@ -7313,6 +7335,13 @@ Ausblick
 \end_layout
 
 \begin_layout Standard
+Im Zukunft wird weitere weitere Funktionalität für CryptOne-System integrieren,
+ wie zum Beispiel die Zwei-Faktor-Authorisierung, die anhand eine andere
+ Bachelorarbeit entworfen wurde.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -7410,19 +7439,7 @@ description "Model-View-View-Model"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Damé Damé (Official music video)SANGOA MBOA feat Sissongho MC's BASHIRU
- DJESS PANEBO GERRY 
-\begin_inset CommandInset index_print
-LatexCommand printindex
-type "idx"
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -7448,23 +7465,6 @@ clearpage
 \backslash
 phantomsection
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand lstlistoflistings
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
 
 \end_inset
 
