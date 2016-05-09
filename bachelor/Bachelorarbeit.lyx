@@ -1465,11 +1465,11 @@ name "sub:Digitale-Signature"
 
 \begin_layout Standard
 Eine digitale Signatur, auch digitales Signatur-Verfahren, ist ein asymmetrische
-s Kryptosystem, bei dem ein Sender mit Hilfe eines geheimen Singnaturschlüssels
- (dem privaten Schlüssel) zu einer digitalen Nachricht einen Wert berechnet,
- der ebenfalls digitale Signatur benannt wird.
- Dieser Wert ermöglicht es jedem, mit Hilfe des öffentlichen Verifikationsschlüs
-sels (dem öffentlichen Schlüssel) die nicht bestreitbare Urheberschaft und
+s Kryptografie-System, bei dem ein Sender mit Hilfe eines geheimen Singnaturschl
+üssels (dem privaten Schlüssel) zu einer digitalen Nachricht einen Wert
+ berechnet, der ebenfalls digitale Signatur benannt wird.
+ Dieser Wert ermöglicht es jedem, mit Hilfe des öffentlichen Verifikationschlüss
+els (dem öffentlichen Schlüssel) die nicht bestreitbare Urheberschaft und
  Integrität der Nachricht zu prüfen.
  Um eine mit einem Singnaturschlüssel erstellte Signatur einer Person zuordnen
  zu können, muss der zugehörige Verifikationsschlüssel dieser Person zweifelsfre
@@ -1698,7 +1698,7 @@ Die Identitäten der Kommunikationspartner werden i.
  Dadurch aber wird der Identitätsdiebstahl erleichtert, das heißt die Vortäuschu
 ng einer fremden Identität (Email-Adresse).
  Obwohl in der meisten Email-Clients eine Funktion vorgesehen ist, um das
- Risiko des Identitätstäuschung zu umgehen, geschieht die Email-Adressenüberprüf
+ Risiko des Identitätstäuschung zu umgehen, geschieht die -mail-Adressenüberprüf
 ung nicht automatisch.
  Dies bleibt dem Benutzer überlassen.
  
@@ -1749,7 +1749,7 @@ Dazu kommt noch die Infrastrukturproblematik: Schlüsselmanagement, Sicherheit
 \end_layout
 
 \begin_layout Section
-Web-upload
+Web-Upload
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Web-upload"
@@ -1781,7 +1781,7 @@ elt.
  Somit ergeben sich dieselbe Problematik und derselbe Lösungsansatz wie
  bei Datei-Servern.
  In Folge dessen sollten Dokumente, die per Browser auf einen Datei-Server
- geladen werden, vom Client-PC verschlüsselt wer- den.
+ geladen werden, vom Client-PC verschlüsselt werden.
  Die Dokumente müssen also vor dem Upload verschlüsselt worden sein, oder
  aber der Browser führt die Verschlüsselung durch.
  Eine Vorab-Verschlüsselung der Dateien hat den Nachteil, dass das Dokumenten-
@@ -1793,10 +1793,10 @@ elt.
  Folglich sollte die Verschlüsselung durch den Browser quasi automatisch
  erfolgen.
  Dies wird aktuell nur sehr selten durchgeführt, da die Verschlüsselungs-Softwar
-es auch vom Web-Server geladen werden müssen.
+e auch vom Web-Server geladen werden müssen.
  Und es kann nicht garantiert werden, dass die geladene Software nicht Eindringl
 ingen unbeabsichtigten Zugriff ermöglicht.
- In Folge dessen werden Dokumente SSL-verschlüsselt zum Server gesendet.
+ In Folge dessen werden Dokumente mit SSL verschlüsselt zum Server gesendet.
  Die dort empfangenen, unverschlüsselten Dokumente werden sofort verschlüsselt
  und als Datei abgelegt.
 \begin_inset Newline newline
@@ -1815,7 +1815,7 @@ Ein Eindringling auf dem Server kann die Klartext-Datei und/oder die Schlüssel
 \end_layout
 
 \begin_layout Standard
-Zusammenfassung: Ein Ansatz für ein sicheres web-upload ist bisher nicht
+Zusammenfassung: Ein Ansatz für ein sicheres Web-Upload ist bisher nicht
  bekannt.
 \end_layout
 
@@ -1876,7 +1876,7 @@ Cloud-Service hat sich in den letzten fünf Jahren wesentlich verbreitet.
  sehr beliebt.
  Gerade bei der Bereitstellung von sensiblen Dokumenten über die Cloud ist
  es unumgänglich, auf Sicherheit und Schutz vor fremdem Eingriff zu achten.
- Doch oft möchte man, einige Dateien mit einem Geschäftpartner oder Kollegen
+ Doch oft möchte man, einige Dateien mit einem Geschäftspartner oder Kollegen
  austauschen und achtet wenig auf Sicherheit.
  Beliebte Cloud-Lösungen aus dem Privatbereich wie Dropbox werden hierbei
  gerne verwendet.
@@ -1953,8 +1953,8 @@ examplarische zertifikat
 \end_layout
 
 \begin_layout Standard
-PGP ist eine Daten-Ver- und Entschlüsselung Computerprogramm, das kryptographisc
-he Privatsphäre und Authentifizierung für die Datenkommunikation zur Verfügung
+PGP ist eine Daten Ver-und-Entschlüsselung Computerprogramm, das kryptographisch
+e Privatsphäre und Authentifizierung für die Datenkommunikation zur Verfügung
  stellt.
  PGP wird oft zum Signieren und zur Ver-und-Entschlüsselung von Texten,
  E-Mails, Dateien und Verzeichnisse verwendet, um die Sicherheit der E-Mail-Komm
@@ -2116,8 +2116,14 @@ SPKI / SDSI
 \end_layout
 
 \begin_layout Standard
-SDSI [EFL + 99][RL96] [ST00] wurde von Ronald Nieten und Butler Lampson
- konzipiert.
+SDSI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RL96"
+
+\end_inset
+
+ wurde von Ronald Nieten und Butler Lampson konzipiert.
  Seine Entwicklung wurde durch die Komplexität der herkömmlichen Public-Key
  Infrastrukturen speziell die Abhängigkeit auf den globalen Namensraum motiviert.
  SDSI ist eine Public Key-Infrastruktur mit lokalen Namensraum.
@@ -2127,10 +2133,10 @@ SDSI [EFL + 99][RL96] [ST00] wurde von Ronald Nieten und Butler Lampson
  Hier wird der öffentliche Schlüssel nicht dazu genutzt, die Identität des
  Schlüsselbesitzers zu prüfen, sondern direkt seine Berechtigung zu bestimmten
  Diensten zu definieren.
- Die Vereinigung der beiden Projekte führt zum SPKI / SDSI, ein System zur
+ Die Vereinigung der beiden Projekte führt zum SPKI/SDSI, ein System zur
  Autorisierung und Authentifizierung.
  das SDSI lokalen Namensräume mit SPKI Autorisierung Systems kombiniert.
- SPKI / SDSI ist eine vollständig verteilte Lösung.
+ SPKI/SDSI ist eine vollständig verteilte Lösung.
  Jeder Benutzer wird eine Zertifizierungsstelle und ist für die Verwaltung
  von Zertifikaten selbst zuständig.
  In SPKI / SDSI werden die Benutzer durch einen öffentlichen Schlüssel identifiz
@@ -2145,19 +2151,19 @@ iert und der öffentliche Schlüssel ist einem lokalen Benutzernamen Raum
  und Berechtigungszertifikate.
  Das Namenszertifikat bescheinigt, dass ein Name in einem Namensraum eines
  Emittent gültig ist.
- Das Berechtigungszertifikat gewährt den Res- sourcenzugriff eines Benutzers.
+ Das Berechtigungszertifikat gewährt den Ressourcenzugriff eines Benutzers.
  Namenszertifikate bestehen aus vier Bereichen zusammen:Issuer(Emittenten),
- Iden- tifier( Identifizierter), Subject (Subjekt) und validity specification
+ Identifier( Identifizierter), Subject (Subjekt) und validity specification
  (Gültigkeit Spezi- fikation).
  Der Issuer ist derjenige, der das Zertifikat unterzeichnet.
  Der Identifizierter ist ein Byte, Zeichenkette, die einen Namen repräsentiert.
  Das Subject kann ein Name sein, oder ein öffentlicher Schlüssel.
- Wenn das Subject ein Name ist, ist es in lokalen Namenraum und der damit
+ Wenn das Subject ein Name ist, ist es in lokalen Namensraum und der damit
  verbundene öffentliche Schlüssel kann wieder- hergestellt werden.
- Schließlich Gültigkeit Spezifikation ist eine Gültigkeitsbedin- gung des
+ Schließlich Gültigkeit Spezifikation ist eine Gültigkeitsbedingung des
  Zertifikats, es könnte ein Gültigkeitsdatum oder eine Zugriffssteuerungs-
  liste (ACL) sein.
- Berechtigungs Zertifikat besteht aus fünf Bereichen: Issuer(Emittenten),
+ Berechtigungszertifikat besteht aus fünf Bereichen: Issuer (Emittenten),
  subject(Subjekt), Delegation, Tag, und ihrer Gültigkeit Spezifikation.
  Issuer und subject haben die gleiche Funktion wie oben geschrieben.
  Jedoch kann das Subject eine Gruppe von Nutzer sein.
@@ -2170,7 +2176,7 @@ iert und der öffentliche Schlüssel ist einem lokalen Benutzernamen Raum
  Besitzer erzeugt zwei Berechtigungszertifikate.
  Ein Zertifikat ist mit der erteilten Zulassung: lesen, schreiben und nicht
  Delegation (RW: ND) zu D1 gegeben.
- Ein anderes Zerti- fikat ist an D2 mit Genehmigung : lesen und Delegation
+ Ein anderes Zertifikat ist an D2 mit Genehmigung : lesen und Delegation
  (R: D) gegeben.
  In der glei- chen Figur erzeugt D2 eine neue Zertifikat für D3 mit Leserechten,
  aber Delegation nicht erlaubt (R: ND).
@@ -2406,8 +2412,8 @@ Wartbarkeit und Erweiterbarkeit
 \begin_layout Standard
 Die resultierende Software dieser Arbeit, soll in Zukunft gewartet, erweitert
  und verändert werden.
- Neu Features sind schon festgelegt ( sollen aber in der jetzige Version
- nicht implementiert werden )
+ Neu Features sind schon festgelegt (sollen aber in der jetzige Version
+ nicht implementiert werden).
 \end_layout
 
 \begin_layout Subsection
@@ -2415,9 +2421,8 @@ Portierbarkeit und Plattform-Unabhängigkeit
 \end_layout
 
 \begin_layout Standard
-Defakto ist der LocalServer portierbar, LocalServer läuft auf USB-Stick
- .
- Localserver soll auch plattformsunabhängig sein.
+Defakto ist der LocalServer portierbar, LocalServer läuft auf USB-Stick.
+ Localserver soll auch Plattform-unabhängig sein.
  Was RemoteServer angeht soll auch plattformunabhängig sein.
  Alle Einstellungen des RemoteServer müssen sich durch externe Konfigurationsdat
 eien durchführen lassen.
@@ -2429,7 +2434,7 @@ Daten-und Serverintegrität
 
 \begin_layout Standard
 Der Benutzer soll in der Lage sein die Integrität von RemoteServer zu prüfen
- und der auf der letzer abgespeicherte Daten.
+ und der auf der letzten abgespeicherten Dateien.
 \end_layout
 
 \begin_layout Chapter
@@ -2443,7 +2448,7 @@ Allgemein Architektur
 \begin_layout Standard
 Das System Architektur wurde als eine Server-Client Anwendung entworfen,
  LocalServer und RemoteServer, wobei der LocalServer eine Überbrückungsrolle
- zwischen den Frontend (Webbrowser JavaScript-Application) und RemoteServer
+ zwischen den Frontend (Webbrowser Javascript-Application) und RemoteServer
  spielt, LocalServer ist vergleichbar mit ein Proxy.
  Alle Chiffrierung-bzw-Dechiffrierungoperationen geschehen.
 \begin_inset Newline newline
@@ -2512,10 +2517,10 @@ Authentifizierung
 \begin_layout Standard
 Authentifizierung spielt System-weit eine bedeutende Rolle.
  Dabei passieren alle notwendige Prüfung von LocalServer, RemoteServer,
- RemoteServer integrität und natürlich Verifizierung von Benutzer.
- Es durfte systemweit keine Einsatzt von Zertifikat/SSL-Verbindung oder
- Aufbau eine zustandbehaft Verbindung kommen, spricht die Kommunikationskanal
- ist unsicher.
+ RemoteServer Integrität und natürlich Verifizierung von Benutzer.
+ Es durfte System-weit keine Einsatz von Zertifikat/SSL-Verbindung oder
+ Aufbau eine zustandsbehaftete Verbindung kommen, spricht die Kommunikationskana
+l ist unsicher.
  Um Benutzercredentials von LocalServer auf RemoteServer zu übermitteln
  unter Anhaltung von Spezifikation, wurde SRP 
 \begin_inset CommandInset citation
@@ -2528,18 +2533,18 @@ key "RFC2945"
 \begin_inset Newline newline
 \end_inset
 
-Beim Einsatz von SRP-Secure Remote Password Protocol lasst sich auch einfach
- der gegenseitige Aunthenfizierung von [LokalServer] und [Remote- Server]
- realisieren, diese geschehet auch beim Authentifizierungsphase.
+Beim Einsatz von SRP-Secure Remote Password Protokoll lasst sich auch einfach
+ der gegenseitige Authentifizierung von LocalServer und RemoteServer realisieren
+, diese geschehet auch beim Authentifizierungsphase.
 \begin_inset Newline newline
 \end_inset
 
 SRP Protokoll ist ein Authentifizierung protokoll, dabei können manche per-Sitzu
-ng zufällige generierte Werte als Sitzungschlüssel verwendet werden (B).
+ng zufällige generierte Werte als Sitzungsschlüssel verwendet werden (B).
  Das bestehende Problem beim Einsatz von dauerhafte Passwort wird durch
  SRP minimiert, indem keine Passwort-korrespondierte ( Hash, verschlüsselte
  Passwort ....
- ) gepeichert wird, sondern ein 
+ ) gespeichert wird, sondern ein 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2556,7 +2561,7 @@ Verifier
 \begin_inset Quotes grd
 \end_inset
 
- , dann kann der nicht daraus die Benutzerpasswort wiederrechnen.
+ , dann kann der nicht daraus die Benutzerpasswort wieder-rechnen.
  Ein gestohlener Verifier ist ebenso nicht ausreichend zür Anmeldung, Weil
  das Passwort immer noch benötigt wird.
 \begin_inset Newline newline
@@ -2667,7 +2672,7 @@ name "sec:local_server_public_key"
 \end_layout
 
 \begin_layout Standard
-Beim eine sicherheitrelevante Anwendung ist es wichtig an jeder Anwendungfälle
+Beim eine sicherheitsrelevante Anwendung ist es wichtig an jeder Anwendungsfälle
  an der Integrität der Softwareteile zu prüfen, sowie auch von exportierte
  Daten.
  Neben der Authentifizierung von Benutzer an sich, muss sich LocalServer
@@ -2676,7 +2681,7 @@ Beim eine sicherheitrelevante Anwendung ist es wichtig an jeder Anwendungfälle
 \begin_inset Newline newline
 \end_inset
 
-RemoteServerintegritätsprüfung gescheht beim der Allererste Loginversuch,
+RemoteServer-Integritätsprüfung gescheht beim der Allererste Login-Versuch,
  sowie beim jeder weiteren Request von LocalServer zu RemoteServer.
 \begin_inset Newline newline
 \end_inset
@@ -2706,7 +2711,7 @@ CLIENT_PUBLIC_KEY
 \end_inset
 
  wird gesetzt.
- Diese weitere Massnahme verstärkt die Vertrauenbeziehung die beim erste
+ Diese weitere Massnahme verstärkt die Vertrauensbeziehung die beim erste
  gegenseitige Authentifizierung von LocalServer und RemoteServer etabliert
  wurde.
  LocalServer kann in weitere Request von LocalServer dann immer prüfen anhand
@@ -2838,8 +2843,8 @@ exemplarische Vertrauenbeziehung
 
 \begin_layout Standard
 Unterschied zu PGP bzw.
- OpenPGP wird eine weniger komplexer immerhin informative Daten abgepeichert
- zur Materialiesierung von Vertrauenbeziehung zwischen zwei Benutzer.
+ OpenPGP wird eine weniger komplexer immerhin informative Daten abgespeichert
+ zur Materialisierung von Vertrauensbeziehung zwischen zwei Benutzer.
  
 \end_layout
 
@@ -2856,7 +2861,7 @@ Freund
 \end_layout
 
 \begin_layout Standard
-Sei Alice und Bob zwei Benutzer des Cryptone System.
+Sei Alice und Bob zwei Benutzer des CryptOne-System.
  
 \end_layout
 
@@ -2871,15 +2876,15 @@ freund
 
  hinzufügen.
  Eine Freundschaft-Beziehung bzw.
- Vertrauenbeziehung zwischen Alice und Bob entsteht wenn das Public-Key
+ Vertrauensbeziehung zwischen Alice und Bob entsteht wenn das Public-Key
  von Bob von Alice signiert wurde und das Public-Key von Alice von Bob ebenso
  signiert wurde.
  
 \end_layout
 
 \begin_layout Standard
-Die Benutzer die sich in System befinden, können sich in eine Freundschaftbezieh
-ung befinden ( Friends ).
+Die Benutzer die sich in System befinden, können sich in eine Freundschaftsbezie
+hung befinden ( Friends ).
 \begin_inset Newline newline
 \end_inset
 
@@ -2991,7 +2996,7 @@ Group
 \begin_inset Quotes grd
 \end_inset
 
- ist eine wichtige Konzept in Cryptoone-System.
+ ist eine wichtige Konzept in CryptOne-System.
  Gruppe ist das Konzept was Benutzer miteinander verbindet zufolgedessen
  Dokument und Schlüssel.
  
@@ -3031,9 +3036,10 @@ das Teilen eines Dokuments lässt sich in verschiedene Weise durchführen.
  Ein Benutzer kann ein Dokument per Upload in seine private Gruppe hochladen.
  Das Dokument bleibt in seine private Gruppe solange bis der Benutzer die
  Entscheidung trifft das Dokument mit eine andere Gruppe zu teilen.
- Ab dann gehört das Dokument nicht mehr der Benutzer, dass heisst der kann
+ Ab dann gehört das Dokument nicht mehr der Benutzer, dass heißt der kann
  das Dokument nicht mehr zurückziehen, ausgeschlossen der Benutzer ist der
- Gruppeverantwortlich der Gruppe, dann kann der wieder das Dokument zurückziehen.
+ Gruppe-verantwortlich der Gruppe, dann kann der wieder das Dokument zurückziehe
+n.
  Das Original des von neulich in eine öffentliche Gruppe geteilte Dokuments
  bleibt aber im Benutzer private Gruppe.
 \end_layout
@@ -3181,7 +3187,7 @@ Zwischen zwei Benutzer
 Ein Benutzer A kann sich entscheiden ein Dokument D nur mit einer Ihrer
  Freund B zu teilen.
  Ist der Benutzer B noch keiner Freund von A, dann wird während dieser Vorgang
- B als Freund von A vertraut gemacht ( Das heisst während dieser Vorgang
+ B als Freund von A vertraut gemacht ( Das heißt während dieser Vorgang
  der Benutzer B öffentliche Schlüssel wird von Benutzer A signiert ).
  Eine Gruppe wird dann erzeugt und das zu auszuteilenden Dokuments wird
  in der neulich erzeugte Gruppe verwiesen.
@@ -3339,15 +3345,15 @@ pt.
 \end_inset
 
 Beim Einsatz von REST wird kein 
-\begin_inset space ~
+\begin_inset Quotes gld
 \end_inset
 
 Query String
-\begin_inset space ~
+\begin_inset Quotes grd
 \end_inset
 
  benutzt, was als Vorteil hat, eine mögliche Sicherheitslücke zu vermeiden.
- Eine weitere Vorteil ist die Überschaubarkeit der Software.
+ Eine weitere Vorteil ist die Überschaubarkit der Software.
 \end_layout
 
 \begin_layout Standard
@@ -3392,7 +3398,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-CryptOne HTTP Ressourcen nach REST-Spezifikation
+CryptOne-System HTTP Ressourcen nach REST-Spezifikation
 \end_layout
 
 \end_inset
@@ -4357,7 +4363,7 @@ Datei herunterladen
 \end_layout
 
 \begin_layout Itemize
-Alice befindet sich in einer Gruppe und will ein Datei runterladen.
+Alice befindet sich in einer Gruppe und will ein Datei herunterladen.
  Also Alice muss mitglied von der Gruppe sein
 \end_layout
 
@@ -4494,7 +4500,7 @@ SGK wird mit Alice private Schlüssel signiert.
 
 \begin_layout Itemize
 Nach die vorherige Vorgang, werden ein Gruppe Objekt und SymKey Object erzeugt.
- Die beide Objekte werden von LokalServer zu RemoteServer geschickt.
+ Die beide Objekte werden von LocalServer zu RemoteServer geschickt.
 \end_layout
 
 \begin_layout Chapter
@@ -5805,7 +5811,7 @@ LocalServer Module
 \end_layout
 
 \begin_layout Subsubsection*
-CryptoUtils
+CryptUtils
 \end_layout
 
 \begin_layout Standard
@@ -5827,7 +5833,7 @@ Passwort basierte asymmetrische Schlüssel-Generator
 \end_layout
 
 \begin_layout Enumerate
-Digitale Signature
+Digitale Signatur
 \end_layout
 
 \begin_layout Enumerate
@@ -5846,7 +5852,7 @@ ule) implementiert.
 \begin_inset Newline newline
 \end_inset
 
-Die obengennante Untermodule verfügen über eine einheitliche Schnittstelle,
+Die oben genannte Untermodule verfügen über eine einheitliche Schnittstelle,
  Parameter-Typ und Rückgabewert sind immer Base-64 codierte JSON-Zeichenkette.
  
 \begin_inset Newline newline
@@ -5877,7 +5883,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-CryptoUtils Module
+CryptUtils Module
 \end_layout
 
 \end_inset
@@ -5892,7 +5898,7 @@ CryptoUtils Module
 
 \begin_layout Standard
 Alle Klasse werden sowie in der oben stehenden Abbildung weiter im LocalServer
- benutzt (
+ benutzt 
 \begin_inset Quotes gld
 \end_inset
 
@@ -5900,7 +5906,7 @@ AS IS
 \begin_inset Quotes grd
 \end_inset
 
-).
+.
  Ausnahmeweise wird AESCrypto abstrahiert um eine Spezialisierung für Dateiversc
 hlüsselung zu entwerfen.
  
@@ -5954,7 +5960,7 @@ reference "sub:konfiguration_localserver"
  zur Verbindung von in der Konfigurationsdatei eingetragene Wert und dessen
  Verweis im Java Code, oder auch zur Bestimmung der Kontext.
  in der oben benannte Konfigurationsdatei wird zum Beispiel der Wert Port
- zu 0 gesetzt, was dafür sorg dass LocalServer immer eine beim Clientrechner
+ zu 0 gesetzt, was dafür sorgt dass LocalServer immer eine beim Client-Rechner
  nicht verwendete Port benutzt.
  Beim RemoteServer muss dieser Wert jedoch immer fest sein.
  Weitere werden in Konfigurationsdatei Werte wie Schlüssellänge, Servermesssage
@@ -5979,8 +5985,25 @@ Java
 \end_layout
 
 \begin_layout Quotation
-$ java -jar -Dspring.profiles.active=production CryptoRemote-0.0.1-SNAPSHOT.jar
- 
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "samples/program_start.sh"
+lstparams "emph={remoteserver, url, uri, maxFileSize, register, login, authenticate, users, documents, groups, friends, port, app, server, multipart, keypairs, symkeys, name, description, maxRequestSize, logout, challenge},emphstyle={\\color{green}},caption={programstart.sh},label={Konfigurationsdatei-1}"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -5989,8 +6012,8 @@ Model View Controller
 
 \begin_layout Standard
 Model view controller (MVC, englisch für Modell Präsentation Steuerung)
- ist ein Muster zur Struktierung von Software-Entwicklung in die drei Einheiten
- Datenmodell, Präsentation und Programmsteuerung.
+ ist ein Muster zur Strukturierung von Software-Entwicklung in die drei
+ Einheiten Datenmodell, Präsentation und Programmsteuerung.
  Ziel des Musters ist ein flexibler Programmentwurf, der eine spätere Änderung
  oder Erweiterung erleichtert und eine Wiederverwendbarkeit.
  
@@ -6104,7 +6127,7 @@ omponente durchgeführt werden kann.
 \end_layout
 
 \begin_layout Subsection*
-RestClient 
+REST-Client 
 \end_layout
 
 \begin_layout Standard
@@ -6141,7 +6164,7 @@ Fehler im Code
 \begin_layout Standard
 Je nach Fehlerart bzw.
  Meldungsart, ist es wichtig den Benutzer ein gewisse Feedback zu geben
- und schliesslich den Fehler behandeln können oder dokumentiert für eine
+ und schließlich den Fehler behandeln können oder dokumentiert für eine
  nachtragliche Verbesserung des Softwares
 \begin_inset Newline newline
 \end_inset
@@ -6555,7 +6578,7 @@ key "HTTPSTATUS"
 
 \begin_layout Standard
 Mit Hilfe von Angular Http Interceptor wurde ein Logik implementiert, die
- die Status-code von Http Response filtert, und jenach status code eine
+ die Status-code von Http Response filtert, und je nach Status-Code eine
  zugehörige Rückmeldung im Browser anzeigt.
  
 \begin_inset Newline newline
@@ -6568,7 +6591,7 @@ Sollte ein Fehler Code auftauchen, dann wird automatische eine Antwort mit
  Exception in Code aufgetaucht wurde.
  Dies kann der Angreifer benutzen um das System zu hacken.
  RemoteServer und LocalServer haben ein Filter, der die Anwort an Client
- filtert und 500 Status code durch 400 Status code ersetzt, weitere wird
+ filtert und 500 Status Code durch 400 Status Code ersetzt, weitere wird
  die verbose Nachricht was die Fehlerquelle beschreibt durch eine weniger
  informative Message ersetzt.
  Alle Code Fehler, materialisiert durch 500 Status Code werden dokumentiert,
@@ -6638,13 +6661,13 @@ Caching
 Um häufigere Http-Anfrage an RemoteServer zu vermeiden, wurde eine Caching-Strat
 egie im LocalServer und Angular Frontend-Application entworfen.
  Eine Vorteil von Caching ist es die Overhead zu vermeiden.
- Und eventuele ein Dritter der die Kommunikation abhört, nicht durch häufige
+ Und eventuell ein Dritter der die Kommunikation abhört, nicht durch häufige
  Anfrage mit Infos füttert.
  Caching spielt auch eine beteundente Rolle bei Skalierung von Software
  und führt dass die Software mehr Fehlertorant wird.
  Caching erbringt mehr Leistung durch eine Verringerung der durchschnittlichen
- Latenzzeit von einer einer Reihe von Interaktion und erhöht die benutzerwahrgen
-ommene Leistung.
+ Latenzzeit von einer einer Reihe von Interaktion und erhöht die Benutzer-
+ wahrgenommene Leistung.
  
 \end_layout
 
@@ -6845,7 +6868,7 @@ SymKeys: Symmetrischen Schlüssel
 \end_layout
 
 \begin_layout Description
-PairKeys: Assymetrischen Schlüssel.
+PairKeys: Asymmetrischen Schlüssel.
 \end_layout
 
 \begin_layout Section
@@ -6854,7 +6877,7 @@ Evaluierung
 
 \begin_layout Standard
 In diesem Abschnitt wird überprüft, in wieweit die Umsetzung des Lösungskonzepte
-s die geforderten Anforderungen an der Cryptone-System erfüllt.
+s die geforderten Anforderungen an der CryptOne-System erfüllt.
  Zusätzlich wird auf Maßnahmen eingegangen, um Korrektheit des Dienstes
  sicherzustellen.
  
@@ -6895,7 +6918,7 @@ schoptionen ...) wurde durch eine Unit-Test Programm getestet.
 \end_layout
 
 \begin_layout Itemize
-Funktionparameter Integrität prüfung ( Null-Object , nicht genug Argument,
+Funktionsparameter Integritätsprüfung ( Null-Objekt , nicht genug Argument,
  falsche Argument, Argumenttyp Prüfung) 
 \end_layout
 
@@ -7110,7 +7133,7 @@ Webbrowser
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Cryptone Compilierung
+cryptOne Compilierung
 \end_layout
 
 \end_inset
@@ -7216,7 +7239,7 @@ add-friend
 \end_inset
 
  ), Drag-and-Drop sind üblich und von Benutzer aus andere Webseite bekannt.
- Fakt ist dass Zielbenutzer von Cryptone-System sind mit diese Aktionen
+ Fakt ist dass Zielbenutzer von cryptOne-System sind mit diese Aktionen
  schon gewöhnt.
  Weitere alle Komplexe Logik passiert im LocalServer und der Endbenutzer
  kriegt nichts mit von dieser Logik.
@@ -7258,14 +7281,14 @@ Zusammenfassung
 \end_layout
 
 \begin_layout Standard
-KryptoOne-System ist ein Internet-basierte Dokumentverwaltung (Dokumentaustausch
-, Dokumentablagerung ..
+CryptOne-System ist ein Internet-basierte Dokumentverwaltung (Dokumentaustausch,
+ Dokumentablagerung ..
  ) konzipiert mit einer intuitiven Benutzer Interaktion durch Webbrowser
  und mit dem Ziel, kryptographische Komplexität zu abstrahieren, das heißt
  so gut wie keine Kryptographie-relevante Aufgabe an Benutzer zu überlassen.
  Im Unterschied zu anderen Cloud-Services werden die Dateien verschlüsselt,
  bevor sie hoch geladen werden.
- KryptoOne-System verwaltet auch die Benutzer und wendet das Konzept von
+ CryptOne-System verwaltet auch die Benutzer und wendet das Konzept von
  Vertrauensbeziehung im Dateiaustausch an.
  Ferner wird die Sicherheits-Stärke den Unternehmen, welche die Software
  benutzen, überlassen.
@@ -7288,15 +7311,15 @@ Die bisherige Lösung diese Problems sah einen großen Aufwand für Endbenutzer
 \end_inset
 
 Zu Beginn der Arbeit wurden die Probleme der bisher eingesetzten Lösungen
- genauer beleuchtet und die Motivation für eine Komplexitäts-transparente
- Cryptosoftware mit spezifizierten Anforderungen abgeleitet.
+ genauer beleuchtet und die Motivation für eine Komplexitäts- transparente
+ kryptographische Software mit spezifizierten Anforderungen abgeleitet.
  Anschließend wurden die Ziele der Arbeit formuliert.
  
 \end_layout
 
 \begin_layout Standard
-Im theoretischen Teil wurde auf die zur Umsetzung des CryptoOne-Systems
- benötigten Grundlagen eingegangen.
+Im theoretischen Teil wurde auf die zur Umsetzung des CryptOne-Systems benötigte
+n Grundlagen eingegangen.
  Zuerst wurden die heutigen sicheren kryptographischen Standards und wichtige
  Begriffe erläutert.
  Die Einschränkungen und Nachteile dieser Standards wurden beleuchtet.
@@ -7317,7 +7340,7 @@ Der praktische Teil dieser Arbeit wurde in vier Kapitel gegliedert: Anforderungs
 
 \begin_layout Standard
 Durch die Anforderungs-Analyse wurden die konkreten Anforderungen an das
- CryptoOne-System herausgearbeitet.
+ CryptOne-System herausgearbeitet.
  Dabei wurden sowohl funktionale, als auch nicht-funktionale Anforderungen
  berücksichtigt.
  
@@ -7335,8 +7358,14 @@ Ausblick
 \end_layout
 
 \begin_layout Standard
+Die Arbeit hat gezeigt, dass eine alternative zur Cloud-Speicher möglich
+ ist, wobei die eine Ende-zu-Ende Verschlüsselung gewährleistet wird.
+ 
+\end_layout
+
+\begin_layout Standard
 Im Zukunft wird weitere weitere Funktionalität für CryptOne-System integrieren,
- wie zum Beispiel die Zwei-Faktor-Authorisierung, die anhand eine andere
+ wie zum Beispiel die Zwei-Faktor-Autorisierung, die anhand eine andere
  Bachelorarbeit entworfen wurde.
  
 \end_layout
